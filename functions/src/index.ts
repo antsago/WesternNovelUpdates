@@ -69,15 +69,18 @@ let site = `
 
 import * as functions from 'firebase-functions'
 import * as firebase from 'firebase'
-import 'firebase/firestore'
+import 'firebase/firestore' //The side-effects are necessary for Firebase
 import * as xml2js from 'xml2js'
-import * as keys from "./keys"
+import * as keys from './keys'
+const util = require('util')
+require('util.promisify').shim() // Firebase uses an old version of node (pre v8)
 
-export const helloWorld = functions.https.onRequest((request, response) => 
+export const updateChapters = functions.https.onRequest(extractAndSaveNewChapters)
+    
+async function extractAndSaveNewChapters(request, response)
 {
     site = cleanDescriptions(site) 
-    let chapters = extractChapters(site)
-    console.log(chapters);
+    let chapters = await extractChapters(site)
     
     firebase.initializeApp(
     {
@@ -93,16 +96,9 @@ export const helloWorld = functions.https.onRequest((request, response) =>
         publicationDate: "Tue, 20 Feb 2018 05:39:54 Z",
         title: "The Legend of Randidly Ghosthound - Chapter 363"
     })
-    .then(function(docRef) {
-        console.log("Document written with ID: ", docRef.id);
-    })
-    .catch(function(error) {
-        console.error("Error adding document: ", error);
-    });
-    
-    response.send(chapters)
 
-})
+    response.send(chapters)
+}
 
 function cleanDescriptions(rssXML) 
 {
@@ -110,10 +106,10 @@ function cleanDescriptions(rssXML)
     return rssXML.replace(descriptionCleaner, "<description></description>");
 }
 
-function extractChapters(rssXML) : any
+async function extractChapters(rssXML) : Promise<Array<any>>
 {
-    xml2js.parseString(rssXML, (err, parsedSite) => 
-    {
-        return parsedSite.rss.channel[0].item
-    })
+    const parseXML = <(rssxML) => Promise<any>> util.promisify(xml2js.parseString)
+    
+    let parsedSite = await parseXML(rssXML)
+    return parsedSite.rss.channel[0].item
 }
