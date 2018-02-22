@@ -1,327 +1,88 @@
-const site = `<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
-xmlns:content="http://purl.org/rss/1.0/modules/content/"
-xmlns:wfw="http://wellformedweb.org/CommentAPI/"
-xmlns:dc="http://purl.org/dc/elements/1.1/"
-xmlns:atom="http://www.w3.org/2005/Atom"
-xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
-xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
->
-
-<channel>
-<title>The Sylthorian</title>
-<atom:link href="http://thesylthorian.com/feed/" rel="self" type="application/rss+xml" />
-<link>http://thesylthorian.com</link>
-<description>Writing stories and telling the truth.</description>
-<lastBuildDate>Wed, 14 Feb 2018 11:31:38 +0000</lastBuildDate>
-<language>en-US</language>
-<sy:updatePeriod>hourly</sy:updatePeriod>
-<sy:updateFrequency>1</sy:updateFrequency>
-<generator>https://wordpress.org/?v=4.9.4</generator>
-
-<image>
-<url>http://thesylthorian.com/wp-content/uploads/2016/04/cropped-web-novesl-Copy-32x32.jpg</url>
-<title>The Sylthorian</title>
-<link>http://thesylthorian.com</link>
-<width>32</width>
-<height>32</height>
-</image> 
-<site xmlns="com-wordpress:feed-additions:1">109649498</site>	<item>
-    <title>(Article) An apology and a decision</title>
-    <link>http://thesylthorian.com/2018/02/02/article-an-apology-and-a-decision/</link>
-    <comments>http://thesylthorian.com/2018/02/02/article-an-apology-and-a-decision/#comments</comments>
-    <pubDate>Fri, 02 Feb 2018 19:36:05 +0000</pubDate>
-    <dc:creator><![CDATA[DragomirCM]]></dc:creator>
-            <category><![CDATA[Articles]]></category>
-    <category><![CDATA[Various Stuff]]></category>
-    <category><![CDATA[Article]]></category>
-    <category><![CDATA[Break]]></category>
-
-    <guid isPermaLink="false">http://thesylthorian.com/?p=3273</guid>
-    <description><![CDATA[~ An apology and a decision ~ Hello everyone! The title is a bit weird, I know. I wrote more about it on my Patreon page over here: https://www.patreon.com/posts/apology-and-16764854 Read More]]></description>
-            <content:encoded><![CDATA[<div id="pl-3273"  class="panel-layout" ><div id="pg-3273-0"  class="panel-grid panel-has-style" ><div class="siteorigin-panels-stretch panel-row-style panel-row-style-for-3273-0" data-stretch-type="full" ><div id="pgc-3273-0-0"  class="panel-grid-cell" ><div id="panel-3273-0-0-0" class="so-panel widget widget_sow-headline panel-first-child" data-index="0" ><div class="so-widget-sow-headline so-widget-sow-headline-default-6463e1595620"><div class="sow-headline-container ">
-<h1 class='sow-headline'>~ An apology and a decision ~</h1>					<div class="decoration">
-                    <div class="decoration-inside"></div>
-                </div>
-                </div></div></div><div id="panel-3273-0-0-1" class="so-panel widget widget_sow-editor panel-last-child" data-index="1" ><div class="so-widget-sow-editor so-widget-sow-editor-base">
-<div class="siteorigin-widget-tinymce textwidget">
-<p>Hello everyone!</p>
-<p>The title is a bit weird, I know. I wrote more about it on my Patreon page over here: <a href="https://www.patreon.com/posts/apology-and-16764854">https://www.patreon.com/posts/apology-and-16764854</a></p></div></div></div></div></div></div></div><p> <a href="http://thesylthorian.com/2018/02/02/article-an-apology-and-a-decision/#more-3273" class="more-link">Read More</a></p>]]></content:encoded>
-        <wfw:commentRss>http://thesylthorian.com/2018/02/02/article-an-apology-and-a-decision/feed/</wfw:commentRss>
-    <slash:comments>37</slash:comments>
-<post-id xmlns="com-wordpress:feed-additions:1">3273</post-id>	</item>
-    <item>
-    <title>(Article) At the end of January</title>
-    <link>http://thesylthorian.com/2018/01/31/article-at-the-end-of-january/</link>
-    <comments>http://thesylthorian.com/2018/01/31/article-at-the-end-of-january/#comments</comments>
-    <pubDate>Wed, 31 Jan 2018 18:53:21 +0000</pubDate>
-    <dc:creator><![CDATA[DragomirCM]]></dc:creator>
-            <category><![CDATA[Articles]]></category>
-    <category><![CDATA[Various Stuff]]></category>
-    <category><![CDATA[Article]]></category>
-    <category><![CDATA[End of the month]]></category>
-    <category><![CDATA[various thoughts]]></category>
-    <category><![CDATA[writer problems]]></category>
-
-    <guid isPermaLink="false">http://thesylthorian.com/?p=3268</guid>
-    <description><![CDATA[~ At the end of January ~ It is once again the end of the month, and I find myself constricted by the chains of stress and unease. Last year, I began thesylthorian.com with great dreams and desires for the future, which over the course of following months have tended to dwindle in the energy ...]]></description>
-            <content:encoded><![CDATA[<div id="pl-3268"  class="panel-layout" ><div id="pg-3268-0"  class="panel-grid panel-has-style" ><div class="siteorigin-panels-stretch panel-row-style panel-row-style-for-3268-0" data-stretch-type="full" ><div id="pgc-3268-0-0"  class="panel-grid-cell" ><div id="panel-3268-0-0-0" class="so-panel widget widget_sow-headline panel-first-child" data-index="0" ><div class="so-widget-sow-headline so-widget-sow-headline-default-6463e1595620"><div class="sow-headline-container ">
-<h1 class='sow-headline'>~ At the end of January ~</h1>					<div class="decoration">
-                    <div class="decoration-inside"></div>
-                </div>
-                </div></div></div><div id="panel-3268-0-0-1" class="so-panel widget widget_sow-editor panel-last-child" data-index="1" ><div class="so-widget-sow-editor so-widget-sow-editor-base">
-<div class="siteorigin-widget-tinymce textwidget">
-<p><span style="font-weight: 400;">It is once again the end of the month, and I find myself constricted by the chains of stress and unease. Last year, I began thesylthorian.com with great dreams and desires for the future, which over the course of following months have tended to dwindle in the energy that first created them.</span></p></div></div></div></div></div></div></div><p> <a href="http://thesylthorian.com/2018/01/31/article-at-the-end-of-january/#more-3268" class="more-link">Read More</a></p>]]></content:encoded>
-        <wfw:commentRss>http://thesylthorian.com/2018/01/31/article-at-the-end-of-january/feed/</wfw:commentRss>
-    <slash:comments>71</slash:comments>
-<post-id xmlns="com-wordpress:feed-additions:1">3268</post-id>	</item>
-    <item>
-    <title>(Blessing) Prologue: And so the years have come to pass</title>
-    <link>http://thesylthorian.com/2018/01/29/prologue-blessing2/</link>
-    <comments>http://thesylthorian.com/2018/01/29/prologue-blessing2/#comments</comments>
-    <pubDate>Mon, 29 Jan 2018 19:56:25 +0000</pubDate>
-    <dc:creator><![CDATA[DragomirCM]]></dc:creator>
-            <category><![CDATA[Blessing]]></category>
-    <category><![CDATA[Web Novel]]></category>
-    <category><![CDATA[Action]]></category>
-    <category><![CDATA[Adventure]]></category>
-    <category><![CDATA[Comedy]]></category>
-    <category><![CDATA[Fantasy]]></category>
-    <category><![CDATA[From young to old]]></category>
-    <category><![CDATA[Gods and Goddesses]]></category>
-    <category><![CDATA[Prologue]]></category>
-    <category><![CDATA[Romance]]></category>
-    <category><![CDATA[RPG Elements]]></category>
-    <category><![CDATA[SARGE]]></category>
-    <category><![CDATA[Supernatural]]></category>
-
-    <guid isPermaLink="false">http://thesylthorian.com/?p=3258</guid>
-    <description><![CDATA[~ Prologue: And so the years have come to pass ~ [Leonidas' point of view] “Sigh~” I was at a loss of words as I looked at the yet unopened letter placed before me. The wax seal of the Principal of Waser Magic Academy, Triandar Elmora, remained unbroken. Read More]]></description>
-            <content:encoded><![CDATA[<div id="pl-3258"  class="panel-layout" ><div id="pg-3258-0"  class="panel-grid panel-has-style" ><div class="siteorigin-panels-stretch panel-row-style panel-row-style-for-3258-0" data-stretch-type="full" ><div id="pgc-3258-0-0"  class="panel-grid-cell" ><div id="panel-3258-0-0-0" class="so-panel widget widget_sow-headline panel-first-child" data-index="0" ><div class="so-widget-sow-headline so-widget-sow-headline-default-4e4ea3064abd"><div class="sow-headline-container ">
-<h1 class='sow-headline'>~ Prologue: And so the years have come to pass ~</h1>					<div class="decoration">
-                    <div class="decoration-inside"></div>
-                </div>
-                </div></div></div><div id="panel-3258-0-0-1" class="so-panel widget widget_sow-editor panel-last-child" data-index="1" ><div class="so-widget-sow-editor so-widget-sow-editor-base">
-<div class="siteorigin-widget-tinymce textwidget">
-<p lang="en-US" align="LEFT"><b>[Leonidas' point of view]</b></p>
-<p lang="en-US" align="LEFT">“Sigh~”</p>
-<p lang="en-US" align="LEFT">I was at a loss of words as I looked at the yet unopened letter placed before me. The wax seal of the Principal of Waser Magic Academy, Triandar Elmora, remained unbroken.</p></div></div></div></div></div></div></div><p> <a href="http://thesylthorian.com/2018/01/29/prologue-blessing2/#more-3258" class="more-link">Read More</a></p>]]></content:encoded>
-        <wfw:commentRss>http://thesylthorian.com/2018/01/29/prologue-blessing2/feed/</wfw:commentRss>
-    <slash:comments>24</slash:comments>
-<post-id xmlns="com-wordpress:feed-additions:1">3258</post-id>	</item>
-    <item>
-    <title>(100 Luck) Chapter 93: The Godlike Blacksmith (Part 3)</title>
-    <link>http://thesylthorian.com/2018/01/23/chapter-93-3-100luck/</link>
-    <comments>http://thesylthorian.com/2018/01/23/chapter-93-3-100luck/#comments</comments>
-    <pubDate>Tue, 23 Jan 2018 17:28:48 +0000</pubDate>
-    <dc:creator><![CDATA[DragomirCM]]></dc:creator>
-            <category><![CDATA[100 Luck]]></category>
-    <category><![CDATA[Web Novel]]></category>
-    <category><![CDATA[Adventure]]></category>
-    <category><![CDATA[Comedy]]></category>
-    <category><![CDATA[Dragoness]]></category>
-    <category><![CDATA[Fantasy]]></category>
-    <category><![CDATA[Romance]]></category>
-    <category><![CDATA[RPG Elements]]></category>
-    <category><![CDATA[Sword and Magic]]></category>
-
-    <guid isPermaLink="false">http://thesylthorian.com/?p=3244</guid>
-    <description><![CDATA[~ Chapter 93: The Godlike Blacksmith (Part 3) ~ Now, for the collar removal item, I needed something that could change shape and size, identify the slave collar's enchant and then properly disable it. When I looked at the [Godlike Enchant List], I saw several spells that could work: [Absolute Dispelling], [Magic Energy Extractor], [Magic ...]]></description>
-            <content:encoded><![CDATA[<div id="pl-3244"  class="panel-layout" ><div id="pg-3244-0"  class="panel-grid panel-has-style" ><div class="siteorigin-panels-stretch panel-row-style panel-row-style-for-3244-0" data-stretch-type="full" ><div id="pgc-3244-0-0"  class="panel-grid-cell" ><div id="panel-3244-0-0-0" class="so-panel widget widget_sow-headline panel-first-child" data-index="0" ><div class="so-widget-sow-headline so-widget-sow-headline-default-4e4ea3064abd"><div class="sow-headline-container ">
-<h1 class='sow-headline'>~ Chapter 93: The Godlike Blacksmith (Part 3) ~</h1>					<div class="decoration">
-                    <div class="decoration-inside"></div>
-                </div>
-                </div></div></div><div id="panel-3244-0-0-1" class="so-panel widget widget_sow-editor panel-last-child" data-index="1" ><div class="so-widget-sow-editor so-widget-sow-editor-base">
-<div class="siteorigin-widget-tinymce textwidget">
-<p lang="en-US" align="JUSTIFY">Now, for the collar removal item, I needed something that could change shape and size, identify the slave collar's enchant and then properly disable it. When I looked at the <b>[Godlike Enchant List]</b>, I saw several spells that could work: <b>[Absolute Dispelling]</b>, <b>[Magic Energy Extractor]</b>, <b>[Magic Energy Nullifier]</b>, <b>[Spell Deconstruction]</b>, <b>[Enchant Negation]</b>, and <b>[Enchant Manipulator]</b>.</p></div></div></div></div></div></div></div><p> <a href="http://thesylthorian.com/2018/01/23/chapter-93-3-100luck/#more-3244" class="more-link">Read More</a></p>]]></content:encoded>
-        <wfw:commentRss>http://thesylthorian.com/2018/01/23/chapter-93-3-100luck/feed/</wfw:commentRss>
-    <slash:comments>11</slash:comments>
-<post-id xmlns="com-wordpress:feed-additions:1">3244</post-id>	</item>
-    <item>
-    <title>(100 Luck) Chapter 93: The Godlike Blacksmith (Part 2)</title>
-    <link>http://thesylthorian.com/2018/01/23/chapter-93-2-100luck/</link>
-    <comments>http://thesylthorian.com/2018/01/23/chapter-93-2-100luck/#comments</comments>
-    <pubDate>Tue, 23 Jan 2018 17:28:36 +0000</pubDate>
-    <dc:creator><![CDATA[DragomirCM]]></dc:creator>
-            <category><![CDATA[100 Luck]]></category>
-    <category><![CDATA[Web Novel]]></category>
-    <category><![CDATA[Adventure]]></category>
-    <category><![CDATA[Comedy]]></category>
-    <category><![CDATA[Dragoness]]></category>
-    <category><![CDATA[Fantasy]]></category>
-    <category><![CDATA[Romance]]></category>
-    <category><![CDATA[RPG Elements]]></category>
-    <category><![CDATA[Sword and Magic]]></category>
-
-    <guid isPermaLink="false">http://thesylthorian.com/?p=3243</guid>
-    <description><![CDATA[~ Chapter 93: The Godlike Blacksmith (Part 2) ~ “Are you referring to the Supreme Adventurers?” Risha asked a bit confused by our conversation. “No.” I shook my head. “Adventurer Guild rank and what we're talking about are two different things.” I explained. Read More]]></description>
-            <content:encoded><![CDATA[<div id="pl-3243"  class="panel-layout" ><div id="pg-3243-0"  class="panel-grid panel-has-style" ><div class="siteorigin-panels-stretch panel-row-style panel-row-style-for-3243-0" data-stretch-type="full" ><div id="pgc-3243-0-0"  class="panel-grid-cell" ><div id="panel-3243-0-0-0" class="so-panel widget widget_sow-headline panel-first-child" data-index="0" ><div class="so-widget-sow-headline so-widget-sow-headline-default-4e4ea3064abd"><div class="sow-headline-container ">
-<h1 class='sow-headline'>~ Chapter 93: The Godlike Blacksmith (Part 2) ~</h1>					<div class="decoration">
-                    <div class="decoration-inside"></div>
-                </div>
-                </div></div></div><div id="panel-3243-0-0-1" class="so-panel widget widget_sow-editor panel-last-child" data-index="1" ><div class="so-widget-sow-editor so-widget-sow-editor-base">
-<div class="siteorigin-widget-tinymce textwidget">
-<p lang="en-US" align="JUSTIFY">“Are you referring to the Supreme Adventurers?” Risha asked a bit confused by our conversation.</p>
-<p lang="en-US" align="JUSTIFY">“No.” I shook my head. “Adventurer Guild rank and what we're talking about are two different things.” I explained.</p></div></div></div></div></div></div></div><p> <a href="http://thesylthorian.com/2018/01/23/chapter-93-2-100luck/#more-3243" class="more-link">Read More</a></p>]]></content:encoded>
-        <wfw:commentRss>http://thesylthorian.com/2018/01/23/chapter-93-2-100luck/feed/</wfw:commentRss>
-    <slash:comments>2</slash:comments>
-<post-id xmlns="com-wordpress:feed-additions:1">3243</post-id>	</item>
-    <item>
-    <title>(100 Luck) Chapter 93: The Godlike Blacksmith (Part 1)</title>
-    <link>http://thesylthorian.com/2018/01/23/chapter-93-1-100luck/</link>
-    <comments>http://thesylthorian.com/2018/01/23/chapter-93-1-100luck/#respond</comments>
-    <pubDate>Tue, 23 Jan 2018 17:27:38 +0000</pubDate>
-    <dc:creator><![CDATA[DragomirCM]]></dc:creator>
-            <category><![CDATA[100 Luck]]></category>
-    <category><![CDATA[Web Novel]]></category>
-    <category><![CDATA[Adventure]]></category>
-    <category><![CDATA[Comedy]]></category>
-    <category><![CDATA[Dragoness]]></category>
-    <category><![CDATA[Fantasy]]></category>
-    <category><![CDATA[Romance]]></category>
-    <category><![CDATA[RPG Elements]]></category>
-    <category><![CDATA[Sword and Magic]]></category>
-
-    <guid isPermaLink="false">http://thesylthorian.com/?p=3242</guid>
-    <description><![CDATA[~ Chapter 93: The Godlike Blacksmith (Part 1) ~ [Alkelios' point of view] The Black Company merchant was dead, the adventurers who acted as his guards were killed too. The three mercenaries who could have otherwise posed a threat to us were sent running with their tails between their legs. With the carriages themselves turned ...]]></description>
-            <content:encoded><![CDATA[<div id="pl-3242"  class="panel-layout" ><div id="pg-3242-0"  class="panel-grid panel-has-style" ><div class="siteorigin-panels-stretch panel-row-style panel-row-style-for-3242-0" data-stretch-type="full" ><div id="pgc-3242-0-0"  class="panel-grid-cell" ><div id="panel-3242-0-0-0" class="so-panel widget widget_sow-headline panel-first-child" data-index="0" ><div class="so-widget-sow-headline so-widget-sow-headline-default-4e4ea3064abd"><div class="sow-headline-container ">
-<h1 class='sow-headline'>~ Chapter 93: The Godlike Blacksmith (Part 1) ~</h1>					<div class="decoration">
-                    <div class="decoration-inside"></div>
-                </div>
-                </div></div></div><div id="panel-3242-0-0-1" class="so-panel widget widget_sow-editor panel-last-child" data-index="1" ><div class="so-widget-sow-editor so-widget-sow-editor-base">
-<div class="siteorigin-widget-tinymce textwidget">
-<p lang="en-US" align="JUSTIFY"><b>[Alkelios' point of view]</b></p>
-<p lang="en-US" align="JUSTIFY">The Black Company merchant was dead, the adventurers who acted as his guards were killed too. The three mercenaries who could have otherwise posed a threat to us were sent running with their tails between their legs. With the carriages themselves turned to nothing but a hot smoldering pile of nothing, we were left on our own.</p></div></div></div></div></div></div></div><p> <a href="http://thesylthorian.com/2018/01/23/chapter-93-1-100luck/#more-3242" class="more-link">Read More</a></p>]]></content:encoded>
-        <wfw:commentRss>http://thesylthorian.com/2018/01/23/chapter-93-1-100luck/feed/</wfw:commentRss>
-    <slash:comments>0</slash:comments>
-<post-id xmlns="com-wordpress:feed-additions:1">3242</post-id>	</item>
-    <item>
-    <title>(MA) Chapter 136: Toddlers toddling. Father hiding. (Part 3)</title>
-    <link>http://thesylthorian.com/2018/01/23/chapter-136-3-ma/</link>
-    <comments>http://thesylthorian.com/2018/01/23/chapter-136-3-ma/#comments</comments>
-    <pubDate>Tue, 23 Jan 2018 16:46:13 +0000</pubDate>
-    <dc:creator><![CDATA[DragomirCM]]></dc:creator>
-            <category><![CDATA[Magic Academy]]></category>
-    <category><![CDATA[Web Novel]]></category>
-    <category><![CDATA[Adventure]]></category>
-    <category><![CDATA[Comedy]]></category>
-    <category><![CDATA[Dungeon]]></category>
-    <category><![CDATA[Fantasy]]></category>
-    <category><![CDATA[Romance]]></category>
-    <category><![CDATA[RPG Elements]]></category>
-    <category><![CDATA[Skills]]></category>
-    <category><![CDATA[Sword and Magic]]></category>
-
-    <guid isPermaLink="false">http://thesylthorian.com/?p=3229</guid>
-    <description><![CDATA[~ Chapter 136: Toddlers toddling. Father hiding. (Part 3) ~ When looked at them from the front, it appeared as though the carriage was moving on its not being pushed from the back by a toddler. Read More]]></description>
-            <content:encoded><![CDATA[<div id="pl-3229"  class="panel-layout" ><div id="pg-3229-0"  class="panel-grid panel-has-style" ><div class="siteorigin-panels-stretch panel-row-style panel-row-style-for-3229-0" data-stretch-type="full" ><div id="pgc-3229-0-0"  class="panel-grid-cell" ><div id="panel-3229-0-0-0" class="so-panel widget widget_sow-headline panel-first-child" data-index="0" ><div class="so-widget-sow-headline so-widget-sow-headline-default-4e4ea3064abd"><div class="sow-headline-container ">
-<h1 class='sow-headline'>~ Chapter 136: Toddlers toddling. Father hiding. (Part 3) ~</h1>					<div class="decoration">
-                    <div class="decoration-inside"></div>
-                </div>
-                </div></div></div><div id="panel-3229-0-0-1" class="so-panel widget widget_sow-editor panel-last-child" data-index="1" ><div class="so-widget-sow-editor so-widget-sow-editor-base">
-<div class="siteorigin-widget-tinymce textwidget">
-<p lang="en-US">When looked at them from the front, it appeared as though the carriage was moving on its not being pushed from the back by a toddler.</p></div></div></div></div></div></div></div><p> <a href="http://thesylthorian.com/2018/01/23/chapter-136-3-ma/#more-3229" class="more-link">Read More</a></p>]]></content:encoded>
-        <wfw:commentRss>http://thesylthorian.com/2018/01/23/chapter-136-3-ma/feed/</wfw:commentRss>
-    <slash:comments>8</slash:comments>
-<post-id xmlns="com-wordpress:feed-additions:1">3229</post-id>	</item>
-    <item>
-    <title>(MA) Chapter 136: Toddlers toddling. Father hiding. (Part 2)</title>
-    <link>http://thesylthorian.com/2018/01/23/chapter-136-2-ma/</link>
-    <comments>http://thesylthorian.com/2018/01/23/chapter-136-2-ma/#comments</comments>
-    <pubDate>Tue, 23 Jan 2018 16:45:57 +0000</pubDate>
-    <dc:creator><![CDATA[DragomirCM]]></dc:creator>
-            <category><![CDATA[Magic Academy]]></category>
-    <category><![CDATA[Web Novel]]></category>
-    <category><![CDATA[Adventure]]></category>
-    <category><![CDATA[Comedy]]></category>
-    <category><![CDATA[Dungeon]]></category>
-    <category><![CDATA[Fantasy]]></category>
-    <category><![CDATA[Romance]]></category>
-    <category><![CDATA[RPG Elements]]></category>
-    <category><![CDATA[Skills]]></category>
-    <category><![CDATA[Sword and Magic]]></category>
-
-    <guid isPermaLink="false">http://thesylthorian.com/?p=3228</guid>
-    <description><![CDATA[~ Chapter 136: Toddlers toddling. Father hiding. (Part 2) ~ “Excuse me!” Anette called out. They stopped in front of a shop that sold wood carvings and other things made out of wood like cooking spoons and toys. “Yes?” a middle-aged lady replied. Read More]]></description>
-            <content:encoded><![CDATA[<div id="pl-3228"  class="panel-layout" ><div id="pg-3228-0"  class="panel-grid panel-has-style" ><div class="siteorigin-panels-stretch panel-row-style panel-row-style-for-3228-0" data-stretch-type="full" ><div id="pgc-3228-0-0"  class="panel-grid-cell" ><div id="panel-3228-0-0-0" class="so-panel widget widget_sow-headline panel-first-child" data-index="0" ><div class="so-widget-sow-headline so-widget-sow-headline-default-4e4ea3064abd"><div class="sow-headline-container ">
-<h1 class='sow-headline'>~ Chapter 136: Toddlers toddling. Father hiding. (Part 2) ~</h1>					<div class="decoration">
-                    <div class="decoration-inside"></div>
-                </div>
-                </div></div></div><div id="panel-3228-0-0-1" class="so-panel widget widget_sow-editor panel-last-child" data-index="1" ><div class="so-widget-sow-editor so-widget-sow-editor-base">
-<div class="siteorigin-widget-tinymce textwidget">
-<p lang="en-US">“Excuse me!” Anette called out.</p>
-<p lang="en-US">They stopped in front of a shop that sold wood carvings and other things made out of wood like cooking spoons and toys.</p>
-<p lang="en-US">“Yes?” a middle-aged lady replied.</p></div></div></div></div></div></div></div><p> <a href="http://thesylthorian.com/2018/01/23/chapter-136-2-ma/#more-3228" class="more-link">Read More</a></p>]]></content:encoded>
-        <wfw:commentRss>http://thesylthorian.com/2018/01/23/chapter-136-2-ma/feed/</wfw:commentRss>
-    <slash:comments>3</slash:comments>
-<post-id xmlns="com-wordpress:feed-additions:1">3228</post-id>	</item>
-    <item>
-    <title>(MA) Chapter 136: Toddlers toddling. Father hiding. (Part 1)</title>
-    <link>http://thesylthorian.com/2018/01/23/chapter-136-1-ma/</link>
-    <comments>http://thesylthorian.com/2018/01/23/chapter-136-1-ma/#respond</comments>
-    <pubDate>Tue, 23 Jan 2018 16:45:36 +0000</pubDate>
-    <dc:creator><![CDATA[DragomirCM]]></dc:creator>
-            <category><![CDATA[Magic Academy]]></category>
-    <category><![CDATA[Web Novel]]></category>
-    <category><![CDATA[Adventure]]></category>
-    <category><![CDATA[Comedy]]></category>
-    <category><![CDATA[Dungeon]]></category>
-    <category><![CDATA[Fantasy]]></category>
-    <category><![CDATA[Romance]]></category>
-    <category><![CDATA[RPG Elements]]></category>
-    <category><![CDATA[Skills]]></category>
-    <category><![CDATA[Sword and Magic]]></category>
-
-    <guid isPermaLink="false">http://thesylthorian.com/?p=3227</guid>
-    <description><![CDATA[~ Chapter 136: Toddlers toddling. Father hiding. (Part 1) ~ [Illsyore's point of view] It's been almost a month since my wives left and let me to care for our children and the whole of Illsyorea Island. Both of which were fairly reasonable, but as a father and a Godlike Dungeon Lord, I tended to ...]]></description>
-            <content:encoded><![CDATA[<div id="pl-3227"  class="panel-layout" ><div id="pg-3227-0"  class="panel-grid panel-has-style" ><div class="siteorigin-panels-stretch panel-row-style panel-row-style-for-3227-0" data-stretch-type="full" ><div id="pgc-3227-0-0"  class="panel-grid-cell" ><div id="panel-3227-0-0-0" class="so-panel widget widget_sow-headline panel-first-child" data-index="0" ><div class="so-widget-sow-headline so-widget-sow-headline-default-4e4ea3064abd"><div class="sow-headline-container ">
-<h1 class='sow-headline'>~ Chapter 136: Toddlers toddling. Father hiding. (Part 1) ~</h1>					<div class="decoration">
-                    <div class="decoration-inside"></div>
-                </div>
-                </div></div></div><div id="panel-3227-0-0-1" class="so-panel widget widget_sow-editor panel-last-child" data-index="1" ><div class="so-widget-sow-editor so-widget-sow-editor-base">
-<div class="siteorigin-widget-tinymce textwidget">
-<p lang="en-US"><b>[Illsyore's point of view]</b></p>
-<p lang="en-US">It's been almost a month since my wives left and let me to care for our children and the whole of Illsyorea Island. Both of which were fairly reasonable, but as a father and a Godlike Dungeon Lord, I tended to find myself in very peculiar circumstances now and then, such as witnessing the Emperor Varakium's failed attempts at conquering the heart of the beautiful Savannah Azura.</p></div></div></div></div></div></div></div><p> <a href="http://thesylthorian.com/2018/01/23/chapter-136-1-ma/#more-3227" class="more-link">Read More</a></p>]]></content:encoded>
-        <wfw:commentRss>http://thesylthorian.com/2018/01/23/chapter-136-1-ma/feed/</wfw:commentRss>
-    <slash:comments>0</slash:comments>
-<post-id xmlns="com-wordpress:feed-additions:1">3227</post-id>	</item>
-    <item>
-    <title>(MA) Chapter 135: In the city of Komurva (Part 2)</title>
-    <link>http://thesylthorian.com/2018/01/15/chapter-135-2-ma/</link>
-    <comments>http://thesylthorian.com/2018/01/15/chapter-135-2-ma/#comments</comments>
-    <pubDate>Mon, 15 Jan 2018 20:54:48 +0000</pubDate>
-    <dc:creator><![CDATA[DragomirCM]]></dc:creator>
-            <category><![CDATA[Magic Academy]]></category>
-    <category><![CDATA[Web Novel]]></category>
-    <category><![CDATA[Adventure]]></category>
-    <category><![CDATA[Comedy]]></category>
-    <category><![CDATA[Dungeon]]></category>
-    <category><![CDATA[Fantasy]]></category>
-    <category><![CDATA[Nanya]]></category>
-    <category><![CDATA[POV]]></category>
-    <category><![CDATA[Romance]]></category>
-    <category><![CDATA[RPG Elements]]></category>
-    <category><![CDATA[Skills]]></category>
-    <category><![CDATA[Sword and Magic]]></category>
-
-    <guid isPermaLink="false">http://thesylthorian.com/?p=3208</guid>
-    <description><![CDATA[~ Chapter 135: In the city of Komurva (Part 2) ~ As soon as I walked through the door, several demons and demonesses turned their attention towards me. My cloak kept my strength hidden, so I didn't spark their attention for too long. I ignored them and walked up to the bartender. “A strong one.” ...]]></description>
-            <content:encoded><![CDATA[<div id="pl-3208"  class="panel-layout" ><div id="pg-3208-0"  class="panel-grid panel-has-style" ><div class="siteorigin-panels-stretch panel-row-style panel-row-style-for-3208-0" data-stretch-type="full" ><div id="pgc-3208-0-0"  class="panel-grid-cell" ><div id="panel-3208-0-0-0" class="so-panel widget widget_sow-headline panel-first-child" data-index="0" ><div class="so-widget-sow-headline so-widget-sow-headline-default-4e4ea3064abd"><div class="sow-headline-container ">
-<h1 class='sow-headline'>~ Chapter 135: In the city of Komurva (Part 2) ~</h1>					<div class="decoration">
-                    <div class="decoration-inside"></div>
-                </div>
-                </div></div></div><div id="panel-3208-0-0-1" class="so-panel widget widget_sow-editor panel-last-child" data-index="1" ><div class="so-widget-sow-editor so-widget-sow-editor-base">
-<div class="siteorigin-widget-tinymce textwidget">
-<p lang="en-US">As soon as I walked through the door, several demons and demonesses turned their attention towards me. My cloak kept my strength hidden, so I didn't spark their attention for too long. I ignored them and walked up to the bartender.</p>
-<p lang="en-US">“A strong one.” I said and placed five gliggers on the table.</p></div></div></div></div></div></div></div><p> <a href="http://thesylthorian.com/2018/01/15/chapter-135-2-ma/#more-3208" class="more-link">Read More</a></p>]]></content:encoded>
-        <wfw:commentRss>http://thesylthorian.com/2018/01/15/chapter-135-2-ma/feed/</wfw:commentRss>
-    <slash:comments>15</slash:comments>
-<post-id xmlns="com-wordpress:feed-additions:1">3208</post-id>	</item>
-</channel>
-</rss>`
+let site = `
+<?xml version="1.0" encoding="utf-8"?><rss xmlns:a10="http://www.w3.org/2005/Atom" version="2.0"><channel><title>RoyalRoadL Fiction Syndication</title><link>https://royalroadl.com/fiction/syndication/11209</link><description>Latest updates of the fictions (The Legend of Randidly Ghosthound)</description><language>en-US</language><generator>RoyalRoadL</generator><item><guid isPermaLink="false">195715</guid><link>http://royalroadl.com/fiction/chapter/195715</link><title>The Legend of Randidly Ghosthound - Chapter 363</title><description>&lt;p&gt;&lt;span style="font-weight: 400"&gt;“Alright switch.” Alana’s voice sounded out, and Thea fell to her knees, almost grateful. &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="font-weight: 400"&gt;The person opposite her, a short woman with extremely powerful legs, lowered the huge shield that she used as a weapon. Her gaze scrutinized Thea carefully, absorbing every detail. But as she was turning away, all the woman said was, “You… can improve very quickly. Good luck.”&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="font-weight: 400"&gt;Thea was too exhausted after their brief duel to respond, but her eyes locked onto the IX on the back of that woman’s leather armor. So, she was part of the 9th Squad. That made Thea feel… at least some swelling of pride, even though she had been absolutely embarrassed on every front.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="font-weight: 400"&gt;But that was common, in this exercise: of the 19 duels Thea had participated in, there was only one that could be even considered a draw. The level in Donnyton… was so fucking high, it hurt.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="font-weight: 400"&gt;The training had started with an hour of exhausting fitness exercises with weights, the 300 people moving with remarkable efficiency to make sure everyone did everything. Thea sorta ended up swept up in the momentum, and lost herself in the weight lifting. The exercises were many and varied, and pushed her body beyond what she thought was possible, earning Thea two Levels in Physical Fitness.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="font-weight: 400"&gt;Then the duels began, in Alana’s words, to determine “the final groups”.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="font-weight: 400"&gt;Thea really didn’t want to know what group she had ended up in. She had gained a dozen or so Skill Levels, however, and tried to focus on this, rather than her actual performance, which left her flushed with shame. If Chrysanthemum were participating…&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="font-weight: 400"&gt;But Thea knew that this was just an excuse; these people were relying on their own strength, (...)</description><pubDate>Tue, 20 Feb 2018 05:39:54 Z</pubDate><a10:updated>1970-01-01T00:00:00Z</a10:updated></item><item><guid isPermaLink="false">195714</guid><link>http://royalroadl.com/fiction/chapter/195714</link><title>The Legend of Randidly Ghosthound - Chapter 362</title><description>&lt;p&gt;&lt;span style="font-weight: 400"&gt;Randidly tried his best to keep is face even. “Surely… this amount of… data is unnecessary, for our purposes.”&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="font-weight: 400"&gt;“Oh, I disagree,” Mrs. Hamilton said smoothly, her smile wide. “Surely, as the founder of Donnyton… taking the time to write out some concrete advice for this many people is just par for the course? And if you are to make intelligent decisions, you need to be informed.”&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="font-weight: 400"&gt;Trying not to let the headache force him to lose his temper, Randidly said slowly. “...I’m a warrior, that’s my job. Sure, knowing this political and economic and scientific information might be useful in the long run, but-”&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="font-weight: 400"&gt;“Incorrect.” Mrs. Hamilton’s voice was low, and the small smile she usually wore slowly fell away, revealing a deep, implacable determination. Carefully, she folded her hands and gave Randidly a long, and searching look.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="font-weight: 400"&gt;“Perhaps you aren’t really playing dumb, you just haven’t… conceptualized it. You haven’t named it. The people here, Randidly, they venerate you. Most of them haven’t met you, they’ve only heard stories. Watched the people they admire watch people those people admire, admiring &lt;/span&gt;&lt;em&gt;&lt;span style="font-weight: 400"&gt;you&lt;/span&gt;&lt;/em&gt;&lt;span style="font-weight: 400"&gt;. That means something. The weight of those feelings changes things, whether you like it or not.”&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="font-weight: 400"&gt;Leaning forward, Mrs. Hamilton said. “Look, I understand what you said earlier, you need to focus on figuring out how to… well perhaps some things are best to be left unsaid. You want to create something uniquely yours. But I think that you will find 4 hours working on this now will save you innumerable troubles down the line, and affect your research very little. You need a legacy. These letters… they will start that legacy, even if the recipients (...)</description><pubDate>Tue, 20 Feb 2018 05:36:49 Z</pubDate><a10:updated>1970-01-01T00:00:00Z</a10:updated></item><item><guid isPermaLink="false">195713</guid><link>http://royalroadl.com/fiction/chapter/195713</link><title>The Legend of Randidly Ghosthound - Chapter 361</title><description>&lt;p&gt;&lt;span style="font-weight: 400"&gt;“Hmph,” Paolo crossed his arms, his squad gathering up behind him. “As if a simple test of courage could cause I, the great leader of Squad III, to feel fear.”&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="font-weight: 400"&gt;“Hohoho… then why are so slow to agree? Any member of Squad II would gladly throw themselves in the line of danger. Your hesitation… is unbecoming. Perhaps in your age-” Kayle said, his tone teasing, his Squad too gathering up, but he was interrupted.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="font-weight: 400"&gt;“Choose quick. Boring.”&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="font-weight: 400"&gt;Dinesh tried not to tremble as the huge giant Bone Wurm rumbled down at them, weaving its head back and forth. Her. Her head, Dinesh had been told. He resisted the urge to say a small prayer.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="font-weight: 400"&gt;Initially, Dinesh had been secretly overjoyed that after their joint exercise in the North, against the Skeleton Knight, Paolo and Kayle invited him and the rest of the 23rd Squad to join them for a “celebration”. Very eagerly, they had agreed. It wasn’t rare to see the Numeral Squads around, but it was an usual thing for them to fraternize so openly with a Squad in the 20s. This could be a big move for them.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="font-weight: 400"&gt;And Dinesh had high hopes of making friends, learning secrets, and working to improve himself in his Squad. To his chagrin, the final thing had come true. &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="font-weight: 400"&gt;Their version of celebration was an elongated practice session designed by the Dusk Spider, Mrs. Hamilton, to draw out the entire physical potential of the exerciser. Primarily, it increased the Physical Fitness, Empower, and Herculean Strength Skills, which most of all of the Classed individuals had. Even Dinesh, who was a mage focus, as well as his Squad, had them.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="font-weight: 400"&gt;However, his mage focused squad was a long, long way of being able to keep up with workouts (...)</description><pubDate>Tue, 20 Feb 2018 05:33:27 Z</pubDate><a10:updated>1970-01-01T00:00:00Z</a10:updated></item><item><guid isPermaLink="false">195712</guid><link>http://royalroadl.com/fiction/chapter/195712</link><title>The Legend of Randidly Ghosthound - Chapter 360</title><description>&lt;p&gt;&lt;span style="font-weight: 400"&gt;Donny swirled the wine in his cup, staring out the window into the darkness, looking extremely thoughtful. He was in his full armor, a carefully shaped bone creation, with golden accents, giving him the look of a powerful and honorable knight. His helmet and shield were on the table, but still, with the armor, he felt that he looked profoundly capable.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="font-weight: 400"&gt;Daniel snorted, slamming his papers down on the desk in front of him. “You look like a constipated idiot, you know that right?”&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="font-weight: 400"&gt;“I look refined and thoughtful, like the leader of the free world.” Donny said, never even flinching at Daniel’s tirade or the noise. Instead, his gaze focused studiously on the darkness outside of his window. His Stats were just high enough to pierce the veil of darkness that would have prevented most people from seeing, and he could watch the small movements of people who worked through the night.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="font-weight: 400"&gt;One big plus of the System was the increased productivity. This varied, based upon Endurance and Vitality, but for the strongest of them, sleep was only a rarely indulged treat. Still, Mrs. Hamilton had wondered on the long term psychological effect of this, so a lot of people continued to sleep, if only for the reset factor. It still did wonders with shifting your mood, if you were stuck somewhere you didn’t want to be.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="font-weight: 400"&gt;“He might not come tonight.” Daniel said, sighing and returning to his paperwork.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="font-weight: 400"&gt;Donny nodded slowly. “...Yea, he probably won’t.”&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="font-weight: 400"&gt;“Then why are you doing this? We should just do some real work, not this… theatrical farce.” Daniel said sourly.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="font-weight: 400"&gt;Shrugging, Donny turned back to the desk and looked at the papers there. Although they hadn’t quite (...)</description><pubDate>Tue, 20 Feb 2018 05:29:18 Z</pubDate><a10:updated>1970-01-01T00:00:00Z</a10:updated></item><item><guid isPermaLink="false">194413</guid><link>http://royalroadl.com/fiction/chapter/194413</link><title>The Legend of Randidly Ghosthound - Chapter 359</title><description>&lt;p&gt;&lt;span style="font-weight: 400"&gt;As the Ghosthound nodded slowly to the name, Dozer folded his hands together. “Why examine her?”&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="font-weight: 400"&gt;The Ghosthound glanced at the other man, then back over towards Delilah. “My… Blessings formed a connection with the four people I gave them to. That gives them… certain benefits. And it seems...the connection split off, so there is a further connection, from me to Delilah, moving through Annie.”&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="font-weight: 400"&gt;Randidly tapped his jaw. “I was just thinking… I wonder how the Aether is filtered, whether it holds more of Annie’s meaning, when it flows through her… Also… it’s not as large as the connection to Annie, although I’m not sure whether that is due to age, or…”&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="font-weight: 400"&gt;Trailing off, the Ghosthound just stared at Delilah, his brow furrowed. Dozer stood, taking both of the dishes over to the sink. Then he asked, over his shoulder. “Will she be strong?”&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="font-weight: 400"&gt;“...Yes, without a doubt,” Randidly said, chuckling. Then he stood and went to the door. As he passed the threshold, he said. “But I think that’s more a reflection of her parents, than anything else. I’ll have to make a gift for her.”&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="font-weight: 400"&gt;“Oh! Don’t tell anyone the name.” Annie called after him into the darkness. “It’s only been a few weeks… the naming ceremony is going to be Saturday, once she looks presentable. Bring your gift then.”&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="font-weight: 400"&gt;*****&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="font-weight: 400"&gt;Randidly couldn’t help but feel disappointed when he knocked on the door to Mrs. Hamilton’s house, in the dead of night, and she opened it almost instantly. There were two cups of tea on the table, so she had known he was coming. Taking a sip, he winced; it was still warm.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="font-weight: 400"&gt;How the fuck did she know that…?&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span (...)</description><pubDate>Wed, 14 Feb 2018 06:32:28 Z</pubDate><a10:updated>1970-01-01T00:00:00Z</a10:updated></item><item><guid isPermaLink="false">194412</guid><link>http://royalroadl.com/fiction/chapter/194412</link><title>The Legend of Randidly Ghosthound - Chapter 358</title><description>&lt;p&gt;&lt;span style="font-weight: 400"&gt;Annie was holding her baby to her chest when Dozer came into their small home. The walls on either side of her were decorated very differently. On her left, the walls were covered with hanging claws and fangs, the natural weapons of beasts that Dozer had crushed. There was even a long, thin scorpion stinger hanging up there, a testament to the variety of creatures that he had killed.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="font-weight: 400"&gt;On the right wall were skulls. And each skull had a small crack, a hole, that had been pierced by an arrowhead. While they had been living. The number of skulls was almost double the number of sets of claws and fangs.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="font-weight: 400"&gt;Dozer took one look at the stove, where a pot was already bubbling, and said, “You knew I was back.”&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="font-weight: 400"&gt;Simply nodding, Annie continued to poke her baby’s nose. Delilah seemed to be largely unable to feel it, and just sat there. It was amazing, the way the cartilage of the baby’s nose bent and reformed so easily under the pressure from Annie’s finger. It was still incredible to her that this thing came out of her. And she could easily tell that this little thing was a smashed up and ugly mix of the both of them.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="font-weight: 400"&gt;‘Well,’ Annie thought to herself, ‘maybe the ugly part is just Dozer’s half…’&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="font-weight: 400"&gt;“Stop making that face, the baby isn’t that ugly,” Dozer said simply, going to the pot and picking up the bowl she had set out for him. Annie shot an annoyed glance at his back. This was an increasingly problematic pattern emerging in his behavior; Dozer was becoming almost impossibly good at sensing her emotions, just from looking at her.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="font-weight: 400"&gt;It scared her a little. Because it made her feel exposed and out of control. But at the same time…&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="font-weight: 400"&gt;That’s why they (...)</description><pubDate>Wed, 14 Feb 2018 06:28:36 Z</pubDate><a10:updated>1970-01-01T00:00:00Z</a10:updated></item><item><guid isPermaLink="false">194410</guid><link>http://royalroadl.com/fiction/chapter/194410</link><title>The Legend of Randidly Ghosthound - Chapter 357</title><description>&lt;p&gt;&lt;span style="font-weight: 400"&gt;Alana felt on fire, moving and reacting, predicting and being predicted. The Ghosthound’s Style of fighting was not her own; where she relied on strength and breaking the opponent’s momentum, the Ghosthound seemed to steal the very momentum from her as she was moving.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="font-weight: 400"&gt;Her spear flashed forward, aiming to inflict a strike on his shoulder, but he simply stepped forward and sideways, and his foot flashed upwards, catching her in the gut and sending her sprawling, the light about her dimming. Alana winced. That hit was like a truck, even after Child of the Sun took off a flat percentage of its force. God, how high were his stats?&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="font-weight: 400"&gt;“Attention up, you lost me.”&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="font-weight: 400"&gt;Alana blinked, and realized that she really had; the Ghosthound was gone. The air around was quiet. Instinctively, she raised her shield above her head and brought her spear across her body, her eyes scanning for an enemy. Then the world… seemed to darken, and she spotted something out of the corner of her eye.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="font-weight: 400"&gt;She gasped, or at least tried to, as she spun around, but she found that the air was stuck in her throat. Her chest heaved, but her lungs seemed suddenly cast from stone, unable to inflate and pump oxygen into her blood. Which just made her panic, and stumble, her head abruptly pounding at the pressure in her chest.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="font-weight: 400"&gt;In front of her, standing about 10 meters away, was the Ghosthound, his eyes a brilliant emerald, seeming to pierce right through her, freezing her chest. Her eyes narrowed, and she forced the panic in her chest down. She would not break from just this.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="font-weight: 400"&gt;She could feel streams of energy flowing to her, as the rays of sunlight were bent by her Skill, twisting towards her, making her warm and glowing with (...)</description><pubDate>Wed, 14 Feb 2018 06:27:01 Z</pubDate><a10:updated>1970-01-01T00:00:00Z</a10:updated></item><item><guid isPermaLink="false">194409</guid><link>http://royalroadl.com/fiction/chapter/194409</link><title>The Legend of Randidly Ghosthound - Chapter 356</title><description>&lt;p&gt;&lt;span style="font-weight: 400"&gt;Alana sidestepped, letting Tykes’ huge iron ball fly past her and slam into the tree behind her.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="font-weight: 400"&gt;“If you telegraph like that, even Dozer will seem like a ballerina fighting you,” Alana said as she snorted decisively and advanced towards Tykes. The boy was strong, sure, but he wasn’t strong enough for him to just rely on raw power, yet he repeatedly tried.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="font-weight: 400"&gt;As the boy’s shit eating grin didn’t change, Alana realized there was something else to this, but she didn’t change her movements. Only, her right hand tightened on her spear, while her left kept an even grip on the spear, and she began to glow a warm red color as her energy gathered into her body. Better to rely on her Skills to suppress him. It wasn’t really fair for her to use her Lvl 47 Stats to oppress a Level 35.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="font-weight: 400"&gt;There was a whistling behind her, as the iron ball ricocheted off a tree and changed direction. Out of the corner of her eye she could see that the ball was rotating rapidly, and it began to curve towards her back. Clever, but this she was already prepared for, since the moment he chose to fight with a weapon that left his hands. If he didn’t manage at least this much, he wouldn’t be much use against monsters with actual powers.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="font-weight: 400"&gt;Her Child of the Sun Skill just burned that much brighter to compensate, and she could see Tykes cover his eyes: there.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="font-weight: 400"&gt;Her body blurred as she rushed forward, ignoring the iron ball as it rushed towards her back. Immediately, his senses picked up on her change of pace, and he began to backpedal rapidly. With a gesture, he somehow managed to increase the speed by which the ball was moving, and the air seemed to hum behind her.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="font-weight: 400"&gt;Tsk’ing to herself, Alana spun to the side and let the (...)</description><pubDate>Wed, 14 Feb 2018 06:24:01 Z</pubDate><a10:updated>1970-01-01T00:00:00Z</a10:updated></item><item><guid isPermaLink="false">194186</guid><link>http://royalroadl.com/fiction/chapter/194186</link><title>The Legend of Randidly Ghosthound - Chapter 355</title><description>&lt;p&gt;&lt;span style="font-weight: 400"&gt;After being rocked back and forth like a baby for about 10 minutes, Arbor had calmed down enough to let him back on his feet. Randidly brushed most of the ash off of him, and turned to Kiersty, who seemed content to just standby and watch the process. The men and women in robes behind her were just watching wide eyed, most of them aware of who he was now.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="font-weight: 400"&gt;There was… something in their eyes. Worship. Randidly’s mentality had make great strides since the arrival of the System, but this… this was something new. This was a strange form of pressure apart from responsibility that was cloying and sticky. He shifted uncomfortably, turning to Kiersty.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="font-weight: 400"&gt;“So… where did the spiders come from?” Randidly asked, his eyes scanning the nearby treetops, seeing the hundreds of thousands of tiny spiders that skittered around.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="font-weight: 400"&gt;Kiersty shrugged. “...we don’t really know. One day, they just came out of Arbor, and started making this area. But he said they came from you, and they could be controlled, so we communicated with them to stay in a certain area….”&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="font-weight: 400"&gt;For the first time since Randidly arrived, Kiersty frowned, seemingly confused. “...you don’t know what they are…?”&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="font-weight: 400"&gt;Randidly opened his mouth, then closed it. Because he could suddenly feel Lucretia’s amusement, and made the connection. Arbor’s connection to his Soul Skill… had let a life form similar to the Weavers from inside of him come out into the world…?&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="font-weight: 400"&gt;Now that Randidly knew what he was looking for, he focused his vision, feeling threads of Aether. There was a thick rope going from himself to Arbor, which flowed into the surrounding Aether. But from Arbor, there was also two smaller flows of Aether, one of which, to Randidly’s surprise, (...)</description><pubDate>Tue, 13 Feb 2018 05:58:17 Z</pubDate><a10:updated>1970-01-01T00:00:00Z</a10:updated></item><item><guid isPermaLink="false">194185</guid><link>http://royalroadl.com/fiction/chapter/194185</link><title>The Legend of Randidly Ghosthound - Chapter 354</title><description>&lt;p&gt;&lt;span style="font-weight: 400"&gt;Randidly wandered North from where he had landed, struck by the strange feeling that he knew this area, this farm. There was no one around, which was slightly strange, but he supposed there had been some very physical repercussions to him dislodging the giant Aether construct that had hovered above the Village, and people had noticed.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="font-weight: 400"&gt;Perhaps they had evacuated somewhere…? Fleeing from the fallout zone?&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="font-weight: 400"&gt;There were the sounds of birds in the air, but no people. No talking, no work, no toil, no monsters… just birds. Chipmunks, squirrels…. Randidly’s sharpened senses picked out the sound of a deer moving through the treeline around him.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="font-weight: 400"&gt;Then he arrived at it, and it all came flooding back. The small cabin that Randidly had claimed for himself all those years ago, at the thin edge of the valley where Donnyton sat. It was immaculately preserved, the small field where he had began farming still sitting there, a line of corn springing up.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="font-weight: 400"&gt;Of course, the big field that Randidly had expanded to…. He looked behind him and sighed, surveying the crater. Well, hopefully it is no longer really in use, and no one will mind his landing… But &lt;/span&gt;&lt;em&gt;&lt;span style="font-weight: 400"&gt;someone &lt;/span&gt;&lt;/em&gt;&lt;span style="font-weight: 400"&gt;had to be here maintaining it…&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="font-weight: 400"&gt;...A problem for another time. Randidly turned his attention to the small path that lead away from his old area, deeper into the trees. Silently, almost against his will, he found his feet moving, carrying him deeper. Perhaps it was ironic, that this would be the first location that he would go after returning, cementing his status as someone who cared little about people, but Randidly didn’t mind so much.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style="font-weight: 400"&gt;Besides, Randidly could (...)</description><pubDate>Tue, 13 Feb 2018 05:51:02 Z</pubDate><a10:updated>1970-01-01T00:00:00Z</a10:updated></item></channel></rss>`
 
 import * as functions from 'firebase-functions'
+import * as xml2js from 'xml2js'
 
 export const helloWorld = functions.https.onRequest((request, response) => 
 {
-    response.send(site)
+    site = cleanDescription(site); 
+    xml2js.parseString(site, (err, parsedSite) => 
+    {
+        let chapters = parsedSite.rss.channel[0].item
+        console.log(chapters)
+        response.send(chapters)
+    })
 })
+
+function cleanDescription(rssXML) 
+{
+    const descriptionCleaner = /<description>[^]*?<\/description>/gi;
+    return rssXML.replace(descriptionCleaner, "<description></description>");
+}
