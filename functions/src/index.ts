@@ -72,17 +72,21 @@ import * as xml2js from 'xml2js'
 
 export const helloWorld = functions.https.onRequest((request, response) => 
 {
-    site = cleanDescription(site); 
-    xml2js.parseString(site, (err, parsedSite) => 
-    {
-        let chapters = parsedSite.rss.channel[0].item
-        console.log(chapters)
-        response.send(chapters)
-    })
+    site = cleanDescriptions(site) 
+    let chapters = extractChapters(site)
+    response.send(chapters)
 })
 
-function cleanDescription(rssXML) 
+function cleanDescriptions(rssXML) 
 {
     const descriptionCleaner = /<description>[^]*?<\/description>/gi;
     return rssXML.replace(descriptionCleaner, "<description></description>");
+}
+
+function extractChapters(rssXML)
+{
+    xml2js.parseString(rssXML, (err, parsedSite) => 
+    {
+        return parsedSite.rss.channel[0].item
+    })
 }
