@@ -68,13 +68,40 @@ let site = `
 &lt;p&gt;&lt;span style="font-weight: 400"&gt;Besides, Randidly could (...)</description><pubDate>Tue, 13 Feb 2018 05:51:02 Z</pubDate><a10:updated>1970-01-01T00:00:00Z</a10:updated></item></channel></rss>`
 
 import * as functions from 'firebase-functions'
+import * as firebase from 'firebase'
+import 'firebase/firestore'
 import * as xml2js from 'xml2js'
+import * as keys from "./keys"
 
 export const helloWorld = functions.https.onRequest((request, response) => 
 {
     site = cleanDescriptions(site) 
     let chapters = extractChapters(site)
+    console.log(chapters);
+    
+    firebase.initializeApp(
+    {
+        apiKey: keys.API_KEY,
+        authDomain: keys.AUTH_DOMAIN,
+        projectId: keys.PROJECT_ID
+    })
+
+    const db = firebase.firestore()
+    db.collection("chapters").add(
+    {
+        link: "http://royalroadl.com/fiction/chapter/195715",
+        publicationDate: "Tue, 20 Feb 2018 05:39:54 Z",
+        title: "The Legend of Randidly Ghosthound - Chapter 363"
+    })
+    .then(function(docRef) {
+        console.log("Document written with ID: ", docRef.id);
+    })
+    .catch(function(error) {
+        console.error("Error adding document: ", error);
+    });
+    
     response.send(chapters)
+
 })
 
 function cleanDescriptions(rssXML) 
@@ -83,7 +110,7 @@ function cleanDescriptions(rssXML)
     return rssXML.replace(descriptionCleaner, "<description></description>");
 }
 
-function extractChapters(rssXML)
+function extractChapters(rssXML) : any
 {
     xml2js.parseString(rssXML, (err, parsedSite) => 
     {
