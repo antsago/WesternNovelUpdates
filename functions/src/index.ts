@@ -81,23 +81,8 @@ async function extractAndSaveNewChapters(request, response)
 {
     site = cleanDescriptions(site) 
     let chapters = await extractChapters(site)
-    
-    firebase.initializeApp(
-    {
-        apiKey: keys.API_KEY,
-        authDomain: keys.AUTH_DOMAIN,
-        projectId: keys.PROJECT_ID
-    })
-
-    const db = firebase.firestore()
-    db.collection("chapters").add(
-    {
-        link: "http://royalroadl.com/fiction/chapter/195715",
-        publicationDate: "Tue, 20 Feb 2018 05:39:54 Z",
-        title: "The Legend of Randidly Ghosthound - Chapter 363"
-    })
-
-    response.send(chapters)
+    await saveChapters(chapters)
+    response.send("Chapters added to db")
 }
 
 function cleanDescriptions(rssXML) 
@@ -111,5 +96,29 @@ async function extractChapters(rssXML) : Promise<Array<any>>
     const parseXML = <(rssxML) => Promise<any>> util.promisify(xml2js.parseString)
     
     let parsedSite = await parseXML(rssXML)
-    return parsedSite.rss.channel[0].item
+    return parsedSite.rss.channel[0].item.map((ch) => 
+    {
+        return {link: ch.link[0], publicationDate: ch.pubDate[0], title: ch.title[0]} 
+    })
+}
+
+async function saveChapters(chapters)
+{  
+    const db = initializeDb()    
+    let saveTasks = chapters.map((ch) => { return db.collection("chapters").add(ch) })
+    await Promise.all(saveTasks)
+}
+
+function initializeDb() : firebase.firestore.Firestore
+{
+    if (!firebase.apps.length) 
+    {
+        firebase.initializeApp(
+        {
+            apiKey: keys.API_KEY,
+            authDomain: keys.AUTH_DOMAIN,
+            projectId: keys.PROJECT_ID
+        })
+    }
+    return firebase.firestore()
 }
