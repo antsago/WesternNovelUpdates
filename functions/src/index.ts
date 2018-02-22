@@ -82,7 +82,7 @@ async function extractAndSaveNewChapters(request, response)
     site = cleanDescriptions(site) 
     let chapters = await extractChapters(site)
     await saveChapters(chapters)
-    response.send("Chapters added to db")
+    response.send(chapters)
 }
 
 function cleanDescriptions(rssXML) 
@@ -98,14 +98,19 @@ async function extractChapters(rssXML) : Promise<Array<any>>
     let parsedSite = await parseXML(rssXML)
     return parsedSite.rss.channel[0].item.map((ch) => 
     {
-        return {link: ch.link[0], publicationDate: ch.pubDate[0], title: ch.title[0]} 
+        return {
+            link: ch.link[0], 
+            publicationDate: ch.pubDate[0], 
+            title: ch.title[0],
+            guid: ch.guid[0]["_"]
+        }
     })
 }
 
 async function saveChapters(chapters)
 {  
-    const db = initializeDb()    
-    let saveTasks = chapters.map((ch) => { return db.collection("chapters").add(ch) })
+    const chaptersCollection = initializeDb().collection("chapters")
+    let saveTasks = chapters.map((chapter) => { return chaptersCollection.doc(chapter.guid).set(chapter) })
     await Promise.all(saveTasks)
 }
 
