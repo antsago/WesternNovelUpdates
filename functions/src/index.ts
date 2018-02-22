@@ -79,10 +79,20 @@ export const updateChapters = functions.https.onRequest(extractAndSaveNewChapter
     
 async function extractAndSaveNewChapters(request, response)
 {
-    site = cleanDescriptions(site) 
-    let chapters = await extractChapters(site)
-    await saveChapters(chapters)
-    response.send(chapters)
+    try
+    {
+        site = cleanDescriptions(site) 
+        let chapters = await extractChapters(site)
+        await saveChapters(chapters)
+
+        console.info("Successfully added new chapters")
+        response.status(200).end()
+    }
+    catch(error)
+    {
+        console.error(error)
+        response.status(500).end()
+    }
 }
 
 function cleanDescriptions(rssXML) 
