@@ -12,9 +12,27 @@ async function extractAndSaveNewChapters(request, response)
 {
     try
     {
-        let feed = cleanDescriptions(request.body) 
-        let chapters = await extractChapters(feed)
-        await saveChapters(chapters, request.get("Novel-ID"))
+        let feed = cleanDescriptions(request.body)
+        
+        switch(request.get("Site"))
+        {
+            case "RoyalRoad":
+            {
+                let chapters = await extractChaptersFromRRL(feed)
+                await saveChapters(chapters, request.get("Novel-ID"))
+                break
+            }
+            case "GravityTales":
+            {
+                let chapters = await extractChaptersFromGT(feed)
+                await saveChapters(chapters, request.get("Novel-ID"))
+                break
+            }
+            default:
+            {
+                throw new Error(`Site identifier "${request.get("Site")}"not recognized`)
+            }
+        }
         
         console.info("Successfully added new chapters")
 
@@ -33,7 +51,7 @@ function cleanDescriptions(rssXML)
     return rssXML.replace(descriptionCleaner, "<description></description>");
 }
 
-async function extractChapters(rssXML) : Promise<Array<any>>
+async function extractChaptersFromRRL(rssXML) : Promise<Array<any>>
 {
     const parseXML = <(rssxML) => Promise<any>> util.promisify(xml2js.parseString)
     
@@ -45,6 +63,23 @@ async function extractChapters(rssXML) : Promise<Array<any>>
             publicationDate: ch.pubDate[0], 
             title: ch.title[0],
             guid: ch.guid[0]["_"]
+        }
+    })
+}
+
+async function extractChaptersFromGT(rssXML) : Promise<Array<any>>
+{
+    const parseXML = <(rssxML) => Promise<any>> util.promisify(xml2js.parseString)
+    
+    let parsedSite = await parseXML(rssXML)
+    
+    return parsedSite.rss.channel[0].item.map((ch) => 
+    {
+        return {
+            link: ch.link[0], 
+            publicationDate: ch.pubDate[0], 
+            title: ch.title[0],
+            guid: ch.guid[0].split("/").reverse()[0]
         }
     })
 }

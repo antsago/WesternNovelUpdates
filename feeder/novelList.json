@@ -1,10 +1,17 @@
 [
     {
         "FeedUrl": "http://royalroadl.com/fiction/syndication/9904",
-        "ID": "i2yoWM7Nkbek0UqPgEMq"
+        "ID": "i2yoWM7Nkbek0UqPgEMq",
+        "Site": "RoyalRoad"
     },
     {
         "FeedUrl": "http://royalroadl.com/fiction/syndication/11209",
-        "ID": "ZKqoIpkeQjQOhxWVa3rP"
+        "ID": "ZKqoIpkeQjQOhxWVa3rP",
+        "Site": "RoyalRoad"
+    },
+    {
+        "FeedUrl": "http://gravitytales.com/feed/the-good-student",
+        "ID": "Ms2K206anxmJUbsNOg4S",
+        "Site": "GravityTales"
     }
 ]

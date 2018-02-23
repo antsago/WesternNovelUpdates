@@ -31,5 +31,5 @@ async function sendChapterFeed(novel)
 {
     let feed = await axios.get(novel["FeedUrl"])
     return axios.post(UpdateChaptersURL, feed.data, 
-        { headers: { "Content-Type": "text/plain", "Novel-ID": novel["ID"] }})
+        { headers: { "Content-Type": "text/plain", "Novel-ID": novel["ID"], "Site": novel["Site"] }})
 }
