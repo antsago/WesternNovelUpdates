@@ -12,11 +12,13 @@ async function extractAndSaveNewChapters(request, response)
 {
     try
     {
-        let feed = cleanDescriptions(request.body)        
-        let chapters = await extractChapters(feed, request.get("Site"))
-        await saveChapters(chapters, request.get("Novel-ID"))
-        
+        const chapterSaver = new ChapterSaver(keys.API_KEY, keys.AUTH_DOMAIN, keys.PROJECT_ID)
+        const feed = new Feed(request.body, request.get("Site"), request.get("Novel-ID"))
 
+        feed.cleanDescriptions()
+        let newChapters = feed.extractChapters()
+        await chapterSaver.saveChapters(newChapters, request.get("Novel-ID"))
+        
         console.info("Successfully added new chapters")
 
         response.status(200).end()
@@ -28,81 +30,92 @@ async function extractAndSaveNewChapters(request, response)
     }
 }
 
-function cleanDescriptions(rssXML) 
+class Feed
 {
-    const descriptionCleaner = /<description>[^]*?<\/description>/gi;
-    return rssXML.replace(descriptionCleaner, "<description></description>");
-}
+    private readonly xmlParser = <(string) => Promise<any>> util.promisify(xml2js.parseString)
+    private readonly site : string
+    private readonly novel : string
+    private rssXML : string
 
-async function extractChapters(feed, site)
-{
-    switch(site)
+    constructor(rssXML, siteID, novelId)
     {
-        case "RoyalRoad":
+        this.rssXML = rssXML
+        this.site = siteID
+        this.novel = novelId
+    }
+
+    public cleanDescriptions()
+    {
+        const descriptionCleaner = /<description>[^]*?<\/description>/gi;
+        this.rssXML = this.rssXML.replace(descriptionCleaner, "<description></description>");
+    }
+
+    
+    public async extractChapters()
+    {
+        let parsedSite = await this.xmlParser(this.rssXML)
+        return parsedSite.rss.channel[0].item.map( chapter => { return this.createChapter(chapter) })
+    }
+
+    private createChapter(chapterXML) : Chapter
+    {
+        let chapter = new Chapter()
+        chapter.link = chapterXML.link[0]
+        chapter.publicationDate = chapterXML.pubDate[0]
+        chapter.title = chapterXML.title[0]
+
+        switch(this.site)
         {
-            return await extractChaptersFromRRL(feed)
+            case "GravityTales":
+            {
+                chapter.guid = chapterXML.guid[0].split("/").reverse()[0]
+                break
+            }
+            case "RoyalRoad":
+            {
+                chapter.guid = chapterXML.guid[0]["_"]
+                break
+            }
+            default:
+            {
+                chapter.guid = chapterXML.guid[0]
+                break
+            }
         }
-        case "GravityTales":
-        {
-            return await extractChaptersFromGT(feed)
-        }
-        default:
-        {
-            throw new Error(`Site identifier "${site}"not recognized`)
-        }
+        return chapter
     }
 }
 
-async function extractChaptersFromRRL(rssXML) : Promise<Array<any>>
+class Chapter
 {
-    const parseXML = <(rssxML) => Promise<any>> util.promisify(xml2js.parseString)
-    
-    let parsedSite = await parseXML(rssXML)
-    return parsedSite.rss.channel[0].item.map((ch) => 
-    {
-        return {
-            link: ch.link[0], 
-            publicationDate: ch.pubDate[0], 
-            title: ch.title[0],
-            guid: ch.guid[0]["_"]
-        }
-    })
+    link : string
+    publicationDate : string
+    title : string
+    guid : string
 }
 
-async function extractChaptersFromGT(rssXML) : Promise<Array<any>>
+class ChapterSaver
 {
-    const parseXML = <(rssxML) => Promise<any>> util.promisify(xml2js.parseString)
-    
-    let parsedSite = await parseXML(rssXML)
-    
-    return parsedSite.rss.channel[0].item.map((ch) => 
-    {
-        return {
-            link: ch.link[0], 
-            publicationDate: ch.pubDate[0], 
-            title: ch.title[0],
-            guid: ch.guid[0].split("/").reverse()[0]
-        }
-    })
-}
+    private readonly dbConnection: firebase.firestore.Firestore;
 
-async function saveChapters(chapters, novelId)
-{  
-    const chaptersCollection = initializeDb().collection("novels").doc(novelId).collection("chapters")
-    let saveTasks = chapters.map((chapter) => { return chaptersCollection.doc(chapter.guid).set(chapter) })
-    await Promise.all(saveTasks)
-}
-
-function initializeDb() : firebase.firestore.Firestore
-{
-    if (!firebase.apps.length) 
+    constructor(API_KEY, AUTH_DOMAIN, PROJECT_ID)
     {
-        firebase.initializeApp(
+        if (!firebase.apps.length) 
         {
-            apiKey: keys.API_KEY,
-            authDomain: keys.AUTH_DOMAIN,
-            projectId: keys.PROJECT_ID
-        })
+            firebase.initializeApp(
+            {
+                apiKey: API_KEY,
+                authDomain: AUTH_DOMAIN,
+                projectId: PROJECT_ID
+            })
+        }
+        this.dbConnection = firebase.firestore()
     }
-    return firebase.firestore()
+
+    public async saveChapters(chapters, novelId)
+    {  
+        const chaptersCollection = this.dbConnection.collection("novels").doc(novelId).collection("chapters")
+        let saveTasks = chapters.map((chapter) => { return chaptersCollection.doc(chapter.guid).set(chapter) })
+        await Promise.all(saveTasks)
+    }
 }
