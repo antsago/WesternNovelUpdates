@@ -1,4 +1,5 @@
 functions/node_modules
-functions/lib/*
+functions/lib
 functions/src/keys.ts
-functions/etc/*
+functions/etc
+feeder/node_modules

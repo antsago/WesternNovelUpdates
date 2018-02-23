@@ -1,9 +1,8 @@
 {
-    "name"         : "wnufeeder",
-    "version"      : "0.0.0",
-    "main"         : "server.js",
-    "dependencies" : 
-    {
-        "express"        : "^4.16.0"
+    "name": "wnufeeder",
+    "version": "0.0.0",
+    "main": "server.js",
+    "dependencies": {
+        "express": "^4.16.0"
     }
 }
