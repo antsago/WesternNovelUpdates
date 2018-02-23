@@ -12,28 +12,11 @@ async function extractAndSaveNewChapters(request, response)
 {
     try
     {
-        let feed = cleanDescriptions(request.body)
+        let feed = cleanDescriptions(request.body)        
+        let chapters = await extractChapters(feed, request.get("Site"))
+        await saveChapters(chapters, request.get("Novel-ID"))
         
-        switch(request.get("Site"))
-        {
-            case "RoyalRoad":
-            {
-                let chapters = await extractChaptersFromRRL(feed)
-                await saveChapters(chapters, request.get("Novel-ID"))
-                break
-            }
-            case "GravityTales":
-            {
-                let chapters = await extractChaptersFromGT(feed)
-                await saveChapters(chapters, request.get("Novel-ID"))
-                break
-            }
-            default:
-            {
-                throw new Error(`Site identifier "${request.get("Site")}"not recognized`)
-            }
-        }
-        
+
         console.info("Successfully added new chapters")
 
         response.status(200).end()
@@ -49,6 +32,25 @@ function cleanDescriptions(rssXML)
 {
     const descriptionCleaner = /<description>[^]*?<\/description>/gi;
     return rssXML.replace(descriptionCleaner, "<description></description>");
+}
+
+async function extractChapters(feed, site)
+{
+    switch(site)
+    {
+        case "RoyalRoad":
+        {
+            return await extractChaptersFromRRL(feed)
+        }
+        case "GravityTales":
+        {
+            return await extractChaptersFromGT(feed)
+        }
+        default:
+        {
+            throw new Error(`Site identifier "${site}"not recognized`)
+        }
+    }
 }
 
 async function extractChaptersFromRRL(rssXML) : Promise<Array<any>>
