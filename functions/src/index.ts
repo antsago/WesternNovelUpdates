@@ -50,7 +50,7 @@ async function extractChapters(rssXML) : Promise<Array<any>>
 
 async function saveChapters(chapters)
 {  
-    const chaptersCollection = initializeDb().collection("chapters")
+    const chaptersCollection = initializeDb().collection("novels").doc("i2yoWM7Nkbek0UqPgEMq").collection("chapters")
     let saveTasks = chapters.map((chapter) => { return chaptersCollection.doc(chapter.guid).set(chapter) })
     await Promise.all(saveTasks)
 }
