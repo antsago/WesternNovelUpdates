@@ -13,7 +13,7 @@ app.get('*', async (req, res) =>
     {
         let feed = await axios.get(dragonFeedURL)
         let updatedChaptersResponse = await axios.post(UpdateChaptersURL, feed.data, 
-            {headers:{"Content-Type": "text/plain"}})
+            { headers: { "Content-Type": "text/plain", "Novel-ID": "i2yoWM7Nkbek0UqPgEMq" }})
 
         res.status(updatedChaptersResponse.status).send(updatedChaptersResponse.data)
     }

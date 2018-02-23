@@ -14,7 +14,7 @@ async function extractAndSaveNewChapters(request, response)
     {
         let feed = cleanDescriptions(request.body) 
         let chapters = await extractChapters(feed)
-        await saveChapters(chapters)
+        await saveChapters(chapters, request.get("Novel-ID"))
 
         console.info("Successfully added new chapters")
         response.status(200).end()
@@ -48,9 +48,9 @@ async function extractChapters(rssXML) : Promise<Array<any>>
     })
 }
 
-async function saveChapters(chapters)
+async function saveChapters(chapters, novelId)
 {  
-    const chaptersCollection = initializeDb().collection("novels").doc("i2yoWM7Nkbek0UqPgEMq").collection("chapters")
+    const chaptersCollection = initializeDb().collection("novels").doc(novelId).collection("chapters")
     let saveTasks = chapters.map((chapter) => { return chaptersCollection.doc(chapter.guid).set(chapter) })
     await Promise.all(saveTasks)
 }
