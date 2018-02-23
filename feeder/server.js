@@ -7,20 +7,18 @@ const novelList = require('./novelList.json')
 
 const UpdateChaptersURL = "https://us-central1-westernnovelupdates.cloudfunctions.net/updateChapters"
 
-app.get('*', async (req, res) =>
+app.get('/collectFeeds', async (req, res) =>
 {
     try
     {
-        let novel = novelList[0]
-        let feed = await axios.get(novel["FeedUrl"])
-        let updatedChaptersResponse = await axios.post(UpdateChaptersURL, feed.data, 
-            { headers: { "Content-Type": "text/plain", "Novel-ID": novel["ID"] }})
-
-        res.status(updatedChaptersResponse.status).send(updatedChaptersResponse.data)
+        let listOfCalls = novelList.map( novel => { return sendChapterFeed(novel) })
+        res.status(200).send("Chapters feed sent")
+        await Promise.all(listOfCalls)
     }
     catch(err)
     {
-        res.status(500).send(err)
+        console.error(err)
+        res.status(500).end()
     }
 })
 
@@ -28,3 +26,10 @@ app.listen(port, () =>
 {
     console.log(`Feeder running at ${port}`)
 })
+
+async function sendChapterFeed(novel)
+{
+    let feed = await axios.get(novel["FeedUrl"])
+    return axios.post(UpdateChaptersURL, feed.data, 
+        { headers: { "Content-Type": "text/plain", "Novel-ID": novel["ID"] }})
+}

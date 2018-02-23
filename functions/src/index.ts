@@ -15,8 +15,9 @@ async function extractAndSaveNewChapters(request, response)
         let feed = cleanDescriptions(request.body) 
         let chapters = await extractChapters(feed)
         await saveChapters(chapters, request.get("Novel-ID"))
-
+        
         console.info("Successfully added new chapters")
+
         response.status(200).end()
     }
     catch(error)
