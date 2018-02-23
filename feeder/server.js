@@ -67,28 +67,28 @@ const site = `<?xml version="1.0" encoding="utf-8"?><rss xmlns:a10="http://www.w
 &lt;p&gt;&lt;span style="font-weight: 400"&gt;Besides, Randidly could (...)</description><pubDate>Tue, 13 Feb 2018 05:51:02 Z</pubDate><a10:updated>1970-01-01T00:00:00Z</a10:updated></item></channel></rss>`
 
 const express = require('express')
-const http = require('http');
+const axios = require('axios');
 const app = express()
 const port = process.env.PORT || 3000
 
 const UpdateChaptersURL = "https://us-central1-westernnovelupdates.cloudfunctions.net/updateChapters"
 
-app.get('*', (req, res) =>
+app.get('*', async (req, res) =>
 {
-    http.request(
-    { 
-        path: UpdateChaptersURL, 
-        method: "POST", 
-        headers: {"Content-Type": "text/plain"}
-    },
-    (postResponse) => 
+    try
     {
-        res.send(postResponse)
-    })
-    .write(site)
+        let updatedChaptersResponse = await axios.post(UpdateChaptersURL, site, 
+            {headers:{"Content-Type": "text/plain"}})
+       
+        res.send(updatedChaptersResponse)
+    }
+    catch(err)
+    {
+        res.status(500).send(err)
+    }
 })
 
 app.listen(port, () =>
 {
-    console.log('Feeder running!')
+    console.log(`Feeder running at ${port}`)
 })
