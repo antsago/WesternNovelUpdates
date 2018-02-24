@@ -11,7 +11,10 @@
     "indexes": "firestore.indexes.json"
   },
   "hosting": {
-    "public": "public",
+    "predeploy": [
+      "npm --prefix webapp run ng build --deleteOutputPath"
+    ],
+    "public": "webapp/dist",
     "ignore": [
       "firebase.json",
       "**/.*",
