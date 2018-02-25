@@ -39,7 +39,7 @@ export class Feed
 
     public async saveChapters(chapterSaver)
     {
-        await Promise.all(this.chapters.map(chapter => {return chapterSaver.saveChapter(chapter, this.novel) })) 
+        await Promise.all(this.chapters.map(chapter => {return chapterSaver.saveChapter(chapter) })) 
 
         return this
     }
@@ -48,6 +48,7 @@ export class Feed
     {
         const chapter = 
         {
+            novel: this.novel,
             link: chapterXML.link[0],
             publicationDate: chapterXML.pubDate[0],
             title: chapterXML.title[0],

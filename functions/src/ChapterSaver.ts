@@ -22,9 +22,8 @@ export class ChapterSaver
         this.dbConnection = firebase.firestore()
     }
 
-    public async saveChapter(chapter, novel : string)
+    public async saveChapter(chapter)
     {  
-        await this.dbConnection.collection(this.NovelsCol).doc(novel)
-                    .collection(this.ChaptersCol).doc(chapter.guid).set(chapter) 
+        await this.dbConnection.collection(this.ChaptersCol).doc(`${chapter.novel}-${chapter.guid}`).set(chapter)
     }
 }
