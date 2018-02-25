@@ -1,29 +1,27 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core'
+import { AngularFirestore } from 'angularfire2/firestore'
+import { Observable } from 'rxjs/Observable'
 
 @Component(
 {
     selector: 'app-root',
     template: `
     <ul>
-        <li *ngFor="let update of updates">
-            <p>{{update.novelTitle}}: {{update.chapterTitle}}</p>
-            <p>{{update.publicationDate}}</p>
+        <li *ngFor="let update of updates | async">
+            
+            <p>{{update.publicationDate}}: <a href="{{update.link}}">{{update.title}}</a></p>
         </li>
     </ul>`
 })
-export class AppComponent 
+export class AppComponent implements OnInit
 {
-    updates = 
-    [
-        {
-            novelTitle: "My novel",
-            chapterTitle: "A new chapter",
-            publicationDate: "Today"
-        },
-        {
-            novelTitle: "My second novel",
-            chapterTitle: "Another chapter",
-            publicationDate: "Yesterday"
-        }
-    ]
+    updates: Observable<any[]>
+
+    constructor(private db : AngularFirestore){}
+
+    ngOnInit()
+    {
+        this.updates = this.db.collection("novels").doc("Ms2K206anxmJUbsNOg4S")
+            .collection("chapters").valueChanges()
+    }
 }

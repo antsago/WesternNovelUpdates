@@ -14,8 +14,10 @@ webapp/.sass-cache
 webapp/connect.lock
 webapp/coverage
 webapp/libpeerconnection.log
-npm-debug.log
-testem.log
 webapp/typings
 webapp/e2e/*.js
 webapp/e2e/*.map
+webapp/src/environments
+
+npm-debug.log
+testem.log
