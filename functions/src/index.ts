@@ -1,19 +1,19 @@
 import { https } from 'firebase-functions'
 
 import { Feed } from './Feed'
-import { ChapterSaver } from './ChapterSaver'
+import { Database } from './Database'
 import { API_KEY, AUTH_DOMAIN, PROJECT_ID} from './keys'
 
 export const updateChapters = https.onRequest( async (request, response) =>
 {
     try
     {
-        const chapterSaver = new ChapterSaver(API_KEY, AUTH_DOMAIN, PROJECT_ID)
+        const database = new Database(API_KEY, AUTH_DOMAIN, PROJECT_ID)
         
-        await (await new Feed(request.body, request.get("Site"), request.get("Novel-ID"))
+        await (await new Feed(request.body, request.get("Site"), request.get("Novel-ID"), database)
                             .cleanDescriptions()
                             .extractChapters())
-                            .saveChapters(chapterSaver)
+                            .saveChapters()
         
         console.info("Successfully added new chapters")
         response.status(200).end()

@@ -21,7 +21,6 @@ export class AppComponent implements OnInit
 
     ngOnInit()
     {
-        this.updates = this.db.collection("novels").doc("Ms2K206anxmJUbsNOg4S")
-            .collection("chapters").valueChanges()
+        this.updates = this.db.collection("chapters", ref => ref.orderBy("publicationDate", "desc").limit(10)).valueChanges()
     }
 }

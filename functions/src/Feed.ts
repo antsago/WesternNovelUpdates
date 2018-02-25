@@ -2,20 +2,24 @@ import * as xml2js from 'xml2js'
 const util = require('util')
 require('util.promisify').shim() // Firebase uses an old version of node (pre v8)
 
+import { Database } from './Database'
+
 export class Feed
 {
     private readonly xmlParser = <(string) => Promise<any>> util.promisify(xml2js.parseString)
     private readonly site : string    
     private readonly novel : string
+    private readonly database : Database
 
     private rssXML : string
     private chapters : Array<any>
 
-    constructor(rssXML, siteID, novel_Id)
+    constructor(rssXML : string, siteID : string, novel_Id : string, database : Database)
     {
         this.rssXML = rssXML
         this.site = siteID
         this.novel = novel_Id
+        this.database = database
     }
 
     public cleanDescriptions()
@@ -37,29 +41,25 @@ export class Feed
         return this
     }
 
-    public async saveChapters(chapterSaver)
+    public async saveChapters()
     {
-        await Promise.all(this.chapters.map(chapter => {return chapterSaver.saveChapter(chapter) })) 
+        await Promise.all(this.chapters.map( chapter =>
+        { 
+            return this.database.saveChapter(chapter)
+        })) 
 
         return this
     }
 
     private createChapter(chapterXML)
     {
-        return {
+        return this.database.cleanChapterFields( 
+        {
             novel: this.novel,
             link: chapterXML.link[0],
             publicationDate: chapterXML.pubDate[0],
             title: chapterXML.title[0],
-            guid: this.getChapterId(chapterXML)
-        }
-    }
-
-    private getChapterId(chapterXML) : string
-    {
-        let guid = this.site !== "RoyalRoad"? chapterXML.guid[0] : chapterXML.guid[0]["_"]
-        
-        //firebase id cannot cotain the symbols: .$[]#/
-        return encodeURIComponent(guid).replace(/\./g, '%2E')
+            guid: this.site !== "RoyalRoad"? chapterXML.guid[0] : chapterXML.guid[0]["_"]
+        })
     }
 }
