@@ -5,13 +5,7 @@ import { Observable } from 'rxjs/Observable'
 @Component(
 {
     selector: 'app-root',
-    template: `
-    <ul>
-        <li *ngFor="let update of updates | async">
-            
-            <p>{{update.publicationDate}}: <a href="{{update.link}}">{{update.title}}</a></p>
-        </li>
-    </ul>`
+    templateUrl: './app.component.html'
 })
 export class AppComponent implements OnInit
 {
