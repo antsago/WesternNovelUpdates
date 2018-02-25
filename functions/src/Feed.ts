@@ -46,33 +46,20 @@ export class Feed
 
     private createChapter(chapterXML)
     {
-        const chapter = 
-        {
+        return {
             novel: this.novel,
             link: chapterXML.link[0],
             publicationDate: chapterXML.pubDate[0],
             title: chapterXML.title[0],
-            guid: null
+            guid: this.getChapterId(chapterXML)
         }
+    }
 
-        switch(this.site)
-        {
-            case "GravityTales":
-            {
-                chapter.guid = chapterXML.guid[0].split("/").reverse()[0]
-                break
-            }
-            case "RoyalRoad":
-            {
-                chapter.guid = chapterXML.guid[0]["_"]
-                break
-            }
-            default:
-            {
-                chapter.guid = chapterXML.guid[0]
-                break
-            }
-        }
-        return chapter
+    private getChapterId(chapterXML) : string
+    {
+        let guid = this.site !== "RoyalRoad"? chapterXML.guid[0] : chapterXML.guid[0]["_"]
+        
+        //firebase id cannot cotain the symbols: .$[]#/
+        return encodeURIComponent(guid).replace(/\./g, '%2E')
     }
 }

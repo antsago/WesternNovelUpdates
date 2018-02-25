@@ -3,7 +3,6 @@ import 'firebase/firestore' //The side-effects are necessary for Firebase
 
 export class ChapterSaver
 {
-    private readonly NovelsCol : string = "novels"
     private readonly ChaptersCol : string = "chapters"
 
     private readonly dbConnection: firebase.firestore.Firestore;
