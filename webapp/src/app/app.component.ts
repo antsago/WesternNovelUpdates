@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core'
 import { AngularFirestore } from 'angularfire2/firestore'
-import { Observable } from 'rxjs/Observable'
 
 @Component(
 {
@@ -9,12 +8,32 @@ import { Observable } from 'rxjs/Observable'
 })
 export class AppComponent implements OnInit
 {
-    updates: Observable<any[]>
+    updates: {}[]
 
     constructor(private db : AngularFirestore){}
 
     ngOnInit()
     {
-        this.updates = this.db.collection("chapters", ref => ref.orderBy("publicationDate", "desc").limit(10)).valueChanges()
+        this.db.collection("chapters", ref =>
+        {
+            return ref.orderBy("publicationDate", "desc").limit(10)  
+        }).valueChanges().subscribe(updates =>
+        {
+            this.updates = updates
+        })
+    }
+    
+    getMoreUpdates()
+    {
+        const lastDate = this.updates[9]["publicationDate"]
+        
+        this.db.collection("chapters", ref => 
+        {
+            return ref.orderBy("publicationDate", "desc").startAfter(lastDate).limit(10)
+        })
+        .valueChanges().subscribe(newUpdates => 
+        {
+            this.updates = [...this.updates, ...newUpdates]
+        })
     }
 }
