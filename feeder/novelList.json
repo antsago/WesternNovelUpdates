@@ -13,5 +13,25 @@
         "FeedUrl": "http://gravitytales.com/feed/the-good-student",
         "ID": "Ms2K206anxmJUbsNOg4S",
         "Site": "GravityTales"
+    },
+    {
+        "FeedUrl": "https://royalroadl.com/fiction/syndication/15983",
+        "ID": "7PDYNj17u6lAFbhc5Pgs",
+        "Site": "RoyalRoad"
+    },
+    {
+        "FeedUrl": "http://gravitytales.com/feed/how-to-avoid-death-on-a-daily-basis",
+        "ID": "I88mf1WPs2yedQR0dgar",
+        "Site": "GravityTales"
+    },
+    {
+        "FeedUrl": "https://royalroadl.com/fiction/syndication/11397",
+        "ID": "mQsj2K5VdARajuMHIF78",
+        "Site": "RoyalRoad"
+    },
+    {
+        "FeedUrl": "https://royalroadl.com/fiction/syndication/12024",
+        "ID": "y4GEgxz75leG3n3heezV",
+        "Site": "RoyalRoad"
     }
 ]
