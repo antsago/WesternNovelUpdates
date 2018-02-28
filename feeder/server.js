@@ -22,7 +22,7 @@ app.get('/collectFeeds', async (req, res) =>
             {
                 projectId: process.env.ProjectId,
                 clientEmail: process.env.ClientEmail,
-                privateKey: process.env.FirebasePrivateKey
+                privateKey: JSON.parse(process.env.FirebasePrivateKey)
             }),
             databaseURL: process.env.FirebaseDatabaseURL
         })
