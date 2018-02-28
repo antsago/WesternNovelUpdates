@@ -1,15 +1,17 @@
 import { https } from 'firebase-functions'
+import * as fr from 'firebase'
 
 import { Feed } from './Feed'
 import { Database } from './Database'
-import { API_KEY, AUTH_DOMAIN, PROJECT_ID} from './keys'
+import { API_KEY, AUTH_DOMAIN, PROJECT_ID, EMAIL, PASSWORD} from './keys'
 
 export const updateChapters = https.onRequest( async (request, response) =>
 {
     try
     {
         const database = new Database(API_KEY, AUTH_DOMAIN, PROJECT_ID)
-        
+        await fr.auth().signInWithEmailAndPassword(EMAIL, PASSWORD)
+
         await (await new Feed(request.body, request.get("Site"), request.get("Novel-ID"), database)
                             .cleanDescriptions()
                             .extractChapters())

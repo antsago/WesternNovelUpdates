@@ -1,7 +1,16 @@
-service cloud.firestore {
-  match /databases/{database}/documents {
-    match /{document=**} {
-      allow read, write;
+service cloud.firestore 
+{
+    match /databases/{database}/documents 
+    {
+        match /novels/{novel}
+        {
+            allow read;
+            allow write: if false;
+        }
+        match /chapters/{chapter}
+        {
+            allow read;
+            allow write: if request.auth.uid == "A9q1ibbF6QQXyQOsxN6CHlkPmnr1";
+        } 
     }
-  }
 }
