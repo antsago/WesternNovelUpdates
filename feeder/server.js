@@ -2,7 +2,6 @@ const express = require('express')
 const axios = require('axios');
 const app = express()
 const port = process.env.PORT || 3000
-const novelList = require('./novelList.json')
 const admin = require('firebase-admin')
 
 const UpdateChaptersURL = "https://us-central1-westernnovelupdates.cloudfunctions.net/updateChapters"
