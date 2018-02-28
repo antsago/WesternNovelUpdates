@@ -3,12 +3,18 @@ import * as fr from 'firebase'
 
 import { Feed } from './Feed'
 import { Database } from './Database'
-import { API_KEY, AUTH_DOMAIN, PROJECT_ID, EMAIL, PASSWORD} from './keys'
+import { API_KEY, AUTH_DOMAIN, PROJECT_ID, EMAIL, PASSWORD, TOKEN} from './keys'
 
 export const updateChapters = https.onRequest( async (request, response) =>
 {
     try
     {
+        if(request.get('Token') !== TOKEN)
+        {
+            console.warn("Unauthorized http request")
+            response.status(401).end()
+        }
+
         const database = new Database(API_KEY, AUTH_DOMAIN, PROJECT_ID)
         await fr.auth().signInWithEmailAndPassword(EMAIL, PASSWORD)
 

@@ -3,6 +3,7 @@ const axios = require('axios');
 const app = express()
 const port = process.env.PORT || 3000
 const novelList = require('./novelList.json')
+const keys = require('./keys')
 
 
 const UpdateChaptersURL = "https://us-central1-westernnovelupdates.cloudfunctions.net/updateChapters"
@@ -30,6 +31,11 @@ app.listen(port, () =>
 async function sendChapterFeed(novel)
 {
     let feed = await axios.get(novel["FeedUrl"])
-    return axios.post(UpdateChaptersURL, feed.data, 
-        { headers: { "Content-Type": "text/plain", "Novel-ID": novel["ID"], "Site": novel["Site"] }})
+    return axios.post(UpdateChaptersURL, feed.data, { headers: 
+    { 
+        "Content-Type": "text/plain", 
+        "Novel-ID": novel["ID"], 
+        "Site": novel["Site"], 
+        "Token": keys.TOKEN 
+    }})
 }
