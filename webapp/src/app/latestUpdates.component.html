@@ -15,7 +15,7 @@
                     <a href="{{update.link}}">Read</a>
                 </div>
             </a>    
-            <span class="d-block">{{update.publicationDate | date: 'short'}}</span>
+            <span class="d-block">{{update.publicationDate | date: 'd MMM, h:mm a'}}</span>
         </div>
     </div>
     <button type="button" class="btn btn-primary btn-lg btn-block" (click)="getMoreUpdates()">Get more updates</button>
