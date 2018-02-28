@@ -3,6 +3,7 @@ const axios = require('axios');
 const app = express()
 const port = process.env.PORT || 3000
 const novelList = require('./novelList.json')
+const admin = require('firebase-admin')
 
 const UpdateChaptersURL = "https://us-central1-westernnovelupdates.cloudfunctions.net/updateChapters"
 
@@ -16,7 +17,25 @@ app.get('/collectFeeds', async (req, res) =>
             return
         } 
 
-        let listOfCalls = novelList.map( novel => { return sendChapterFeed(novel) })
+        admin.initializeApp(
+        {
+            credential: admin.credential.cert(
+            {
+                projectId: process.env.ProjectId,
+                clientEmail: process.env.ClientEmail,
+                privateKey: process.env.FirebasePrivateKey
+            }),
+            databaseURL: process.env.FirebaseDatabaseURL
+        })
+
+        let listOfCalls = [] 
+        let snapshot = await admin.firestore().collection("novels").get()
+        snapshot.forEach(novel =>
+        {
+            let data = novel.data()
+            listOfCalls.push(sendChapterFeed(data.rssFeed, novel.id, data.hostingSite))
+        })
+        
         res.status(200).send("Chapters feed sent")
         await Promise.all(listOfCalls)
     }
@@ -32,14 +51,14 @@ app.listen(port, () =>
     console.log(`Feeder running at ${port}`)
 })
 
-async function sendChapterFeed(novel)
+async function sendChapterFeed(rssFeed, novelId, site)
 {
-    let feed = await axios.get(novel["FeedUrl"])
+    let feed = await axios.get(rssFeed)
     return axios.post(UpdateChaptersURL, feed.data, { headers: 
     { 
         "Content-Type": "text/plain", 
-        "Novel-ID": novel["ID"], 
-        "Site": novel["Site"], 
-        "Token": process.env.token 
+        "Novel-ID": novelId, 
+        "Site": site, 
+        "Token": process.env.token
     }})
 }
