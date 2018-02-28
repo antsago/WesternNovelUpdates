@@ -4,7 +4,6 @@ functions/src/keys.ts
 functions/etc
 
 feeder/node_modules
-feeder/keys.js
 
 webapp/dist
 webapp/dist-server
