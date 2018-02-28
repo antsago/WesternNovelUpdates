@@ -12,6 +12,12 @@ app.get('/collectFeeds', async (req, res) =>
 {
     try
     {
+        if(req.get("token") != keys.TOKEN)
+        {
+            res.status(401).end()
+            return
+        } 
+
         let listOfCalls = novelList.map( novel => { return sendChapterFeed(novel) })
         res.status(200).send("Chapters feed sent")
         await Promise.all(listOfCalls)

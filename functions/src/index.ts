@@ -13,6 +13,7 @@ export const updateChapters = https.onRequest( async (request, response) =>
         {
             console.warn("Unauthorized http request")
             response.status(401).end()
+            return
         }
 
         const database = new Database(API_KEY, AUTH_DOMAIN, PROJECT_ID)
