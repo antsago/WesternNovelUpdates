@@ -29,7 +29,7 @@ app.get('/collectFeeds', async (req, res) =>
 
         let listOfCalls = [] 
         let snapshot = await admin.firestore().collection("novels").get()
-        snapshot.forEach(novel =>
+        snapshot.forEach(async novel =>
         {
             let data = novel.data()
             await sendChapterFeed(data.rssFeed, novel.id, data.hostingSite)
