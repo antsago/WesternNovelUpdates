@@ -32,7 +32,7 @@ app.get('/collectFeeds', async (req, res) =>
         snapshot.forEach(novel =>
         {
             let data = novel.data()
-            listOfCalls.push(sendChapterFeed(data.rssFeed, novel.id, data.hostingSite))
+            await sendChapterFeed(data.rssFeed, novel.id, data.hostingSite)
         })
         
         res.status(200).send("Chapters feed sent")
