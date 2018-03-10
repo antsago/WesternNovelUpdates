@@ -29,7 +29,15 @@ export const updateChapters = https.onRequest( async (request, response) =>
     }
     catch(error)
     {
-        console.error(error)
+        if(error instanceof Error) 
+        {
+            console.error(error);
+        } 
+        else 
+        {
+            console.error(new Error(`Error: ${error}`));
+        }
+    
         response.status(500).end()
     }
 })
