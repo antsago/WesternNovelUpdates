@@ -1,10 +1,11 @@
 const express = require('express')
 const axios = require('axios');
 const app = express()
-const port = process.env.PORT || 3000
 const admin = require('firebase-admin')
 
+const port = process.env.PORT || 3000
 const UpdateChaptersURL = "https://us-central1-westernnovelupdates.cloudfunctions.net/updateChapters"
+const TimeoutMs = 300000 // 5 minutes
 
 admin.initializeApp(
 {
@@ -44,10 +45,12 @@ app.get('/collectFeeds', async (req, res) =>
     }
 })
 
-app.listen(port, () =>
+const server = app.listen(port, () =>
 {
     console.log(`Feeder running at ${port}`)
 })
+
+server.timeout = TimeoutMs
 
 async function sendChapterFeed(rssFeed, novelId, site)
 {
