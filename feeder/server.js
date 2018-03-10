@@ -6,6 +6,17 @@ const admin = require('firebase-admin')
 
 const UpdateChaptersURL = "https://us-central1-westernnovelupdates.cloudfunctions.net/updateChapters"
 
+admin.initializeApp(
+{
+    credential: admin.credential.cert(
+    {
+        projectId: process.env.ProjectId,
+        clientEmail: process.env.ClientEmail,
+        privateKey: JSON.parse(process.env.FirebasePrivateKey)
+    }),
+    databaseURL: process.env.FirebaseDatabaseURL
+})
+
 app.get('/collectFeeds', async (req, res) =>
 {
     try
@@ -15,17 +26,6 @@ app.get('/collectFeeds', async (req, res) =>
             res.status(401).end()
             return
         } 
-
-        admin.initializeApp(
-        {
-            credential: admin.credential.cert(
-            {
-                projectId: process.env.ProjectId,
-                clientEmail: process.env.ClientEmail,
-                privateKey: JSON.parse(process.env.FirebasePrivateKey)
-            }),
-            databaseURL: process.env.FirebaseDatabaseURL
-        })
 
         let listOfCalls = [] 
         let snapshot = await admin.firestore().collection("novels").get()
