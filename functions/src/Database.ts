@@ -1,5 +1,6 @@
 import * as firebase from 'firebase'
-import 'firebase/firestore' //The side-effects are necessary for Firebase
+// tslint:disable-next-line:no-import-side-effect - side-effects are necessary for Firebase
+import 'firebase/firestore'
 
 export class Database
 {
