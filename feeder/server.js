@@ -29,14 +29,13 @@ app.get('/collectFeeds', async (req, res) =>
 
         let listOfCalls = [] 
         let snapshot = await admin.firestore().collection("novels").get()
-        snapshot.forEach(async novel =>
+        for (let novel of snapshot.docs)
         {
             let data = novel.data()
             await sendChapterFeed(data.rssFeed, novel.id, data.hostingSite)
-        })
+        }
         
-        res.status(200).send("Chapters feed sent")
-        await Promise.all(listOfCalls)
+        res.status(200).send("Chapters feed saved")
     }
     catch(err)
     {
