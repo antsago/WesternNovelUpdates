@@ -8,6 +8,7 @@ import { DatabaseService } from './database.service';
 })
 export class LatestUpdatesComponent implements OnInit
 {
+    public isNavbarCollapsed = true
     private readonly NumberOfUpdates = 10
     updates: {}[]
 

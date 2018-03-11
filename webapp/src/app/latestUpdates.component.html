@@ -1,19 +1,37 @@
-<div class="d-flex align-items-center p-3 my-3 bg-primary rounded box-shadow">
-    <img width=100 height=100 src="assets/icon-inverse.png" alt="Western Novel Updates">
-</div>
+<nav class="navbar navbar-expand-md navbar-dark dark-wnu-bgcolor">
+    <a class="navbar-brand" href="#">
+        <img src="assets/icon-inverse.png" alt="Western Novel Updates">
+    </a>
+    <button class="navbar-toggler p-0 border-0" type="button" data-toggle="offcanvas" (click)="isNavbarCollapsed=!isNavbarCollapsed">
+        <span class="navbar-toggler-icon"></span>
+    </button>
 
-<div class="my-3 p-3 bg-white rounded box-shadow">
-    <h6 class="border-bottom border-gray pb-2 mb-0">Latest updates:</h6>
-    <div *ngFor="let update of updates" class="media text-muted pt-3">
-        <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-            <a href="{{update.link}}">
-                <div class="d-flex justify-content-between align-items-center w-100">
-                    <strong class="text-gray-dark">{{update.title}}</strong>
-                    <a href="{{update.link}}">Read</a>
-                </div>
-            </a>    
-            <span class="d-block">{{update.publicationDate | date: 'd MMM, h:mm a'}}</span>
-        </div>
+    <div [ngbCollapse]="isNavbarCollapsed" class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+            <a class="nav-link" href="#">Latest chapters<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Novels</a>
+        </li>
+        </ul>
     </div>
-    <button type="button" class="btn btn-primary btn-lg btn-block" (click)="getMoreUpdates()">Get more updates</button>
-</div>
+</nav>
+
+<main role="main" class="container">
+    <div class="my-3 p-3 bg-white rounded box-shadow">
+        <h6 class="border-bottom border-gray pb-2 mb-0">Latest updates:</h6>
+        <div *ngFor="let update of updates" class="media text-muted pt-3">
+            <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+                <a href="{{update.link}}">
+                    <div class="d-flex justify-content-between align-items-center w-100">
+                        <strong class="text-gray-dark">{{update.title}}</strong>
+                        <a href="{{update.link}}">Read</a>
+                    </div>
+                </a>    
+                <span class="d-block">{{update.publicationDate | date: 'd MMM, h:mm a'}}</span>
+            </div>
+        </div>
+        <button type="button" class="btn light-wnu-color btn-lg btn-block" (click)="getMoreUpdates()">Get more updates</button>
+    </div>
+</main>
