@@ -1,20 +1,16 @@
 @import "~bootstrap/dist/css/bootstrap.css";
 
-.light-wnu-color{
-    background-color: #057c95;
-    border-color:  #057c95;
-    color: #fff;
-}
-.dark-wnu-color{
+.dark-wnubg{
     background-color: #042449;
     border-color:  #042449;
-    color: #fff;
 }
-.light-wnu-bgcolor{
+.light-wnubg{
     background-color: #057c95;
     border-color:  #057c95;
 }
-.dark-wnu-bgcolor{
-    background-color: #042449;
-    border-color:  #042449;
+.dark-wnucolor{
+    color: #042449;
+}
+.light-wnucolor{
+    color: #057c95;    
 }
