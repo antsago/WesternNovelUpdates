@@ -8,6 +8,7 @@ import { AppRoutingModule } from './appRouting.module'
 import { AppRootComponent } from './appRoot.component'
 import { LatestUpdatesComponent } from './latestUpdates.component'
 import { NovelsComponent } from './novels.component'
+import { MissingPageComponent } from './missingPage.component'
 import { environment } from './../environments/environment'
 import { DatabaseService } from './database.service'
 
@@ -25,7 +26,8 @@ import { DatabaseService } from './database.service'
     [
         AppRootComponent,
         LatestUpdatesComponent,
-        NovelsComponent
+        NovelsComponent,
+        MissingPageComponent
     ],
     providers: [ AngularFirestore, DatabaseService ],
     bootstrap: [ AppRootComponent ]
