@@ -9,6 +9,7 @@ import { AppRootComponent } from './appRoot.component'
 import { LatestUpdatesComponent } from './latestUpdates.component'
 import { NovelsComponent } from './novels.component'
 import { MissingPageComponent } from './missingPage.component'
+import { NovelDetailComponent } from './novelDetail.component'
 import { environment } from './../environments/environment'
 import { DatabaseService } from './database.service'
 
@@ -27,7 +28,8 @@ import { DatabaseService } from './database.service'
         AppRootComponent,
         LatestUpdatesComponent,
         NovelsComponent,
-        MissingPageComponent
+        MissingPageComponent,
+        NovelDetailComponent
     ],
     providers: [ AngularFirestore, DatabaseService ],
     bootstrap: [ AppRootComponent ]

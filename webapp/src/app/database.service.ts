@@ -39,4 +39,9 @@ export class DatabaseService
         })
         .valueChanges()
     }
+
+    getNovel(novelId: string): Observable<{}>
+    {
+        return this.db.collection(NOVELS).doc(novelId).valueChanges()
+    }
 }
