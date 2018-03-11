@@ -8,11 +8,11 @@
 
     <div [ngbCollapse]="isNavbarCollapsed" class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-            <a class="nav-link" href="#">Latest chapters<span class="sr-only">(current)</span></a>
+        <li class="nav-item">
+            <a class="nav-link" routerLink="/lastestUpdates" routerLinkActive="active">Latest chapters<span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">Novels</a>
+            <a class="nav-link" routerLink="/novels" routerLinkActive="active">Novels</a>
         </li>
         </ul>
     </div>

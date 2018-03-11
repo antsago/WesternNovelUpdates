@@ -2,25 +2,40 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore } from 'angularfire2/firestore'
 import { Observable } from 'rxjs/Observable';
 
+const CHAPTERS = 'chapters'
+const NOVELS = 'novels'
+const PUBLICATION_DATE = 'publicationDate'
+const TITLE = 'title'
+
+
 @Injectable()
 export class DatabaseService
 {
-    constructor(private db : AngularFirestore){}
- 
-    getUpdates(noOfUpdates : number) : Observable<{}[]>
+    constructor(private db: AngularFirestore) {}
+
+    getUpdates(noOfUpdates: number): Observable<{}[]>
     {
-        return this.db.collection("chapters", ref =>
+        return this.db.collection(CHAPTERS, ref =>
         {
-            return ref.orderBy("publicationDate", "desc").limit(noOfUpdates)
+            return ref.orderBy(PUBLICATION_DATE, 'desc').limit(noOfUpdates)
         })
         .valueChanges()
     }
 
-    getUpdatesAfter(date : Date, noOfUpdates : number) : Observable<{}[]>
+    getUpdatesAfter(date: Date, noOfUpdates: number): Observable<{}[]>
     {
-        return this.db.collection("chapters", ref => 
+        return this.db.collection(CHAPTERS, ref =>
         {
-            return ref.orderBy("publicationDate", "desc").startAfter(date).limit(noOfUpdates)
+            return ref.orderBy(PUBLICATION_DATE, 'desc').startAfter(date).limit(noOfUpdates)
+        })
+        .valueChanges()
+    }
+
+    getNovels(): Observable<{}[]>
+    {
+        return this.db.collection(NOVELS, ref =>
+        {
+            return ref.orderBy(TITLE, 'desc')
         })
         .valueChanges()
     }
