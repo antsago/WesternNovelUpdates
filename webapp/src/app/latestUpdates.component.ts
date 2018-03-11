@@ -14,10 +14,10 @@ export class LatestUpdatesComponent implements OnInit
 
     ngOnInit()
     {
-        // this.db.getUpdates(this.NumberOfUpdates).subscribe(updates =>
-        // {
-        //     this.updates = updates
-        // })
+        this.db.getUpdates(this.NumberOfUpdates).subscribe(updates =>
+        {
+            this.updates = updates
+        })
     }
 
     getMoreUpdates()
