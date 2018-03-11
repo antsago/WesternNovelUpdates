@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core'
 import { RouterModule, Routes } from '@angular/router'
-import { LatestUpdatesComponent } from './latestUpdates.component'
-import { NovelsComponent } from './novels.component'
+import { LatestUpdatesComponent } from './core/latestUpdates.component'
+import { NovelsComponent } from './core/novels.component'
 import { MissingPageComponent } from './missingPage.component'
-import { NovelDetailComponent } from './novelDetail.component'
+import { NovelDetailComponent } from './core/novelDetail.component'
 
 const appRoutes: Routes =
 [

@@ -2,16 +2,13 @@ import { BrowserModule } from '@angular/platform-browser'
 import { NgModule } from '@angular/core'
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
 import { AngularFireModule } from 'angularfire2'
-import { AngularFirestore } from 'angularfire2/firestore'
+
+import { CoreModule } from './core/core.module'
 
 import { AppRoutingModule } from './appRouting.module'
 import { AppRootComponent } from './appRoot.component'
-import { LatestUpdatesComponent } from './latestUpdates.component'
-import { NovelsComponent } from './novels.component'
 import { MissingPageComponent } from './missingPage.component'
-import { NovelDetailComponent } from './novelDetail.component'
 import { environment } from './../environments/environment'
-import { DatabaseService } from './database.service'
 
 
 @NgModule(
@@ -21,17 +18,14 @@ import { DatabaseService } from './database.service'
         AppRoutingModule,
         BrowserModule,
         AngularFireModule.initializeApp(environment.firebase),
-        NgbModule.forRoot()
+        NgbModule.forRoot(),
+        CoreModule
     ],
     declarations:
     [
         AppRootComponent,
-        LatestUpdatesComponent,
-        NovelsComponent,
         MissingPageComponent,
-        NovelDetailComponent
     ],
-    providers: [ AngularFirestore, DatabaseService ],
     bootstrap: [ AppRootComponent ]
 })
 export class AppModule { }
