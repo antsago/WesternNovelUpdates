@@ -12,7 +12,7 @@ export class LatestUpdatesComponent implements OnInit
     private readonly NumberOfUpdates = 10
     updates: {}[]
 
-    constructor(private db : DatabaseService){}
+    constructor(private db: DatabaseService) {}
 
     ngOnInit()
     {
@@ -21,12 +21,12 @@ export class LatestUpdatesComponent implements OnInit
             this.updates = updates
         })
     }
-    
+
     getMoreUpdates()
     {
-        const lastDate = this.updates[this.updates.length-1]["publicationDate"]
-        
-        this.db.getUpdatesAfter(lastDate, this.NumberOfUpdates).subscribe(newUpdates => 
+        const lastDate = this.updates[this.updates.length - 1]['publicationDate']
+
+        this.db.getUpdatesAfter(lastDate, this.NumberOfUpdates).subscribe(newUpdates =>
         {
             this.updates = [...this.updates, ...newUpdates]
         })
