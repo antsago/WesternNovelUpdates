@@ -35,7 +35,7 @@ export class DatabaseService
     {
         return this.db.collection(NOVELS, ref =>
         {
-            return ref.orderBy(TITLE, 'desc')
+            return ref.orderBy(TITLE, 'asc')
         })
         .valueChanges()
     }
