@@ -1,0 +1,22 @@
+<nav class="navbar navbar-expand-md navbar-dark dark-wnu-bgcolor">
+    <a class="navbar-brand" href="#">
+        <img src="assets/icon-inverse.png" alt="Western Novel Updates">
+    </a>
+    <button class="navbar-toggler p-0 border-0" type="button" data-toggle="offcanvas" (click)="isNavbarCollapsed=!isNavbarCollapsed">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div [ngbCollapse]="isNavbarCollapsed" class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+            <a class="nav-link" href="#">Latest chapters<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Novels</a>
+        </li>
+        </ul>
+    </div>
+</nav>
+<main role="main" class="container">
+    <router-outlet></router-outlet>
+</main>

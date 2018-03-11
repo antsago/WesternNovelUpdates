@@ -1,14 +1,12 @@
 import { Component, OnInit } from '@angular/core'
-import { DatabaseService } from './database.service';
+import { DatabaseService } from './database.service'
 
 @Component(
 {
-    selector: 'app-root',
     templateUrl: './latestUpdates.component.html'
 })
 export class LatestUpdatesComponent implements OnInit
 {
-    public isNavbarCollapsed = true
     private readonly NumberOfUpdates = 10
     updates: {}[]
 
@@ -16,10 +14,10 @@ export class LatestUpdatesComponent implements OnInit
 
     ngOnInit()
     {
-        this.db.getUpdates(this.NumberOfUpdates).subscribe(updates =>
-        {
-            this.updates = updates
-        })
+        // this.db.getUpdates(this.NumberOfUpdates).subscribe(updates =>
+        // {
+        //     this.updates = updates
+        // })
     }
 
     getMoreUpdates()
