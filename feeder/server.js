@@ -47,11 +47,11 @@ app.get('/collectFeeds', async (req, res) =>
         {
             if (batchCounter >= BatchSize)
             {
-                //await waitBetweenBatches()
+                await waitBetweenBatches()
                 batchCounter = InitialBatchCount
             }
             let data = novel.data()
-            //await sendChapterFeed(data.rssFeed, novel.id, data.hostingSite)
+            await sendChapterFeed(data.rssFeed, novel.id, data.hostingSite)
             res.write(`Updated novel ${novel.id}\n`)    
             batchCounter++
         }
