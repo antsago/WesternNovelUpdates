@@ -27,7 +27,6 @@ export class Database
     {
         chapter.publicationDate = new Date(chapter.publicationDate)
         chapter.guid = this.chapterGUID(chapter.novel, chapter.guid)
-        chapter.novel = this.dbConnection.collection(this.NovelsCol).doc(chapter.novel)
         
         return chapter
     }
