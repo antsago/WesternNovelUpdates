@@ -1,26 +1,22 @@
-import * as firebase from 'firebase'
-// tslint:disable-next-line:no-import-side-effect - side-effects are necessary for Firebase
-import 'firebase/firestore'
+import * as admin from 'firebase-admin'
 
 export class Database
 {
     private readonly ChaptersCol : string = "chapters"
-    private readonly NovelsCol : string = "novels"
 
-    private readonly dbConnection: firebase.firestore.Firestore;
+    private readonly dbConnection: FirebaseFirestore.Firestore;
 
-    constructor(API_KEY, AUTH_DOMAIN, PROJECT_ID)
+    constructor(adminCredentials, databaseUrl)
     {
-        if (!firebase.apps.length) 
+        if (!admin.apps.length) 
         {
-            firebase.initializeApp(
+            admin.initializeApp(
             {
-                apiKey: API_KEY,
-                authDomain: AUTH_DOMAIN,
-                projectId: PROJECT_ID
+                credential: admin.credential.cert(adminCredentials),
+                databaseURL: databaseUrl
             })
         }
-        this.dbConnection = firebase.firestore()
+        this.dbConnection = admin.firestore()
     }
     
     public cleanChapterFields(chapter)
