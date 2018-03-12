@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common'
 import { NgModule } from '@angular/core'
 import { AngularFirestore } from 'angularfire2/firestore'
+import { RouterModule } from '@angular/router'
 
 import { LatestUpdatesComponent } from './latestUpdates.component'
 import { NovelsComponent } from './novels.component'
@@ -12,6 +13,7 @@ import { DatabaseService } from './database.service'
 {
     imports:
     [
+        RouterModule,
         CommonModule
     ],
     declarations:

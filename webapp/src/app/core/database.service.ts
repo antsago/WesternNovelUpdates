@@ -37,7 +37,15 @@ export class DatabaseService
         {
             return ref.orderBy(TITLE, 'asc')
         })
-        .valueChanges()
+        .snapshotChanges().map(novels =>
+        {
+            return novels.map(novel =>
+            {
+                const id = novel.payload.doc.id
+                const data = novel.payload.doc.data()
+                return { id, ...data}
+            })
+        })
     }
 
     getNovel(novelId: string): Observable<{}>
