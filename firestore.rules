@@ -10,7 +10,7 @@ service cloud.firestore
         match /chapters/{chapter}
         {
             allow read;
-            allow write: if request.auth.uid == "A9q1ibbF6QQXyQOsxN6CHlkPmnr1";
+            allow write: if false;
         } 
     }
 }
