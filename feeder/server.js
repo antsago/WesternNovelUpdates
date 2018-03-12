@@ -2,18 +2,21 @@ const express = require('express')
 const axios = require('axios')
 const app = express()
 const admin = require('firebase-admin')
-const serviceAccount = require('./serviceAccount.json')
 
-const token = process.env.token || serviceAccount.security_token
-const databaseURL = process.env.FirebaseDatabaseURL || serviceAccount.database_url
-const certificate = serviceAccount || 
+const InHeroku = process.env.InHeroku
+
+const serviceAccount = InHeroku ? undefined : require('./serviceAccount.json')
+    
+const token = InHeroku ? process.env.token : serviceAccount.security_token
+const databaseURL = InHeroku ? process.env.FirebaseDatabaseURL : serviceAccount.database_url
+const certificate = InHeroku ? 
 {
     projectId: process.env.ProjectId,
     clientEmail: process.env.ClientEmail,
     privateKey: JSON.parse(process.env.FirebasePrivateKey)
-}
+} : serviceAccount
+const port = InHeroku ? process.env.PORT : 3000
 
-const port = process.env.PORT || 3000
 const UpdateChaptersURL = "https://us-central1-westernnovelupdates.cloudfunctions.net/updateChapters"
 const TimeoutMs = 300000 // 5 minutes
 const BatchSize = 10
