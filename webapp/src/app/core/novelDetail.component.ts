@@ -14,12 +14,9 @@ export class NovelDetailComponent implements OnInit
 
     ngOnInit()
     {
-        this.activatedRoute.params.subscribe((params: Params) =>
+        this.activatedRoute.params.subscribe(async (params: Params) =>
         {
-            this.db.getNovel(params['id']).subscribe(novel =>
-            {
-                this.novel = novel
-            })
+            this.novel = await this.db.getNovel(params['id'])
         })
     }
 }

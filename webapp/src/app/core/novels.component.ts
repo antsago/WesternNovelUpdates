@@ -11,11 +11,8 @@ export class NovelsComponent implements OnInit
 
     constructor(private db: DatabaseService) {}
 
-    ngOnInit()
+    async ngOnInit()
     {
-        this.db.getNovels().subscribe(novels =>
-        {
-            this.novels = novels
-        })
+        this.novels = await this.db.getNovels()
     }
 }

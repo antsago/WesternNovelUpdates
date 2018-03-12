@@ -12,21 +12,15 @@ export class LatestUpdatesComponent implements OnInit
 
     constructor(private db: DatabaseService) {}
 
-    ngOnInit()
+    async ngOnInit()
     {
-        this.db.getUpdates(this.NumberOfUpdates).subscribe(updates =>
-        {
-            this.updates = updates
-        })
+        this.updates = await this.db.getUpdates(this.NumberOfUpdates)
     }
 
-    getMoreUpdates()
+    async getMoreUpdates()
     {
         const lastDate = this.updates[this.updates.length - 1]['publicationDate']
-
-        this.db.getUpdatesAfter(lastDate, this.NumberOfUpdates).subscribe(newUpdates =>
-        {
-            this.updates = [...this.updates, ...newUpdates]
-        })
+        const newUpdates = await this.db.getUpdatesAfter(lastDate, this.NumberOfUpdates)
+        this.updates = [...this.updates, ...newUpdates]
     }
 }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core'
 import { AngularFirestore } from 'angularfire2/firestore'
-import { Observable } from 'rxjs/Observable'
+import * as fb from 'firebase'
 
 const CHAPTERS = 'chapters'
 const NOVELS = 'novels'
@@ -11,45 +11,47 @@ const TITLE = 'title'
 @Injectable()
 export class DatabaseService
 {
-    constructor(private db: AngularFirestore) {}
+    private readonly fs: fb.firestore.Firestore
 
-    getUpdates(noOfUpdates: number): Observable<{}[]>
+    // Injection of AngularFirestore is needed or else the app won't be initialized
+    constructor(private db: AngularFirestore)
     {
-        return this.db.collection(CHAPTERS, ref =>
-        {
-            return ref.orderBy(PUBLICATION_DATE, 'desc').limit(noOfUpdates)
-        })
-        .valueChanges()
+        this.fs = fb.firestore()
     }
 
-    getUpdatesAfter(date: Date, noOfUpdates: number): Observable<{}[]>
+    async getUpdates(noOfUpdates: number): Promise<{}[]>
     {
-        return this.db.collection(CHAPTERS, ref =>
-        {
-            return ref.orderBy(PUBLICATION_DATE, 'desc').startAfter(date).limit(noOfUpdates)
-        })
-        .valueChanges()
+        const response = await this.fs.collection(CHAPTERS)
+            .orderBy(PUBLICATION_DATE, 'desc')
+            .limit(noOfUpdates)
+            .get()
+        return response.docs.map(doc => doc.data())
     }
 
-    getNovels(): Observable<{}[]>
+    async getUpdatesAfter(date: Date, noOfUpdates: number): Promise<{}[]>
     {
-        return this.db.collection(NOVELS, ref =>
+        const response = await this.fs.collection(CHAPTERS)
+            .orderBy(PUBLICATION_DATE, 'desc')
+            .startAfter(date)
+            .limit(noOfUpdates)
+            .get()
+
+        return response.docs.map(doc => doc.data())
+    }
+
+    async getNovels(): Promise<{}[]>
+    {
+        const response = await this.fs.collection(NOVELS)
+            .orderBy(TITLE, 'asc')
+            .get()
+        return response.docs.map(novel =>
         {
-            return ref.orderBy(TITLE, 'asc')
-        })
-        .snapshotChanges().map(novels =>
-        {
-            return novels.map(novel =>
-            {
-                const id = novel.payload.doc.id
-                const data = novel.payload.doc.data()
-                return { id, ...data}
-            })
+            return { id: novel.id, ...novel.data() }
         })
     }
 
-    getNovel(novelId: string): Observable<{}>
+    async getNovel(novelId: string): Promise<{}>
     {
-        return this.db.collection(NOVELS).doc(novelId).valueChanges()
+        return (await this.fs.collection(NOVELS).doc(novelId).get()).data()
     }
 }
