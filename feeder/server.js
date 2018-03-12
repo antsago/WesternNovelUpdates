@@ -1,39 +1,54 @@
 const express = require('express')
-const axios = require('axios');
+const axios = require('axios')
 const app = express()
 const admin = require('firebase-admin')
+const serviceAccount = require('./serviceAccount.json')
+
+const token = process.env.token || serviceAccount.security_token
+const databaseURL = process.env.FirebaseDatabaseURL || serviceAccount.database_url
+const certificate = serviceAccount || 
+{
+    projectId: process.env.ProjectId,
+    clientEmail: process.env.ClientEmail,
+    privateKey: JSON.parse(process.env.FirebasePrivateKey)
+}
 
 const port = process.env.PORT || 3000
 const UpdateChaptersURL = "https://us-central1-westernnovelupdates.cloudfunctions.net/updateChapters"
 const TimeoutMs = 300000 // 5 minutes
+const BatchSize = 10
+const MsBetweenBatchs = 100000
+const InitialBatchCount = 0
 
 admin.initializeApp(
 {
-    credential: admin.credential.cert(
-    {
-        projectId: process.env.ProjectId,
-        clientEmail: process.env.ClientEmail,
-        privateKey: JSON.parse(process.env.FirebasePrivateKey)
-    }),
-    databaseURL: process.env.FirebaseDatabaseURL
+    credential: admin.credential.cert(certificate),
+    databaseURL: databaseURL
 })
 
 app.get('/collectFeeds', async (req, res) =>
 {
     try
     {
-        if(req.get("token") != process.env.token)
+        if(req.get("token") != token )
         {
             res.status(401).end()
             return
-        } 
+        }
 
-        let listOfCalls = [] 
         let snapshot = await admin.firestore().collection("novels").get()
+
+        let batchCounter = InitialBatchCount
         for (let novel of snapshot.docs)
         {
+            if (batchCounter >= BatchSize)
+            {
+                await waitBetweenBatches()
+                batchCounter = InitialBatchCount
+            }
             let data = novel.data()
             await sendChapterFeed(data.rssFeed, novel.id, data.hostingSite)
+            batchCounter++
         }
         
         res.status(200).send("Chapters feed saved")
@@ -60,6 +75,14 @@ async function sendChapterFeed(rssFeed, novelId, site)
         "Content-Type": "text/plain", 
         "Novel-ID": novelId, 
         "Site": site, 
-        "Token": process.env.token
+        "Token": token
     }})
 }
+
+function waitBetweenBatches()
+{
+    return new Promise(resolve =>
+    { 
+        setTimeout(resolve, MsBetweenBatchs)
+    })
+ }
