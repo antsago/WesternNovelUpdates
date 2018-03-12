@@ -6,6 +6,7 @@ const CHAPTERS = 'chapters'
 const NOVELS = 'novels'
 const PUBLICATION_DATE = 'publicationDate'
 const TITLE = 'title'
+const NOVEL_ID = 'novel'
 
 
 @Injectable()
@@ -52,6 +53,14 @@ export class DatabaseService
 
     async getNovel(novelId: string): Promise<{}>
     {
-        return (await this.fs.collection(NOVELS).doc(novelId).get()).data()
+        const novel = (await this.fs.collection(NOVELS).doc(novelId).get()).data()
+        novel.chapters = (await this.fs.collection(CHAPTERS)
+            .where(NOVEL_ID, '==', novelId)
+            .get())
+            .docs.map(snap =>
+            {
+                return snap.data()
+            })
+        return novel
     }
 }
