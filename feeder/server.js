@@ -18,7 +18,6 @@ const certificate = InHeroku ?
 const port = InHeroku ? process.env.PORT : 3000
 
 const UpdateChaptersURL = "https://us-central1-westernnovelupdates.cloudfunctions.net/updateChapters"
-const TimeoutMs = 300000 // 5 minutes
 const BatchSize = 10
 const MsBetweenBatchs = 100000
 const InitialBatchCount = 0
@@ -41,20 +40,23 @@ app.get('/collectFeeds', async (req, res) =>
 
         let snapshot = await admin.firestore().collection("novels").get()
 
+        res.status(200).write("Novel list retrieved\n")
+
         let batchCounter = InitialBatchCount
         for (let novel of snapshot.docs)
         {
             if (batchCounter >= BatchSize)
             {
-                await waitBetweenBatches()
+                //await waitBetweenBatches()
                 batchCounter = InitialBatchCount
             }
             let data = novel.data()
-            await sendChapterFeed(data.rssFeed, novel.id, data.hostingSite)
+            //await sendChapterFeed(data.rssFeed, novel.id, data.hostingSite)
+            res.write(`Updated novel ${novel.id}\n`)    
             batchCounter++
         }
         
-        res.status(200).send("Chapters feed saved")
+        res.end("Chapters feed saved\n")
     }
     catch(err)
     {
@@ -67,8 +69,6 @@ const server = app.listen(port, () =>
 {
     console.log(`Feeder running at ${port}`)
 })
-
-server.timeout = TimeoutMs
 
 async function sendChapterFeed(rssFeed, novelId, site)
 {
