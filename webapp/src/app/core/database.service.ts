@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core'
-import { AngularFirestore } from 'angularfire2/firestore'
 import * as fb from 'firebase'
 
 const CHAPTERS = 'chapters'
@@ -14,8 +13,7 @@ export class DatabaseService
 {
     private readonly fs: fb.firestore.Firestore
 
-    // Injection of AngularFirestore is needed or else the app won't be initialized
-    constructor(private db: AngularFirestore)
+    constructor()
     {
         this.fs = fb.firestore()
     }

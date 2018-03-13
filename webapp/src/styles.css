@@ -10,7 +10,16 @@
 }
 .dark-wnucolor{
     color: #042449;
+    border-color: #042449;
 }
 .light-wnucolor{
-    color: #057c95;    
+    color: #057c95;
+    border-color: #057c95;
+}
+.ng-valid[required], .ng-valid.required  {
+border-left: 5px solid #42A948; /* green */
+}
+  
+.ng-invalid:not(form).ng-dirty  {
+border-left: 5px solid #a94442; /* red */
 }

@@ -1,12 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser'
 import { NgModule } from '@angular/core'
+import { FormsModule } from '@angular/forms'
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
-import { AngularFireModule } from 'angularfire2'
+import * as firebase from 'firebase'
 
 import { CoreModule } from './core/core.module'
 
 import { AppRoutingModule } from './appRouting.module'
 import { AppRootComponent } from './appRoot.component'
+import { LoginOrRegisterComponent } from './loginOrRegister.component'
 import { MissingPageComponent } from './missingPage.component'
 import { environment } from './../environments/environment'
 
@@ -15,17 +17,25 @@ import { environment } from './../environments/environment'
 {
     imports:
     [
-        AppRoutingModule,
         BrowserModule,
-        AngularFireModule.initializeApp(environment.firebase),
+        FormsModule,
         NgbModule.forRoot(),
+        AppRoutingModule,
         CoreModule
     ],
     declarations:
     [
         AppRootComponent,
         MissingPageComponent,
+        LoginOrRegisterComponent
     ],
+    entryComponents: [ LoginOrRegisterComponent ],
     bootstrap: [ AppRootComponent ]
 })
-export class AppModule { }
+export class AppModule
+{
+    constructor()
+    {
+        firebase.initializeApp(environment.firebase)
+    }
+}
