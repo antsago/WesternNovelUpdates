@@ -39,6 +39,19 @@ export class LoginOrRegisterComponent
         }
     }
 
+    async sendPasswordResetEmail()
+    {
+        try
+        {
+            await fb.auth().sendPasswordResetEmail(this.loginForm.email)
+            this.showErrorMessage('We sent you the email. Reset your password and try to login again.', this.loginForm)
+        }
+        catch (err)
+        {
+            this.showErrorMessage(err.message, this.loginForm)
+        }
+    }
+
     async register()
     {
         try
