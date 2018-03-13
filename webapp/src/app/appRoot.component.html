@@ -15,11 +15,11 @@
             </li>
         </ul>
         <div ngbDropdown class="d-inline-block  ml-auto">
-            <button [hidden]="isLoggedIn" class="nav-item btn btn-outline-light" (click)="loginOrRegister()">
+            <button  *ngIf="!isLoggedIn" class="nav-item btn btn-outline-light" (click)="loginOrRegister()">
                 Login / Register
             </button>
-            <button [hidden]="!isLoggedIn" class="nav-item btn btn-outline-light" ngbDropdownToggle>
-                {{username}}
+            <button  *ngIf="isLoggedIn" class="nav-item btn btn-outline-light" ngbDropdownToggle>
+                {{user.displayName}}
             </button>
             <div ngbDropdownMenu>
                 <button (click)="logout()" class="dropdown-item">Logout</button>

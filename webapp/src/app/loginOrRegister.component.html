@@ -6,7 +6,7 @@
 </div>
 
 <div class="modal-body">
-    <ngb-alert [hidden]="!loginForm.thereIsError">{{ loginForm.errorMessage }}</ngb-alert>
+    <ngb-alert *ngIf="!loginForm.alertClosed" (close)="loginForm.alertClosed=true">{{ loginForm.errorMessage }}</ngb-alert>
     <form class="my-4">
         <fieldset>            
             <input [(ngModel)]="loginForm.email" name="email" type="email" class="form-control" placeholder="Email address" required autofocus>    
@@ -17,12 +17,13 @@
     
     <hr>
     
+    <ngb-alert *ngIf="!registerForm.alertClosed" (close)="registerForm.alertClosed=true">{{ registerForm.errorMessage }}</ngb-alert>
     <form class="my-4">
-        <fieldset disabled>            
-            <input type="text" class="form-control" placeholder="Username" required>    
-            <input type="email" class="form-control" placeholder="Email address" required>    
-            <input type="password" class="form-control" placeholder="Password" required>
-            <button class="btn btn-lg btn-dark light-wnubg btn-block" type="submit">Register</button>
+        <fieldset>
+            <input [(ngModel)]="registerForm.username" name="username" type="text" class="form-control" placeholder="Username" required autofocus>                  
+            <input [(ngModel)]="registerForm.email" name="email" type="email" class="form-control" placeholder="Email address" required autofocus>
+            <input [(ngModel)]="registerForm.password" name="password" type="password" class="form-control" placeholder="Password" required>
+            <button (click)="register()" class="btn btn-lg btn-dark light-wnubg btn-block" type="submit">Register</button>
         </fieldset>
     </form>
 </div>

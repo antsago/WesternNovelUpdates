@@ -13,7 +13,15 @@ export class LoginOrRegisterComponent
         email: '',
         password: '',
         errorMessage: '',
-        thereIsError: false
+        alertClosed: true
+    }
+    public registerForm =
+    {
+        username: '',
+        email: '',
+        password: '',
+        errorMessage: '',
+        alertClosed: true
     }
 
     constructor(public activeModal: NgbActiveModal) {}
@@ -23,17 +31,35 @@ export class LoginOrRegisterComponent
         try
         {
             await fb.auth().signInWithEmailAndPassword(this.loginForm.email, this.loginForm.password)
-            this.activeModal.close('loged in')
+            this.activeModal.close('Loged in')
         }
         catch (err)
         {
-            this.showErrorMessage(err.message)
+            this.showErrorMessage(err.message, this.loginForm)
         }
     }
 
-    showErrorMessage(message)
+    async register()
     {
-        this.loginForm.thereIsError = true
-        this.loginForm.errorMessage = message
+        try
+        {
+            await fb.auth().createUserWithEmailAndPassword(this.registerForm.email, this.registerForm.password)
+            await fb.auth().currentUser.updateProfile(
+            {
+                displayName: this.registerForm.username,
+                photoURL: null
+            })
+            this.activeModal.close('Registered')
+        }
+        catch (err)
+        {
+            this.showErrorMessage(err.message, this.registerForm)
+        }
+    }
+
+    private showErrorMessage(message, form)
+    {
+        form.alertClosed = false
+        form.errorMessage = message
     }
 }

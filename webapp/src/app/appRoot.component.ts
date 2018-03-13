@@ -13,21 +13,20 @@ export class AppRootComponent
 {
     public isNavbarCollapsed = true
     public isLoggedIn = false
-    public username
+    public user
 
     constructor(private modalService: NgbModal)
     {
         fb.auth().onAuthStateChanged( user =>
         {
+            this.user = user
             if (user != null)
             {
                 this.isLoggedIn = true
-                this.username = user.displayName
             }
             else
             {
                 this.isLoggedIn = false
-                this.username = ''
             }
         })
     }
