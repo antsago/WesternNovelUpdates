@@ -8,7 +8,7 @@ import { ActivatedRoute, Params } from '@angular/router'
 })
 export class NovelDetailComponent implements OnInit
 {
-    novel: {}
+    novel = {}
 
     constructor(private db: DatabaseService, private activatedRoute: ActivatedRoute) {}
 
