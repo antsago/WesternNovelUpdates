@@ -1,18 +1,17 @@
-<div class="my-3 p-3 bg-white rounded box-shadow">
-    <div  style="overflow:scroll;height:72vh">
-        <div *ngFor="let update of updates" class="pt-3">
-            <div class="pb-3 mb-0 lh-125 border-bottom border-gray">
-                <a href="{{update.link}}" class="light-wnucolor">
-                    <div class="d-flex justify-content-between align-items-center w-100">
-                        <strong>{{update.title}}</strong>
-                        <a href="{{update.link}}">Read</a>
-                    </div>
-                </a>    
+<div class="bg-white rounded box-shadow mt-3" style="overflow:scroll;height:80vh">
+    <div class="list-group list-group-flush">
+        <a *ngFor="let update of updates" href="{{update.link}}" 
+            class="list-group-item list-group-item-action light-wnutext d-flex justify-content-between">
+            <div class="d-flex flex-column justify-content-between w-100">
+                <strong>{{update.title}}</strong>
                 <span class="d-block text-muted">{{update.publicationDate | date: 'd MMM, h:mm a'}}</span>
             </div>
-        </div>
-        <button type="button" class="btn light-wnubg text-white btn-lg btn-block" (click)="getMoreUpdates()">
-            Get more updates
-        </button>
+
+            <a href="{{update.link}}" class="align-self-center">Read</a>
+        </a>
     </div>
+
+    <button type="button" class="btn light-wnubg text-white btn-lg btn-block" (click)="getMoreUpdates()">
+        Get more updates
+    </button>
 </div>
