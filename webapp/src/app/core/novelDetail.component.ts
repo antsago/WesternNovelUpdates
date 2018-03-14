@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core'
 import { DatabaseService } from '../database.service'
 import { ActivatedRoute, Params } from '@angular/router'
+import { UserService } from '../user.service'
 
 @Component(
 {
@@ -10,7 +11,8 @@ export class NovelDetailComponent implements OnInit
 {
     novel = {}
 
-    constructor(private db: DatabaseService, private activatedRoute: ActivatedRoute) {}
+    constructor(private db: DatabaseService, public us: UserService,
+        private activatedRoute: ActivatedRoute) {}
 
     ngOnInit()
     {

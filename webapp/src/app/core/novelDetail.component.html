@@ -17,6 +17,16 @@
                     <span class="d-block text-muted">{{chapter.publicationDate | date: 'd MMM, h:mm a'}}</span>
                 </div>
                 
+                <button class="align-self-center light-wnutext wnu-tooltip btn btn-link">
+                    <span [hidden]="us.readChapters.includes(chapter.guid)" >
+                        <i class="far fa-bookmark"></i>
+                        <span class="wnu-tooltiptext">Mark chapter as read</span>
+                    </span>
+                    <span [hidden]="!us.readChapters.includes(chapter.guid)" >
+                        <i class="fas fa-bookmark"></i>
+                        <span class="wnu-tooltiptext">Chapter read</span>
+                    </span>
+                </button>
                 <a href="{{chapter.link}}" class="align-self-center fas fa-external-link-alt" placement="top" ngbTooltip="Read"></a>
             </a>
         </div>
