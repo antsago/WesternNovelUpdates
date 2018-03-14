@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core'
 import { DatabaseService } from '../database.service'
+import { UserService } from '../user.service';
 
 @Component(
 {
@@ -8,9 +9,9 @@ import { DatabaseService } from '../database.service'
 export class LatestUpdatesComponent implements OnInit
 {
     private readonly NumberOfUpdates = 10
-    updates: {}[]
+    updates: firebase.firestore.DocumentData[]
 
-    constructor(private db: DatabaseService) {}
+    constructor(private db: DatabaseService, private us: UserService) {}
 
     async ngOnInit()
     {

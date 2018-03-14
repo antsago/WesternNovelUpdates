@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core'
+import { DatabaseService } from './database.service'
 import * as fb from 'firebase'
 
 @Injectable()
@@ -6,19 +7,22 @@ export class UserService
 {
     public user: fb.User
     public isLoggedIn = false
+    public readChapters = [] as [string]
 
-    constructor()
+    constructor(private db: DatabaseService)
     {
-        fb.auth().onAuthStateChanged( user =>
+        fb.auth().onAuthStateChanged(async user =>
         {
             this.user = user
-            if (user != null)
+            this.isLoggedIn = this.user != null
+
+            if (this.isLoggedIn)
             {
-                this.isLoggedIn = true
+                this.readChapters = (await this.db.getUser(this.user.uid)).readChapters
             }
             else
             {
-                this.isLoggedIn = false
+                this.readChapters = [] as [string]
             }
         })
     }

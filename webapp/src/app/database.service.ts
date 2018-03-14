@@ -4,6 +4,7 @@ import 'firebase/firestore' // necessary because of its side-effects
 
 const CHAPTERS = 'chapters'
 const NOVELS = 'novels'
+const USERS = 'users'
 const PUBLICATION_DATE = 'publicationDate'
 const TITLE = 'title'
 const NOVEL_ID = 'novel'
@@ -19,7 +20,7 @@ export class DatabaseService
         this.fs = fb.firestore()
     }
 
-    async getUpdates(noOfUpdates: number): Promise<{}[]>
+    async getUpdates(noOfUpdates: number): Promise<firebase.firestore.DocumentData[]>
     {
         const response = await this.fs.collection(CHAPTERS)
             .orderBy(PUBLICATION_DATE, 'desc')
@@ -28,7 +29,7 @@ export class DatabaseService
         return response.docs.map(doc => doc.data())
     }
 
-    async getUpdatesAfter(date: Date, noOfUpdates: number): Promise<{}[]>
+    async getUpdatesAfter(date: Date, noOfUpdates: number): Promise<firebase.firestore.DocumentData[]>
     {
         const response = await this.fs.collection(CHAPTERS)
             .orderBy(PUBLICATION_DATE, 'desc')
@@ -39,7 +40,7 @@ export class DatabaseService
         return response.docs.map(doc => doc.data())
     }
 
-    async getNovels(): Promise<{}[]>
+    async getNovels(): Promise<firebase.firestore.DocumentData[]>
     {
         const response = await this.fs.collection(NOVELS)
             .orderBy(TITLE, 'asc')
@@ -50,7 +51,7 @@ export class DatabaseService
         })
     }
 
-    async getNovel(novelId: string): Promise<{}>
+    async getNovel(novelId: string): Promise<firebase.firestore.DocumentData>
     {
         const novel = (await this.fs.collection(NOVELS).doc(novelId).get()).data()
         novel.chapters = (await this.fs.collection(CHAPTERS)
@@ -61,5 +62,10 @@ export class DatabaseService
                 return snap.data()
             })
         return novel
+    }
+
+    async getUser(userId: string): Promise<firebase.firestore.DocumentData>
+    {
+        return (await this.fs.collection(USERS).doc(userId).get()).data()
     }
 }

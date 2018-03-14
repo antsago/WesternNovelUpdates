@@ -6,7 +6,17 @@
                 <strong>{{update.title}}</strong>
                 <span class="d-block text-muted">{{update.publicationDate | date: 'd MMM, h:mm a'}}</span>
             </div>
-            
+
+            <button class="align-self-center light-wnutext wnu-tooltip btn btn-link">
+                <span [hidden]="us.readChapters.includes(update.guid)" >
+                    <i class="far fa-bookmark"></i>
+                    <span class="wnu-tooltiptext">Mark chapter as read</span>
+                </span>
+                <span [hidden]="!us.readChapters.includes(update.guid)" >
+                    <i class="fas fa-bookmark"></i>
+                    <span class="wnu-tooltiptext">Chapter read</span>
+                </span>
+            </button>
             <a href="{{update.link}}" class="align-self-center light-wnucolor wnu-tooltip">
                 <i class="fas fa-external-link-alt"></i>
                 <span class="wnu-tooltiptext">Read chapter</span>
