@@ -6,6 +6,7 @@ import * as firebase from 'firebase'
 
 import { CoreModule } from './core/core.module'
 
+import { DatabaseService } from './database.service'
 import { UserService } from './user.service'
 import { AppRoutingModule } from './appRouting.module'
 import { AppRootComponent } from './appRoot.component'
@@ -31,7 +32,7 @@ import { environment } from './../environments/environment'
         LoginOrRegisterComponent
     ],
     entryComponents: [ LoginOrRegisterComponent ],
-    providers: [ UserService ],
+    providers: [ DatabaseService, UserService ],
     bootstrap: [ AppRootComponent ]
 })
 export class AppModule

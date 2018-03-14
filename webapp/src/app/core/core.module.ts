@@ -5,7 +5,6 @@ import { RouterModule } from '@angular/router'
 import { LatestUpdatesComponent } from './latestUpdates.component'
 import { NovelsComponent } from './novels.component'
 import { NovelDetailComponent } from './novelDetail.component'
-import { DatabaseService } from './database.service'
 
 
 @NgModule(
@@ -20,7 +19,6 @@ import { DatabaseService } from './database.service'
         LatestUpdatesComponent,
         NovelsComponent,
         NovelDetailComponent
-    ],
-    providers: [ DatabaseService ]
+    ]
 })
 export class CoreModule {}
