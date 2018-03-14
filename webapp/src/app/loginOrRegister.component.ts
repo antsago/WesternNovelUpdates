@@ -1,6 +1,6 @@
 import { Component } from '@angular/core'
 import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap'
-import * as fb from 'firebase'
+import { UserService } from './user.service'
 
 @Component(
 {
@@ -24,13 +24,13 @@ export class LoginOrRegisterComponent
         alertClosed: true
     }
 
-    constructor(public activeModal: NgbActiveModal) {}
+    constructor(public activeModal: NgbActiveModal, private us: UserService) {}
 
     async login()
     {
         try
         {
-            await fb.auth().signInWithEmailAndPassword(this.loginForm.email, this.loginForm.password)
+            await this.us.login(this.loginForm.email, this.loginForm.password)
             this.activeModal.close('Loged in')
         }
         catch (err)
@@ -43,7 +43,7 @@ export class LoginOrRegisterComponent
     {
         try
         {
-            await fb.auth().sendPasswordResetEmail(this.loginForm.email)
+            await this.us.sendPasswordResetEmail(this.loginForm.email)
             this.showErrorMessage('We sent you the email. Reset your password and try to login again.', this.loginForm)
         }
         catch (err)
@@ -56,12 +56,7 @@ export class LoginOrRegisterComponent
     {
         try
         {
-            await fb.auth().createUserWithEmailAndPassword(this.registerForm.email, this.registerForm.password)
-            await fb.auth().currentUser.updateProfile(
-            {
-                displayName: this.registerForm.username,
-                photoURL: null
-            })
+            await this.us.register(this.registerForm.username, this.registerForm.email, this.registerForm.password)
             this.activeModal.close('Registered')
         }
         catch (err)

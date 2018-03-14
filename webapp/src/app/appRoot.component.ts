@@ -1,8 +1,8 @@
 import { Component } from '@angular/core'
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap'
-import * as fb from 'firebase'
 
 import { LoginOrRegisterComponent } from './loginOrRegister.component'
+import { UserService } from './user.service';
 
 @Component(
 {
@@ -12,33 +12,17 @@ import { LoginOrRegisterComponent } from './loginOrRegister.component'
 export class AppRootComponent
 {
     public isNavbarCollapsed = true
-    public isLoggedIn = false
-    public user
 
-    constructor(private modalService: NgbModal)
-    {
-        fb.auth().onAuthStateChanged( user =>
-        {
-            this.user = user
-            if (user != null)
-            {
-                this.isLoggedIn = true
-            }
-            else
-            {
-                this.isLoggedIn = false
-            }
-        })
-    }
+    constructor(private modalService: NgbModal, public us: UserService) {}
 
     loginOrRegister()
     {
         const modalRef = this.modalService.open(LoginOrRegisterComponent);
     }
 
-    logout()
+    async logout()
     {
-        fb.auth().signOut()
+        await this.us.logout()
     }
 }
 
