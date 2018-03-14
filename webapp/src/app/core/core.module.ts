@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common'
 import { NgModule } from '@angular/core'
-import { AngularFirestore } from 'angularfire2/firestore'
 import { RouterModule } from '@angular/router'
 
 import { LatestUpdatesComponent } from './latestUpdates.component'
@@ -22,6 +21,6 @@ import { DatabaseService } from './database.service'
         NovelsComponent,
         NovelDetailComponent
     ],
-    providers: [ AngularFirestore, DatabaseService ]
+    providers: [ DatabaseService ]
 })
 export class CoreModule {}

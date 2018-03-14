@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core'
 import * as fb from 'firebase'
+import 'firebase/firestore' // necessary because of its side-effects
 
 const CHAPTERS = 'chapters'
 const NOVELS = 'novels'
