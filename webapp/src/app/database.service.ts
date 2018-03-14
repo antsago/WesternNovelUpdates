@@ -55,6 +55,7 @@ export class DatabaseService
     {
         const novel = (await this.fs.collection(NOVELS).doc(novelId).get()).data()
         novel.chapters = (await this.fs.collection(CHAPTERS)
+            .orderBy(PUBLICATION_DATE, 'desc')
             .where(NOVEL_ID, '==', novelId)
             .get())
             .docs.map(snap =>
