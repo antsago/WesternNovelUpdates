@@ -51,4 +51,16 @@ export class UserService
             photoURL: null
         })
     }
+
+    public async markChapterAsRead(chapterGUID: string)
+    {
+        this.readChapters.push(chapterGUID)
+        await this.db.setUser(this.user.uid, {readChapters: this.readChapters})
+    }
+
+    public async markChapterAsUnread(chapterGUID: string): Promise<void>
+    {
+        this.readChapters.splice(this.readChapters.indexOf(chapterGUID, 0), 1)
+        await this.db.setUser(this.user.uid, {readChapters: this.readChapters})
+    }
 }

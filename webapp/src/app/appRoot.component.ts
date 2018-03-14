@@ -17,7 +17,7 @@ export class AppRootComponent
 
     loginOrRegister()
     {
-        const modalRef = this.modalService.open(LoginOrRegisterComponent);
+        this.modalService.open(LoginOrRegisterComponent)
     }
 
     async logout()

@@ -68,4 +68,9 @@ export class DatabaseService
     {
         return (await this.fs.collection(USERS).doc(userId).get()).data()
     }
+
+    async setUser(userId: string, user: {}): Promise<void>
+    {
+        await this.fs.collection(USERS).doc(userId).set(user, {merge: true})
+    }
 }
