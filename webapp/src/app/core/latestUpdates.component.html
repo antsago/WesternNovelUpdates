@@ -6,8 +6,11 @@
                 <strong>{{update.title}}</strong>
                 <span class="d-block text-muted">{{update.publicationDate | date: 'd MMM, h:mm a'}}</span>
             </div>
-
-            <a href="{{update.link}}" class="align-self-center fas fa-external-link-alt" placement="top" ngbTooltip="Read"></a>
+            
+            <a href="{{update.link}}" class="align-self-center light-wnucolor wnu-tooltip">
+                <i class="fas fa-external-link-alt"></i>
+                <span class="wnu-tooltiptext">Read chapter</span>
+            </a>
         </a>
     </div>
 
