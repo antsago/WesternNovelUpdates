@@ -33,7 +33,7 @@ border-left: 5px solid #a94442; /* red */
 
 .wnu-tooltip .wnu-tooltiptext {
     visibility: hidden;
-    width: 120px;
+    width: 180px;
     background-color: #555;
     color: #fff;
     text-align: center;
@@ -43,7 +43,7 @@ border-left: 5px solid #a94442; /* red */
     z-index: 1;
     bottom: 125%;
     left: 50%;
-    margin-left: -60px;
+    margin-left: -90px;
     opacity: 0;
     transition: opacity 0.3s;
 }
