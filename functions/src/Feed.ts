@@ -59,7 +59,7 @@ export class Feed
             link: chapterXML.link[0],
             publicationDate: chapterXML.pubDate[0],
             title: chapterXML.title[0],
-            guid: this.site !== "RoyalRoad"? chapterXML.guid[0] : chapterXML.guid[0]["_"]
+            guid: this.site === "GravityTales"? chapterXML.guid[0] : chapterXML.guid[0]["_"]
         })
     }
 }
