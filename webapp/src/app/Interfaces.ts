@@ -2,6 +2,7 @@ export interface Novel
 {
     chapters?: Chapter[]
     author: string
+    homepage: string
     hostingSite: string
     rssFeed: string
     synopsis: string
