@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core'
 import { DatabaseService } from '../database.service'
+import { Novel } from '../Interfaces'
 
 @Component(
 {
@@ -7,7 +8,7 @@ import { DatabaseService } from '../database.service'
 })
 export class NovelsComponent implements OnInit
 {
-    novels: {}[]
+    novels: Novel[]
 
     constructor(private db: DatabaseService) {}
 

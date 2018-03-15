@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core'
 import * as fb from 'firebase'
 import 'firebase/firestore' // necessary because of its side-effects
+import { Novel, Chapter, User } from './Interfaces'
 
 const CHAPTERS = 'chapters'
 const NOVELS = 'novels'
@@ -20,16 +21,16 @@ export class DatabaseService
         this.fs = fb.firestore()
     }
 
-    async getUpdates(noOfUpdates: number): Promise<firebase.firestore.DocumentData[]>
+    async getUpdates(noOfUpdates: number): Promise<Chapter[]>
     {
         const response = await this.fs.collection(CHAPTERS)
             .orderBy(PUBLICATION_DATE, 'desc')
             .limit(noOfUpdates)
             .get()
-        return response.docs.map(doc => doc.data())
+        return response.docs.map(doc => doc.data() as Chapter)
     }
 
-    async getUpdatesAfter(date: Date, noOfUpdates: number): Promise<firebase.firestore.DocumentData[]>
+    async getUpdatesAfter(date: Date, noOfUpdates: number): Promise<Chapter[]>
     {
         const response = await this.fs.collection(CHAPTERS)
             .orderBy(PUBLICATION_DATE, 'desc')
@@ -37,40 +38,40 @@ export class DatabaseService
             .limit(noOfUpdates)
             .get()
 
-        return response.docs.map(doc => doc.data())
+        return response.docs.map(doc => doc.data() as Chapter)
     }
 
-    async getNovels(): Promise<firebase.firestore.DocumentData[]>
+    async getNovels(): Promise<Novel[]>
     {
         const response = await this.fs.collection(NOVELS)
             .orderBy(TITLE, 'asc')
             .get()
         return response.docs.map(novel =>
         {
-            return { id: novel.id, ...novel.data() }
+            return { id: novel.id, ...novel.data() as Novel}
         })
     }
 
-    async getNovel(novelId: string): Promise<firebase.firestore.DocumentData>
+    async getNovel(novelId: string): Promise<Novel>
     {
-        const novel = (await this.fs.collection(NOVELS).doc(novelId).get()).data()
+        const novel = (await this.fs.collection(NOVELS).doc(novelId).get()).data() as Novel
         novel.chapters = (await this.fs.collection(CHAPTERS)
             .orderBy(PUBLICATION_DATE, 'desc')
             .where(NOVEL_ID, '==', novelId)
             .get())
             .docs.map(snap =>
             {
-                return snap.data()
+                return snap.data() as Chapter
             })
         return novel
     }
 
-    async getUser(userId: string): Promise<firebase.firestore.DocumentData>
+    async getUser(userId: string): Promise<User>
     {
-        return (await this.fs.collection(USERS).doc(userId).get()).data()
+        return (await this.fs.collection(USERS).doc(userId).get()).data() as User
     }
 
-    async setUser(userId: string, user: {}): Promise<void>
+    async setUser(userId: string, user: User): Promise<void>
     {
         await this.fs.collection(USERS).doc(userId).set(user, {merge: true})
     }

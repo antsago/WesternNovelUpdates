@@ -1,0 +1,23 @@
+export interface Novel
+{
+    chapters?: Chapter[]
+    author: string
+    hostingSite: string
+    rssFeed: string
+    synopsis: string
+    title: string
+}
+
+export interface Chapter
+{
+    guid: string
+    link: string
+    novel: string
+    publicationDate: Date
+    title: string
+}
+
+export interface User
+{
+    readChapters: string[]
+}

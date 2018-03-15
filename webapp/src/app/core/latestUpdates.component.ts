@@ -3,6 +3,7 @@ import { DatabaseService } from '../database.service'
 import { UserService } from '../user.service'
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap'
 import { LoginOrRegisterComponent } from '../loginOrRegister.component'
+import { Chapter } from '../Interfaces'
 
 @Component(
 {
@@ -11,7 +12,7 @@ import { LoginOrRegisterComponent } from '../loginOrRegister.component'
 export class LatestUpdatesComponent implements OnInit
 {
     private readonly NumberOfUpdates = 10
-    updates: firebase.firestore.DocumentData[]
+    updates: Chapter[]
 
     constructor(private db: DatabaseService, private us: UserService,
         private modalService: NgbModal) {}
@@ -28,18 +29,18 @@ export class LatestUpdatesComponent implements OnInit
         this.updates = [...this.updates, ...newUpdates]
     }
 
-    async markAsRead(chapterGuid)
+    async markAsRead(chapterGuid: string)
     {
         if (!this.us.isLoggedIn)
         {
             this.modalService.open(LoginOrRegisterComponent)
             return
         }
-        await this.us.markChapterAsRead(chapterGuid)
+        await this.us.markChaptersAsRead([chapterGuid])
     }
 
-    async markAsUnread(chapterGuid)
+    async markAsUnread(chapterGuid: string)
     {
-        await this.us.markChapterAsUnread(chapterGuid)
+        await this.us.markChaptersAsUnread([chapterGuid])
     }
 }

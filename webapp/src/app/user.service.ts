@@ -7,7 +7,7 @@ export class UserService
 {
     public user: fb.User
     public isLoggedIn = false
-    public readChapters = [] as [string]
+    public readChapters = [] as string[]
 
     constructor(private db: DatabaseService)
     {
@@ -22,7 +22,7 @@ export class UserService
             }
             else
             {
-                this.readChapters = [] as [string]
+                this.readChapters = [] as string[]
             }
         })
     }
@@ -52,15 +52,15 @@ export class UserService
         })
     }
 
-    public async markChapterAsRead(chapterGUID: string)
+    public async markChaptersAsRead(chaptersGUID: string[])
     {
-        this.readChapters.push(chapterGUID)
+        this.readChapters = this.readChapters.concat(chaptersGUID)
         await this.db.setUser(this.user.uid, {readChapters: this.readChapters})
     }
 
-    public async markChapterAsUnread(chapterGUID: string): Promise<void>
+    public async markChaptersAsUnread(chaptersGUID: string[]): Promise<void>
     {
-        this.readChapters.splice(this.readChapters.indexOf(chapterGUID, 0), 1)
-        await this.db.setUser(this.user.uid, {readChapters: this.readChapters})
+        this.readChapters = this.readChapters.filter(chapter => !chaptersGUID.includes(chapter))
+        await this.db.setUser(this.user.uid, { readChapters: this.readChapters })
     }
 }

@@ -4,6 +4,7 @@ import { ActivatedRoute, Params } from '@angular/router'
 import { UserService } from '../user.service'
 import { LoginOrRegisterComponent } from '../loginOrRegister.component'
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap'
+import { Novel } from '../Interfaces'
 
 @Component(
 {
@@ -11,7 +12,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap'
 })
 export class NovelDetailComponent implements OnInit
 {
-    novel = {}
+    novel: Novel
 
     constructor(private db: DatabaseService, public us: UserService,
         private activatedRoute: ActivatedRoute, private modalService: NgbModal) {}
@@ -31,11 +32,31 @@ export class NovelDetailComponent implements OnInit
             this.modalService.open(LoginOrRegisterComponent)
             return
         }
-        await this.us.markChapterAsRead(chapterGuid)
+        await this.us.markChaptersAsRead([chapterGuid])
     }
 
     async markAsUnread(chapterGuid)
     {
-        await this.us.markChapterAsUnread(chapterGuid)
+        await this.us.markChaptersAsUnread([chapterGuid])
+    }
+
+    async markAllChaptersRead()
+    {
+        if (!this.us.isLoggedIn)
+        {
+            this.modalService.open(LoginOrRegisterComponent)
+            return
+        }
+        await this.us.markChaptersAsRead(this.novel.chapters.map(ch => ch.guid))
+    }
+
+    async markAllChaptersUnRead()
+    {
+        await this.us.markChaptersAsUnread(this.novel.chapters.map(ch => ch.guid))
+    }
+
+    areAllChaptersRead()
+    {
+        return this.novel.chapters.every(ch => this.us.readChapters.includes(ch.guid))
     }
 }
