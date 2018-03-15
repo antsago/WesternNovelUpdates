@@ -32,7 +32,7 @@ export class Feed
 
     public async extractChapters()
     {
-        let parsedSite = await this.xmlParser(this.rssXML)
+        const parsedSite = await this.xmlParser(this.rssXML)
         this.chapters = parsedSite.rss.channel[0].item.map( chapter => 
         {
             return this.createChapter(chapter)
