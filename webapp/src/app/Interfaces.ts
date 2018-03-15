@@ -7,6 +7,7 @@ export interface Novel
     rssFeed: string
     synopsis: string
     title: string
+    id: string
 }
 
 export interface Chapter
