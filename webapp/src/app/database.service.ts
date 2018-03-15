@@ -46,10 +46,7 @@ export class DatabaseService
         const response = await this.fs.collection(NOVELS)
             .orderBy(TITLE, 'asc')
             .get()
-        return response.docs.map(novel =>
-        {
-            return { id: novel.id, ...novel.data() as Novel}
-        })
+        return response.docs.map(novel => novel.data() as Novel)
     }
 
     async getNovel(novelId: string): Promise<Novel>
