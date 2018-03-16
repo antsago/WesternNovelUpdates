@@ -1,9 +1,10 @@
 import { https } from 'firebase-functions'
 import * as fr from 'firebase'
+import * as admin from 'firebase-admin'
 
-import { Feed } from './Feed'
 import { Database } from './Database'
 import { Token, AdminCredentials, DatabaseURL } from './keys'
+import { FeedFactory } from './FeedFactory'
 
 export const updateChapters = https.onRequest( async (request, response) =>
 {
@@ -16,12 +17,26 @@ export const updateChapters = https.onRequest( async (request, response) =>
             return
         }
 
-        const database = new Database(AdminCredentials, DatabaseURL)
+        if (!admin.apps.length) 
+        {
+            admin.initializeApp(
+            {
+                credential: admin.credential.cert(AdminCredentials),
+                databaseURL: DatabaseURL
+            })
+        }
+        const database = new Database(admin.firestore())
 
-        await (await new Feed(request.body, request.get("Site"), request.get("Novel-ID"), database)
-                            .cleanDescriptions()
-                            .extractChapters())
-                            .saveChapters()
+
+        const chapters = (await FeedFactory.createFeed(request.body, request.get("Site"), request.get("Novel-ID"))
+                                            .cleanFeed()
+                                            .parseFeed())
+                                            .extractChapters()
+                                            .extractChaptersFields()
+                                            .cleanChapterFields()
+                                            .chapters
+
+        await database.saveChapters(chapters)
         
         console.info("Successfully added new chapters")
         response.status(200).end()
