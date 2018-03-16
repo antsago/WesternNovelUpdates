@@ -6,8 +6,8 @@ import * as firebase from 'firebase'
 
 import { CoreModule } from './core/core.module'
 
-import { DatabaseService } from './database.service'
-import { UserService } from './user.service'
+import { DatabaseService } from './utilities/database.service'
+import { UserService } from './utilities/user.service'
 import { AppRoutingModule } from './appRouting.module'
 import { AppRootComponent } from './appRoot.component'
 import { LoginOrRegisterComponent } from './loginOrRegister.component'

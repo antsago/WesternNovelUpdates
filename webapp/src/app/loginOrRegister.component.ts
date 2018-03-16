@@ -1,6 +1,6 @@
 import { Component } from '@angular/core'
 import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap'
-import { UserService } from './user.service'
+import { UserService } from './utilities/user.service'
 
 @Component(
 {

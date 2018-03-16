@@ -2,7 +2,7 @@ import { Component } from '@angular/core'
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap'
 
 import { LoginOrRegisterComponent } from './loginOrRegister.component'
-import { UserService } from './user.service';
+import { UserService } from './utilities/user.service';
 
 @Component(
 {

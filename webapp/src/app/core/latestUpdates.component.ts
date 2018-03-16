@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core'
-import { DatabaseService } from '../database.service'
-import { UserService } from '../user.service'
+import { DatabaseService } from '../utilities/database.service'
+import { UserService } from '../utilities/user.service'
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap'
 import { LoginOrRegisterComponent } from '../loginOrRegister.component'
-import { Chapter } from '../Interfaces'
+import { Chapter } from '../utilities/Interfaces'
 
 @Component(
 {

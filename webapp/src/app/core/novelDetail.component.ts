@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core'
-import { DatabaseService } from '../database.service'
+import { DatabaseService } from '../utilities/database.service'
 import { ActivatedRoute, Params } from '@angular/router'
-import { UserService } from '../user.service'
+import { UserService } from '../utilities/user.service'
 import { LoginOrRegisterComponent } from '../loginOrRegister.component'
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap'
-import { Novel } from '../Interfaces'
+import { Novel } from '../utilities/Interfaces'
 
 @Component(
 {

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core'
-import { DatabaseService } from '../database.service'
-import { Novel } from '../Interfaces'
+import { DatabaseService } from '../utilities/database.service'
+import { Novel } from '../utilities/Interfaces'
 
 @Component(
 {
