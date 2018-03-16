@@ -14,6 +14,6 @@ export class NovelsComponent implements OnInit
 
     async ngOnInit()
     {
-        this.novels = await this.db.getNovels()
+        this.novels = await this.db.getAllNovels()
     }
 }

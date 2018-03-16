@@ -41,7 +41,7 @@ export class DatabaseService
         return response.docs.map(doc => doc.data() as Chapter)
     }
 
-    async getNovels(): Promise<Novel[]>
+    async getAllNovels(): Promise<Novel[]>
     {
         const response = await this.fs.collection(NOVELS)
             .orderBy(TITLE, 'asc')
