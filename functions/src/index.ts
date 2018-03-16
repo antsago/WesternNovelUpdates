@@ -1,5 +1,4 @@
 import { https } from 'firebase-functions'
-import * as fr from 'firebase'
 import * as admin from 'firebase-admin'
 
 import { Database } from './Database'
