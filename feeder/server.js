@@ -31,27 +31,25 @@ app.get('/collectFeeds', async (req, res) =>
     {
         if(req.get("token") != token )
         {
-            res.status(401).end()
+            res.status(401).send()
             return
         }
 
         let snapshot = await admin.firestore().collection("novels").get()
 
-        res.status(200).write("Novel list retrieved\n")
+        res.status(200).send("Novel list retrieved\n")
 
         for (let novel of snapshot.docs)
         {
             let data = novel.data()
             await sendChapterFeed(data.rssFeed, novel.id, data.hostingSite)
-            res.write(`Updated novel ${novel.id}\n`)    
         }
         
-        res.end("Chapters feed saved\n")
     }
     catch(err)
     {
         console.error(err)
-        res.status(500).end()
+        res.status(500).send()
     }
 })
 
