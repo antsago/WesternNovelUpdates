@@ -1,5 +1,6 @@
 import { Feed } from "./Feed"
-import { GravityTalesFeed } from "./GravityTalesFeed"
+import { NoPermalinkFeed } from "./GravityTalesFeed"
+import { RoyalRoadFeed } from "./RoyalRoadFeed"
 
 export class FeedFactory
 {
@@ -7,9 +8,14 @@ export class FeedFactory
     {
         switch(hostingSite)
         {
+            case "Personal-NoPermalink":
             case "GravityTales":
             {
-                return new GravityTalesFeed(feed, novelId)
+                return new NoPermalinkFeed(feed, novelId)
+            }
+            case "RoyalRoad":
+            {
+                return new RoyalRoadFeed(feed, novelId)
             }
             default:
             {
