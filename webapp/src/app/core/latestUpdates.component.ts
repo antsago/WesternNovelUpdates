@@ -3,7 +3,7 @@ import { DatabaseService } from '../utilities/database.service'
 import { UserService } from '../utilities/user.service'
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap'
 import { LoginOrRegisterComponent } from '../loginOrRegister.component'
-import { Chapter } from '../utilities/Interfaces'
+import { Chapter, Novel } from '../utilities/Interfaces'
 
 @Component(
 {
@@ -13,6 +13,7 @@ export class LatestUpdatesComponent implements OnInit
 {
     private readonly NumberOfUpdates = 10
     updates: Chapter[]
+    novels: {[id: string]: Novel}
 
     constructor(private db: DatabaseService, private us: UserService,
         private modalService: NgbModal) {}
@@ -20,6 +21,12 @@ export class LatestUpdatesComponent implements OnInit
     async ngOnInit()
     {
         this.updates = await this.db.getUpdates(this.NumberOfUpdates)
+        const novelsArray = await this.db.getAllNovels()
+        this.novels = novelsArray.reduce((map, novel) =>
+        {
+            map[novel.id] = novel
+            return map
+        }, {})
     }
 
     async getMoreUpdates()
