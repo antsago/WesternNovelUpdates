@@ -7,7 +7,7 @@ import { NovelDetailComponent } from './core/novelDetail.component'
 
 const appRoutes: Routes =
 [
-    { path: 'lastestUpdates', component: LatestUpdatesComponent },
+    { path: 'latestUpdates', component: LatestUpdatesComponent },
     { path: 'novels', component: NovelsComponent },
     { path: 'novels/:id', component: NovelDetailComponent },
     { path: '', redirectTo: '/latestUpdates', pathMatch: 'full'},
