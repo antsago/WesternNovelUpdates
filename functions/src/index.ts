@@ -25,13 +25,16 @@ export const updateChapters = https.onRequest( async (request, response) =>
             })
         }
 
-        const chapters = (await FeedFactory.createFeed(request.body, request.get("Site"), request.get("Novel-ID"), request.get("Categories"))
-                                            .cleanFeed()
-                                            .parseFeed())
-                                            .extractChapters()
-                                            .extractChaptersFields()
-                                            .cleanChapterFields()
-                                            .chapters
+        const feed = FeedFactory.createFeed(request.body, request.get("Site"), 
+                                        request.get("Novel-ID"), request.get("Categories"),
+                                        request.get("ThreadId"))
+        
+        const chapters = (await feed.cleanFeed()
+                                    .parseFeed())
+                                    .extractChapters()
+                                    .extractChaptersFields()
+                                    .cleanChapterFields()
+                                    .chapters
 
         const database = new Database(admin.firestore())
         await database.saveChapters(chapters)

@@ -42,7 +42,7 @@ app.get('/collectFeeds', async (req, res) =>
         for (let novel of snapshot.docs)
         {
             let data = novel.data()
-            await sendChapterFeed(data.rssFeed, novel.id, data.hostingSite, data.categories)
+            await sendChapterFeed(data.rssFeed, novel.id, data.hostingSite, data.categories, data.threadId)
         }
         
     }
@@ -58,7 +58,7 @@ const server = app.listen(port, () =>
     console.log(`Feeder running at ${port}`)
 })
 
-async function sendChapterFeed(rssFeed, novelId, site, categories)
+async function sendChapterFeed(rssFeed, novelId, site, categories, threadId)
 {
     let feed = await axios.get(rssFeed)
     return axios.post(UpdateChaptersURL, feed.data, { headers: 
@@ -67,6 +67,7 @@ async function sendChapterFeed(rssFeed, novelId, site, categories)
         "Novel-ID": novelId, 
         "Site": site, 
         "Token": token,
-        "Categories": categories? JSON.stringify(categories) : ""
+        "Categories": categories? JSON.stringify(categories) : "",
+        "ThreadId": threadId? threadId : ""
     }})
 }
