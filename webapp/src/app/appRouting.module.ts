@@ -10,7 +10,7 @@ const appRoutes: Routes =
     { path: 'lastestUpdates', component: LatestUpdatesComponent },
     { path: 'novels', component: NovelsComponent },
     { path: 'novels/:id', component: NovelDetailComponent },
-    { path: '', redirectTo: '/lastestUpdates', pathMatch: 'full'},
+    { path: '', redirectTo: '/latestUpdates', pathMatch: 'full'},
     { path: '**', component: MissingPageComponent }
 ]
 
