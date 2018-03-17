@@ -1,10 +1,11 @@
 import { Feed } from "./Feed"
-import { NoPermalinkFeed } from "./GravityTalesFeed"
+import { NoPermalinkFeed } from "./NoPermalinkFeed"
 import { RoyalRoadFeed } from "./RoyalRoadFeed"
+import { WithCategoriesFeed } from "./WithCategoriesFeed"
 
 export class FeedFactory
 {
-    static createFeed(feed, hostingSite, novelId): Feed
+    static createFeed(feed, hostingSite, novelId, categoriesJSON): Feed
     {
         switch(hostingSite)
         {
@@ -17,6 +18,11 @@ export class FeedFactory
             {
                 return new RoyalRoadFeed(feed, novelId)
             }
+            case "Personal-WithCategories":
+            {
+                return new WithCategoriesFeed(feed, novelId, JSON.parse(categoriesJSON))
+            }
+            case "Personal":
             default:
             {
                 return new Feed(feed, novelId)

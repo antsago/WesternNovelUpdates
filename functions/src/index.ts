@@ -24,10 +24,8 @@ export const updateChapters = https.onRequest( async (request, response) =>
                 databaseURL: DatabaseURL
             })
         }
-        const database = new Database(admin.firestore())
 
-
-        const chapters = (await FeedFactory.createFeed(request.body, request.get("Site"), request.get("Novel-ID"))
+        const chapters = (await FeedFactory.createFeed(request.body, request.get("Site"), request.get("Novel-ID"), request.get("Categories"))
                                             .cleanFeed()
                                             .parseFeed())
                                             .extractChapters()
@@ -35,6 +33,7 @@ export const updateChapters = https.onRequest( async (request, response) =>
                                             .cleanChapterFields()
                                             .chapters
 
+        const database = new Database(admin.firestore())
         await database.saveChapters(chapters)
         
         console.info("Successfully added new chapters")
