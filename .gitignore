@@ -24,3 +24,5 @@ npm-debug.log
 testem.log
 
 .DS_Store
+
+firebase-debug.log
