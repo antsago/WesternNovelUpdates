@@ -12,7 +12,7 @@
   },
   "hosting": {
     "predeploy": [
-      "npm --prefix webapp run ng build --deleteOutputPath"
+      "npm --prefix webapp run build"
     ],
     "public": "webapp/dist",
     "ignore": [
