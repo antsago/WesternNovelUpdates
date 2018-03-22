@@ -12,6 +12,7 @@
   },
   "hosting": {
     "predeploy": [
+      "npm --prefix webapp run lint",
       "npm --prefix webapp run build"
     ],
     "public": "webapp/dist",
