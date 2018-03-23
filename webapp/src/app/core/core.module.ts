@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core'
 import { RouterModule } from '@angular/router'
 
 import { ChapterRowComponent } from './chapterRow.component'
-import { LatestUpdatesComponent } from './latestUpdates.component'
+import { LatestChaptersComponent } from './latestChapters.component'
 import { NovelsComponent } from './novels.component'
 import { NovelDetailComponent } from './novelDetail.component'
 
@@ -18,7 +18,7 @@ import { NovelDetailComponent } from './novelDetail.component'
     declarations:
     [
         ChapterRowComponent,
-        LatestUpdatesComponent,
+        LatestChaptersComponent,
         NovelsComponent,
         NovelDetailComponent
     ]

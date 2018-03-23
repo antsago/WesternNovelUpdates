@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core'
 import { RouterModule, Routes } from '@angular/router'
-import { LatestUpdatesComponent } from './core/latestUpdates.component'
+import { LatestChaptersComponent } from './core/latestChapters.component'
 import { NovelsComponent } from './core/novels.component'
 import { MissingPageComponent } from './missingPage.component'
 import { NovelDetailComponent } from './core/novelDetail.component'
@@ -11,8 +11,8 @@ import { ChaptersResolver } from './core/chaptersResolver.service'
 const appRoutes: Routes =
 [
     {
-        path: 'latestUpdates',
-        component: LatestUpdatesComponent,
+        path: 'latestChapters',
+        component: LatestChaptersComponent,
         resolve:
         {
             chapters: ChaptersResolver,
@@ -29,7 +29,8 @@ const appRoutes: Routes =
         component: NovelDetailComponent,
         resolve: { novel: NovelDetailResolver }
     },
-    { path: '', redirectTo: '/latestUpdates', pathMatch: 'full'},
+    { path: 'latestUpdates', redirectTo: '/latestChapters', pathMatch: 'full'},
+    { path: '', redirectTo: '/latestChapters', pathMatch: 'full'},
     { path: '**', component: MissingPageComponent }
 ]
 

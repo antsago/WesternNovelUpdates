@@ -6,9 +6,9 @@ import { ActivatedRoute } from '@angular/router'
 
 @Component(
 {
-    templateUrl: './latestUpdates.component.html'
+    templateUrl: './latestChapters.component.html'
 })
-export class LatestUpdatesComponent implements OnInit
+export class LatestChaptersComponent implements OnInit
 {
     private readonly NumberOfUpdates = 10
     chapters: Chapter[]
