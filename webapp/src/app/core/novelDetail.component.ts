@@ -15,14 +15,11 @@ export class NovelDetailComponent implements OnInit
     novel: Novel
 
     constructor(private db: DatabaseService, public us: UserService,
-        private activatedRoute: ActivatedRoute, private modalService: NgbModal) {}
+        private route: ActivatedRoute, private modalService: NgbModal) {}
 
-    ngOnInit()
+    async ngOnInit()
     {
-        this.activatedRoute.params.subscribe(async (params: Params) =>
-        {
-            this.novel = await this.db.getNovel(params['id'])
-        })
+        this.novel = this.route.snapshot.data['novel']
     }
 
     async markAllChaptersRead()
