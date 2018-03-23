@@ -14,7 +14,7 @@ export class LatestChaptersComponent implements OnInit
     chapters: Chapter[]
     novels: {[id: string]: Novel}
 
-    constructor(private db: DatabaseService, private us: UserService, private route: ActivatedRoute) {}
+    constructor(private db: DatabaseService, private route: ActivatedRoute) {}
 
     async ngOnInit()
     {

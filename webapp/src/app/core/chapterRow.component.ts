@@ -14,7 +14,7 @@ export class ChapterRowComponent
     @Input() chapter: Chapter
     @Input() novelTitle: string
 
-    constructor(private us: UserService, private modalService: NgbModal) {}
+    constructor(public us: UserService, private modalService: NgbModal) {}
 
     async markAsRead(chapterGuid: string)
     {
