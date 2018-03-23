@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core'
 import { DatabaseService } from '../utilities/database.service'
 import { UserService } from '../utilities/user.service'
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap'
-import { LoginOrRegisterComponent } from '../loginOrRegister.component'
 import { Chapter, Novel } from '../utilities/Interfaces'
+import { ActivatedRoute } from '@angular/router'
 
 @Component(
 {
@@ -15,14 +14,12 @@ export class LatestUpdatesComponent implements OnInit
     chapters: Chapter[]
     novels: {[id: string]: Novel}
 
-    constructor(private db: DatabaseService, private us: UserService,
-        private modalService: NgbModal) {}
+    constructor(private db: DatabaseService, private us: UserService, private route: ActivatedRoute) {}
 
     async ngOnInit()
     {
-        this.chapters = await this.db.getUpdates(this.NumberOfUpdates)
-        const novelsArray = await this.db.getAllNovels()
-        this.novels = novelsArray.reduce((map, novel) =>
+        this.chapters = this.route.snapshot.data['chapters']
+        this.novels = this.route.snapshot.data['novels'].reduce((map, novel) =>
         {
             map[novel.id] = novel
             return map
