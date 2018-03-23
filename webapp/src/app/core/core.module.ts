@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common'
 import { NgModule } from '@angular/core'
 import { RouterModule } from '@angular/router'
 
+import { ChapterRowComponent } from './chapterRow.component'
 import { LatestUpdatesComponent } from './latestUpdates.component'
 import { NovelsComponent } from './novels.component'
 import { NovelDetailComponent } from './novelDetail.component'
@@ -16,6 +17,7 @@ import { NovelDetailComponent } from './novelDetail.component'
     ],
     declarations:
     [
+        ChapterRowComponent,
         LatestUpdatesComponent,
         NovelsComponent,
         NovelDetailComponent

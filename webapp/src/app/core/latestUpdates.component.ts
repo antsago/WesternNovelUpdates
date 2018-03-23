@@ -12,7 +12,7 @@ import { Chapter, Novel } from '../utilities/Interfaces'
 export class LatestUpdatesComponent implements OnInit
 {
     private readonly NumberOfUpdates = 10
-    updates: Chapter[]
+    chapters: Chapter[]
     novels: {[id: string]: Novel}
 
     constructor(private db: DatabaseService, private us: UserService,
@@ -20,7 +20,7 @@ export class LatestUpdatesComponent implements OnInit
 
     async ngOnInit()
     {
-        this.updates = await this.db.getUpdates(this.NumberOfUpdates)
+        this.chapters = await this.db.getUpdates(this.NumberOfUpdates)
         const novelsArray = await this.db.getAllNovels()
         this.novels = novelsArray.reduce((map, novel) =>
         {
@@ -31,23 +31,8 @@ export class LatestUpdatesComponent implements OnInit
 
     async getMoreUpdates()
     {
-        const lastDate = this.updates[this.updates.length - 1]['publicationDate']
+        const lastDate = this.chapters[this.chapters.length - 1]['publicationDate']
         const newUpdates = await this.db.getUpdatesAfter(lastDate, this.NumberOfUpdates)
-        this.updates = [...this.updates, ...newUpdates]
-    }
-
-    async markAsRead(chapterGuid: string)
-    {
-        if (!this.us.isLoggedIn)
-        {
-            this.modalService.open(LoginOrRegisterComponent)
-            return
-        }
-        await this.us.markChaptersAsRead([chapterGuid])
-    }
-
-    async markAsUnread(chapterGuid: string)
-    {
-        await this.us.markChaptersAsUnread([chapterGuid])
+        this.chapters = [...this.chapters, ...newUpdates]
     }
 }

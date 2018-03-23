@@ -1,0 +1,27 @@
+<div class="list-group-item list-group-item-action d-flex justify-content-between">
+    <div class="d-flex flex-column justify-content-between w-100">
+        <div class="flex-row">
+            <a *ngIf="novelTitle" class="light-wnutext" routerLink="/novels/{{chapter.novel}}"><strong>{{novelTitle}}: </strong></a>
+            <a class="light-wnutext" [ngClass]="{'font-weight-bold': !novelTitle}" href="{{chapter.link}}">{{chapter.title}}</a>
+        </div>
+        <span class="d-block text-muted">{{chapter.publicationDate | date: 'd MMM, h:mm a'}}</span>
+    </div>
+
+    <button [hidden]="us.readChapters.includes(chapter.guid)" 
+        class="align-self-center light-wnutext wnu-tooltip btn btn-link"
+        (click)="markAsRead(chapter.guid)">
+        <i class="far fa-bookmark"></i>
+        <span class="wnu-tooltiptext">Mark chapter as read</span>
+    </button>
+    <button [hidden]="!us.readChapters.includes(chapter.guid)"
+        class="align-self-center light-wnutext wnu-tooltip btn btn-link"
+        (click)="markAsUnread(chapter.guid)">
+            <i class="fas fa-bookmark"></i>
+            <span class="wnu-tooltiptext">Chapter read</span>
+    </button>
+
+    <a href="{{chapter.link}}" class="align-self-center light-wnucolor wnu-tooltip">
+        <i class="fas fa-external-link-alt"></i>
+        <span class="wnu-tooltiptext">Read chapter</span>
+    </a>
+</div>

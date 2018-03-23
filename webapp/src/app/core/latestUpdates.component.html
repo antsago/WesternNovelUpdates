@@ -1,33 +1,8 @@
 <div class="bg-white rounded box-shadow mt-3 p-2">
     <div class="list-group list-group-flush">
-        <div *ngFor="let update of updates" 
-            class="list-group-item list-group-item-action d-flex justify-content-between">
-            <div class="d-flex flex-column justify-content-between w-100">
-                <div class="flex-row">
-                    <a class="light-wnutext" routerLink="/novels/{{update.novel}}"><strong>{{novels[update.novel].title}}: </strong></a>
-                    <a class="light-wnutext" href="{{update.link}}">{{update.title}}</a>
-                </div>
-                <span class="d-block text-muted">{{update.publicationDate | date: 'd MMM, h:mm a'}}</span>
-            </div>
-
-            <button [hidden]="us.readChapters.includes(update.guid)" 
-                class="align-self-center light-wnutext wnu-tooltip btn btn-link"
-                (click)="markAsRead(update.guid)">
-                <i class="far fa-bookmark"></i>
-                <span class="wnu-tooltiptext">Mark chapter as read</span>
-            </button>
-            <button [hidden]="!us.readChapters.includes(update.guid)"
-                class="align-self-center light-wnutext wnu-tooltip btn btn-link"
-                (click)="markAsUnread(update.guid)">
-                    <i class="fas fa-bookmark"></i>
-                    <span class="wnu-tooltiptext">Chapter read</span>
-            </button>
-
-            <a href="{{update.link}}" class="align-self-center light-wnucolor wnu-tooltip">
-                <i class="fas fa-external-link-alt"></i>
-                <span class="wnu-tooltiptext">Read chapter</span>
-            </a>
-        </div>
+        <wnu-chapter *ngFor="let chapter of chapters" 
+            [chapter]="chapter" [novelTitle]="novels[chapter.novel].title">
+        </wnu-chapter>
     </div>
 
     <button type="button" class="btn light-wnubg text-white btn-lg btn-block" (click)="getMoreUpdates()">

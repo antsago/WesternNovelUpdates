@@ -25,21 +25,6 @@ export class NovelDetailComponent implements OnInit
         })
     }
 
-    async markAsRead(chapterGuid)
-    {
-        if (!this.us.isLoggedIn)
-        {
-            this.modalService.open(LoginOrRegisterComponent)
-            return
-        }
-        await this.us.markChaptersAsRead([chapterGuid])
-    }
-
-    async markAsUnread(chapterGuid)
-    {
-        await this.us.markChaptersAsUnread([chapterGuid])
-    }
-
     async markAllChaptersRead()
     {
         if (!this.us.isLoggedIn)
