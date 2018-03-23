@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core'
-import { DatabaseService } from '../utilities/database.service'
 import { Novel } from '../utilities/Interfaces'
+import { ActivatedRoute } from '@angular/router'
 
 @Component(
 {
@@ -10,10 +10,10 @@ export class NovelsComponent implements OnInit
 {
     novels: Novel[]
 
-    constructor(private db: DatabaseService) {}
+    constructor(private route: ActivatedRoute) {}
 
     async ngOnInit()
     {
-        this.novels = await this.db.getAllNovels()
+        this.novels = this.route.snapshot.data['novels']
     }
 }

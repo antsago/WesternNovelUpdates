@@ -5,11 +5,16 @@ import { NovelsComponent } from './core/novels.component'
 import { MissingPageComponent } from './missingPage.component'
 import { NovelDetailComponent } from './core/novelDetail.component'
 import { NovelDetailResolver } from './core/novelDetailResolver.service'
+import { NovelsResolver } from './core/novelsResolver.service'
 
 const appRoutes: Routes =
 [
     { path: 'latestUpdates', component: LatestUpdatesComponent },
-    { path: 'novels', component: NovelsComponent },
+    {
+        path: 'novels',
+        component: NovelsComponent,
+        resolve: {novels: NovelsResolver }
+    },
     {
         path: 'novels/:id',
         component: NovelDetailComponent,
@@ -23,6 +28,6 @@ const appRoutes: Routes =
 {
     imports: [ RouterModule.forRoot(appRoutes) ],
     exports: [ RouterModule ],
-    providers: [ NovelDetailResolver ]
+    providers: [ NovelDetailResolver, NovelsResolver ]
 })
 export class AppRoutingModule {}
