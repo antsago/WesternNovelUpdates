@@ -7,6 +7,8 @@ import { NovelDetailComponent } from './core/novelDetail.component'
 import { NovelDetailResolver } from './core/novelDetailResolver.service'
 import { NovelsResolver } from './core/novelsResolver.service'
 import { ChaptersResolver } from './core/chaptersResolver.service'
+import { ReadingListComponent } from './readingList.component'
+import { IsLoggedInGuard } from './isLoggedInGuard.service'
 
 const appRoutes: Routes =
 [
@@ -22,12 +24,17 @@ const appRoutes: Routes =
     {
         path: 'novels',
         component: NovelsComponent,
-        resolve: {novels: NovelsResolver }
+        resolve: { novels: NovelsResolver }
     },
     {
         path: 'novels/:id',
         component: NovelDetailComponent,
         resolve: { novel: NovelDetailResolver }
+    },
+    {
+        path: 'readingLists',
+        component: ReadingListComponent,
+        canActivate: [IsLoggedInGuard]
     },
     { path: 'latestUpdates', redirectTo: '/latestChapters', pathMatch: 'full'},
     { path: '', redirectTo: '/latestChapters', pathMatch: 'full'},

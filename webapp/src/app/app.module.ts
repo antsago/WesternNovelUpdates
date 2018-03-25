@@ -12,6 +12,8 @@ import { AppRoutingModule } from './appRouting.module'
 import { AppRootComponent } from './appRoot.component'
 import { LoginOrRegisterComponent } from './loginOrRegister.component'
 import { MissingPageComponent } from './missingPage.component'
+import { ReadingListComponent } from './readingList.component'
+import { IsLoggedInGuard } from './isLoggedInGuard.service'
 import { environment } from './../environments/environment'
 
 
@@ -29,10 +31,11 @@ import { environment } from './../environments/environment'
     [
         AppRootComponent,
         MissingPageComponent,
-        LoginOrRegisterComponent
+        LoginOrRegisterComponent,
+        ReadingListComponent
     ],
     entryComponents: [ LoginOrRegisterComponent ],
-    providers: [ DatabaseService, UserService ],
+        providers: [ DatabaseService, UserService, IsLoggedInGuard ],
     bootstrap: [ AppRootComponent ]
 })
 export class AppModule

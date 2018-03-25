@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core'
 import { DatabaseService } from './database.service'
 import * as fb from 'firebase'
+import { Router } from '@angular/router'
 
 @Injectable()
 export class UserService
@@ -9,7 +10,7 @@ export class UserService
     public isLoggedIn = false
     public readChapters = [] as string[]
 
-    constructor(private db: DatabaseService)
+    constructor(private db: DatabaseService, private router: Router)
     {
         fb.auth().onAuthStateChanged(async user =>
         {
@@ -35,6 +36,10 @@ export class UserService
     public async logout()
     {
         await fb.auth().signOut()
+        if (this.router.url === '/readingLists')
+        {
+            this.router.navigateByUrl('')
+        }
     }
 
     public async sendPasswordResetEmail(email: string)
