@@ -1,6 +1,6 @@
 import { Component } from '@angular/core'
 import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap'
-import { UserService } from './utilities/user.service'
+import { AuthenticationService } from './utilities/authentication.service'
 
 @Component(
 {
@@ -24,13 +24,13 @@ export class LoginOrRegisterComponent
         alertClosed: true
     }
 
-    constructor(public activeModal: NgbActiveModal, private us: UserService) {}
+    constructor(public activeModal: NgbActiveModal, private auth: AuthenticationService) {}
 
     async login()
     {
         try
         {
-            await this.us.login(this.loginForm.email, this.loginForm.password)
+            await this.auth.login(this.loginForm.email, this.loginForm.password)
             this.activeModal.close('Loged in')
         }
         catch (err)
@@ -43,7 +43,7 @@ export class LoginOrRegisterComponent
     {
         try
         {
-            await this.us.sendPasswordResetEmail(this.loginForm.email)
+            await this.auth.sendPasswordResetEmail(this.loginForm.email)
             this.showErrorMessage('We sent you the email. Reset your password and try to login again.', this.loginForm)
         }
         catch (err)
@@ -56,7 +56,7 @@ export class LoginOrRegisterComponent
     {
         try
         {
-            await this.us.register(this.registerForm.username, this.registerForm.email, this.registerForm.password)
+            await this.auth.register(this.registerForm.username, this.registerForm.email, this.registerForm.password)
             this.activeModal.close('Registered')
         }
         catch (err)

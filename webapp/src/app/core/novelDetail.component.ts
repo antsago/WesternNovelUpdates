@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core'
 import { DatabaseService } from '../utilities/database.service'
 import { ActivatedRoute, Params } from '@angular/router'
-import { UserService } from '../utilities/user.service'
+import { ReadingListService } from '../utilities/readingList.service'
 import { LoginOrRegisterComponent } from '../loginOrRegister.component'
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap'
 import { Novel } from '../utilities/Interfaces'
+import { AuthenticationService } from '../utilities/authentication.service';
 
 @Component(
 {
@@ -14,8 +15,9 @@ export class NovelDetailComponent implements OnInit
 {
     novel: Novel
 
-    constructor(private db: DatabaseService, public us: UserService,
-        private route: ActivatedRoute, private modalService: NgbModal) {}
+    constructor(private db: DatabaseService, private auth: AuthenticationService,
+        public read: ReadingListService, private route: ActivatedRoute,
+        private modalService: NgbModal) {}
 
     async ngOnInit()
     {
@@ -24,21 +26,21 @@ export class NovelDetailComponent implements OnInit
 
     async markAllChaptersRead()
     {
-        if (!this.us.isLoggedIn)
+        if (!this.auth.isLoggedIn)
         {
             this.modalService.open(LoginOrRegisterComponent)
             return
         }
-        await this.us.markChaptersAsRead(this.novel.chapters.map(ch => ch.guid))
+        await this.read.markChaptersAsRead(this.novel.chapters.map(ch => ch.guid))
     }
 
     async markAllChaptersUnRead()
     {
-        await this.us.markChaptersAsUnread(this.novel.chapters.map(ch => ch.guid))
+        await this.read.markChaptersAsUnread(this.novel.chapters.map(ch => ch.guid))
     }
 
     areAllChaptersRead()
     {
-        return this.novel.chapters.every(ch => this.us.readChapters.includes(ch.guid))
+        return this.novel.chapters.every(ch => this.read.readChapters.includes(ch.guid))
     }
 }

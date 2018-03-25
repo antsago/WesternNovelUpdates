@@ -7,7 +7,8 @@ import * as firebase from 'firebase'
 import { CoreModule } from './core/core.module'
 
 import { DatabaseService } from './utilities/database.service'
-import { UserService } from './utilities/user.service'
+import { ReadingListService } from './utilities/readingList.service'
+import { AuthenticationService } from './utilities/authentication.service'
 import { AppRoutingModule } from './appRouting.module'
 import { AppRootComponent } from './appRoot.component'
 import { LoginOrRegisterComponent } from './loginOrRegister.component'
@@ -35,7 +36,13 @@ import { environment } from './../environments/environment'
         ReadingListComponent
     ],
     entryComponents: [ LoginOrRegisterComponent ],
-        providers: [ DatabaseService, UserService, IsLoggedInGuard ],
+    providers:
+    [
+        DatabaseService,
+        ReadingListService,
+        IsLoggedInGuard,
+        AuthenticationService
+    ],
     bootstrap: [ AppRootComponent ]
 })
 export class AppModule

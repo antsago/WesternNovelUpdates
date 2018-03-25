@@ -1,30 +1,19 @@
 import { Injectable } from '@angular/core'
-import { DatabaseService } from './database.service'
 import * as fb from 'firebase'
 import { Router } from '@angular/router'
 
 @Injectable()
-export class UserService
+export class AuthenticationService
 {
     public user: fb.User
     public isLoggedIn = false
-    public readChapters = [] as string[]
 
-    constructor(private db: DatabaseService, private router: Router)
+    constructor(private router: Router)
     {
         fb.auth().onAuthStateChanged(async user =>
         {
             this.user = user
             this.isLoggedIn = this.user != null
-
-            if (this.isLoggedIn)
-            {
-                this.readChapters = (await this.db.getUser(this.user.uid)).readChapters
-            }
-            else
-            {
-                this.readChapters = [] as string[]
-            }
         })
     }
 
@@ -55,17 +44,5 @@ export class UserService
             displayName: username,
             photoURL: null
         })
-    }
-
-    public async markChaptersAsRead(chaptersGUID: string[])
-    {
-        this.readChapters = this.readChapters.concat(chaptersGUID)
-        await this.db.setUser(this.user.uid, {readChapters: this.readChapters})
-    }
-
-    public async markChaptersAsUnread(chaptersGUID: string[]): Promise<void>
-    {
-        this.readChapters = this.readChapters.filter(chapter => !chaptersGUID.includes(chapter))
-        await this.db.setUser(this.user.uid, { readChapters: this.readChapters })
     }
 }

@@ -21,11 +21,11 @@
         </ul>
 
         <div ngbDropdown class="ml-auto">
-            <button  *ngIf="!us.isLoggedIn" class="nav-item btn btn-outline-light" (click)="loginOrRegister()">
+            <button  *ngIf="!auth.isLoggedIn" class="nav-item btn btn-outline-light" (click)="loginOrRegister()">
                 Login / Register
             </button>
-            <button  *ngIf="us.isLoggedIn" class="nav-item btn btn-outline-light" ngbDropdownToggle>
-                {{us.user.displayName}}
+            <button  *ngIf="auth.isLoggedIn" class="nav-item btn btn-outline-light" ngbDropdownToggle>
+                {{auth.user.displayName}}
             </button>
             <div ngbDropdownMenu>
                 <button (click)="logout()" class="dropdown-item">Logout</button>

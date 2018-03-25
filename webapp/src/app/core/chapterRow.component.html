@@ -7,13 +7,13 @@
         <span class="d-block text-muted">{{chapter.publicationDate | date: 'd MMM, h:mm a'}}</span>
     </div>
 
-    <button [hidden]="us.readChapters.includes(chapter.guid)" 
+    <button [hidden]="read.readChapters.includes(chapter.guid)" 
         class="align-self-center light-wnutext wnu-tooltip btn btn-link"
         (click)="markAsRead(chapter.guid)">
         <i class="far fa-bookmark"></i>
         <span class="wnu-tooltiptext">Mark chapter as read</span>
     </button>
-    <button [hidden]="!us.readChapters.includes(chapter.guid)"
+    <button [hidden]="!read.readChapters.includes(chapter.guid)"
         class="align-self-center light-wnutext wnu-tooltip btn btn-link"
         (click)="markAsUnread(chapter.guid)">
             <i class="fas fa-bookmark"></i>

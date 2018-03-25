@@ -1,17 +1,17 @@
 import { Injectable } from '@angular/core'
 import { CanActivate, Router} from '@angular/router'
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap'
-import { UserService } from './utilities/user.service'
+import { AuthenticationService } from './utilities/authentication.service'
 import { LoginOrRegisterComponent } from './loginOrRegister.component'
 
 @Injectable()
 export class IsLoggedInGuard implements CanActivate
 {
-    constructor(public us: UserService, private modalService: NgbModal,  private router: Router) {}
+    constructor(public auth: AuthenticationService, private modalService: NgbModal,  private router: Router) {}
 
     canActivate(): boolean
     {
-        if (this.us.isLoggedIn)
+        if (this.auth.isLoggedIn)
         {
             return true
         }
