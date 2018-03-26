@@ -1,11 +1,8 @@
 import { Component, OnInit } from '@angular/core'
-import { DatabaseService } from '../utilities/database.service'
 import { ActivatedRoute, Params } from '@angular/router'
 import { ReadingListService } from '../utilities/readingList.service'
-import { LoginOrRegisterComponent } from '../loginOrRegister.component'
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap'
 import { Novel } from '../utilities/Interfaces'
-import { AuthenticationService } from '../utilities/authentication.service';
+import { LoginService } from '../utilities/login.service'
 
 @Component(
 {
@@ -15,9 +12,8 @@ export class NovelDetailComponent implements OnInit
 {
     novel: Novel
 
-    constructor(private db: DatabaseService, private auth: AuthenticationService,
-        public read: ReadingListService, private route: ActivatedRoute,
-        private modalService: NgbModal) {}
+    constructor(private read: ReadingListService, private route: ActivatedRoute,
+        private login: LoginService) {}
 
     async ngOnInit()
     {
@@ -26,12 +22,10 @@ export class NovelDetailComponent implements OnInit
 
     async markAllChaptersRead()
     {
-        if (!this.auth.isLoggedIn)
+        if (await this.login.userWantsToLogin())
         {
-            this.modalService.open(LoginOrRegisterComponent)
-            return
+            await this.read.markChaptersAsRead(this.novel.chapters.map(ch => ch.guid))
         }
-        await this.read.markChaptersAsRead(this.novel.chapters.map(ch => ch.guid))
     }
 
     async markAllChaptersUnRead()

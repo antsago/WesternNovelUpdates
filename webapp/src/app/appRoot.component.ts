@@ -1,7 +1,5 @@
 import { Component } from '@angular/core'
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap'
-
-import { LoginOrRegisterComponent } from './loginOrRegister.component'
+import { LoginService } from './utilities/login.service'
 import { AuthenticationService } from './utilities/authentication.service';
 
 @Component(
@@ -13,16 +11,16 @@ export class AppRootComponent
 {
     public isNavbarCollapsed = true
 
-    constructor(private modalService: NgbModal, public auth: AuthenticationService) {}
+    constructor(private login: LoginService, public auth: AuthenticationService) {}
 
     loginOrRegister()
     {
-        this.modalService.open(LoginOrRegisterComponent)
+        this.login.login()
     }
 
-    async logout()
+    logout()
     {
-        await this.auth.logout()
+        this.auth.logout()
     }
 }
 

@@ -1,32 +1,19 @@
 import { Injectable } from '@angular/core'
 import { CanActivate, Router} from '@angular/router'
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap'
-import { AuthenticationService } from './utilities/authentication.service'
-import { LoginOrRegisterComponent } from './loginOrRegister.component'
+import { LoginService } from './utilities/login.service'
 
 @Injectable()
 export class IsLoggedInGuard implements CanActivate
 {
-    constructor(public auth: AuthenticationService, private modalService: NgbModal,  private router: Router) {}
+    constructor(private login: LoginService,  private router: Router) {}
 
-    canActivate(): boolean
+    async canActivate(): Promise<boolean>
     {
-        if (this.auth.isLoggedIn)
+        if (await this.login.userWantsToLogin())
         {
-            return true
+           return true
         }
-        this.modalService.open(LoginOrRegisterComponent).result.then(
-            loggedIn =>
-            {
-                this.router.navigateByUrl('/readingLists')
-            },
-            dismissed =>
-            {
-                if (!this.router.navigated)
-                {
-                    this.router.navigateByUrl('')
-                }
-                return false
-            })
+        this.router.navigateByUrl('')
+        return false
     }
 }

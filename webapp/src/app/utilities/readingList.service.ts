@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core'
 import { DatabaseService } from './database.service'
-import * as fb from 'firebase'
-import { Router } from '@angular/router'
 import { AuthenticationService } from './authentication.service';
 
 @Injectable()
@@ -11,15 +9,17 @@ export class ReadingListService
 
     constructor(private db: DatabaseService, private auth: AuthenticationService)
     {
-        fb.auth().onAuthStateChanged(async user =>
+        this.auth.callOnAuthStateChanged(async authService =>
         {
-            if (this.auth.isLoggedIn)
+            try
             {
-                this.readChapters = (await this.db.getUser(this.auth.user.uid)).readChapters
+                this.readChapters = authService.isLoggedIn ?
+                    (await this.db.getUser(authService.user.uid)).readChapters
+                    : []
             }
-            else
+            catch (err)
             {
-                this.readChapters = [] as string[]
+                this.readChapters = []
             }
         })
     }

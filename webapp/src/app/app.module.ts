@@ -16,6 +16,7 @@ import { MissingPageComponent } from './missingPage.component'
 import { ReadingListComponent } from './readingList.component'
 import { IsLoggedInGuard } from './isLoggedInGuard.service'
 import { environment } from './../environments/environment'
+import { LoginService } from './utilities/login.service'
 
 
 @NgModule(
@@ -41,7 +42,8 @@ import { environment } from './../environments/environment'
         DatabaseService,
         ReadingListService,
         IsLoggedInGuard,
-        AuthenticationService
+        AuthenticationService,
+        LoginService
     ],
     bootstrap: [ AppRootComponent ]
 })

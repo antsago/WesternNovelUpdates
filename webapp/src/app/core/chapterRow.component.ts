@@ -1,9 +1,7 @@
 import { Component, Input } from '@angular/core'
-import { AuthenticationService } from '../utilities/authentication.service'
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap'
-import { LoginOrRegisterComponent } from '../loginOrRegister.component'
-import { Chapter, Novel } from '../utilities/Interfaces'
+import { Chapter } from '../utilities/Interfaces'
 import { ReadingListService } from '../utilities/readingList.service'
+import { LoginService } from '../utilities/login.service'
 
 @Component(
 {
@@ -15,17 +13,14 @@ export class ChapterRowComponent
     @Input() chapter: Chapter
     @Input() novelTitle: string
 
-    constructor(public auth: AuthenticationService, private modalService: NgbModal,
-        private read: ReadingListService) {}
+    constructor(private login: LoginService, private read: ReadingListService) {}
 
     async markAsRead(chapterGuid: string)
     {
-        if (!this.auth.isLoggedIn)
+        if (await this.login.userWantsToLogin())
         {
-            this.modalService.open(LoginOrRegisterComponent)
-            return
+            await this.read.markChaptersAsRead([chapterGuid])
         }
-        await this.read.markChaptersAsRead([chapterGuid])
     }
 
     async markAsUnread(chapterGuid: string)
