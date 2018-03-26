@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core'
 import { DatabaseService } from '../utilities/database.service'
-import { UserService } from '../utilities/user.service'
 import { Chapter, Novel } from '../utilities/Interfaces'
 import { ActivatedRoute } from '@angular/router'
 

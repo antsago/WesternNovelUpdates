@@ -8,7 +8,17 @@ import { AuthenticationService } from './authentication.service'
 @Injectable()
 export class LoginService
 {
-    constructor(private auth: AuthenticationService, private modal: NgbModal) {}
+    public user: fb.User
+    public isLoggedIn = false
+
+    constructor(private auth: AuthenticationService, private modal: NgbModal, private router: Router)
+    {
+        auth.callOnAuthStateChanged(user =>
+        {
+            this.user = user
+            this.isLoggedIn = this.user != null
+        })
+    }
 
     public async login(): Promise<boolean>
     {
@@ -23,9 +33,18 @@ export class LoginService
         }
     }
 
+    public async logout()
+    {
+        await this.auth.logout()
+        if (this.router.url === '/readingLists')
+        {
+            this.router.navigateByUrl('')
+        }
+    }
+
     public async userWantsToLogin(): Promise<boolean>
     {
-        if (!this.auth.isLoggedIn)
+        if (!this.isLoggedIn)
         {
             return await this.login()
         }

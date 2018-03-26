@@ -11,7 +11,7 @@ export class AppRootComponent
 {
     public isNavbarCollapsed = true
 
-    constructor(private login: LoginService, public auth: AuthenticationService) {}
+    constructor(private login: LoginService) {}
 
     loginOrRegister()
     {
@@ -20,7 +20,7 @@ export class AppRootComponent
 
     logout()
     {
-        this.auth.logout()
+        this.login.logout()
     }
 }
 

@@ -1,26 +1,12 @@
 import { Injectable } from '@angular/core'
 import * as fb from 'firebase'
-import { Router } from '@angular/router'
 
 @Injectable()
 export class AuthenticationService
 {
-    public user: fb.User
-    public isLoggedIn = false
-    private onAuthStateChanged = [] as ((AuthenticationService) => (void | Promise<void>))[]
-
-    constructor(private router: Router)
+    public async callOnAuthStateChanged(functionToCall: (user: fb.User) => any): Promise<void>
     {
-        fb.auth().onAuthStateChanged(async user =>
-        {
-            this.user = user
-            this.isLoggedIn = this.user != null
-        })
-    }
-
-    public async callOnAuthStateChanged(onAuthChanged: (auth: AuthenticationService) => any): Promise<void>
-    {
-        fb.auth().onAuthStateChanged(user => onAuthChanged(this))
+        fb.auth().onAuthStateChanged(functionToCall)
     }
 
     public async register(username: string, email: string, password: string)
@@ -41,10 +27,6 @@ export class AuthenticationService
     public async logout()
     {
         await fb.auth().signOut()
-        if (this.router.url === '/readingLists')
-        {
-            this.router.navigateByUrl('')
-        }
     }
 
     public async sendPasswordResetEmail(email: string)
