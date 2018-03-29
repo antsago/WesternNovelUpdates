@@ -4,7 +4,6 @@ import { AuthenticationService } from './utilities/authentication.service'
 
 @Component(
 {
-    selector: 'wnu-login',
     templateUrl: './loginOrRegister.component.html'
 })
 export class LoginOrRegisterComponent
