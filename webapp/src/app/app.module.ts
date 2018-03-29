@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser'
 import { NgModule } from '@angular/core'
 import { FormsModule } from '@angular/forms'
-import { NgbModule, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap'
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
 import * as firebase from 'firebase'
 
 import { CoreModule } from './core/core.module'
@@ -41,8 +41,7 @@ import { LoginService } from './utilities/login.service'
         DatabaseService,
         ReadingListService,
         AuthenticationService,
-        LoginService,
-        NgbActiveModal
+        LoginService
     ],
     bootstrap: [ AppRootComponent ]
 })

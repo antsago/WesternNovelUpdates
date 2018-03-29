@@ -36,9 +36,5 @@ export class LoginService
     public async logout()
     {
         await this.auth.logout()
-        if (this.router.url === '/readingLists')
-        {
-            this.router.navigateByUrl('')
-        }
     }
 }

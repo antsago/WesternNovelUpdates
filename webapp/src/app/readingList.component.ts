@@ -1,10 +1,18 @@
 import { Component } from '@angular/core'
+import { LoginService } from './utilities/login.service'
 
 @Component(
 {
-    template: `<wnu-login></wnu-login>`
+    templateUrl: './readingList.component.html'
 })
 export class ReadingListComponent
 {
+    constructor(private login: LoginService) {}
+
+    loginOrRegister()
+    {
+        this.login.login()
+    }
 }
+
 

@@ -1,0 +1,8 @@
+<p *ngIf="!login.isLoggedIn"> You must be logged to see and create your reading lists.
+    <button  class="btn btn-link" (click)="loginOrRegister()">Login or register</button>
+    to get started.
+</p>
+
+<div *ngIf="login.isLoggedIn" class="jumbotron my-3 p-3 p-md-5 text-white rounded light-wnubg">
+    Your Reading Lists
+</div>
