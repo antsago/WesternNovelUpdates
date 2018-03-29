@@ -17,9 +17,13 @@ export class ChapterRowComponent
 
     async markAsRead(chapterGuid: string)
     {
-        if (await this.login.userWantsToLogin())
+        if (this.login.isLoggedIn)
         {
             await this.read.markChaptersAsRead([chapterGuid])
+        }
+        else
+        {
+            await this.login.login()
         }
     }
 

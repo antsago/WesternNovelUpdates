@@ -41,13 +41,4 @@ export class LoginService
             this.router.navigateByUrl('')
         }
     }
-
-    public async userWantsToLogin(): Promise<boolean>
-    {
-        if (!this.isLoggedIn)
-        {
-            return await this.login()
-        }
-        return true
-    }
 }

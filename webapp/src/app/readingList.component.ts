@@ -2,7 +2,7 @@ import { Component } from '@angular/core'
 
 @Component(
 {
-    template: `<p> My reading list </p>`
+    template: `<wnu-login></wnu-login>`
 })
 export class ReadingListComponent
 {

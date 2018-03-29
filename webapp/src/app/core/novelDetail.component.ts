@@ -22,9 +22,13 @@ export class NovelDetailComponent implements OnInit
 
     async markAllChaptersRead()
     {
-        if (await this.login.userWantsToLogin())
+        if (this.login.isLoggedIn)
         {
             await this.read.markChaptersAsRead(this.novel.chapters.map(ch => ch.guid))
+        }
+        else
+        {
+            await this.login.login()
         }
     }
 

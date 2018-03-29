@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser'
 import { NgModule } from '@angular/core'
 import { FormsModule } from '@angular/forms'
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
+import { NgbModule, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap'
 import * as firebase from 'firebase'
 
 import { CoreModule } from './core/core.module'
@@ -14,7 +14,6 @@ import { AppRootComponent } from './appRoot.component'
 import { LoginOrRegisterComponent } from './loginOrRegister.component'
 import { MissingPageComponent } from './missingPage.component'
 import { ReadingListComponent } from './readingList.component'
-import { IsLoggedInGuard } from './isLoggedInGuard.service'
 import { environment } from './../environments/environment'
 import { LoginService } from './utilities/login.service'
 
@@ -41,9 +40,9 @@ import { LoginService } from './utilities/login.service'
     [
         DatabaseService,
         ReadingListService,
-        IsLoggedInGuard,
         AuthenticationService,
-        LoginService
+        LoginService,
+        NgbActiveModal
     ],
     bootstrap: [ AppRootComponent ]
 })
