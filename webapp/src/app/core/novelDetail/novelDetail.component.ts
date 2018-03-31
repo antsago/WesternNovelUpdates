@@ -8,7 +8,7 @@ import { Novel, ReadingListService, LoginService } from '../../shared/shared.mod
 })
 export class NovelDetailComponent implements OnInit
 {
-    novel: Novel
+    private novel: Novel
 
     constructor(private read: ReadingListService, private route: ActivatedRoute,
         private login: LoginService) {}

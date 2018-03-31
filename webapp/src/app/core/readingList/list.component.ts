@@ -9,9 +9,7 @@ import { ListNovel } from '../../shared/shared.module'
 })
 export class ListComponent
 {
-    public listsCollapsed = false
+    private listsCollapsed = false
     @Input() listName: string
     @Input() novels: ListNovel[]
-
-    constructor(){}
 }
