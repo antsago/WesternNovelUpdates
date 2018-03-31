@@ -4,7 +4,7 @@ import { Router } from '@angular/router'
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap'
 import { LoginOrRegisterComponent } from './loginOrRegister.component'
 import { AuthenticationService } from './authentication.service'
-import { DatabaseService } from './database.service'
+import { DatabaseService } from '../database.service'
 
 @Injectable()
 export class LoginService

@@ -5,13 +5,12 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
 
 import { DatabaseService } from './database.service'
 import { ReadingListService } from './readingList.service'
-import { AuthenticationService } from './authentication.service'
-import { LoginService } from './login.service'
-import { LoginOrRegisterComponent } from './loginOrRegister.component'
+import { AuthenticationService } from './user/authentication.service'
+import { LoginService } from './user/login.service'
+import { LoginOrRegisterComponent } from './user/loginOrRegister.component'
 
 export * from './Interfaces'
-export { DatabaseService, ReadingListService, AuthenticationService,
-    LoginService, LoginOrRegisterComponent }
+export { DatabaseService, ReadingListService, AuthenticationService, LoginService }
 
 @NgModule(
 {

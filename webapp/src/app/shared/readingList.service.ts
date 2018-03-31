@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core'
 import { DatabaseService } from './database.service'
-import { AuthenticationService } from './authentication.service'
-import { LoginService } from './login.service'
+import { AuthenticationService } from './user/authentication.service'
+import { LoginService } from './user/login.service'
 import { ListNovel, DbList, Chapter } from './Interfaces'
 
 @Injectable()
