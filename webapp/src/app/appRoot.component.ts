@@ -1,5 +1,5 @@
 import { Component } from '@angular/core'
-import { LoginService } from './shared/shared.module'
+import { LoginService, AlertService } from './shared/shared.module'
 
 @Component(
 {
@@ -10,7 +10,7 @@ export class AppRootComponent
 {
     private isNavbarCollapsed = true
 
-    constructor(private login: LoginService) {}
+    constructor(private login: LoginService, private alertService: AlertService) {}
 
     loginOrRegister()
     {

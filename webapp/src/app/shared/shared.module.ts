@@ -8,9 +8,10 @@ import { ReadingListService } from './readingList.service'
 import { AuthenticationService } from './user/authentication.service'
 import { LoginService } from './user/login.service'
 import { LoginOrRegisterComponent } from './user/loginOrRegister.component'
+import { AlertService } from './alert.service'
 
 export * from './Interfaces'
-export { DatabaseService, ReadingListService, AuthenticationService, LoginService }
+export { DatabaseService, ReadingListService, AuthenticationService, LoginService, AlertService }
 
 @NgModule(
 {
@@ -27,6 +28,7 @@ export { DatabaseService, ReadingListService, AuthenticationService, LoginServic
         DatabaseService,
         ReadingListService,
         AuthenticationService,
+        AlertService,
         LoginService
     ]
 })

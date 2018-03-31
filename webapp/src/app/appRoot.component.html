@@ -35,5 +35,13 @@
 </nav>
 
 <main role="main" class="container">
+    <div *ngIf="alertService.showAlert" [ngClass]="alertService.type"
+    class="alert alert-dismissible" role="alert">
+        {{ alertService.message }}
+        <button type="button" class="close" (click)="alertService.showAlert = false">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
     <router-outlet></router-outlet>
 </main>
