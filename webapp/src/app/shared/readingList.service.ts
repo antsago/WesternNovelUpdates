@@ -26,11 +26,9 @@ export class ReadingListService
                     this.defaultList = wnuUser.defaultList
                     this.lists = this.listsToArray(wnuUser.lists)
                     this.readChapters = await chaptersPromise
-                    await this.getNovelChapters()
                 }
                 else
                 {
-                    this.novelChapters = new Map()
                     this.defaultList = null
                     this.readChapters = []
                     this.lists = []
@@ -38,7 +36,6 @@ export class ReadingListService
             }
             catch (err) // user object doesn't exists
             {
-                this.novelChapters = new Map()
                 this.defaultList = null
                 this.readChapters = []
                 this.lists = []
@@ -61,20 +58,5 @@ export class ReadingListService
     private listsToArray(lists: DbList): [string, ListNovel[]][]
     {
         return Object.keys(lists).map<[string, ListNovel[]]>(listName => [listName, lists[listName]])
-    }
-
-    private async getNovelChapters()
-    {
-        const novelIds = this.lists.reduce((compiledIds, [listName, novels]) =>
-        {
-            return compiledIds.concat(novels.map(novel => novel.novelId))
-        }, [] as string[])
-
-        this.novelChapters = new Map()
-        novelIds.forEach(async novelId =>
-        {
-            const chapters = await this.db.getNovelChapters(novelId)
-            this.novelChapters[novelId] = chapters
-        })
     }
 }

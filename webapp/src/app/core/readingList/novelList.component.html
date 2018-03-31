@@ -28,6 +28,6 @@
     </div>
 
     <div [ngbCollapse]="novelCollapsed">
-        <wnu-chapter *ngFor="let chapter of read.novelChapters[novel.novelId]" [chapter]="chapter"></wnu-chapter>
+        <wnu-chapter *ngFor="let chapter of chapters" [chapter]="chapter"></wnu-chapter>
     </div>
 </div>

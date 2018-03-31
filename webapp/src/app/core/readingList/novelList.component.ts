@@ -1,5 +1,5 @@
-import { Component, Input } from '@angular/core'
-import { LoginService, ReadingListService, Novel } from '../../shared/shared.module'
+import { Component, Input, OnInit } from '@angular/core'
+import { LoginService, ReadingListService, Chapter, ListNovel, DatabaseService } from '../../shared/shared.module'
 
 @Component(
 {
@@ -7,16 +7,17 @@ import { LoginService, ReadingListService, Novel } from '../../shared/shared.mod
     styles: ['.dropdown-toggle::after {display:none;}'],
     templateUrl: './novelList.component.html'
 })
-export class NovelListComponent
+export class NovelListComponent implements OnInit
 {
-    @Input() novel: Novel
-    public novelCollapsed = true
+    @Input() novel: ListNovel
+    private novelCollapsed = true
+    private chapters = [] as Chapter[]
 
-    constructor(private login: LoginService, private read: ReadingListService){}
+    constructor(private read: ReadingListService, private db: DatabaseService){}
 
-    loginOrRegister(event)
+    async ngOnInit()
     {
-        this.login.login()
+        this.chapters = await this.db.getNovelChapters(this.novel.novelId)
     }
 }
 
