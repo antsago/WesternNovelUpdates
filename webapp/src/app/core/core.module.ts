@@ -19,7 +19,7 @@ import { MissingPageComponent } from './missingPage.component'
     [
         RouterModule,
         CommonModule,
-        NgbModule.forRoot(),
+        NgbModule,
         AppRoutingModule
     ],
     declarations:
