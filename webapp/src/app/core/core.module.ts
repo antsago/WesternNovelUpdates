@@ -13,6 +13,7 @@ import { ReadingListComponent } from './readingList/readingList.component'
 import { MissingPageComponent } from './missingPage.component'
 import { NovelListComponent } from './readingList/novelList.component'
 import { ListComponent } from './readingList/list.component'
+import { FormsModule } from '@angular/forms'
 
 
 @NgModule(
@@ -20,6 +21,7 @@ import { ListComponent } from './readingList/list.component'
     imports:
     [
         RouterModule,
+        FormsModule,
         CommonModule,
         NgbModule,
         AppRoutingModule

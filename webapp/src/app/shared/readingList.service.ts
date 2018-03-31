@@ -10,7 +10,6 @@ export class ReadingListService
     public readChapters = [] as string[]
     public lists = [] as [string, ListNovel[]][]
     public defaultList = null as string
-    public novelChapters: Map<string, Chapter[]>
 
     constructor(private db: DatabaseService, private auth: AuthenticationService, private login: LoginService)
     {
@@ -53,6 +52,19 @@ export class ReadingListService
     {
         this.readChapters = this.readChapters.filter(chapter => !chaptersGUID.includes(chapter))
         await Promise.all(chaptersGUID.map(chapterId => this.db.removeReadChapter(this.login.user.uid, chapterId)))
+    }
+
+    public async addNewList(listName: string): Promise<void>
+    {
+        const specialCharacters = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/
+
+        if (!listName || specialCharacters.test(listName) || this.lists.map(l => l[0]).includes(listName))
+        {
+            throw new Error('A list name cannot be empty, already exist and must consist of only letters and numbers')
+        }
+
+        await this.db.addList(this.login.user.uid, listName)
+        this.lists.push([listName, []])
     }
 
     private listsToArray(lists: DbList): [string, ListNovel[]][]

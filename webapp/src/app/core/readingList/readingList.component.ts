@@ -1,5 +1,5 @@
 import { Component } from '@angular/core'
-import { LoginService, ReadingListService } from '../../shared/shared.module'
+import { LoginService, ReadingListService, AlertService } from '../../shared/shared.module'
 
 @Component(
 {
@@ -7,10 +7,25 @@ import { LoginService, ReadingListService } from '../../shared/shared.module'
 })
 export class ReadingListComponent
 {
-    constructor(private login: LoginService, private read: ReadingListService){}
+    public newListName = ''
 
-    loginOrRegister(event)
+    constructor(private login: LoginService, private read: ReadingListService, private as: AlertService){}
+
+    async loginOrRegister(event)
     {
-        this.login.login()
+        await this.login.login()
+    }
+
+    async addNewList()
+    {
+        try
+        {
+            await this.read.addNewList(this.newListName.trim())
+            this.newListName = ''
+        }
+        catch (error)
+        {
+            this.as.displayAlert(error.message, this.as.ERROR)
+        }
     }
 }

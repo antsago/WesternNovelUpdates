@@ -72,6 +72,11 @@ export class DatabaseService
         return (await this.fs.collection(USERS).doc(userId).get()).data() as User
     }
 
+    async addList(userId: string, listName: string): Promise<void>
+    {
+        await this.fs.collection(USERS).doc(userId).update({[`lists.${listName}`]: []})
+    }
+
     async getReadChapters(userId: string): Promise<string[]>
     {
         const response = await this.fs.collection(USERS)
