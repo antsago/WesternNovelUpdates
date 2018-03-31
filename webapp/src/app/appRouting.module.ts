@@ -7,7 +7,7 @@ import { NovelDetailComponent } from './core/novelDetail.component'
 import { NovelDetailResolver } from './core/novelDetailResolver.service'
 import { NovelsResolver } from './core/novelsResolver.service'
 import { ChaptersResolver } from './core/chaptersResolver.service'
-import { ReadingListComponent } from './readingList.component'
+import { ReadingListComponent } from './core/readingList.component'
 
 const appRoutes: Routes =
 [

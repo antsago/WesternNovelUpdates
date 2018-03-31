@@ -16,6 +16,11 @@ service cloud.firestore
         {
             allow read, update, delete: if request.auth.uid == resource.id;
             allow create: if request.auth.uid != null;
+
+            match /readChapters/{chapter}
+            {
+                allow read, update, delete, create: if request.auth.uid == user;
+            }
         }
     }
 }

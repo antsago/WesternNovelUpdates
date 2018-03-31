@@ -8,6 +8,7 @@ const NOVELS = 'novels'
 const USERS = 'users'
 const PUBLICATION_DATE = 'publicationDate'
 const TITLE = 'title'
+const READ_CHAPTERS = 'readChapters'
 const NOVEL_ID = 'novel'
 
 
@@ -51,8 +52,12 @@ export class DatabaseService
 
     async getNovel(novelId: string): Promise<Novel>
     {
-        const novel = (await this.fs.collection(NOVELS).doc(novelId).get()).data() as Novel
-        novel.chapters = (await this.fs.collection(CHAPTERS)
+        return (await this.fs.collection(NOVELS).doc(novelId).get()).data() as Novel
+    }
+
+    async getNovelChapters(novelId: string): Promise<Chapter[]>
+    {
+        return (await this.fs.collection(CHAPTERS)
             .orderBy(PUBLICATION_DATE, 'desc')
             .where(NOVEL_ID, '==', novelId)
             .get())
@@ -60,7 +65,6 @@ export class DatabaseService
             {
                 return snap.data() as Chapter
             })
-        return novel
     }
 
     async getUser(userId: string): Promise<User>
@@ -68,8 +72,22 @@ export class DatabaseService
         return (await this.fs.collection(USERS).doc(userId).get()).data() as User
     }
 
-    async setUser(userId: string, user: User): Promise<void>
+    async getReadChapters(userId: string): Promise<string[]>
     {
-        await this.fs.collection(USERS).doc(userId).set(user, {merge: true})
+        const response = await this.fs.collection(USERS)
+            .doc(userId).collection(READ_CHAPTERS).get()
+        return response.docs.map(chapter => chapter.id)
+    }
+
+    async addReadChapter(userId: string, chapterId: string): Promise<void>
+    {
+        await this.fs.collection(USERS).doc(userId)
+            .collection(READ_CHAPTERS).doc(chapterId).set({})
+    }
+
+    async removeReadChapter(userId: string, chapterId: string): Promise<void>
+    {
+        await this.fs.collection(USERS).doc(userId)
+            .collection(READ_CHAPTERS).doc(chapterId).delete()
     }
 }

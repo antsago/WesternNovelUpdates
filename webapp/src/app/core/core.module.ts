@@ -1,11 +1,13 @@
 import { CommonModule } from '@angular/common'
 import { NgModule } from '@angular/core'
 import { RouterModule } from '@angular/router'
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
 
-import { ChapterRowComponent } from './chapterRow.component'
 import { LatestChaptersComponent } from './latestChapters.component'
 import { NovelsComponent } from './novels.component'
 import { NovelDetailComponent } from './novelDetail.component'
+import { ChapterRowComponent } from './chapterRow.component'
+import { ReadingListComponent } from './readingList.component'
 
 
 @NgModule(
@@ -13,14 +15,16 @@ import { NovelDetailComponent } from './novelDetail.component'
     imports:
     [
         RouterModule,
-        CommonModule
+        CommonModule,
+        NgbModule.forRoot()
     ],
     declarations:
     [
         ChapterRowComponent,
         LatestChaptersComponent,
         NovelsComponent,
-        NovelDetailComponent
+        NovelDetailComponent,
+        ReadingListComponent
     ]
 })
 export class CoreModule {}

@@ -22,6 +22,10 @@
     color: #057c95;
     border-color: #057c95;
 }
+.light-wnuaction-item:hover, .light-wnuaction-item:focus{
+    background-color: #04788f
+}
+
 .ng-valid[required], .ng-valid.required  {
 border-left: 5px solid #42A948; /* green */
 }

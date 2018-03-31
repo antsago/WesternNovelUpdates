@@ -13,10 +13,8 @@ import { AppRoutingModule } from './appRouting.module'
 import { AppRootComponent } from './appRoot.component'
 import { LoginOrRegisterComponent } from './loginOrRegister.component'
 import { MissingPageComponent } from './missingPage.component'
-import { ReadingListComponent } from './readingList.component'
 import { environment } from './../environments/environment'
 import { LoginService } from './utilities/login.service'
-
 
 @NgModule(
 {
@@ -32,8 +30,7 @@ import { LoginService } from './utilities/login.service'
     [
         AppRootComponent,
         MissingPageComponent,
-        LoginOrRegisterComponent,
-        ReadingListComponent
+        LoginOrRegisterComponent
     ],
     entryComponents: [ LoginOrRegisterComponent ],
     providers:

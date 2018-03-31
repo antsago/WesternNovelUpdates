@@ -22,4 +22,17 @@ export interface Chapter
 export interface User
 {
     readChapters: string[]
+    defaultList: string
+    lists: DbList
+}
+
+export interface ListNovel
+{
+    novelTitle: string
+    novelId: string
+}
+
+export interface DbList
+{
+    [listname: string]: ListNovel[]
 }
