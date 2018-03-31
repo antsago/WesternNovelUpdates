@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core'
-import { DatabaseService } from '../utilities/database.service'
-import { Chapter, Novel } from '../utilities/Interfaces'
 import { ActivatedRoute } from '@angular/router'
+import { Chapter, Novel } from '../../shared/Interfaces'
+import { DatabaseService } from '../../shared/database.service'
 
 @Component(
 {

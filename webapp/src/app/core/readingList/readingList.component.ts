@@ -1,6 +1,5 @@
 import { Component } from '@angular/core'
-import { LoginService } from '../utilities/login.service'
-import { ReadingListService } from '../utilities/readingList.service'
+import { LoginService, ReadingListService } from '../../shared/shared.module'
 
 @Component(
 {

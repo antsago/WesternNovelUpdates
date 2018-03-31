@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core'
-import { Novel } from '../utilities/Interfaces'
 import { ActivatedRoute } from '@angular/router'
+import { Novel } from '../../shared/shared.module'
 
 @Component(
 {

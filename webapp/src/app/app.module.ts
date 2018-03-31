@@ -1,20 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser'
 import { NgModule } from '@angular/core'
 import { FormsModule } from '@angular/forms'
+import { RouterModule } from '@angular/router'
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
 import * as firebase from 'firebase'
 
 import { CoreModule } from './core/core.module'
-
-import { DatabaseService } from './utilities/database.service'
-import { ReadingListService } from './utilities/readingList.service'
-import { AuthenticationService } from './utilities/authentication.service'
-import { AppRoutingModule } from './appRouting.module'
+import { SharedModule } from './shared/shared.module'
 import { AppRootComponent } from './appRoot.component'
-import { LoginOrRegisterComponent } from './loginOrRegister.component'
-import { MissingPageComponent } from './missingPage.component'
 import { environment } from './../environments/environment'
-import { LoginService } from './utilities/login.service'
 
 @NgModule(
 {
@@ -22,24 +16,12 @@ import { LoginService } from './utilities/login.service'
     [
         BrowserModule,
         FormsModule,
+        RouterModule,
         NgbModule.forRoot(),
-        AppRoutingModule,
-        CoreModule
+        CoreModule,
+        SharedModule
     ],
-    declarations:
-    [
-        AppRootComponent,
-        MissingPageComponent,
-        LoginOrRegisterComponent
-    ],
-    entryComponents: [ LoginOrRegisterComponent ],
-    providers:
-    [
-        DatabaseService,
-        ReadingListService,
-        AuthenticationService,
-        LoginService
-    ],
+    declarations: [ AppRootComponent ],
     bootstrap: [ AppRootComponent ]
 })
 export class AppModule

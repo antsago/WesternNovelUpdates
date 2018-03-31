@@ -3,11 +3,14 @@ import { NgModule } from '@angular/core'
 import { RouterModule } from '@angular/router'
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
 
-import { LatestChaptersComponent } from './latestChapters.component'
-import { NovelsComponent } from './novels.component'
-import { NovelDetailComponent } from './novelDetail.component'
+import { AppRoutingModule } from './appRouting.module'
+
+import { LatestChaptersComponent } from './latestChapters/latestChapters.component'
+import { NovelsComponent } from './novels/novels.component'
+import { NovelDetailComponent } from './novelDetail/novelDetail.component'
 import { ChapterRowComponent } from './chapterRow.component'
-import { ReadingListComponent } from './readingList.component'
+import { ReadingListComponent } from './readingList/readingList.component'
+import { MissingPageComponent } from './missingPage.component'
 
 
 @NgModule(
@@ -16,7 +19,8 @@ import { ReadingListComponent } from './readingList.component'
     [
         RouterModule,
         CommonModule,
-        NgbModule.forRoot()
+        NgbModule.forRoot(),
+        AppRoutingModule
     ],
     declarations:
     [
@@ -24,7 +28,8 @@ import { ReadingListComponent } from './readingList.component'
         LatestChaptersComponent,
         NovelsComponent,
         NovelDetailComponent,
-        ReadingListComponent
+        ReadingListComponent,
+        MissingPageComponent
     ]
 })
 export class CoreModule {}

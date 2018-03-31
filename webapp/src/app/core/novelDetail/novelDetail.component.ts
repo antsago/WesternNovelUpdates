@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core'
 import { ActivatedRoute, Params } from '@angular/router'
-import { ReadingListService } from '../utilities/readingList.service'
-import { Novel } from '../utilities/Interfaces'
-import { LoginService } from '../utilities/login.service'
+import { Novel, ReadingListService, LoginService } from '../../shared/shared.module'
 
 @Component(
 {

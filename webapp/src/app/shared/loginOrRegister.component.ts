@@ -1,6 +1,6 @@
 import { Component } from '@angular/core'
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap'
-import { AuthenticationService } from './utilities/authentication.service'
+import { AuthenticationService } from './authentication.service'
 
 @Component(
 {

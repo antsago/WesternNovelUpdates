@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core'
 import { Router, Resolve, RouterStateSnapshot, ActivatedRouteSnapshot } from '@angular/router'
-import { Novel } from '../utilities/Interfaces'
-import { DatabaseService } from '../utilities/database.service'
+import { Novel, DatabaseService } from '../../shared/shared.module'
 
 @Injectable()
 export class NovelDetailResolver implements Resolve<Novel>
