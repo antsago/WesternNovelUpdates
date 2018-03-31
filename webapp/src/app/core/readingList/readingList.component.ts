@@ -9,7 +9,6 @@ import { LoginService, ReadingListService } from '../../shared/shared.module'
 export class ReadingListComponent
 {
     public listsCollapsed = {}
-    public novelCollapsed = {}
 
     constructor(private login: LoginService, private read: ReadingListService){}
 
@@ -26,16 +25,6 @@ export class ReadingListComponent
     toggleList(list)
     {
         this.listsCollapsed[list] = !this.listsCollapsed[list]
-    }
-
-    collapseNovel(novelName)
-    {
-        return !this.novelCollapsed[novelName]
-    }
-
-    toggleNovel(novelName)
-    {
-        this.novelCollapsed[novelName] = ! this.novelCollapsed[novelName]
     }
 }
 

@@ -11,6 +11,7 @@ import { NovelDetailComponent } from './novelDetail/novelDetail.component'
 import { ChapterRowComponent } from './chapterRow.component'
 import { ReadingListComponent } from './readingList/readingList.component'
 import { MissingPageComponent } from './missingPage.component'
+import { NovelListComponent } from './readingList/novelList.component'
 
 
 @NgModule(
@@ -29,6 +30,7 @@ import { MissingPageComponent } from './missingPage.component'
         NovelsComponent,
         NovelDetailComponent,
         ReadingListComponent,
+        NovelListComponent,
         MissingPageComponent
     ]
 })

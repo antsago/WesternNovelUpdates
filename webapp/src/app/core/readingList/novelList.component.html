@@ -1,0 +1,33 @@
+<div class="card">
+    <div class="card-header light-wnuaction-item text-white light-wnubg d-flex flex-row align-items-center"
+    (click)="novelCollapsed = !novelCollapsed">
+        {{novel.novelTitle}}
+        <span class="ml-auto">
+            <!-- <button [hidden]="areAllChaptersRead()" 
+            class="text-white wnu-tooltip btn btn-link"
+            (click)="markAllChaptersRead()">
+                <i class="far fa-bookmark"></i>
+                <span class="wnu-tooltiptext">Mark all chapters read</span>
+            </button> -->
+            <button class="text-white wnu-tooltip btn btn-link">
+                <i class="fas fa-bookmark"></i>
+                <span class="wnu-tooltiptext">All chapters read</span>
+            </button>
+            
+            <div ngbDropdown class="d-inline-block">
+                <button class="text-white wnu-tooltip btn btn-link" ngbDropdownToggle>
+                    <i class="fas fa-ellipsis-v"></i>
+                    <span class="wnu-tooltiptext">Novel settings</span>
+                </button>
+                <div ngbDropdownMenu>
+                    <button class="dropdown-item">Move</button>
+                    <button class="dropdown-item">Delete</button>
+                </div>
+            </div>
+        </span>
+    </div>
+
+    <div [ngbCollapse]="novelCollapsed">
+        <wnu-chapter *ngFor="let chapter of read.novelChapters[novel.novelId]" [chapter]="chapter"></wnu-chapter>
+    </div>
+</div>
