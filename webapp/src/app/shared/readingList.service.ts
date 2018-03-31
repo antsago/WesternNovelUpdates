@@ -67,6 +67,12 @@ export class ReadingListService
         this.lists.push([listName, []])
     }
 
+    public async setDefaultList(listName: string): Promise<void>
+    {
+        await this.db.setDefaultList(this.login.user.uid, listName)
+        this.defaultList = listName
+    }
+
     private listsToArray(lists: DbList): [string, ListNovel[]][]
     {
         return Object.keys(lists).map<[string, ListNovel[]]>(listName => [listName, lists[listName]])

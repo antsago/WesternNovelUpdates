@@ -1,6 +1,9 @@
 <div class="card mb-4">
     <div class="card-header dark-wnubg text-white d-flex flex-row align-items-center">
-        <strong>{{listName}}:</strong>
+        <strong>{{listName}}</strong>
+        <span *ngIf="read.defaultList === listName" class="badge badge-pill badge-secondary ml-2">
+            Default
+        </span>
         <span class="ml-auto">
             <button class="text-white wnu-tooltip btn btn-link" 
             [hidden]="listsCollapsed" (click)="listsCollapsed = !listsCollapsed">
@@ -19,7 +22,9 @@
                     <span class="wnu-tooltiptext">List settings</span>
                 </button>
                 <div ngbDropdownMenu>
-                    <button class="dropdown-item">Set as default</button>
+                    <button class="dropdown-item"
+                    [disabled]="read.defaultList === listName"
+                    (click)="setListAsDefault(listName)">Set as default</button>
                     <button class="dropdown-item">Rename</button>
                     <button class="dropdown-item">Delete</button>
                 </div>

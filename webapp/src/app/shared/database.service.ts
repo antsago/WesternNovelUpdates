@@ -77,6 +77,11 @@ export class DatabaseService
         await this.fs.collection(USERS).doc(userId).update({[`lists.${listName}`]: []})
     }
 
+    async setDefaultList(userId: string, listName: string): Promise<void>
+    {
+        await this.fs.collection(USERS).doc(userId).update({defaultList: listName})
+    }
+
     async getReadChapters(userId: string): Promise<string[]>
     {
         const response = await this.fs.collection(USERS)
