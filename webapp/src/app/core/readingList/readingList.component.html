@@ -1,8 +1,9 @@
 <div class="mt-3 p-2">
-    <p *ngIf="!login.isLoggedIn"> You must be logged to see and create your reading lists.
-        <button  class="btn btn-link" (click)="loginOrRegister()">Login or register</button>
+    <div *ngIf="!login.isLoggedIn" class="w-100 text-center">
+        You must be logged to see and create your reading lists.
+        <a href="javascript:void(0);" (click)="loginOrRegister()">Login or register</a>
         to get started.
-    </p>
+    </div>
     
     <div *ngIf="login.isLoggedIn" class="w-100">
         <div class="card mb-4" *ngFor="let list of read.lists">
