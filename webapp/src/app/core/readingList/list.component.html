@@ -1,0 +1,33 @@
+<div class="card mb-4">
+    <div class="card-header dark-wnubg text-white d-flex flex-row align-items-center">
+        <strong>{{listName}}:</strong>
+        <span class="ml-auto">
+            <button class="text-white wnu-tooltip btn btn-link" 
+            [hidden]="listsCollapsed" (click)="listsCollapsed = !listsCollapsed">
+                <i class="fas fa-folder-open"></i>
+                <span class="wnu-tooltiptext">Collapse list</span>
+            </button>
+            <button class="text-white wnu-tooltip btn btn-link"
+            [hidden]="!listsCollapsed" (click)="listsCollapsed = !listsCollapsed">
+                <i class="fas fa-folder"></i>
+                <span class="wnu-tooltiptext">Expand list</span>
+            </button>
+            
+            <div ngbDropdown class="d-inline-block">
+                <button class="text-white wnu-tooltip btn btn-link" ngbDropdownToggle>
+                    <i class="fas fa-ellipsis-v"></i>
+                    <span class="wnu-tooltiptext">List settings</span>
+                </button>
+                <div ngbDropdownMenu>
+                    <button class="dropdown-item">Set as default</button>
+                    <button class="dropdown-item">Rename</button>
+                    <button class="dropdown-item">Delete</button>
+                </div>
+            </div>
+        </span>
+    </div>
+
+    <div [ngbCollapse]="listsCollapsed">
+        <wnu-listnovel *ngFor="let novel of novels"[novel]="novel"></wnu-listnovel>
+    </div>
+</div>

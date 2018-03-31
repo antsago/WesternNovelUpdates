@@ -8,24 +8,10 @@ import { LoginService, ReadingListService } from '../../shared/shared.module'
 })
 export class ReadingListComponent
 {
-    public listsCollapsed = {}
-
     constructor(private login: LoginService, private read: ReadingListService){}
 
     loginOrRegister(event)
     {
         this.login.login()
     }
-
-    collapseList(list)
-    {
-        return this.listsCollapsed[list]
-    }
-
-    toggleList(list)
-    {
-        this.listsCollapsed[list] = !this.listsCollapsed[list]
-    }
 }
-
-

@@ -6,39 +6,8 @@
     </div>
     
     <div *ngIf="login.isLoggedIn" class="w-100">
-        <div class="card mb-4" *ngFor="let list of read.lists">
-            <div class="card-header dark-wnubg text-white d-flex flex-row align-items-center">
-                <strong>{{list[0]}}:</strong>
-                <span class="ml-auto">
-                    <button class="text-white wnu-tooltip btn btn-link" 
-                    [hidden]="collapseList(list[0])" (click)="toggleList(list[0])">
-                        <i class="fas fa-folder-open"></i>
-                        <span class="wnu-tooltiptext">Collapse list</span>
-                    </button>
-                    <button class="text-white wnu-tooltip btn btn-link"
-                    [hidden]="!collapseList(list[0])" (click)="toggleList(list[0])">
-                        <i class="fas fa-folder"></i>
-                        <span class="wnu-tooltiptext">Expand list</span>
-                    </button>
-                    
-                    <div ngbDropdown class="d-inline-block">
-                        <button class="text-white wnu-tooltip btn btn-link" ngbDropdownToggle>
-                            <i class="fas fa-ellipsis-v"></i>
-                            <span class="wnu-tooltiptext">List settings</span>
-                        </button>
-                        <div ngbDropdownMenu>
-                            <button class="dropdown-item">Set as default</button>
-                            <button class="dropdown-item">Rename</button>
-                            <button class="dropdown-item">Delete</button>
-                        </div>
-                    </div>
-                </span>
-            </div>
-
-            <div [ngbCollapse]="collapseList(list[0])">
-                <wnu-listnovel *ngFor="let novel of list[1]"[novel]="novel"></wnu-listnovel>
-            </div>
-        </div>
+        <wnu-list *ngFor="let list of read.lists" [listName]="list[0]" [novels]="list[1]">
+        </wnu-list>
 
         <form class="form-inline w-100 input-group pt-4">
             <input type="text" class="form-control" placeholder="List name">
