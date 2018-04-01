@@ -19,6 +19,21 @@ export class NovelListComponent implements OnInit
     {
         this.chapters = await this.db.getNovelChapters(this.novel.novelId)
     }
+
+    async markAllChaptersRead()
+    {
+        await this.read.markChaptersAsRead(this.chapters.map(ch => ch.guid))
+    }
+
+    async markAllChaptersUnread()
+    {
+        await this.read.markChaptersAsUnread(this.chapters.map(ch => ch.guid))
+    }
+
+    areAllChaptersRead()
+    {
+        return this.chapters.every(ch => this.read.readChapters.includes(ch.guid))
+    }
 }
 
 
