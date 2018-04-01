@@ -64,6 +64,10 @@
         </div>
         <div class="modal-body text-center">
             Are you sure you want to delete <strong>{{list.listName}}</strong>?
+            <br>
+            <small class="text-muted">
+                It's novels will be added to the default list: "{{read.defaultList.listName}}"
+            </small>
         </div>
         <div class="modal-footer">
             <button (click)="d('Close click')" class="btn btn-dark" type="button">No</button>

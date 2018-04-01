@@ -94,6 +94,14 @@ export class ReadingListService
         }
         await this.db.deleteList(this.login.user.uid, list)
         this.lists = this.lists.filter(l => l.listId !== list.listId)
+
+        await this.addNovelsToList(list.novels, this.getDefaultList())
+    }
+
+    public async addNovelsToList(novels: ListNovel[], list: List)
+    {
+        list.novels = list.novels.concat(novels)
+        await this.db.setNovelsOfList(this.login.user.uid, list.novels, list.listId)
     }
 
     private checkListNameIsValid(listName: string)
@@ -104,5 +112,10 @@ export class ReadingListService
         {
             throw new Error('A list must have a name that only consists of letters and numbers')
         }
+    }
+
+    private getDefaultList(): List
+    {
+        return this.lists.find(l => l.listId === this.defaultList.listId)
     }
 }
