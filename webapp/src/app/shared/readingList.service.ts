@@ -80,6 +80,10 @@ export class ReadingListService
                 l.listName = newName
             }
         })
+        if (this.defaultList.listId === list.listId)
+        {
+            await this.setDefaultList({ listId: list.listId, listName: newName })
+        }
     }
 
     public async deleteList(list: List): Promise<void>

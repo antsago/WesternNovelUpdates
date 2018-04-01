@@ -22,11 +22,7 @@ export interface Chapter
 export interface User
 {
     readChapters: string[]
-    defaultList:
-    {
-        listId: string,
-        listName: string
-    }
+    defaultList: List
 }
 
 export interface ListNovel
@@ -39,5 +35,5 @@ export interface List
 {
     listId: string,
     listName: string,
-    novels: ListNovel[]
+    novels?: ListNovel[]
 }
