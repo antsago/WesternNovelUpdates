@@ -73,13 +73,8 @@ export class ReadingListService
     {
         this.checkListNameIsValid(newName)
         await this.db.renameList(this.login.user.uid, list, newName)
-        this.lists.forEach(l =>
-        {
-            if (l.listId === list.listId)
-            {
-                l.listName = newName
-            }
-        })
+        list.listName = newName
+
         if (this.defaultList.listId === list.listId)
         {
             await this.setDefaultList({ listId: list.listId, listName: newName })
