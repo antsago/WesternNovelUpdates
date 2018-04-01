@@ -41,6 +41,10 @@ export class NovelListComponent implements OnInit
         return this.chapters.every(ch => this.read.readChapters.includes(ch.guid))
     }
 
+    noUnreadChapters()
+    {
+        return this.chapters.filter(ch => !this.read.readChapters.includes(ch.guid)).length
+    }
 
     openDialog(dialogContent)
     {
