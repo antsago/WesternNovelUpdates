@@ -1,20 +1,34 @@
 <div class="card">
-    <div class="card-header light-wnuaction-item text-white light-wnubg d-flex flex-row align-items-center"
+    <div class="card-header light-wnuaction-item light-wnubg d-flex flex-row align-items-center"
     (click)="novelCollapsed = !novelCollapsed">
-        {{novel.novelTitle}}
+        <button class="text-white wnu-tooltip btn btn-link" 
+        [hidden]="novelCollapsed" (click)="listCollapsed = !listCollapsed">
+            <i class="fas fa-caret-down"></i>
+            <span class="wnu-tooltiptext">Collapse novel</span>
+        </button>
+        <button class="text-white wnu-tooltip btn btn-link"
+        [hidden]="!novelCollapsed" (click)="listCollapsed = !listCollapsed">
+            <i class="fas fa-caret-right"></i>
+            <span class="wnu-tooltiptext">Expand novel</span>
+        </button>
+        
+        <a class="text-white" routerLink="/novels/{{novel.novelId}}" (click)="$event.stopPropagation()">
+            {{novel.novelTitle}}
+        </a>
         <span class="ml-auto">
             <!-- <button [hidden]="areAllChaptersRead()" 
             class="text-white wnu-tooltip btn btn-link"
-            (click)="markAllChaptersRead()">
+            (click)="markAllChaptersRead();$event.stopPropagation()">
                 <i class="far fa-bookmark"></i>
                 <span class="wnu-tooltiptext">Mark all chapters read</span>
             </button> -->
-            <button class="text-white wnu-tooltip btn btn-link">
+            <button class="text-white wnu-tooltip btn btn-link"
+            (click)="$event.stopPropagation()">
                 <i class="fas fa-bookmark"></i>
                 <span class="wnu-tooltiptext">All chapters read</span>
             </button>
             
-            <div ngbDropdown class="d-inline-block">
+            <div ngbDropdown class="d-inline-block" (click)="$event.stopPropagation()">
                 <button class="text-white wnu-tooltip btn btn-link" ngbDropdownToggle>
                     <i class="fas fa-ellipsis-v"></i>
                     <span class="wnu-tooltiptext">Novel settings</span>
