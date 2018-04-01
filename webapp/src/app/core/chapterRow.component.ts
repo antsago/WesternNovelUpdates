@@ -8,6 +8,7 @@ import { Chapter, LoginService, ReadingListService } from '../shared/shared.modu
 })
 export class ChapterRowComponent
 {
+    @Input() markReadOnLink: boolean
     @Input() chapter: Chapter
     @Input() novelTitle: string
 
@@ -28,5 +29,13 @@ export class ChapterRowComponent
     async markAsUnread(chapterGuid: string)
     {
         await this.read.markChaptersAsUnread([chapterGuid])
+    }
+
+    async openedChapterLink(chapterGuid: string)
+    {
+        if (this.markReadOnLink)
+        {
+            await this.markAsRead(chapterGuid)
+        }
     }
 }

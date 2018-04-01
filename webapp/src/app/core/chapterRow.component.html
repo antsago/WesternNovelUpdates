@@ -2,7 +2,10 @@
     <div class="d-flex flex-column justify-content-between w-100">
         <div class="flex-row">
             <a *ngIf="novelTitle" class="light-wnutext" routerLink="/novels/{{chapter.novel}}"><strong>{{novelTitle}}: </strong></a>
-            <a class="light-wnutext" [ngClass]="{'font-weight-bold': !novelTitle}" href="{{chapter.link}}">{{chapter.title}}</a>
+            <a class="light-wnutext" [ngClass]="{'font-weight-bold': !novelTitle}" href="{{chapter.link}}"
+            (click)="openedChapterLink(chapter.guid)">
+                {{chapter.title}}
+            </a>
         </div>
         <span class="d-block text-muted">{{chapter.publicationDate | date: 'd MMM, h:mm a'}}</span>
     </div>
@@ -20,7 +23,8 @@
             <span class="wnu-tooltiptext">Chapter read</span>
     </button>
 
-    <a href="{{chapter.link}}" class="align-self-center light-wnucolor wnu-tooltip">
+    <a href="{{chapter.link}}" class="align-self-center light-wnucolor wnu-tooltip"
+    (click)="openedChapterLink(chapter.guid)">
         <i class="fas fa-external-link-alt"></i>
         <span class="wnu-tooltiptext">Read chapter</span>
     </a>

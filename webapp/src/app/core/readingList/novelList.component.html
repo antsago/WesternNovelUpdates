@@ -49,7 +49,7 @@
     </div>
 
     <div [ngbCollapse]="novelCollapsed">
-        <wnu-chapter *ngFor="let chapter of chapters" [chapter]="chapter"></wnu-chapter>
+        <wnu-chapter *ngFor="let chapter of chapters" [chapter]="chapter" [markReadOnLink]="true"></wnu-chapter>
     </div>
 
     <ng-template #deleteDialog let-d="dismiss">
