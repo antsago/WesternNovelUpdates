@@ -94,16 +94,16 @@ export class DatabaseService
             {listId: list.listId, listName: list.listName}})
     }
 
-    async renameList(userId: string, list: List, newName: string): Promise<void>
+    async renameList(userId: string, listId: string, newName: string): Promise<void>
     {
         await this.fs.collection(USERS).doc(userId)
-            .collection(LISTS).doc(list.listId).update({listName: newName})
+            .collection(LISTS).doc(listId).update({listName: newName})
     }
 
-    async deleteList(userId: string, list: List): Promise<void>
+    async deleteList(userId: string, listId: string): Promise<void>
     {
         await this.fs.collection(USERS).doc(userId)
-            .collection(LISTS).doc(list.listId).delete()
+            .collection(LISTS).doc(listId).delete()
     }
 
     async setNovelsOfList(userId: string, novels: ListNovel[], listId: string)

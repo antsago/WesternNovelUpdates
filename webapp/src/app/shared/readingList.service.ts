@@ -72,7 +72,7 @@ export class ReadingListService
     public async renameList(list: List, newName: string): Promise<void>
     {
         this.checkListNameIsValid(newName)
-        await this.db.renameList(this.login.user.uid, list, newName)
+        await this.db.renameList(this.login.user.uid, list.listId, newName)
         list.listName = newName
 
         if (this.defaultList.listId === list.listId)
@@ -87,7 +87,7 @@ export class ReadingListService
         {
             throw new Error('Default list cannot be deleted')
         }
-        await this.db.deleteList(this.login.user.uid, list)
+        await this.db.deleteList(this.login.user.uid, list.listId)
         this.lists = this.lists.filter(l => l.listId !== list.listId)
 
         await this.addNovelsToList(list.novels, this.getDefaultList())
