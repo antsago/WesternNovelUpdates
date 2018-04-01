@@ -1,17 +1,17 @@
 <div class="card mb-4">
     <div class="card-header dark-wnubg text-white d-flex flex-row align-items-center">
-        <strong>{{listName}}</strong>
-        <span *ngIf="read.defaultList === listName" class="badge badge-pill badge-secondary ml-2">
+        <strong>{{list.listName}}</strong>
+        <span *ngIf="read.defaultList.listId === list.listId" class="badge badge-pill badge-secondary ml-2">
             Default
         </span>
         <span class="ml-auto">
             <button class="text-white wnu-tooltip btn btn-link" 
-            [hidden]="listsCollapsed" (click)="listsCollapsed = !listsCollapsed">
+            [hidden]="listCollapsed" (click)="listCollapsed = !listCollapsed">
                 <i class="fas fa-folder-open"></i>
                 <span class="wnu-tooltiptext">Collapse list</span>
             </button>
             <button class="text-white wnu-tooltip btn btn-link"
-            [hidden]="!listsCollapsed" (click)="listsCollapsed = !listsCollapsed">
+            [hidden]="!listCollapsed" (click)="listCollapsed = !listCollapsed">
                 <i class="fas fa-folder"></i>
                 <span class="wnu-tooltiptext">Expand list</span>
             </button>
@@ -23,8 +23,8 @@
                 </button>
                 <div ngbDropdownMenu>
                     <button class="dropdown-item"
-                    [disabled]="read.defaultList === listName"
-                    (click)="setListAsDefault(listName)">Set as default</button>
+                    [disabled]="read.defaultList.listId === list.listId"
+                    (click)="setListAsDefault()">Set as default</button>
                     <button class="dropdown-item">Rename</button>
                     <button class="dropdown-item">Delete</button>
                 </div>
@@ -32,7 +32,7 @@
         </span>
     </div>
 
-    <div [ngbCollapse]="listsCollapsed">
-        <wnu-listnovel *ngFor="let novel of novels"[novel]="novel"></wnu-listnovel>
+    <div [ngbCollapse]="listCollapsed">
+        <wnu-listnovel *ngFor="let novel of list.novels"[novel]="novel"></wnu-listnovel>
     </div>
 </div>

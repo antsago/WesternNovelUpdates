@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core'
-import { ListNovel, ReadingListService } from '../../shared/shared.module'
+import { ReadingListService, List } from '../../shared/shared.module'
 
 @Component(
 {
@@ -9,14 +9,13 @@ import { ListNovel, ReadingListService } from '../../shared/shared.module'
 })
 export class ListComponent
 {
-    private listsCollapsed = false
-    @Input() listName: string
-    @Input() novels: ListNovel[]
+    private listCollapsed = false
+    @Input() list: List
 
     constructor(private read: ReadingListService) {}
 
-    async setListAsDefault(listName: string)
+    async setListAsDefault()
     {
-        await this.read.setDefaultList(listName)
+        await this.read.setDefaultList(this.list)
     }
 }

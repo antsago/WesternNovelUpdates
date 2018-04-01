@@ -2,14 +2,14 @@ import { Injectable } from '@angular/core'
 import { DatabaseService } from './database.service'
 import { AuthenticationService } from './user/authentication.service'
 import { LoginService } from './user/login.service'
-import { ListNovel, DbList, Chapter } from './Interfaces'
+import { ListNovel, List, Chapter } from './Interfaces'
 
 @Injectable()
 export class ReadingListService
 {
     public readChapters = [] as string[]
-    public lists = [] as [string, ListNovel[]][]
-    public defaultList = null as string
+    public lists = [] as List[]
+    public defaultList = null as {listId: string, listName: string}
 
     constructor(private db: DatabaseService, private auth: AuthenticationService, private login: LoginService)
     {
@@ -20,11 +20,12 @@ export class ReadingListService
                 if (this.login.isLoggedIn)
                 {
                     const chaptersPromise = this.db.getReadChapters(this.login.user.uid)
+                    const listsPromise = this.db.getLists(this.login.user.uid)
                     const wnuUser = await this.db.getUser(this.login.user.uid)
 
                     this.defaultList = wnuUser.defaultList
-                    this.lists = this.listsToArray(wnuUser.lists)
                     this.readChapters = await chaptersPromise
+                    this.lists = await listsPromise
                 }
                 else
                 {
@@ -58,23 +59,18 @@ export class ReadingListService
     {
         const specialCharacters = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/
 
-        if (!listName || specialCharacters.test(listName) || this.lists.map(l => l[0]).includes(listName))
+        if (!listName || specialCharacters.test(listName))
         {
-            throw new Error('A list name cannot be empty, already exist and must consist of only letters and numbers')
+            throw new Error('A list must have a name that only consists of letters and numbers')
         }
 
-        await this.db.addList(this.login.user.uid, listName)
-        this.lists.push([listName, []])
+        const newList = await this.db.addList(this.login.user.uid, {listId: null, listName: listName, novels: []})
+        this.lists.push(newList)
     }
 
-    public async setDefaultList(listName: string): Promise<void>
+    public async setDefaultList(list: List): Promise<void>
     {
-        await this.db.setDefaultList(this.login.user.uid, listName)
-        this.defaultList = listName
-    }
-
-    private listsToArray(lists: DbList): [string, ListNovel[]][]
-    {
-        return Object.keys(lists).map<[string, ListNovel[]]>(listName => [listName, lists[listName]])
+        await this.db.setDefaultList(this.login.user.uid, list)
+        this.defaultList = list
     }
 }

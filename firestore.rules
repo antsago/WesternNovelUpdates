@@ -19,7 +19,12 @@ service cloud.firestore
 
             match /readChapters/{chapter}
             {
-                allow read, update, delete, create: if request.auth.uid == user;
+                allow read, write: if request.auth.uid == user;
+            }
+
+            match /lists/{list}
+            {
+                allow read, write: if request.auth.uid == user;
             }
         }
     }

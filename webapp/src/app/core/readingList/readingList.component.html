@@ -6,13 +6,16 @@
     </div>
     
     <div *ngIf="login.isLoggedIn" class="w-100">
-        <wnu-list *ngFor="let list of read.lists" [listName]="list[0]" [novels]="list[1]">
+        <wnu-list *ngFor="let list of read.lists" [list]="list">
         </wnu-list>
 
         <form class="form-inline w-100 input-group pt-4">
-            <input [(ngModel)]="newListName" name="newListName" type="text" class="form-control" placeholder="List name" required autofocus>
+            <input [(ngModel)]="newListName" name="newListName" type="text" 
+            class="form-control" placeholder="List name" required autofocus>
             <div class="input-group-append">
-                <button (click)="addNewList()" type="submit" class="btn btn-dark dark-wnubg px-3 py-2">Create list</button>
+                <button (click)="addNewList()" type="submit" class="btn btn-dark dark-wnubg px-3 py-2">
+                    Create list
+                </button>
             </div>
         </form>
     </div>

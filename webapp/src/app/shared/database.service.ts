@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core'
 import * as fb from 'firebase'
 import 'firebase/firestore' // necessary because of its side-effects
-import { Novel, Chapter, User } from './Interfaces'
+import { Novel, Chapter, User, List } from './Interfaces'
 
 const CHAPTERS = 'chapters'
 const NOVELS = 'novels'
@@ -10,6 +10,7 @@ const PUBLICATION_DATE = 'publicationDate'
 const TITLE = 'title'
 const READ_CHAPTERS = 'readChapters'
 const NOVEL_ID = 'novel'
+const LISTS = 'lists'
 
 
 @Injectable()
@@ -72,14 +73,25 @@ export class DatabaseService
         return (await this.fs.collection(USERS).doc(userId).get()).data() as User
     }
 
-    async addList(userId: string, listName: string): Promise<void>
+    async getLists(userId: string): Promise<List[]>
     {
-        await this.fs.collection(USERS).doc(userId).update({[`lists.${listName}`]: []})
+        const response = await this.fs.collection(USERS).doc(userId).collection(LISTS).get()
+        return response.docs.map(list => list.data() as List)
     }
 
-    async setDefaultList(userId: string, listName: string): Promise<void>
+    async addList(userId: string, list: List): Promise<List>
     {
-        await this.fs.collection(USERS).doc(userId).update({defaultList: listName})
+        const listReference = this.fs.collection(USERS).doc(userId).collection(LISTS).doc()
+        list.listId = listReference.id
+        await listReference.set(list)
+
+        return list
+    }
+
+    async setDefaultList(userId: string, list: List): Promise<void>
+    {
+        await this.fs.collection(USERS).doc(userId).update({defaultList:
+            {listId: list.listId, listName: list.listName}})
     }
 
     async getReadChapters(userId: string): Promise<string[]>
