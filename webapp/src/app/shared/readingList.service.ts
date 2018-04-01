@@ -82,6 +82,16 @@ export class ReadingListService
         })
     }
 
+    public async deleteList(list: List): Promise<void>
+    {
+        if (list.listId === this.defaultList.listId)
+        {
+            throw new Error('Default list cannot be deleted')
+        }
+        await this.db.deleteList(this.login.user.uid, list)
+        this.lists = this.lists.filter(l => l.listId !== list.listId)
+    }
+
     private checkListNameIsValid(listName: string)
     {
         const specialCharacters = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/

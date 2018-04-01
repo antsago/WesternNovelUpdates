@@ -15,7 +15,7 @@ export class ListComponent
 
     private listCollapsed = false
 
-    private renameDialog: NgbModalRef
+    private dialog: NgbModalRef
     private newListName: string
     private errorMessage: string
 
@@ -26,11 +26,11 @@ export class ListComponent
         await this.read.setDefaultList(this.list)
     }
 
-    openDialog(renameDialog)
+    openDialog(dialogContent)
     {
         this.newListName = ''
         this.errorMessage = null
-        this.renameDialog = this.modal.open(renameDialog)
+        this.dialog = this.modal.open(dialogContent)
     }
 
     async renameList()
@@ -38,11 +38,17 @@ export class ListComponent
         try
         {
             await this.read.renameList(this.list, this.newListName)
-            this.renameDialog.close()
+            this.dialog.close()
         }
         catch (error)
         {
             this.errorMessage = error.message
         }
+    }
+
+    async deleteList()
+    {
+        await this.read.deleteList(this.list)
+        this.dialog.close()
     }
 }

@@ -100,6 +100,12 @@ export class DatabaseService
             .collection(LISTS).doc(list.listId).update({listName: newName})
     }
 
+    async deleteList(userId: string, list: List): Promise<void>
+    {
+        await this.fs.collection(USERS).doc(userId)
+            .collection(LISTS).doc(list.listId).delete()
+    }
+
     async getReadChapters(userId: string): Promise<string[]>
     {
         const response = await this.fs.collection(USERS)
