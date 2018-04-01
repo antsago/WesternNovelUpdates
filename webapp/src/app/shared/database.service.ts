@@ -94,6 +94,12 @@ export class DatabaseService
             {listId: list.listId, listName: list.listName}})
     }
 
+    async renameList(userId: string, list: List, newName: string): Promise<void>
+    {
+        await this.fs.collection(USERS).doc(userId)
+            .collection(LISTS).doc(list.listId).update({listName: newName})
+    }
+
     async getReadChapters(userId: string): Promise<string[]>
     {
         const response = await this.fs.collection(USERS)

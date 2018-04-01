@@ -57,12 +57,7 @@ export class ReadingListService
 
     public async addNewList(listName: string): Promise<void>
     {
-        const specialCharacters = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/
-
-        if (!listName || specialCharacters.test(listName))
-        {
-            throw new Error('A list must have a name that only consists of letters and numbers')
-        }
+        this.checkListNameIsValid(listName)
 
         const newList = await this.db.addList(this.login.user.uid, {listId: null, listName: listName, novels: []})
         this.lists.push(newList)
@@ -72,5 +67,28 @@ export class ReadingListService
     {
         await this.db.setDefaultList(this.login.user.uid, list)
         this.defaultList = list
+    }
+
+    public async renameList(list: List, newName: string): Promise<void>
+    {
+        this.checkListNameIsValid(newName)
+        await this.db.renameList(this.login.user.uid, list, newName)
+        this.lists.forEach(l =>
+        {
+            if (l.listId === list.listId)
+            {
+                l.listName = newName
+            }
+        })
+    }
+
+    private checkListNameIsValid(listName: string)
+    {
+        const specialCharacters = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/
+
+        if (!listName || specialCharacters.test(listName))
+        {
+            throw new Error('A list must have a name that only consists of letters and numbers')
+        }
     }
 }

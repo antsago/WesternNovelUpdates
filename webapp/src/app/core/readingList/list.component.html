@@ -25,7 +25,7 @@
                     <button class="dropdown-item"
                     [disabled]="read.defaultList.listId === list.listId"
                     (click)="setListAsDefault()">Set as default</button>
-                    <button class="dropdown-item">Rename</button>
+                    <button class="dropdown-item" (click)="openDialog(renameDialog)">Rename</button>
                     <button class="dropdown-item">Delete</button>
                 </div>
             </div>
@@ -35,4 +35,21 @@
     <div [ngbCollapse]="listCollapsed">
         <wnu-listnovel *ngFor="let novel of list.novels"[novel]="novel"></wnu-listnovel>
     </div>
+
+    <ng-template #renameDialog let-d="dismiss">
+        <div class="modal-body">
+            <ngb-alert *ngIf="errorMessage" (close)="errorMessage = null">
+                {{errorMessage}}
+            </ngb-alert>
+    
+            <form class="form-inline w-100 input-group pt-4">
+                <input [(ngModel)]="newListName" name="newListName" type="text" 
+                class="form-control" placeholder="List name" required autofocus>
+                <div class="input-group-append">
+                    <button (click)="d('Close click')" class="btn btn-dark" type="button">Cancel</button>
+                    <button (click)="renameList()" class="btn btn-dark light-wnubg" type="submit">Rename</button>
+                </div>
+            </form>
+        </div>
+    </ng-template>
 </div>
