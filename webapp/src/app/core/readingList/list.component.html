@@ -35,7 +35,8 @@
     </div>
 
     <div [ngbCollapse]="listCollapsed">
-        <wnu-listnovel *ngFor="let novel of list.novels"[novel]="novel"></wnu-listnovel>
+        <wnu-listnovel *ngFor="let novel of list.novels"[novel]="novel" [list]="list">
+        </wnu-listnovel>
     </div>
 
     <ng-template #renameDialog let-d="dismiss">

@@ -104,6 +104,12 @@ export class ReadingListService
         await this.db.setNovelsOfList(this.login.user.uid, list.novels, list.listId)
     }
 
+    public async deleteNovelFromList(novel: ListNovel, list: List)
+    {
+        list.novels = list.novels.filter(n => n.novelId !== novel.novelId)
+        await this.db.setNovelsOfList(this.login.user.uid, list.novels, list.listId)
+    }
+
     private checkListNameIsValid(listName: string)
     {
         const specialCharacters = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/

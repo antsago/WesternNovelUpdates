@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core'
-import { LoginService, ReadingListService, Chapter, ListNovel, DatabaseService } from '../../shared/shared.module'
+import { LoginService, ReadingListService, Chapter,
+    ListNovel, DatabaseService, List } from '../../shared/shared.module'
+import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap'
 
 @Component(
 {
@@ -9,11 +11,15 @@ import { LoginService, ReadingListService, Chapter, ListNovel, DatabaseService }
 })
 export class NovelListComponent implements OnInit
 {
+    @Input() list: List
     @Input() novel: ListNovel
-    private novelCollapsed = true
     private chapters = [] as Chapter[]
 
-    constructor(private read: ReadingListService, private db: DatabaseService){}
+    private novelCollapsed = true
+    private dialog: NgbModalRef
+
+    constructor(private read: ReadingListService, private db: DatabaseService,
+        private modal: NgbModal) {}
 
     async ngOnInit()
     {
@@ -33,6 +39,18 @@ export class NovelListComponent implements OnInit
     areAllChaptersRead()
     {
         return this.chapters.every(ch => this.read.readChapters.includes(ch.guid))
+    }
+
+
+    openDialog(dialogContent)
+    {
+        this.dialog = this.modal.open(dialogContent)
+    }
+
+    async deleteNovel()
+    {
+        await this.read.deleteNovelFromList(this.novel, this.list)
+        this.dialog.close()
     }
 }
 
