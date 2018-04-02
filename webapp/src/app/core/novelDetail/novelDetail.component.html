@@ -12,7 +12,8 @@
         <strong>Synopsis</strong>
         <div *ngIf="savedInList()" class="btn-group">
             <div class="btn-group" ngbDropdown placement="bottom-right">
-                <button type="button" class="btn btn-outline-light" ngbDropdownToggle>
+                <button type="button" class="btn btn-outline-light" 
+                [disabled]="read.lists.length <= 1" ngbDropdownToggle>
                     Move to
                 </button>
                 <div class="dropdown-menu" ngbDropdownMenu>

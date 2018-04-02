@@ -56,6 +56,11 @@ export class NovelListComponent implements OnInit
         await this.read.deleteNovelFromList(this.novel, this.list)
         this.dialog.close()
     }
+
+    async moveToList(list: List)
+    {
+        await this.read.moveNovel(this.novel, this.list, list)
+    }
 }
 
 

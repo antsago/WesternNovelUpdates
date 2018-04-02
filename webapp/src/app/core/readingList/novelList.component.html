@@ -40,9 +40,18 @@
                     <span class="wnu-tooltiptext">Novel settings</span>
                 </button>
                 <div ngbDropdownMenu>
-                    <button class="dropdown-item" [disabled]="read.lists.length <= 1">
-                        Move
-                    </button>
+                    <div class="dropdown-item dropdown p-0" ngbDropdown placement="left-top">
+                        <button class="dropdown-item" ngbDropdownToggle>
+                            Move to
+                        </button>
+                        <div class="dropdown-menu" ngbDropdownMenu>
+                            <button class="dropdown-item" type="button" *ngFor="let list of read.lists"
+                            [disabled]="this.read.novelWithList(novel.novelId).listId === list.listId"
+                            (click)="moveToList(list)">
+                                {{list.listName}}
+                            </button>
+                        </div>
+                    </div>
                     <button class="dropdown-item" (click)="openDialog(deleteDialog)">Delete</button>
                 </div>
             </div>
