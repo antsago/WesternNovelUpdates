@@ -10,7 +10,7 @@ import { DatabaseService } from '../../shared/database.service'
 export class LatestChaptersComponent implements OnInit
 {
     private readonly NumberOfUpdates = 10
-    private chapters: Chapter[]
+    public chapters: Chapter[]
     private novels: {[id: string]: Novel}
 
     constructor(private db: DatabaseService, private route: ActivatedRoute) {}

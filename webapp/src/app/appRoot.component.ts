@@ -8,9 +8,9 @@ import { LoginService, AlertService } from './shared/shared.module'
 })
 export class AppRootComponent
 {
-    private isNavbarCollapsed = true
+    public isNavbarCollapsed = true
 
-    constructor(private login: LoginService, private alertService: AlertService) {}
+    constructor(public login: LoginService, public alertService: AlertService) {}
 
     loginOrRegister()
     {

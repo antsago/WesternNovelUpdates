@@ -13,7 +13,7 @@ export class ChapterRowComponent
     @Input() chapter: Chapter
     @Input() novelTitle: string
 
-    constructor(private login: LoginService, private read: ReadingListService, private as: AlertService) {}
+    constructor(private login: LoginService, public read: ReadingListService, private as: AlertService) {}
 
     async markAsRead()
     {

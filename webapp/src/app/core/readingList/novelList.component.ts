@@ -12,11 +12,11 @@ export class NovelListComponent implements OnInit
 {
     @Input() list: List
     @Input() novel: ListNovel
-    private chapters = [] as Chapter[]
+    public chapters = [] as Chapter[]
 
-    private novelCollapsed = true
+    public novelCollapsed = true
 
-    constructor(private read: ReadingListService, private db: DatabaseService) {}
+    constructor(public read: ReadingListService, private db: DatabaseService) {}
 
     async ngOnInit()
     {

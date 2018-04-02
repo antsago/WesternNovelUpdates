@@ -13,13 +13,13 @@ export class ListComponent
 {
     @Input() list: List
 
-    private listCollapsed = false
+    public listCollapsed = false
 
     private dialog: NgbModalRef
     private newListName: string
     private errorMessage: string
 
-    constructor(private read: ReadingListService, private modal: NgbModal) {}
+    constructor(public read: ReadingListService, private modal: NgbModal) {}
 
     async setListAsDefault()
     {

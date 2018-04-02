@@ -9,7 +9,7 @@ export class ReadingListComponent
 {
     public newListName = ''
 
-    constructor(private login: LoginService, private read: ReadingListService, private as: AlertService){}
+    constructor(public login: LoginService, private read: ReadingListService, private as: AlertService){}
 
     async loginOrRegister(event)
     {

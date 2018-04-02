@@ -8,7 +8,7 @@ import { Novel } from '../../shared/shared.module'
 })
 export class NovelsComponent implements OnInit
 {
-    private novels: Novel[]
+    public novels: Novel[]
 
     constructor(private route: ActivatedRoute) {}
 

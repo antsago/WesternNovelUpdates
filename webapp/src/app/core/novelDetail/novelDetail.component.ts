@@ -8,7 +8,7 @@ import { Novel, ReadingListService, LoginService, List, ListNovel, AlertService 
 })
 export class NovelDetailComponent implements OnInit
 {
-    private novel: Novel
+    public novel: Novel
 
     constructor(private read: ReadingListService, private route: ActivatedRoute,
         private login: LoginService, private as: AlertService) {}

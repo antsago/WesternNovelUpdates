@@ -8,14 +8,14 @@ import { AuthenticationService } from './authentication.service'
 })
 export class LoginOrRegisterComponent
 {
-    private loginForm =
+    public loginForm =
     {
         email: '',
         password: '',
         errorMessage: '',
         alertClosed: true
     }
-    private registerForm =
+    public registerForm =
     {
         username: '',
         email: '',
@@ -24,7 +24,7 @@ export class LoginOrRegisterComponent
         alertClosed: true
     }
 
-    constructor(private activeModal: NgbActiveModal, private auth: AuthenticationService) {}
+    constructor(public activeModal: NgbActiveModal, private auth: AuthenticationService) {}
 
     async login()
     {
