@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core'
 import { ActivatedRoute, Params } from '@angular/router'
-import { Novel, ReadingListService, LoginService, List } from '../../shared/shared.module'
+import { Novel, ReadingListService, LoginService, List, ListNovel } from '../../shared/shared.module'
 
 @Component(
 {
@@ -47,8 +47,7 @@ export class NovelDetailComponent implements OnInit
 
     async saveToList(list: List)
     {
-        const novel = { novelId: this.novel.id, novelTitle: this.novel.title }
-        await this.read.addNovelsToList([novel], list)
+        await this.read.addNovelsToList([this.getListNovel()], list)
     }
 
     savedInList(): boolean
@@ -58,7 +57,16 @@ export class NovelDetailComponent implements OnInit
 
     async moveToList(list: List)
     {
-        const novel = { novelId: this.novel.id, novelTitle: this.novel.title }
-        await this.read.moveNovel(novel, this.read.novelWithList(this.novel.id), list)
+        await this.read.moveNovel(this.getListNovel(), this.read.novelWithList(this.novel.id), list)
+    }
+
+    async deleteFromList()
+    {
+        await this.read.deleteNovelFromList(this.getListNovel(), this.read.novelWithList(this.novel.id))
+    }
+
+    private getListNovel(): ListNovel
+    {
+        return { novelId: this.novel.id, novelTitle: this.novel.title }
     }
 }
