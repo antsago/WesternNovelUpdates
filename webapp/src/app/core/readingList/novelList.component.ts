@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core'
 import { LoginService, ReadingListService, Chapter,
     ListNovel, DatabaseService, List } from '../../shared/shared.module'
-import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap'
 
 @Component(
 {
@@ -16,10 +15,8 @@ export class NovelListComponent implements OnInit
     private chapters = [] as Chapter[]
 
     private novelCollapsed = true
-    private dialog: NgbModalRef
 
-    constructor(private read: ReadingListService, private db: DatabaseService,
-        private modal: NgbModal) {}
+    constructor(private read: ReadingListService, private db: DatabaseService) {}
 
     async ngOnInit()
     {
@@ -46,15 +43,9 @@ export class NovelListComponent implements OnInit
         return this.chapters.filter(ch => !this.read.readChapters.includes(ch.guid)).length
     }
 
-    openDialog(dialogContent)
-    {
-        this.dialog = this.modal.open(dialogContent)
-    }
-
     async deleteNovel()
     {
         await this.read.deleteNovelFromList(this.novel, this.list)
-        this.dialog.close()
     }
 
     async moveToList(list: List)

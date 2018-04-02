@@ -52,7 +52,7 @@
                             </button>
                         </div>
                     </div>
-                    <button class="dropdown-item" (click)="openDialog(deleteDialog)">Delete</button>
+                    <button class="dropdown-item" (click)="deleteNovel()">Delete</button>
                 </div>
             </div>
         </span>
@@ -63,20 +63,4 @@
         [novelTitle]="novel.novelTitle" [markReadOnLink]="true">
         </wnu-chapter>
     </div>
-
-    <ng-template #deleteDialog let-d="dismiss">
-        <div class="modal-header">
-            <h4 class="modal-title light-wnucolor">Confirm delete</h4>
-            <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <div class="modal-body text-center">
-            Are you sure you want to delete <strong>{{novel.novelTitle}}</strong>?
-        </div>
-        <div class="modal-footer">
-            <button (click)="d('Close click')" class="btn btn-dark" type="button">No</button>
-            <button (click)="deleteNovel()" class="btn btn-dark light-wnubg" type="button">Yes</button>
-        </div>
-    </ng-template>
 </div>
