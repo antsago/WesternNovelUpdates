@@ -48,7 +48,14 @@ export class NovelDetailComponent implements OnInit
 
     async saveToList(list: List)
     {
-        await this.read.addNovelsToList([this.getListNovel()], list)
+        if (this.login.isLoggedIn)
+        {
+            await this.read.addNovelsToList([this.getListNovel()], list)
+        }
+        else
+        {
+            await this.login.login()
+        }
     }
 
     savedInList(): boolean

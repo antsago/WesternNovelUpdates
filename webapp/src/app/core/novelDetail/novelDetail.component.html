@@ -35,10 +35,10 @@
             (click)="saveToList(read.getDefaultList())">
                 Add to list
             </button>
-            <button type="button" ngbDropdownToggle
+            <button *ngIf="login.isLoggedIn" type="button" ngbDropdownToggle
             class="btn btn-outline-light dropdown-toggle dropdown-toggle-split">
             </button>
-            <div class="dropdown-menu" ngbDropdownMenu>
+            <div *ngIf="login.isLoggedIn" class="dropdown-menu" ngbDropdownMenu>
                 <button class="dropdown-item" type="button" *ngFor="let list of read.lists"
                 (click)="saveToList(list)">
                     {{list.listName}}
