@@ -4,7 +4,6 @@ import { Novel, ReadingListService, LoginService, List, ListNovel } from '../../
 
 @Component(
 {
-    styles: ['.dropdown-toggle::after {display:none;}'],
     templateUrl: './novelDetail.component.html'
 })
 export class NovelDetailComponent implements OnInit
