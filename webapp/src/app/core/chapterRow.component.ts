@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core'
-import { Chapter, LoginService, ReadingListService } from '../shared/shared.module'
+import { Chapter, LoginService, ReadingListService, AlertService } from '../shared/shared.module'
 
 @Component(
 {
@@ -8,17 +8,25 @@ import { Chapter, LoginService, ReadingListService } from '../shared/shared.modu
 })
 export class ChapterRowComponent
 {
+    @Input() showNovelTitle: boolean
     @Input() markReadOnLink: boolean
     @Input() chapter: Chapter
     @Input() novelTitle: string
 
-    constructor(private login: LoginService, private read: ReadingListService) {}
+    constructor(private login: LoginService, private read: ReadingListService, private as: AlertService) {}
 
-    async markAsRead(chapterGuid: string)
+    async markAsRead()
     {
         if (this.login.isLoggedIn)
         {
-            await this.read.markChaptersAsRead([chapterGuid])
+            if (!this.read.novelIsInList(this.chapter.novel))
+            {
+                const novel = { novelId: this.chapter.novel, novelTitle: this.novelTitle }
+                await this.read.addNovelsToList([novel], this.read.getDefaultList())
+                const message = `Novel ${this.novelTitle} added to "${this.read.defaultList.listName}" list`
+                this.as.displayAlert(message, this.as.INFO)
+            }
+            await this.read.markChaptersAsRead([this.chapter.guid])
         }
         else
         {
@@ -26,16 +34,16 @@ export class ChapterRowComponent
         }
     }
 
-    async markAsUnread(chapterGuid: string)
+    async markAsUnread()
     {
-        await this.read.markChaptersAsUnread([chapterGuid])
+        await this.read.markChaptersAsUnread([this.chapter.guid])
     }
 
-    async openedChapterLink(chapterGuid: string)
+    async openedChapterLink()
     {
         if (this.markReadOnLink)
         {
-            await this.markAsRead(chapterGuid)
+            await this.markAsRead()
         }
     }
 }

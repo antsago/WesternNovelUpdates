@@ -1,7 +1,7 @@
 <div class="bg-white rounded box-shadow mt-3 p-2">
     <div class="list-group list-group-flush">
-        <wnu-chapter *ngFor="let chapter of chapters" 
-            [chapter]="chapter" [novelTitle]="novels[chapter.novel].title">
+        <wnu-chapter *ngFor="let chapter of chapters" [chapter]="chapter"
+        [novelTitle]="novels[chapter.novel].title" [showNovelTitle]="true">
         </wnu-chapter>
     </div>
 

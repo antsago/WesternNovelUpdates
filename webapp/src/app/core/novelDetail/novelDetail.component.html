@@ -30,7 +30,8 @@
     </div>
     <div class="my-3 bg-white rounded box-shadow p-2">
         <div class="list-group list-group-flush">
-            <wnu-chapter *ngFor="let chapter of novel.chapters" [chapter]="chapter"></wnu-chapter>
+            <wnu-chapter *ngFor="let chapter of novel.chapters" [chapter]="chapter" [novelTitle]="novel.title">
+            </wnu-chapter>
         </div>
     </div>
 </div>

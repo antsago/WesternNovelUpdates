@@ -93,16 +93,22 @@ export class ReadingListService
         await this.addNovelsToList(list.novels, this.getDefaultList())
     }
 
-    public async addNovelsToList(novels: ListNovel[], list: List)
+    public async addNovelsToList(novels: ListNovel[], list: List): Promise<void>
     {
         list.novels = list.novels.concat(novels)
         await this.db.setNovelsOfList(this.login.user.uid, list.novels, list.listId)
     }
 
-    public async deleteNovelFromList(novel: ListNovel, list: List)
+    public async deleteNovelFromList(novel: ListNovel, list: List): Promise<void>
     {
         list.novels = list.novels.filter(n => n.novelId !== novel.novelId)
         await this.db.setNovelsOfList(this.login.user.uid, list.novels, list.listId)
+    }
+
+    public async moveNovel(novel: ListNovel, from: List, to: List): Promise<void>
+    {
+        await this.addNovelsToList([novel], to)
+        await this.deleteNovelFromList(novel, from)
     }
 
     private checkListNameIsValid(listName: string)
@@ -115,8 +121,13 @@ export class ReadingListService
         }
     }
 
-    private getDefaultList(): List
+    public getDefaultList(): List
     {
         return this.lists.find(l => l.listId === this.defaultList.listId)
+    }
+
+    public novelIsInList(novelId: string): boolean
+    {
+        return this.lists.some(list => list.novels.some(novel => novel.novelId === novelId))
     }
 }
