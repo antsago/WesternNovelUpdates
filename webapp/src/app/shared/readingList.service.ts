@@ -126,8 +126,13 @@ export class ReadingListService
         return this.lists.find(l => l.listId === this.defaultList.listId)
     }
 
+    public novelWithList(novelId: string): List
+    {
+        return this.lists.find(list => list.novels.some(n => n.novelId === novelId))
+    }
+
     public novelIsInList(novelId: string): boolean
     {
-        return this.lists.some(list => list.novels.some(novel => novel.novelId === novelId))
+        return this.novelWithList(novelId) !== undefined
     }
 }
