@@ -4,6 +4,13 @@ import { AuthenticationService } from './user/authentication.service'
 import { LoginService } from './user/login.service'
 import { ListNovel, List, Chapter } from './Interfaces'
 
+const INITIAL_LIST =
+{
+    listId: null,
+    listName: 'Reading',
+    novels: []
+}
+
 @Injectable()
 export class ReadingListService
 {
@@ -36,9 +43,13 @@ export class ReadingListService
             }
             catch (err) // user object doesn't exists
             {
-                this.defaultList = null
+                await this.db.createUser(this.login.user.uid)
+                const defaultList = await this.db.addList(this.login.user.uid, INITIAL_LIST)
+                await this.db.setDefaultList(this.login.user.uid, defaultList)
+
+                this.defaultList = defaultList
                 this.readChapters = []
-                this.lists = []
+                this.lists = [defaultList]
             }
         })
     }

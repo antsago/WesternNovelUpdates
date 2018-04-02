@@ -73,6 +73,11 @@ export class DatabaseService
         return (await this.fs.collection(USERS).doc(userId).get()).data() as User
     }
 
+    async createUser(userId: string): Promise<void>
+    {
+        this.fs.collection(USERS).doc(userId).set({})
+    }
+
     async getLists(userId: string): Promise<List[]>
     {
         const response = await this.fs.collection(USERS).doc(userId).collection(LISTS).get()
