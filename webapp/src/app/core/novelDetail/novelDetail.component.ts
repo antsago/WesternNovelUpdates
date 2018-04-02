@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core'
 import { ActivatedRoute, Params } from '@angular/router'
-import { Novel, ReadingListService, LoginService, List, ListNovel } from '../../shared/shared.module'
+import { Novel, ReadingListService, LoginService, List, ListNovel, AlertService } from '../../shared/shared.module'
 
 @Component(
 {
@@ -11,7 +11,7 @@ export class NovelDetailComponent implements OnInit
     private novel: Novel
 
     constructor(private read: ReadingListService, private route: ActivatedRoute,
-        private login: LoginService) {}
+        private login: LoginService, private as: AlertService) {}
 
     async ngOnInit()
     {
@@ -25,6 +25,8 @@ export class NovelDetailComponent implements OnInit
             if (!this.savedInList())
             {
                 await this.saveToList(this.read.getDefaultList())
+                const message = `Novel ${this.novel.title} added to "${this.read.defaultList.listName}" list`
+                this.as.displayAlert(message, this.as.INFO)
             }
             await this.read.markChaptersAsRead(this.novel.chapters.map(ch => ch.guid))
         }
