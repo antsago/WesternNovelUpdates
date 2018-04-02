@@ -34,14 +34,14 @@
     </div>
 </nav>
 
-<main role="main" class="container">
-    <div *ngIf="alertService.showAlert" [ngClass]="alertService.type"
-    class="sticky-top alert alert-dismissible" role="alert">
-        {{ alertService.message }}
-        <button type="button" class="close" (click)="alertService.showAlert = false">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
+<div *ngIf="alertService.showAlert" [ngClass]="alertService.type"
+class="sticky-top text-center alert alert-dismissible" role="alert">
+    {{ alertService.message }}
+    <button type="button" class="close" (click)="alertService.showAlert = false">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
 
+<main role="main" class="container">
     <router-outlet></router-outlet>
 </main>
