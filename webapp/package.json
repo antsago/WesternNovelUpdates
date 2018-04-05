@@ -5,7 +5,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --prod  --deleteOutputPath",
+    "build": "ng build --target production --build-optimizer --vendor-chunk --deleteOutputPath",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
