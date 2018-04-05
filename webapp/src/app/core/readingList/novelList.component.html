@@ -2,12 +2,12 @@
     <div class="card-header light-wnuaction-item light-wnubg d-flex flex-row align-items-center"
     (click)="novelCollapsed = !novelCollapsed">
         <button class="text-white wnu-tooltip btn btn-link" 
-        [hidden]="novelCollapsed" (click)="novelCollapsed = !novelCollapsed">
+        [hidden]="novelCollapsed">
             <i class="fas fa-caret-down"></i>
             <span class="wnu-tooltiptext">Collapse novel</span>
         </button>
         <button class="text-white wnu-tooltip btn btn-link"
-        [hidden]="!novelCollapsed" (click)="novelCollapsed = !novelCollapsed">
+        [hidden]="!novelCollapsed">
             <i class="fas fa-caret-right"></i>
             <span class="wnu-tooltiptext">Expand novel</span>
         </button>
