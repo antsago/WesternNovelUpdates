@@ -1,22 +1,22 @@
 <div class="card mb-4">
-    <div class="card-header dark-wnubg text-white d-flex flex-row align-items-center">
+    <div class="card-header dark-wnubg text-white d-flex flex-row align-items-center"
+    (click)="listCollapsed = !listCollapsed">
         <strong>{{list.listName}}</strong>
         <span *ngIf="read.defaultList.listId === list.listId" class="badge badge-pill badge-secondary ml-2">
             Default
         </span>
         <span class="ml-auto">
-            <button class="text-white wnu-tooltip btn btn-link" 
-            [hidden]="listCollapsed" (click)="listCollapsed = !listCollapsed">
+            <button class="text-white wnu-tooltip btn btn-link" [hidden]="listCollapsed">
                 <i class="fas fa-folder-open"></i>
                 <span class="wnu-tooltiptext">Collapse list</span>
             </button>
-            <button class="text-white wnu-tooltip btn btn-link"
-            [hidden]="!listCollapsed" (click)="listCollapsed = !listCollapsed">
+            <button class="text-white wnu-tooltip btn btn-link" [hidden]="!listCollapsed">
                 <i class="fas fa-folder"></i>
                 <span class="wnu-tooltiptext">Expand list</span>
             </button>
             
-            <div ngbDropdown  placement="bottom-right" class="d-inline-block">
+            <div ngbDropdown  placement="bottom-right" class="d-inline-block"
+            (click)="$event.stopPropagation()">
                 <button class="text-white wnu-tooltip btn btn-link" ngbDropdownToggle>
                     <i class="fas fa-ellipsis-v"></i>
                     <span class="wnu-tooltiptext">List settings</span>
