@@ -1,0 +1,35 @@
+<div *ngIf="listWithNovel != null" class="btn-group">
+    <div class="btn-group" ngbDropdown placement="bottom-right">
+        <button type="button" class="btn btn-outline-light" 
+        [disabled]="lists.length <= 1" ngbDropdownToggle>
+            Move to
+        </button>
+        <div class="dropdown-menu" ngbDropdownMenu>
+            <button class="dropdown-item" type="button" *ngFor="let list of lists"
+            [disabled]="listWithNovel.listId === list.listId"
+            (click)="moveToList(list)">
+                {{list.listName}}
+            </button>
+        </div>
+    </div>
+    <button type="button" class="btn btn-outline-light wnu-tooltip"
+    (click)="deleteFromList()">
+        <i class="fas fa-trash"></i>
+        <span class="wnu-tooltiptext">Delete novel from list</span>
+    </button>
+</div>
+<div *ngIf="listWithNovel == null" class="btn-group" ngbDropdown placement="bottom-right">
+    <button type="button" class="btn btn-outline-light"
+    (click)="saveInList(defaultList)">
+        Add to default list
+    </button>
+    <button *ngIf="isLoggedIn" type="button" ngbDropdownToggle
+    class="btn btn-outline-light dropdown-toggle dropdown-toggle-split">
+    </button>
+    <div *ngIf="isLoggedIn" class="dropdown-menu" ngbDropdownMenu>
+        <button class="dropdown-item" type="button" *ngFor="let list of lists"
+        (click)="saveInList(list)">
+            Add to "{{list.listName}}" list
+        </button>
+    </div>
+</div>

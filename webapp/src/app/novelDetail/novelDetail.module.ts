@@ -6,7 +6,7 @@ import { CoreModule } from '@app/core'
 import { SharedModule } from '@app/shared'
 import { NovelDetailComponent } from './novelDetail.component'
 import { NovelChaptersComponent } from './novelChapters.component'
-
+import { ListMenuComponent } from '@app/novelDetail/listMenu.component'
 
 @NgModule(
 {
@@ -19,7 +19,8 @@ import { NovelChaptersComponent } from './novelChapters.component'
     declarations:
     [
         NovelDetailComponent,
-        NovelChaptersComponent
+        NovelChaptersComponent,
+        ListMenuComponent
     ]
 })
 export class NovelDetailModule {}
