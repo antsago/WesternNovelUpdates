@@ -4,10 +4,11 @@ import { FormsModule } from '@angular/forms'
 import { RouterModule } from '@angular/router'
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
 
-import { ReadingListComponent } from '@app/readingList/readingList.component'
-import { ListComponent } from '@app/readingList/list.component'
-import { NovelListComponent } from '@app/readingList/novelList.component'
 import { SharedModule } from '@app/shared'
+import { ReadingListComponent } from './readingList.component'
+import { ListComponent } from './list.component'
+import { NovelListComponent } from './novelList.component'
+import { NovelListMenuComponent } from './novelListMenu.component'
 
 @NgModule(
 {
@@ -23,7 +24,8 @@ import { SharedModule } from '@app/shared'
     [
         ReadingListComponent,
         ListComponent,
-        NovelListComponent
+        NovelListComponent,
+        NovelListMenuComponent
     ]
 })
 export class ReadingListModule {}

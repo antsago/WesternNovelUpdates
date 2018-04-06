@@ -5,7 +5,6 @@ import { LoginService, ReadingListService, Chapter,
 @Component(
 {
     selector: 'wnu-listnovel',
-    styles: ['.dropdown-toggle::after {display:none;}'],
     templateUrl: './novelList.component.html'
 })
 export class NovelListComponent implements OnInit

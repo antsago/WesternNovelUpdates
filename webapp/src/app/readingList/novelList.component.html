@@ -28,28 +28,12 @@
                 (click)="$event.stopPropagation()">
             </wnu-OnOffButton>
             
-            <div ngbDropdown  placement="bottom-right" class="d-inline-block"
-            (click)="$event.stopPropagation()">
-                <button class="text-white wnu-tooltip btn btn-link" ngbDropdownToggle>
-                    <i class="fas fa-ellipsis-v"></i>
-                    <span class="wnu-tooltiptext">Novel settings</span>
-                </button>
-                <div ngbDropdownMenu>
-                    <div class="dropdown-item dropdown p-0" ngbDropdown placement="left-top">
-                        <button class="dropdown-item" ngbDropdownToggle>
-                            Move to
-                        </button>
-                        <div class="dropdown-menu" ngbDropdownMenu>
-                            <button class="dropdown-item" type="button" *ngFor="let list of read.lists"
-                            [disabled]="this.read.novelWithList(novel.novelId).listId === list.listId"
-                            (click)="moveToList(list)">
-                                {{list.listName}}
-                            </button>
-                        </div>
-                    </div>
-                    <button class="dropdown-item" (click)="deleteNovel()">Delete</button>
-                </div>
-            </div>
+            <wnu-NovelListMenu (click)="$event.stopPropagation()"
+                [lists]="read.lists"
+                [listWithNovel]="read.novelWithList(novel.novelId)"
+                (novelMoved)="moveToList($event)"
+                (novelDeleted)="deleteNovel()">
+            </wnu-NovelListMenu>
         </span>
     </div>
 
