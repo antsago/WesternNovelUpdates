@@ -1,12 +1,10 @@
-<button [hidden]="isOn"
-    class="align-self-center light-wnutext wnu-tooltip btn btn-link"
-    (click)="offClick()">
+<button [hidden]="isOn" [ngClass]="color" (click)="offClick()"
+    class="align-self-center light-wnutext wnu-tooltip btn btn-link">
         <i [ngClass]="offIcon"></i>
         <span class="wnu-tooltiptext">{{offTooltip}}</span>
 </button>
-<button [hidden]="!isOn"
-    class="align-self-center light-wnutext wnu-tooltip btn btn-link"
-    (click)="onClick()">
+<button [hidden]="!isOn" [ngClass]="color" (click)="onClick()"
+    class="align-self-center light-wnutext wnu-tooltip btn btn-link">
         <i [ngClass]="onIcon"></i>
         <span class="wnu-tooltiptext">{{onTooltip}}</span>
 </button>

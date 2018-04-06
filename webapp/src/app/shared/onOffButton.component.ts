@@ -12,6 +12,7 @@ export class OnOffButtonComponent
     @Input() onTooltip: string
     @Input() offIcon: string
     @Input() offTooltip: string
+    @Input() color: string
 
     @Output() clikedOn = new EventEmitter<void>()
     @Output() clikedOff = new EventEmitter<void>()
