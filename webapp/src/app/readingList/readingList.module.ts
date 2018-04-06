@@ -9,6 +9,7 @@ import { ReadingListComponent } from './readingList.component'
 import { ListComponent } from './list.component'
 import { NovelListComponent } from './novelList.component'
 import { NovelListMenuComponent } from './novelListMenu.component'
+import { ListMenuComponent } from './listMenu.component'
 
 @NgModule(
 {
@@ -25,7 +26,8 @@ import { NovelListMenuComponent } from './novelListMenu.component'
         ReadingListComponent,
         ListComponent,
         NovelListComponent,
-        NovelListMenuComponent
+        NovelListMenuComponent,
+        ListMenuComponent
     ]
 })
 export class ReadingListModule {}

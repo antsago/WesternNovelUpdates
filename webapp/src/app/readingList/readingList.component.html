@@ -6,7 +6,8 @@
     </div>
     
     <div *ngIf="login.isLoggedIn" class="w-100">
-        <wnu-list *ngFor="let list of read.lists" [list]="list">
+        <wnu-list *ngFor="let list of read.lists" [list]="list"
+            [isDefaultList]="read.defaultList.listId === list.listId">
         </wnu-list>
 
         <form class="form-inline w-100 input-group pt-4">

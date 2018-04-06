@@ -2,7 +2,7 @@
     <div class="card-header dark-wnubg text-white d-flex flex-row align-items-center"
     (click)="listCollapsed = !listCollapsed">
         <strong>{{list.listName}}</strong>
-        <span *ngIf="read.defaultList.listId === list.listId" class="badge badge-pill badge-secondary ml-2">
+        <span *ngIf="isDefaultList" class="badge badge-pill badge-secondary ml-2">
             Default
         </span>
         <span class="ml-auto">
@@ -14,22 +14,8 @@
                 [offTooltip]="'Collapse list'">
             </wnu-OnOffButton>
             
-            <div ngbDropdown  placement="bottom-right" class="d-inline-block"
-            (click)="$event.stopPropagation()">
-                <button class="text-white wnu-tooltip btn btn-link" ngbDropdownToggle>
-                    <i class="fas fa-ellipsis-v"></i>
-                    <span class="wnu-tooltiptext">List settings</span>
-                </button>
-                <div ngbDropdownMenu>
-                    <button class="dropdown-item"
-                    [disabled]="read.defaultList.listId === list.listId"
-                    (click)="setListAsDefault()">Set as default</button>
-                    <button class="dropdown-item" (click)="openDialog(renameDialog)">Rename</button>
-                    <button class="dropdown-item"
-                    [disabled]="read.defaultList.listId === list.listId"
-                    (click)="openDialog(deleteDialog)">Delete</button>
-                </div>
-            </div>
+            <wnu-ListMenu (click)="$event.stopPropagation()" [list]="list">
+            </wnu-ListMenu>
         </span>
     </div>
 
@@ -37,41 +23,4 @@
         <wnu-listnovel *ngFor="let novel of list.novels"[novel]="novel" [list]="list">
         </wnu-listnovel>
     </div>
-
-    <ng-template #renameDialog let-d="dismiss">
-        <div class="modal-body">
-            <ngb-alert *ngIf="errorMessage" (close)="errorMessage = null">
-                {{errorMessage}}
-            </ngb-alert>
-    
-            <form class="form-inline w-100 input-group pt-4">
-                <input [(ngModel)]="newListName" name="newListName" type="text" 
-                class="form-control" placeholder="List name" required autofocus>
-                <div class="input-group-append">
-                    <button (click)="d('Close click')" class="btn btn-dark" type="button">Cancel</button>
-                    <button (click)="renameList()" class="btn btn-dark light-wnubg" type="submit">Rename</button>
-                </div>
-            </form>
-        </div>
-    </ng-template>
-
-    <ng-template #deleteDialog let-d="dismiss">
-        <div class="modal-header">
-            <h4 class="modal-title light-wnucolor">Confirm delete</h4>
-            <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <div class="modal-body text-center">
-            Are you sure you want to delete <strong>{{list.listName}}</strong>?
-            <br>
-            <small class="text-muted">
-                It's novels will be added to the default list: "{{read.defaultList.listName}}"
-            </small>
-        </div>
-        <div class="modal-footer">
-            <button (click)="d('Close click')" class="btn btn-dark" type="button">No</button>
-            <button (click)="deleteList()" class="btn btn-dark light-wnubg" type="button">Yes</button>
-        </div>
-    </ng-template>
 </div>
