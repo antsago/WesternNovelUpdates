@@ -9,6 +9,7 @@ import { AuthenticationService } from './user/authentication.service'
 import { LoginService } from './user/login.service'
 import { LoginOrRegisterComponent } from './user/loginOrRegister.component'
 import { AlertService } from './alert.service'
+import { AlertComponent } from './alert.component'
 
 @NgModule(
 {
@@ -18,7 +19,11 @@ import { AlertService } from './alert.service'
         FormsModule,
         NgbModule,
     ],
-    declarations: [ LoginOrRegisterComponent ],
+    declarations:
+    [
+        LoginOrRegisterComponent,
+        AlertComponent
+    ],
     entryComponents: [ LoginOrRegisterComponent ],
     providers:
     [
@@ -27,6 +32,10 @@ import { AlertService } from './alert.service'
         AuthenticationService,
         AlertService,
         LoginService
+    ],
+    exports:
+    [
+        AlertComponent
     ]
 })
 export class CoreModule {}

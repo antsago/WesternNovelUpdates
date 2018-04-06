@@ -34,13 +34,7 @@
     </div>
 </nav>
 
-<div *ngIf="alertService.showAlert" [ngClass]="alertService.type"
-class="sticky-top text-center alert alert-dismissible" role="alert">
-    {{ alertService.message }}
-    <button type="button" class="close" (click)="alertService.showAlert = false">
-        <span aria-hidden="true">&times;</span>
-    </button>
-</div>
+<wnu-alert></wnu-alert>
 
 <main role="main" class="container">
     <router-outlet></router-outlet>

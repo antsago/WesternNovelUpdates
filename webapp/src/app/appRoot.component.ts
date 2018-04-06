@@ -1,5 +1,5 @@
 import { Component } from '@angular/core'
-import { LoginService, AlertService } from '@app/core'
+import { LoginService } from '@app/core'
 
 @Component(
 {
@@ -10,7 +10,7 @@ export class AppRootComponent
 {
     public isNavbarCollapsed = true
 
-    constructor(public login: LoginService, public alertService: AlertService) {}
+    constructor(public login: LoginService) {}
 
     loginOrRegister()
     {
