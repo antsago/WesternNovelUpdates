@@ -11,8 +11,8 @@ export class NovelDetailComponent implements OnInit
 {
     public novel: Novel
 
-    constructor(private read: ReadingListService, private route: ActivatedRoute,
-        private login: LoginService, private as: AlertService) {}
+    constructor(public read: ReadingListService, private route: ActivatedRoute,
+        public login: LoginService, private as: AlertService) {}
 
     async ngOnInit()
     {
