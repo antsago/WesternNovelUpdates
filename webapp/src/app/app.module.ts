@@ -10,6 +10,7 @@ import { CoreModule } from './core/core.module'
 import { SharedModule } from './shared/shared.module'
 import { AppRootComponent } from './appRoot.component'
 import { environment } from '@env/environment'
+import { AppRoutingModule } from '@app/appRouting.module'
 
 @NgModule(
 {
@@ -21,7 +22,8 @@ import { environment } from '@env/environment'
         RouterModule,
         NgbModule.forRoot(),
         CoreModule,
-        SharedModule
+        SharedModule,
+        AppRoutingModule
     ],
     declarations: [ AppRootComponent ],
     bootstrap: [ AppRootComponent ]

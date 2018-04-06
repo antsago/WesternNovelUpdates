@@ -3,8 +3,6 @@ import { NgModule } from '@angular/core'
 import { RouterModule } from '@angular/router'
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
 
-import { AppRoutingModule } from './appRouting.module'
-
 import { LatestChaptersComponent } from './latestChapters/latestChapters.component'
 import { NovelsComponent } from './novels/novels.component'
 import { NovelDetailComponent } from './novelDetail/novelDetail.component'
@@ -24,7 +22,6 @@ import { FormsModule } from '@angular/forms'
         FormsModule,
         CommonModule,
         NgbModule,
-        AppRoutingModule
     ],
     declarations:
     [
