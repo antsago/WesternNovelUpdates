@@ -1,10 +1,7 @@
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
-import { CommonModule } from '@angular/common'
 import { NgModule } from '@angular/core'
+import { CommonModule } from '@angular/common'
 import { RouterModule } from '@angular/router'
-import { FormsModule } from '@angular/forms'
 
-import { NovelsComponent } from './novels/novels.component'
 import { ChapterRowComponent } from './chapterRow.component'
 import { MissingPageComponent } from './missingPage.component'
 
@@ -13,17 +10,14 @@ import { MissingPageComponent } from './missingPage.component'
 {
     imports:
     [
-        FormsModule,
         CommonModule,
-        RouterModule,
-        NgbModule,
+        RouterModule
     ],
     declarations:
     [
         ChapterRowComponent,
-        NovelsComponent,
         MissingPageComponent
     ],
-    exports: [ ChapterRowComponent]
+    exports: [ ChapterRowComponent ]
 })
 export class CoreModule {}
