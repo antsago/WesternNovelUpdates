@@ -14,6 +14,7 @@ import { LatestChaptersModule } from '@app/latestChapters'
 import { AppRoutingModule } from '@app/appRouting.module'
 import { ReadingListModule } from '@app/readingList'
 import { NovelDetailModule } from '@app/novelDetail'
+import { NovelsModule } from '@app/novels'
 
 @NgModule(
 {
@@ -29,7 +30,8 @@ import { NovelDetailModule } from '@app/novelDetail'
         SharedModule,
         LatestChaptersModule,
         ReadingListModule,
-        NovelDetailModule
+        NovelDetailModule,
+        NovelsModule
     ],
     declarations: [ AppRootComponent ],
     bootstrap: [ AppRootComponent ]
