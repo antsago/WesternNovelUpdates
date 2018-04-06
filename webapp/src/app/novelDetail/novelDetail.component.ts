@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core'
 import { ActivatedRoute, Params } from '@angular/router'
 import { Novel, ReadingListService, LoginService, List,
-    ListNovel, AlertService, Chapter } from '../../shared/shared.module'
+    ListNovel, AlertService, Chapter } from '@app/shared/shared.module'
 
 @Component(
 {

@@ -13,6 +13,7 @@ import { environment } from '@env/environment'
 import { LatestChaptersModule } from '@app/latestChapters'
 import { AppRoutingModule } from '@app/appRouting.module'
 import { ReadingListModule } from '@app/readingList'
+import { NovelDetailModule } from '@app/novelDetail'
 
 @NgModule(
 {
@@ -27,7 +28,8 @@ import { ReadingListModule } from '@app/readingList'
         CoreModule,
         SharedModule,
         LatestChaptersModule,
-        ReadingListModule
+        ReadingListModule,
+        NovelDetailModule
     ],
     declarations: [ AppRootComponent ],
     bootstrap: [ AppRootComponent ]

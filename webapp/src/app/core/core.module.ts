@@ -5,7 +5,6 @@ import { RouterModule } from '@angular/router'
 import { FormsModule } from '@angular/forms'
 
 import { NovelsComponent } from './novels/novels.component'
-import { NovelDetailComponent } from './novelDetail/novelDetail.component'
 import { ChapterRowComponent } from './chapterRow.component'
 import { MissingPageComponent } from './missingPage.component'
 
@@ -23,7 +22,6 @@ import { MissingPageComponent } from './missingPage.component'
     [
         ChapterRowComponent,
         NovelsComponent,
-        NovelDetailComponent,
         MissingPageComponent
     ],
     exports: [ ChapterRowComponent]
