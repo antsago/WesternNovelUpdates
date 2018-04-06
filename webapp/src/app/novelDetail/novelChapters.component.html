@@ -1,0 +1,28 @@
+<div class="d-flex flex-row justify-content-between align-items-center ">
+    <p><strong>Chapters</strong></p>
+
+    <button [hidden]="areAllChaptersRead()" 
+        class="text-white wnu-tooltip btn btn-link"
+        (click)="markAllChaptersRead()">
+        <i class="far fa-bookmark"></i>
+        <span class="wnu-tooltiptext">Mark all chapters read</span>
+    </button>
+    <button [hidden]="!areAllChaptersRead()"
+        class="text-white wnu-tooltip btn btn-link"
+        (click)="markAllChaptersUnRead()">
+            <i class="fas fa-bookmark"></i>
+            <span class="wnu-tooltiptext">All chapters read</span>
+    </button>
+</div>
+<div class="my-3 bg-white rounded box-shadow p-2">
+    <div class="list-group list-group-flush">
+        <wnu-chapter *ngFor="let chapter of novel.chapters" 
+            [chapter]="chapter"
+            [novelTitle]="novel.title"
+            [showNovelTitle]="false"
+            [chapterRead]="readChapters.includes(chapter.guid)"
+            (markedAsRead)="markAsRead([chapter])"
+            (markedAsUnread)="markAsUnread([chapter])">
+        </wnu-chapter>
+    </div>
+</div>

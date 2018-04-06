@@ -1,9 +1,12 @@
 import { NgModule } from '@angular/core'
 import { CommonModule } from '@angular/common'
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
+
 import { CoreModule } from '@app/core'
-import { NovelDetailComponent } from '@app/novelDetail/novelDetail.component'
 import { SharedModule } from '@app/shared'
+import { NovelDetailComponent } from './novelDetail.component'
+import { NovelChaptersComponent } from './novelChapters.component'
+
 
 @NgModule(
 {
@@ -15,7 +18,8 @@ import { SharedModule } from '@app/shared'
     ],
     declarations:
     [
-        NovelDetailComponent
+        NovelDetailComponent,
+        NovelChaptersComponent
     ]
 })
 export class NovelDetailModule {}
