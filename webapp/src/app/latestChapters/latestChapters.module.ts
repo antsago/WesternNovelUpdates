@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core'
 import { CommonModule } from '@angular/common'
-import { CoreModule } from '@app/core'
 import { LatestChaptersComponent } from '@app/latestChapters/latestChapters.component'
+import { SharedModule } from '@app/shared'
 
 @NgModule(
 {
     imports:
     [
         CommonModule,
-        CoreModule
+        SharedModule
     ],
     declarations:
     [

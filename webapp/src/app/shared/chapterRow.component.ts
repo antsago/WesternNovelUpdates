@@ -1,5 +1,5 @@
 import { Component, Input, EventEmitter, Output } from '@angular/core'
-import { Chapter, LoginService, ReadingListService, AlertService } from '../shared/shared.module'
+import { Chapter } from '@app/core'
 
 @Component(
 {

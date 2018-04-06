@@ -1,23 +1,33 @@
 import { NgModule } from '@angular/core'
 import { CommonModule } from '@angular/common'
-import { RouterModule } from '@angular/router'
+import { FormsModule } from '@angular/forms'
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
 
-import { ChapterRowComponent } from './chapterRow.component'
-import { MissingPageComponent } from './missingPage.component'
-
+import { DatabaseService } from './database.service'
+import { ReadingListService } from './readingList.service'
+import { AuthenticationService } from './user/authentication.service'
+import { LoginService } from './user/login.service'
+import { LoginOrRegisterComponent } from './user/loginOrRegister.component'
+import { AlertService } from './alert.service'
 
 @NgModule(
 {
     imports:
     [
         CommonModule,
-        RouterModule
+        FormsModule,
+        NgbModule,
     ],
-    declarations:
+    declarations: [ LoginOrRegisterComponent ],
+    entryComponents: [ LoginOrRegisterComponent ],
+    providers:
     [
-        ChapterRowComponent,
-        MissingPageComponent
-    ],
-    exports: [ ChapterRowComponent ]
+        DatabaseService,
+        ReadingListService,
+        AuthenticationService,
+        AlertService,
+        LoginService
+    ]
 })
 export class CoreModule {}
+

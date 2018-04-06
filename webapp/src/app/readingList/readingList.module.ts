@@ -4,10 +4,10 @@ import { FormsModule } from '@angular/forms'
 import { RouterModule } from '@angular/router'
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
 
-import { CoreModule } from '@app/core'
 import { ReadingListComponent } from '@app/readingList/readingList.component'
 import { ListComponent } from '@app/readingList/list.component'
 import { NovelListComponent } from '@app/readingList/novelList.component'
+import { SharedModule } from '@app/shared'
 
 @NgModule(
 {
@@ -17,7 +17,7 @@ import { NovelListComponent } from '@app/readingList/novelList.component'
         FormsModule,
         NgbModule,
         RouterModule,
-        CoreModule
+        SharedModule
     ],
     declarations:
     [

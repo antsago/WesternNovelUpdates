@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core'
 import { CommonModule } from '@angular/common'
 import { RouterModule } from '@angular/router'
 
-import { CoreModule } from '@app/core'
 import { NovelsComponent } from '@app/novels/novels.component'
 
 @NgModule(
@@ -11,7 +10,6 @@ import { NovelsComponent } from '@app/novels/novels.component'
     [
         CommonModule,
         RouterModule,
-        CoreModule
     ],
     declarations:
     [
