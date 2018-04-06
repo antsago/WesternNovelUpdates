@@ -4,7 +4,7 @@ import { List } from '@app/core'
 @Component(
 {
     selector: 'wnu-NovelDetailListMenu',
-    templateUrl: './listMenu.component.html'
+    templateUrl: './novelDetailListMenu.component.html'
 })
 export class NovelDetailListMenuComponent
 {
