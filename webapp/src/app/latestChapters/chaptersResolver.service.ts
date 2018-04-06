@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core'
 import { Router, Resolve, RouterStateSnapshot, ActivatedRouteSnapshot } from '@angular/router'
-import { Chapter, DatabaseService } from '../../shared/shared.module'
+import { Chapter, DatabaseService } from '@app/shared/shared.module'
 
 const NumberOfUpdates = 10
 
