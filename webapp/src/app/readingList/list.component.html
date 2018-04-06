@@ -6,14 +6,13 @@
             Default
         </span>
         <span class="ml-auto">
-            <button class="text-white wnu-tooltip btn btn-link" [hidden]="listCollapsed">
-                <i class="fas fa-folder-open"></i>
-                <span class="wnu-tooltiptext">Collapse list</span>
-            </button>
-            <button class="text-white wnu-tooltip btn btn-link" [hidden]="!listCollapsed">
-                <i class="fas fa-folder"></i>
-                <span class="wnu-tooltiptext">Expand list</span>
-            </button>
+            <wnu-OnOffButton [isOn]="listCollapsed"
+                [color]="'text-white'"
+                [onIcon]="'fas fa-folder'"
+                [offIcon]="'fas fa-folder-open'"
+                [onTooltip]="'Expand list'"
+                [offTooltip]="'Collapse list'">
+            </wnu-OnOffButton>
             
             <div ngbDropdown  placement="bottom-right" class="d-inline-block"
             (click)="$event.stopPropagation()">
