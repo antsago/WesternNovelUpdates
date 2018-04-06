@@ -9,7 +9,7 @@ import * as firebase from 'firebase'
 import { CoreModule } from './core/core.module'
 import { SharedModule } from './shared/shared.module'
 import { AppRootComponent } from './appRoot.component'
-import { environment } from './../environments/environment'
+import { environment } from '@env/environment'
 
 @NgModule(
 {
