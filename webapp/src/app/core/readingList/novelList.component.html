@@ -64,7 +64,7 @@
             [novelTitle]="novel.novelTitle"
             [showNovelTitle]="true"
             [chapterRead]="read.readChapters.includes(chapter.guid)"
-            (markedAsRead)="markAsRead(chapter, novel.novelTitle)"
+            (markedAsRead)="markChapterAsRead(chapter, novel.novelTitle)"
             (markedAsUnread)="markChapterAsUnread(chapter)"
             (openLink)="markChapterAsRead(chapter, novel.novelTitle)">
         </wnu-chapter>
