@@ -7,10 +7,7 @@ import { FormsModule } from '@angular/forms'
 import { NovelsComponent } from './novels/novels.component'
 import { NovelDetailComponent } from './novelDetail/novelDetail.component'
 import { ChapterRowComponent } from './chapterRow.component'
-import { ReadingListComponent } from './readingList/readingList.component'
 import { MissingPageComponent } from './missingPage.component'
-import { NovelListComponent } from './readingList/novelList.component'
-import { ListComponent } from './readingList/list.component'
 
 
 @NgModule(
@@ -27,9 +24,6 @@ import { ListComponent } from './readingList/list.component'
         ChapterRowComponent,
         NovelsComponent,
         NovelDetailComponent,
-        ReadingListComponent,
-        ListComponent,
-        NovelListComponent,
         MissingPageComponent
     ],
     exports: [ ChapterRowComponent]

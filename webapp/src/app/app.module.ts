@@ -12,6 +12,7 @@ import { AppRootComponent } from './appRoot.component'
 import { environment } from '@env/environment'
 import { LatestChaptersModule } from '@app/latestChapters'
 import { AppRoutingModule } from '@app/appRouting.module'
+import { ReadingListModule } from '@app/readingList'
 
 @NgModule(
 {
@@ -22,10 +23,11 @@ import { AppRoutingModule } from '@app/appRouting.module'
         FormsModule,
         RouterModule,
         NgbModule.forRoot(),
+        AppRoutingModule,
         CoreModule,
         SharedModule,
         LatestChaptersModule,
-        AppRoutingModule
+        ReadingListModule
     ],
     declarations: [ AppRootComponent ],
     bootstrap: [ AppRootComponent ]

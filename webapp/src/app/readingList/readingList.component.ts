@@ -1,5 +1,5 @@
 import { Component } from '@angular/core'
-import { LoginService, ReadingListService, AlertService } from '../../shared/shared.module'
+import { LoginService, ReadingListService, AlertService } from '@app/shared/shared.module'
 
 @Component(
 {

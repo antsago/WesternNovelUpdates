@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core'
 import { LoginService, ReadingListService, Chapter,
-    ListNovel, DatabaseService, List } from '../../shared/shared.module'
+    ListNovel, DatabaseService, List } from '@app/shared/shared.module'
 
 @Component(
 {
