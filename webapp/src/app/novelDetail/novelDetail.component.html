@@ -10,14 +10,14 @@
 
     <div class="mt-5 d-flex flex-row justify-content-between align-items-center ">
         <strong>Synopsis</strong>
-        <wnu-ListMenu [isLoggedIn]="login.isLoggedIn"
+        <wnu-NovelDetailListMenu [isLoggedIn]="login.isLoggedIn"
                     [lists]="read.lists"
                     [listWithNovel]="read.novelWithList(novel.id)"
                     [defaultList]="read.getDefaultList()"
                     (savedInList)="saveToList($event)"
                     (movedToList)="moveToList($event)"
                     (deletedFromList)="deleteFromList()">
-        </wnu-ListMenu>
+        </wnu-NovelDetailListMenu>
 
     </div>
     <div class="my-3 p-3 bg-white text-dark rounded box-shadow">

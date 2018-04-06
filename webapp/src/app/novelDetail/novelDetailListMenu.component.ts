@@ -3,10 +3,10 @@ import { List } from '@app/core'
 
 @Component(
 {
-    selector: 'wnu-ListMenu',
+    selector: 'wnu-NovelDetailListMenu',
     templateUrl: './listMenu.component.html'
 })
-export class ListMenuComponent
+export class NovelDetailListMenuComponent
 {
     @Input() isLoggedIn: boolean
     @Input() lists: List[]
