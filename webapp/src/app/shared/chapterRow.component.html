@@ -10,18 +10,14 @@
         <span class="d-block text-muted">{{chapter.publicationDate | date: 'd MMM, h:mm a'}}</span>
     </div>
 
-    <button [hidden]="chapterRead" 
-        class="align-self-center light-wnutext wnu-tooltip btn btn-link"
-        (click)="markAsRead()">
-        <i class="far fa-bookmark"></i>
-        <span class="wnu-tooltiptext">Mark chapter as read</span>
-    </button>
-    <button [hidden]="!chapterRead"
-        class="align-self-center light-wnutext wnu-tooltip btn btn-link"
-        (click)="markAsUnread()">
-            <i class="fas fa-bookmark"></i>
-            <span class="wnu-tooltiptext">Chapter read</span>
-    </button>
+    <wnu-OnOffButton [isOn]="chapterRead"
+        [onIcon]="'fas fa-bookmark'"
+        [offIcon]="'far fa-bookmark'"
+        [onTooltip]="'Chapter read'"
+        [offTooltip]="'Mark chapter as read'"
+        (clikedOn)="markAsUnread()"
+        (clikedOff)="markAsRead()">
+    </wnu-OnOffButton>
 
     <a href="{{chapter.link}}" class="align-self-center light-wnucolor wnu-tooltip"
     (click)="openedChapterLink()">

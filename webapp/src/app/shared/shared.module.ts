@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router'
 
 import { ChapterRowComponent } from './chapterRow.component'
 import { MissingPageComponent } from './missingPage.component'
+import { OnOffButtonComponent } from './onOffButton.component'
 
 
 @NgModule(
@@ -16,8 +17,13 @@ import { MissingPageComponent } from './missingPage.component'
     declarations:
     [
         ChapterRowComponent,
+        OnOffButtonComponent,
         MissingPageComponent
     ],
-    exports: [ ChapterRowComponent ]
+    exports:
+    [
+        ChapterRowComponent,
+        OnOffButtonComponent
+    ]
 })
 export class SharedModule {}

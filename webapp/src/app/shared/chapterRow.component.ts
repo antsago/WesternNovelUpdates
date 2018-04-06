@@ -17,17 +17,17 @@ export class ChapterRowComponent
     @Output() markedAsUnread = new EventEmitter<void>()
     @Output() openLink = new EventEmitter<void>()
 
-    async markAsRead()
+    markAsRead()
     {
         this.markedAsRead.emit()
     }
 
-    async markAsUnread()
+    markAsUnread()
     {
         this.markedAsUnread.emit()
     }
 
-    async openedChapterLink()
+    openedChapterLink()
     {
         this.openLink.emit()
     }
