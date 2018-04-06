@@ -1,16 +1,13 @@
 <div class="card">
     <div class="card-header light-wnuaction-item light-wnubg d-flex flex-row align-items-center"
     (click)="novelCollapsed = !novelCollapsed">
-        <button class="text-white wnu-tooltip btn btn-link" 
-        [hidden]="novelCollapsed">
-            <i class="fas fa-caret-down"></i>
-            <span class="wnu-tooltiptext">Collapse novel</span>
-        </button>
-        <button class="text-white wnu-tooltip btn btn-link"
-        [hidden]="!novelCollapsed">
-            <i class="fas fa-caret-right"></i>
-            <span class="wnu-tooltiptext">Expand novel</span>
-        </button>
+        <wnu-OnOffButton [isOn]="novelCollapsed"
+            [color]="'text-white'"
+            [onIcon]="'fas fa-caret-right'"
+            [offIcon]="'fas fa-caret-down'"
+            [onTooltip]="'Expand novel'"
+            [offTooltip]="'Collapse novel'">
+        </wnu-OnOffButton>
         
         <a class="text-white" routerLink="/novels/{{novel.novelId}}" (click)="$event.stopPropagation()">
             {{novel.novelTitle}}
