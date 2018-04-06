@@ -52,6 +52,16 @@ export class NovelListComponent implements OnInit
     {
         await this.read.moveNovel(this.novel, this.list, list)
     }
+
+    async markChapterAsRead(chapter: Chapter, novelTitle: string)
+    {
+        await this.read.markChaptersAsRead([chapter.guid])
+    }
+
+    async markChapterAsUnread(chapter: Chapter)
+    {
+        await this.read.markChaptersAsUnread([chapter.guid])
+    }
 }
 
 

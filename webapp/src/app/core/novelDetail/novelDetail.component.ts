@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core'
 import { ActivatedRoute, Params } from '@angular/router'
-import { Novel, ReadingListService, LoginService, List, ListNovel, AlertService } from '../../shared/shared.module'
+import { Novel, ReadingListService, LoginService, List,
+    ListNovel, AlertService, Chapter } from '../../shared/shared.module'
 
 @Component(
 {
@@ -39,6 +40,30 @@ export class NovelDetailComponent implements OnInit
     async markAllChaptersUnRead()
     {
         await this.read.markChaptersAsUnread(this.novel.chapters.map(ch => ch.guid))
+    }
+
+    async markAsRead(chapter: Chapter, novelTitle: string)
+    {
+        if (this.login.isLoggedIn)
+        {
+            if (!this.read.novelIsInList(chapter.novel))
+            {
+                const novel = { novelId: chapter.novel, novelTitle: novelTitle }
+                await this.read.addNovelsToList([novel], this.read.getDefaultList())
+                const message = `Novel ${novelTitle} added to "${this.read.defaultList.listName}" list`
+                this.as.displayAlert(message, this.as.INFO)
+            }
+            await this.read.markChaptersAsRead([chapter.guid])
+        }
+        else
+        {
+            await this.login.login()
+        }
+    }
+
+    async markAsUnread(chapter: Chapter)
+    {
+        await this.read.markChaptersAsUnread([chapter.guid])
     }
 
     areAllChaptersRead()

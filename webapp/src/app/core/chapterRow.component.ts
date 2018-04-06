@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core'
+import { Component, Input, EventEmitter, Output } from '@angular/core'
 import { Chapter, LoginService, ReadingListService, AlertService } from '../shared/shared.module'
 
 @Component(
@@ -8,42 +8,27 @@ import { Chapter, LoginService, ReadingListService, AlertService } from '../shar
 })
 export class ChapterRowComponent
 {
-    @Input() showNovelTitle: boolean
-    @Input() markReadOnLink: boolean
     @Input() chapter: Chapter
     @Input() novelTitle: string
+    @Input() chapterRead: boolean
+    @Input() showNovelTitle: boolean
 
-    constructor(private login: LoginService, public read: ReadingListService, private as: AlertService) {}
+    @Output() markedAsRead = new EventEmitter<void>()
+    @Output() markedAsUnread = new EventEmitter<void>()
+    @Output() openLink = new EventEmitter<void>()
 
     async markAsRead()
     {
-        if (this.login.isLoggedIn)
-        {
-            if (!this.read.novelIsInList(this.chapter.novel))
-            {
-                const novel = { novelId: this.chapter.novel, novelTitle: this.novelTitle }
-                await this.read.addNovelsToList([novel], this.read.getDefaultList())
-                const message = `Novel ${this.novelTitle} added to "${this.read.defaultList.listName}" list`
-                this.as.displayAlert(message, this.as.INFO)
-            }
-            await this.read.markChaptersAsRead([this.chapter.guid])
-        }
-        else
-        {
-            await this.login.login()
-        }
+        this.markedAsRead.emit()
     }
 
     async markAsUnread()
     {
-        await this.read.markChaptersAsUnread([this.chapter.guid])
+        this.markedAsUnread.emit()
     }
 
     async openedChapterLink()
     {
-        if (this.markReadOnLink)
-        {
-            await this.markAsRead()
-        }
+        this.openLink.emit()
     }
 }

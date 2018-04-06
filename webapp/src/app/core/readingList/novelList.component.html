@@ -59,8 +59,14 @@
     </div>
 
     <div [ngbCollapse]="novelCollapsed">
-        <wnu-chapter *ngFor="let chapter of chapters" [chapter]="chapter"
-        [novelTitle]="novel.novelTitle" [markReadOnLink]="true">
+        <wnu-chapter *ngFor="let chapter of chapters" 
+            [chapter]="chapter"
+            [novelTitle]="novel.novelTitle"
+            [showNovelTitle]="true"
+            [chapterRead]="read.readChapters.includes(chapter.guid)"
+            (markedAsRead)="markAsRead(chapter, novel.novelTitle)"
+            (markedAsUnread)="markChapterAsUnread(chapter)"
+            (openLink)="markChapterAsRead(chapter, novel.novelTitle)">
         </wnu-chapter>
     </div>
 </div>
