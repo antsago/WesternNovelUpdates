@@ -50,7 +50,7 @@ export const updateChapters = https.onRequest( async (request, response) =>
         } 
         else 
         {
-            console.error(new Error(`Error: ${error}`));
+            console.error(new Error(`Error for novel ${request.get("Novel-ID")} from site ${request.get("Site")}: ${error}`));
         }
     
         response.status(500).end()
