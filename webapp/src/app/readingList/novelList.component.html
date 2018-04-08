@@ -29,8 +29,8 @@
             </wnu-OnOffButton>
             
             <wnu-NovelListMenu (click)="$event.stopPropagation()"
-                [lists]="read.lists"
-                [listWithNovel]="read.novelWithList(novel.novelId)"
+                [lists]="lists.lists"
+                [listWithNovel]="lists.novelWithList(novel.novelId)"
                 (novelMoved)="moveToList($event)"
                 (novelDeleted)="deleteNovel()">
             </wnu-NovelListMenu>

@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core'
-import { LoginService, ReadingListService, Chapter,
-    ListNovel, DatabaseService, List } from '@app/core'
+import { LoginService, ListsService, Chapter,
+    ListNovel, DatabaseService, List, ReadChaptersService } from '@app/core'
 
 @Component(
 {
@@ -15,7 +15,7 @@ export class NovelListComponent implements OnInit
 
     public novelCollapsed = true
 
-    constructor(public read: ReadingListService, private db: DatabaseService) {}
+    constructor(public lists: ListsService, public read: ReadChaptersService, private db: DatabaseService) {}
 
     async ngOnInit()
     {
@@ -44,12 +44,12 @@ export class NovelListComponent implements OnInit
 
     async deleteNovel()
     {
-        await this.read.deleteNovelFromList(this.novel, this.list)
+        await this.lists.deleteNovelFromList(this.novel, this.list)
     }
 
     async moveToList(list: List)
     {
-        await this.read.moveNovel(this.novel, this.list, list)
+        await this.lists.moveNovel(this.novel, this.list, list)
     }
 
     async markChapterAsRead(chapter: Chapter, novelTitle: string)

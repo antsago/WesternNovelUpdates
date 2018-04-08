@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core'
-import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap'
-import { ReadingListService, List } from '@app/core'
+import { List } from '@app/core'
 
 @Component(
 {

@@ -1,6 +1,6 @@
 import { Component, Input, EventEmitter, Output } from '@angular/core'
 import { NgbModalRef, NgbModal } from '@ng-bootstrap/ng-bootstrap'
-import { List, ReadingListService } from '@app/core'
+import { List, ListsService } from '@app/core'
 
 @Component(
 {
@@ -16,7 +16,7 @@ export class ListMenuComponent
     private newListName: string
     private errorMessage: string
 
-    constructor(public read: ReadingListService, private modal: NgbModal) {}
+    constructor(public lists: ListsService, private modal: NgbModal) {}
 
     openDialog(dialogContent)
     {
@@ -27,14 +27,14 @@ export class ListMenuComponent
 
     async setListAsDefault()
     {
-        await this.read.setDefaultList(this.list)
+        await this.lists.setDefaultList(this.list)
     }
 
     async renameList()
     {
         try
         {
-            await this.read.renameList(this.list, this.newListName)
+            await this.lists.renameList(this.list, this.newListName)
             this.dialog.close()
         }
         catch (error)
@@ -45,12 +45,12 @@ export class ListMenuComponent
 
     async deleteList()
     {
-        await this.read.deleteList(this.list)
+        await this.lists.deleteList(this.list)
         this.dialog.close()
     }
 
     isDefaultList(): boolean
     {
-        return this.read.defaultList.listId === this.list.listId
+        return this.lists.defaultList.listId === this.list.listId
     }
 }

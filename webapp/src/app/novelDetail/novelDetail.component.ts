@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core'
 import { ActivatedRoute, Params } from '@angular/router'
-import { Novel, ReadingListService, LoginService, List,
-    ListNovel, AlertService, Chapter } from '@app/core'
+import { Novel, ListsService, LoginService, List,
+    ListNovel, AlertService, Chapter, ReadChaptersService } from '@app/core'
 
 @Component(
 {
@@ -11,8 +11,9 @@ export class NovelDetailComponent implements OnInit
 {
     public novel: Novel
 
-    constructor(public read: ReadingListService, private route: ActivatedRoute,
-        public login: LoginService, private as: AlertService) {}
+    constructor(public read: ReadChaptersService, public lists: ListsService,
+        private route: ActivatedRoute, public login: LoginService,
+        private as: AlertService) {}
 
     async ngOnInit()
     {
@@ -26,8 +27,8 @@ export class NovelDetailComponent implements OnInit
             if (!this.savedInList())
             {
                 const novel = { novelId: this.novel.id, novelTitle: this.novel.title }
-                await this.read.addNovelsToList([novel], this.read.getDefaultList())
-                const message = `Novel ${this.novel.title} added to "${this.read.defaultList.listName}" list`
+                await this.lists.addNovelsToList([novel], this.lists.getDefaultList())
+                const message = `Novel ${this.novel.title} added to "${this.lists.defaultList.listName}" list`
                 this.as.displayAlert(message, this.as.INFO)
             }
             await this.read.markChaptersAsRead(chapters.map(ch => ch.guid))
@@ -45,14 +46,14 @@ export class NovelDetailComponent implements OnInit
 
     savedInList(): boolean
     {
-        return this.read.novelIsInList(this.novel.id)
+        return this.lists.novelIsInList(this.novel.id)
     }
 
     async saveToList(list: List)
     {
         if (this.login.isLoggedIn)
         {
-            await this.read.addNovelsToList([this.getListNovel()], list)
+            await this.lists.addNovelsToList([this.getListNovel()], list)
         }
         else
         {
@@ -62,12 +63,12 @@ export class NovelDetailComponent implements OnInit
 
     async moveToList(list: List)
     {
-        await this.read.moveNovel(this.getListNovel(), this.read.novelWithList(this.novel.id), list)
+        await this.lists.moveNovel(this.getListNovel(), this.lists.novelWithList(this.novel.id), list)
     }
 
     async deleteFromList()
     {
-        await this.read.deleteNovelFromList(this.getListNovel(), this.read.novelWithList(this.novel.id))
+        await this.lists.deleteNovelFromList(this.getListNovel(), this.lists.novelWithList(this.novel.id))
     }
 
     private getListNovel(): ListNovel

@@ -4,7 +4,8 @@ import { FormsModule } from '@angular/forms'
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
 
 import { DatabaseService } from './database.service'
-import { ReadingListService } from './readingList.service'
+import { ListsService } from './lists.service'
+import { ReadChaptersService } from './readChapters.service'
 import { AuthenticationService } from './user/authentication.service'
 import { LoginService } from './user/login.service'
 import { LoginOrRegisterComponent } from './user/loginOrRegister.component'
@@ -28,7 +29,8 @@ import { AlertComponent } from './alert.component'
     providers:
     [
         DatabaseService,
-        ReadingListService,
+        ListsService,
+        ReadChaptersService,
         AuthenticationService,
         AlertService,
         LoginService

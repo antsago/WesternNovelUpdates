@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core'
 import { DatabaseService } from './database.service'
 import { AuthenticationService } from './user/authentication.service'
 import { LoginService } from './user/login.service'
-import { ListNovel, List, Chapter } from './Interfaces'
+import { ListNovel, List } from './Interfaces'
 
 const INITIAL_LIST =
 {
@@ -12,9 +12,8 @@ const INITIAL_LIST =
 }
 
 @Injectable()
-export class ReadingListService
+export class ListsService
 {
-    public readChapters = [] as string[]
     public lists = [] as List[]
     public defaultList = null as {listId: string, listName: string}
 
@@ -26,18 +25,15 @@ export class ReadingListService
             {
                 if (this.login.isLoggedIn)
                 {
-                    const chaptersPromise = this.db.getReadChapters(this.login.user.uid)
                     const listsPromise = this.db.getLists(this.login.user.uid)
                     const wnuUser = await this.db.getUser(this.login.user.uid)
 
                     this.defaultList = wnuUser.defaultList
-                    this.readChapters = await chaptersPromise
                     this.lists = await listsPromise
                 }
                 else
                 {
                     this.defaultList = null
-                    this.readChapters = []
                     this.lists = []
                 }
             }
@@ -48,22 +44,9 @@ export class ReadingListService
                 await this.db.setDefaultList(this.login.user.uid, defaultList)
 
                 this.defaultList = defaultList
-                this.readChapters = []
                 this.lists = [defaultList]
             }
         })
-    }
-
-    public async markChaptersAsRead(chaptersGUID: string[]): Promise<void>
-    {
-        this.readChapters = this.readChapters.concat(chaptersGUID)
-        await Promise.all(chaptersGUID.map(chapterId => this.db.addReadChapter(this.login.user.uid, chapterId)))
-    }
-
-    public async markChaptersAsUnread(chaptersGUID: string[]): Promise<void>
-    {
-        this.readChapters = this.readChapters.filter(chapter => !chaptersGUID.includes(chapter))
-        await Promise.all(chaptersGUID.map(chapterId => this.db.removeReadChapter(this.login.user.uid, chapterId)))
     }
 
     public async addNewList(listName: string): Promise<void>

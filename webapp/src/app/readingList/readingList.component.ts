@@ -1,5 +1,5 @@
 import { Component } from '@angular/core'
-import { LoginService, ReadingListService, AlertService } from '@app/core'
+import { LoginService, ListsService, AlertService } from '@app/core'
 
 @Component(
 {
@@ -9,7 +9,7 @@ export class ReadingListComponent
 {
     public newListName = ''
 
-    constructor(public login: LoginService, private read: ReadingListService, private as: AlertService){}
+    constructor(public login: LoginService, private lists: ListsService, private as: AlertService){}
 
     async loginOrRegister(event)
     {
@@ -20,7 +20,7 @@ export class ReadingListComponent
     {
         try
         {
-            await this.read.addNewList(this.newListName.trim())
+            await this.lists.addNewList(this.newListName.trim())
             this.newListName = ''
         }
         catch (error)

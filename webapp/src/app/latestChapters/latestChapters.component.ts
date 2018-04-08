@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core'
 import { ActivatedRoute } from '@angular/router'
-import { AlertService, ReadingListService, Chapter, Novel,
+import { AlertService, ListsService, ReadChaptersService, Chapter, Novel,
     LoginService, DatabaseService } from '@app/core'
 
 @Component(
@@ -14,7 +14,8 @@ export class LatestChaptersComponent implements OnInit
     private novels: {[id: string]: Novel}
 
     constructor(private db: DatabaseService, private route: ActivatedRoute,
-        private login: LoginService, public read: ReadingListService, private as: AlertService) {}
+        private login: LoginService, public read: ReadChaptersService,
+        public lists: ListsService, private as: AlertService) {}
 
     async ngOnInit()
     {
@@ -37,11 +38,11 @@ export class LatestChaptersComponent implements OnInit
     {
         if (this.login.isLoggedIn)
         {
-            if (!this.read.novelIsInList(chapter.novel))
+            if (!this.lists.novelIsInList(chapter.novel))
             {
                 const novel = { novelId: chapter.novel, novelTitle: novelTitle }
-                await this.read.addNovelsToList([novel], this.read.getDefaultList())
-                const message = `Novel ${novelTitle} added to "${this.read.defaultList.listName}" list`
+                await this.lists.addNovelsToList([novel], this.lists.getDefaultList())
+                const message = `Novel ${novelTitle} added to "${this.lists.defaultList.listName}" list`
                 this.as.displayAlert(message, this.as.INFO)
             }
             await this.read.markChaptersAsRead([chapter.guid])
