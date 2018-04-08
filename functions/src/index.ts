@@ -46,6 +46,7 @@ export const updateChapters = https.onRequest( async (request, response) =>
     {
         if(error instanceof Error) 
         {
+            console.error(`Error for novel ${request.get("Novel-ID")} from site ${request.get("Site")}`);
             console.error(error);
         } 
         else 
