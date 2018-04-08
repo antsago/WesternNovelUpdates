@@ -41,8 +41,15 @@ app.get('/collectFeeds', async (req, res) =>
 
         for (let novel of snapshot.docs)
         {
-            let data = novel.data()
-            await sendChapterFeed(data.rssFeed, novel.id, data.hostingSite, data.categories, data.threadId)
+            try
+            {
+                let data = novel.data()
+                await sendChapterFeed(data.rssFeed, novel.id, data.hostingSite, data.categories, data.threadId)
+            }
+            catch(err)
+            {
+                console.error(err)
+            }
         }
         
     }
