@@ -1,16 +1,13 @@
-functions/node_modules
 functions/lib
 functions/src/keys.ts
 functions/etc
 
-feeder/node_modules
 feeder/serviceAccount.json
 
 webapp/dist
 webapp/dist-server
 webapp/tmp
 webapp/out-tsc
-webapp/node_modules
 webapp/.sass-cache
 webapp/connect.lock
 webapp/coverage
@@ -20,6 +17,7 @@ webapp/e2e/*.js
 webapp/e2e/*.map
 webapp/src/environments
 
+node_modules
 npm-debug.log
 testem.log
 
