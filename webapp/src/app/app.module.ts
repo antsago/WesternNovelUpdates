@@ -33,6 +33,10 @@ import { NovelsModule } from '@app/novels'
         NovelDetailModule,
         NovelsModule
     ],
+    providers:
+    [
+        {provide: firebase.firestore.Firestore, useFactory: () => firebase.firestore()}
+    ],
     declarations: [ AppRootComponent ],
     bootstrap: [ AppRootComponent ]
 })

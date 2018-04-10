@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core'
-import * as fb from 'firebase'
+import { firestore } from 'firebase'
 import 'firebase/firestore' // necessary because of its side-effects
 import { Novel, Chapter, User, List, ListNovel } from './Interfaces'
 
@@ -16,12 +16,7 @@ const LISTS = 'lists'
 @Injectable()
 export class DatabaseService
 {
-    private readonly fs: fb.firestore.Firestore
-
-    constructor()
-    {
-        this.fs = fb.firestore()
-    }
+    constructor(private readonly fs: firestore.Firestore) {}
 
     async getUpdates(noOfUpdates: number): Promise<Chapter[]>
     {
