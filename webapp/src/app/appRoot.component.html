@@ -9,7 +9,7 @@
         <span class="nav-link" routerLink="/readingLists" routerLinkActive="active">Reading lists</span>
     </div>
 
-    <div ngbDropdown>
+    <div ngbDropdown placement="bottom-right">
         <button  *ngIf="!login.isLoggedIn" class="nav-item btn btn-outline-light" (click)="loginOrRegister()">
             Login / Register
         </button>
