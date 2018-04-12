@@ -10,8 +10,6 @@ import { AddNovelComponent } from './addNovel.component'
 })
 export class AppRootComponent
 {
-    public isNavbarCollapsed = true
-
     constructor(public login: LoginService, private modal: NgbModal) {}
 
     loginOrRegister()
