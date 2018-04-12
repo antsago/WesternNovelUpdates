@@ -10,6 +10,15 @@ export interface Novel
     id: string
 }
 
+export interface PendingNovel
+{
+    author: string
+    homepage: string
+    rssFeed: string
+    synopsis: string
+    title: string
+}
+
 export interface Chapter
 {
     guid: string
