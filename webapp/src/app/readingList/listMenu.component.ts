@@ -22,7 +22,7 @@ export class ListMenuComponent
     {
         this.newListName = ''
         this.errorMessage = null
-        this.dialog = this.modal.open(dialogContent)
+        this.dialog = this.modal.open(dialogContent, {centered: true})
     }
 
     async setListAsDefault()

@@ -23,7 +23,7 @@ export class LoginService
     {
         try
         {
-            await this.modal.open(LoginOrRegisterComponent).result
+            await this.modal.open(LoginOrRegisterComponent, {centered: true}).result
             return true
         }
         catch
