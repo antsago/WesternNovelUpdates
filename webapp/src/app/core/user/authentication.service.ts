@@ -4,9 +4,9 @@ import * as fb from 'firebase'
 @Injectable()
 export class AuthenticationService
 {
-    public async callOnAuthStateChanged(functionToCall: (user: fb.User) => any): Promise<void>
+    public async callOnAuthStateChanged(functionToCall: (isLoggedIn: boolean, user: fb.User) => any): Promise<void>
     {
-        fb.auth().onAuthStateChanged(functionToCall)
+        fb.auth().onAuthStateChanged(user => functionToCall(user != null, user))
     }
 
     public async register(username: string, email: string, password: string)

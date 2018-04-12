@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core'
 import { DatabaseService } from './database.service'
 import { AuthenticationService } from './user/authentication.service'
-import { LoginService } from './user/login.service'
 import { ListNovel, List } from './Interfaces'
 
 const INITIAL_LIST =
@@ -14,37 +13,39 @@ const INITIAL_LIST =
 @Injectable()
 export class ListsService
 {
+    private userId: string
     public lists = [] as List[]
     public defaultList = null as {listId: string, listName: string}
 
-    constructor(private db: DatabaseService, private auth: AuthenticationService, private login: LoginService)
+    constructor(private db: DatabaseService, private auth: AuthenticationService)
     {
-        this.auth.callOnAuthStateChanged(async () =>
+        this.auth.callOnAuthStateChanged(async (isLoggedIn, user) =>
         {
-            try
+            if (isLoggedIn)
             {
-                if (this.login.isLoggedIn)
+                try
                 {
-                    const listsPromise = this.db.getLists(this.login.user.uid)
-                    const wnuUser = await this.db.getUser(this.login.user.uid)
+                    this.userId = user.uid
 
-                    this.defaultList = wnuUser.defaultList
+                    const listsPromise = this.db.getLists(this.userId)
+                    this.defaultList = (await this.db.getUser(this.userId)).defaultList
                     this.lists = await listsPromise
                 }
-                else
+                catch (err) // user object doesn't exists
                 {
-                    this.defaultList = null
-                    this.lists = []
+                    await this.db.createUser(this.userId)
+                    const defaultList = await this.db.addList(this.userId, INITIAL_LIST)
+                    await this.db.setDefaultList(this.userId, defaultList)
+
+                    this.defaultList = defaultList
+                    this.lists = [defaultList]
                 }
             }
-            catch (err) // user object doesn't exists
+            else
             {
-                await this.db.createUser(this.login.user.uid)
-                const defaultList = await this.db.addList(this.login.user.uid, INITIAL_LIST)
-                await this.db.setDefaultList(this.login.user.uid, defaultList)
-
-                this.defaultList = defaultList
-                this.lists = [defaultList]
+                this.userId = null
+                this.defaultList = null
+                this.lists = []
             }
         })
     }
@@ -53,20 +54,20 @@ export class ListsService
     {
         this.checkListNameIsValid(listName)
 
-        const newList = await this.db.addList(this.login.user.uid, {listId: null, listName: listName, novels: []})
+        const newList = await this.db.addList(this.userId, {listId: null, listName: listName, novels: []})
         this.lists.push(newList)
     }
 
     public async setDefaultList(list: List): Promise<void>
     {
-        await this.db.setDefaultList(this.login.user.uid, list)
+        await this.db.setDefaultList(this.userId, list)
         this.defaultList = list
     }
 
     public async renameList(list: List, newName: string): Promise<void>
     {
         this.checkListNameIsValid(newName)
-        await this.db.renameList(this.login.user.uid, list.listId, newName)
+        await this.db.renameList(this.userId, list.listId, newName)
         list.listName = newName
 
         if (this.defaultList.listId === list.listId)
@@ -81,7 +82,7 @@ export class ListsService
         {
             throw new Error('Default list cannot be deleted')
         }
-        await this.db.deleteList(this.login.user.uid, list.listId)
+        await this.db.deleteList(this.userId, list.listId)
         this.lists = this.lists.filter(l => l.listId !== list.listId)
 
         await this.addNovelsToList(list.novels, this.getDefaultList())
@@ -90,13 +91,13 @@ export class ListsService
     public async addNovelsToList(novels: ListNovel[], list: List): Promise<void>
     {
         list.novels = list.novels.concat(novels)
-        await this.db.setNovelsOfList(this.login.user.uid, list.novels, list.listId)
+        await this.db.setNovelsOfList(this.userId, list.novels, list.listId)
     }
 
     public async deleteNovelFromList(novel: ListNovel, list: List): Promise<void>
     {
         list.novels = list.novels.filter(n => n.novelId !== novel.novelId)
-        await this.db.setNovelsOfList(this.login.user.uid, list.novels, list.listId)
+        await this.db.setNovelsOfList(this.userId, list.novels, list.listId)
     }
 
     public async moveNovel(novel: ListNovel, from: List, to: List): Promise<void>
