@@ -12,7 +12,7 @@ export class NovelListComponent implements OnInit
     @Input() list: List
     @Input() novel: ListNovel
     public chapters = [] as Chapter[]
-
+    public buildChapters = false
     public novelCollapsed = true
 
     constructor(public lists: ListsService, public read: ReadChaptersService, private db: DatabaseService) {}
