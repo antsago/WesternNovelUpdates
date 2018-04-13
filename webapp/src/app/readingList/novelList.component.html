@@ -1,6 +1,6 @@
 <div class="card">
     <div class="card-header light-wnuaction-item light-wnubg d-flex flex-row align-items-center"
-    (click)="novelCollapsed = !novelCollapsed">
+    (click)="novelCollapsed = !novelCollapsed; buildChapters=true">
         <wnu-OnOffButton [isOn]="novelCollapsed"
             [color]="'text-white'"
             [onIcon]="'fas fa-caret-right'"
@@ -37,7 +37,7 @@
         </span>
     </div>
 
-    <div [ngbCollapse]="novelCollapsed">
+    <div [ngbCollapse]="novelCollapsed" *ngIf="buildChapters">
         <wnu-chapter *ngFor="let chapter of chapters" 
             [chapter]="chapter"
             [novelTitle]="novel.novelTitle"
