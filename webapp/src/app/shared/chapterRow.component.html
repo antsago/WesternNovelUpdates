@@ -2,8 +2,8 @@
     <div class="d-flex flex-column justify-content-between w-100">
         <div class="flex-row">
             <a *ngIf="showNovelTitle" class="light-wnutext" routerLink="/novels/{{chapter.novel}}"><strong>{{novelTitle}}: </strong></a>
-            <a class="light-wnutext" [ngClass]="{'font-weight-bold': !novelTitle}" href="{{chapter.link}}"
-            (click)="openedChapterLink()">
+            <a class="light-wnutext" [ngClass]="{'font-weight-bold': !novelTitle}" 
+            target="_blank" href="{{chapter.link}}" (click)="openedChapterLink()">
                 {{chapter.title}}
             </a>
         </div>
@@ -19,7 +19,7 @@
         (clikedOff)="markAsRead()">
     </wnu-OnOffButton>
 
-    <a href="{{chapter.link}}" class="align-self-center light-wnucolor wnu-tooltip"
+    <a target="_blank" href="{{chapter.link}}" class="align-self-center light-wnucolor wnu-tooltip"
     (click)="openedChapterLink()">
         <i class="fas fa-external-link-alt"></i>
         <span class="wnu-tooltiptext">Read chapter</span>
