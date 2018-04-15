@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core'
-import { LoginService, ListsService, Chapter,
+import { UserService, ListsService, Chapter,
     ListNovel, DatabaseService, List, ReadChaptersService } from '@app/core'
 
 @Component(

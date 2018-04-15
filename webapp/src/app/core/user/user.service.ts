@@ -7,7 +7,7 @@ import { User } from '../Interfaces'
 import { DatabaseService } from '../database.service'
 
 @Injectable()
-export class LoginService
+export class UserService
 {
     public isLoggedIn = false
     public fbUser: fb.User

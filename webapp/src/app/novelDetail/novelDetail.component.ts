@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core'
 import { ActivatedRoute, Params } from '@angular/router'
-import { Novel, ListsService, LoginService, List,
+import { Novel, ListsService, UserService, List,
     ListNovel, AlertService, Chapter, ReadChaptersService } from '@app/core'
 
 @Component(
@@ -12,7 +12,7 @@ export class NovelDetailComponent implements OnInit
     public novel: Novel
 
     constructor(public read: ReadChaptersService, public lists: ListsService,
-        private route: ActivatedRoute, public login: LoginService,
+        private route: ActivatedRoute, public login: UserService,
         private as: AlertService) {}
 
     async ngOnInit()

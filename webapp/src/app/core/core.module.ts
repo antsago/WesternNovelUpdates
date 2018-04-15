@@ -7,7 +7,7 @@ import { DatabaseService } from './database.service'
 import { ListsService } from './lists.service'
 import { ReadChaptersService } from './readChapters.service'
 import { AuthenticationService } from './user/authentication.service'
-import { LoginService } from './user/login.service'
+import { UserService } from './user/user.service'
 import { LoginOrRegisterComponent } from './user/loginOrRegister.component'
 import { AlertService } from './alert.service'
 import { AlertComponent } from './alert.component'
@@ -33,7 +33,7 @@ import { AlertComponent } from './alert.component'
         ReadChaptersService,
         AuthenticationService,
         AlertService,
-        LoginService
+        UserService
     ],
     exports:
     [

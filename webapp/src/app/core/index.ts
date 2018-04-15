@@ -1,5 +1,5 @@
 export * from './user/authentication.service'
-export * from './user/login.service'
+export * from './user/user.service'
 export * from './alert.service'
 export * from './database.service'
 export * from './Interfaces'

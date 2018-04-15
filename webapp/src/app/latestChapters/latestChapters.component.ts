@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core'
 import { ActivatedRoute } from '@angular/router'
 import { AlertService, ListsService, ReadChaptersService, Chapter, Novel,
-    LoginService, DatabaseService } from '@app/core'
+    UserService, DatabaseService } from '@app/core'
 
 @Component(
 {
@@ -14,7 +14,7 @@ export class LatestChaptersComponent implements OnInit
     private novels: {[id: string]: Novel}
 
     constructor(private db: DatabaseService, private route: ActivatedRoute,
-        private login: LoginService, public read: ReadChaptersService,
+        private login: UserService, public read: ReadChaptersService,
         public lists: ListsService, private as: AlertService) {}
 
     async ngOnInit()

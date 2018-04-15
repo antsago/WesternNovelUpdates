@@ -1,6 +1,6 @@
 import { Component } from '@angular/core'
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap'
-import { LoginService } from '@app/core'
+import { UserService } from '@app/core'
 import { AddNovelComponent } from './addNovel.component'
 
 @Component(
@@ -10,7 +10,7 @@ import { AddNovelComponent } from './addNovel.component'
 })
 export class AppRootComponent
 {
-    constructor(public login: LoginService, private modal: NgbModal) {}
+    constructor(public login: UserService, private modal: NgbModal) {}
 
     loginOrRegister()
     {
