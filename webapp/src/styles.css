@@ -22,8 +22,14 @@
     color: #057c95;
     border-color: #057c95;
 }
-.light-wnuaction-item:hover, .light-wnuaction-item:focus{
-    background-color: #04788f
+.btn-lightwnu{
+    color: #fff;
+    border-color:  #057c95;
+    background-color: #057c95;    
+}
+.btn-lightwnu:hover, .btn-lightwnu:focus{
+    border-color: #005e71;
+    background-color: #005e71;
 }
 div{
     cursor: default;

@@ -14,7 +14,7 @@
             <fieldset>            
                 <input [(ngModel)]="loginForm.email" name="email" type="email" class="form-control" placeholder="Email address" required autofocus>    
                 <input [(ngModel)]="loginForm.password" name="password" type="password" class="form-control" placeholder="Password" required>
-                <button (click)="login()" class="btn btn-lg btn-dark light-wnubg btn-block" type="submit">Login</button>
+                <button (click)="login()" class="btn btn-lg btn-lightwnu btn-block" type="submit">Login</button>
             </fieldset>
         </form>
         <button class="btn btn-link ml-auto" (click)="sendPasswordResetEmail()">Send me a password-reset email</button>
@@ -31,7 +31,7 @@
                 <input [(ngModel)]="registerForm.username" name="username" type="text" class="form-control" placeholder="Username" required>                  
                 <input [(ngModel)]="registerForm.email" name="email" type="email" class="form-control" placeholder="Email address" required>
                 <input [(ngModel)]="registerForm.password" name="password" type="password" class="form-control" placeholder="Password" required>
-                <button (click)="register()" class="btn btn-lg btn-dark light-wnubg btn-block" type="submit">Register</button>
+                <button (click)="register()" class="btn btn-lg btn-lightwnu btn-block" type="submit">Register</button>
             </fieldset>
         </form>
     </div>
