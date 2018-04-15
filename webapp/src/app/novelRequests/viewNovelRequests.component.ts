@@ -1,60 +1,19 @@
-import { Component } from '@angular/core'
+import { Component, OnInit } from '@angular/core'
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap'
-import { DatabaseService } from '@app/core'
+import { DatabaseService, NovelRequest } from '@app/core'
 
 @Component(
 {
     templateUrl: './viewNovelRequests.component.html'
 })
-export class ViewNovelRequestsComponent
+export class ViewNovelRequestsComponent implements OnInit
 {
-    request =
-    {
-        title: '',
-        author: '',
-        synopsis: '',
-        homepage: '',
-        rssFeed: ''
-    }
-    errorMessage = ''
-    alertClosed = true
+    novelRequests = [] as NovelRequest[]
 
     constructor(public activeModal: NgbActiveModal, private db: DatabaseService) {}
 
-    async sendRequest()
+    async ngOnInit()
     {
-        try
-        {
-            this.validateNovelRequest()
-            await this.db.addNovelRequest(this.request)
-            this.activeModal.close('Loged in')
-        }
-        catch (err)
-        {
-            this.showErrorMessage(err.message)
-        }
-    }
-
-    private showErrorMessage(message)
-    {
-        this.alertClosed = false
-        this.errorMessage = message
-    }
-
-    private validateNovelRequest()
-    {
-        this.request =
-        {
-            title: this.request.title.trim(),
-            author: this.request.author.trim(),
-            synopsis: this.request.synopsis.trim(),
-            homepage: this.request.homepage.trim(),
-            rssFeed: this.request.rssFeed.trim()
-        }
-        if (!this.request.title || !this.request.author || !this.request.synopsis
-            || !this.request.homepage || !this.request.rssFeed)
-        {
-            throw new Error('All novel requests fields must be filled')
-        }
+        this.novelRequests = await this.db.getNovelRequests()
     }
 }

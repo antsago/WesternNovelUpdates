@@ -135,4 +135,10 @@ export class DatabaseService
     {
         await this.fs.collection(NOVEL_REQUESTS).add(request)
     }
+
+    async getNovelRequests(): Promise<NovelRequest[]>
+    {
+        const response = await this.fs.collection(NOVEL_REQUESTS).get()
+        return response.docs.map(nr => nr.data() as NovelRequest)
+    }
 }

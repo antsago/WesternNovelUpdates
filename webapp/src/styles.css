@@ -27,7 +27,7 @@
     border-color:  #057c95;
     background-color: #057c95;    
 }
-.btn-lightwnu:hover, .btn-lightwnu:focus{
+.btn-lightwnu:hover:not([disabled]), .btn-lightwnu:focus:not([disabled]){
     border-color: #005e71;
     background-color: #005e71;
 }
