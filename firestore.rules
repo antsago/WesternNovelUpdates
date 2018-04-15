@@ -4,8 +4,7 @@ service cloud.firestore
     {
         function isAdmin()
         {
-            return request.auth.uid != null
-                && get(/databases/$(database)/documents/users/$(request.auth.uid)).idAdmin == true;
+            return request.auth.uid != null && get(/databases/$(database)/documents/users/$(request.auth.uid)).idAdmin == true;
         }
 
         match /novels/{novel}
@@ -33,7 +32,7 @@ service cloud.firestore
                 allow read, write: if request.auth.uid == user;
             }
         }
-        match /pendingNovels/{novel}
+        match /novelRequests/{novelRequest}
         {
             allow create: if request.auth.uid != null;
             allow read, update, delete: if isAdmin();

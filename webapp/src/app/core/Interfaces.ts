@@ -10,7 +10,7 @@ export interface Novel
     id: string
 }
 
-export interface PendingNovel
+export interface NovelRequest
 {
     author: string
     homepage: string

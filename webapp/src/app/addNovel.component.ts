@@ -8,7 +8,7 @@ import { DatabaseService } from '@app/core'
 })
 export class AddNovelComponent
 {
-    novel =
+    request =
     {
         title: '',
         author: '',
@@ -21,11 +21,11 @@ export class AddNovelComponent
 
     constructor(public activeModal: NgbActiveModal, private db: DatabaseService) {}
 
-    async addNovel()
+    async sendRequest()
     {
         try
         {
-            await this.db.addPendingNovel(this.novel)
+            await this.db.addNovelRequest(this.request)
             this.activeModal.close('Loged in')
         }
         catch (err)

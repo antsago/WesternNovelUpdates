@@ -1,5 +1,5 @@
 <div class="modal-header">
-    <h4 class="modal-title light-wnucolor">Add Novel</h4>
+    <h4 class="modal-title light-wnucolor">Request a novel</h4>
     <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
         <span aria-hidden="true">&times;</span>
     </button>
@@ -12,16 +12,16 @@
         </ngb-alert>
         <form>
             <fieldset>            
-                <input [(ngModel)]="novel.title" name="title" placeholder="Novel title" type="text" class="form-control" required autofocus>    
-                <input [(ngModel)]="novel.author" name="author" placeholder="Author" type="text" class="form-control" required>    
-                <textarea [(ngModel)]="novel.synopsis" name="synopsis" placeholder="Description" class="form-control" required></textarea>  
-                <input [(ngModel)]="novel.homepage" name="hompeage" placeholder="Link to novel homepage" type="url" class="form-control" required>    
-                <input [(ngModel)]="novel.rssFeed" name="rssFeed" placeholder="Link to chapters' rss feed" type="url" class="form-control" required>    
+                <input [(ngModel)]="request.title" name="title" placeholder="Novel title" type="text" class="form-control" required autofocus>    
+                <input [(ngModel)]="request.author" name="author" placeholder="Author" type="text" class="form-control" required>    
+                <textarea [(ngModel)]="request.synopsis" name="synopsis" placeholder="Description" class="form-control" required></textarea>  
+                <input [(ngModel)]="request.homepage" name="hompeage" placeholder="Link to novel homepage" type="url" class="form-control" required>    
+                <input [(ngModel)]="request.rssFeed" name="rssFeed" placeholder="Link to chapters' rss feed" type="url" class="form-control" required>    
             </fieldset>
         </form>
     </div>
 </div>
 
 <div class="modal-footer">
-    <button type="button" class="btn btn-dark light-wnubg" (click)="addNovel()">Add novel</button>
+    <button type="button" class="btn btn-dark light-wnubg" (click)="sendRequest()">Send request</button>
 </div>
