@@ -30,7 +30,6 @@ export interface Chapter
 
 export interface User
 {
-    readChapters: string[]
     defaultList: List
     isAdmin?: boolean
 }

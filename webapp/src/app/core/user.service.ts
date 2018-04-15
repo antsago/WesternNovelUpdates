@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core'
+import { Injectable, EventEmitter } from '@angular/core'
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap'
 import * as fb from 'firebase'
 import { LoginOrRegisterComponent } from './loginOrRegister.component'
@@ -6,24 +6,40 @@ import { AuthenticationService } from './authentication.service'
 import { User } from './Interfaces'
 import { DatabaseService } from './database.service'
 
+const INITIAL_LIST =
+{
+    listId: null,
+    listName: 'Reading',
+    novels: []
+}
+
 @Injectable()
 export class UserService
 {
-    public isLoggedIn = false
-    public fbUser: fb.User
-    public wnuUser: User
+    private loginSubscribers = []
+    isLoggedIn: boolean
+    fbUser: fb.User
+    wnuUser: User
 
     constructor(private auth: AuthenticationService, private modal: NgbModal, private db: DatabaseService)
     {
         auth.callOnAuthStateChanged(async (isLoggedIn, user) =>
         {
             this.fbUser = isLoggedIn ? user : null
-            this.wnuUser = isLoggedIn ? await this.db.getUser(this.fbUser.uid) : null
+            this.wnuUser = isLoggedIn ? await this.getOrCreateWnuUser(this.fbUser.uid) : null
             this.isLoggedIn = isLoggedIn
+
+            this.loginSubscribers.forEach(subscriber => subscriber())
         })
     }
 
-    public async login(): Promise<boolean>
+    async doOnLoginChange(subscriber: () => {})
+    {
+        this.loginSubscribers.push(subscriber)
+        subscriber()
+    }
+
+    async login(): Promise<boolean>
     {
         try
         {
@@ -36,8 +52,24 @@ export class UserService
         }
     }
 
-    public async logout()
+    async logout()
     {
         await this.auth.logout()
+    }
+
+    private async getOrCreateWnuUser(userId: string): Promise<User>
+    {
+        try
+        {
+            return await this.db.getUser(userId)
+        }
+        catch (err) // user object doesn't exists
+        {
+            await this.db.createUser(userId)
+            const defaultList = await this.db.addList(userId, INITIAL_LIST)
+            await this.db.setDefaultList(userId, defaultList)
+
+            return { defaultList: defaultList }
+        }
     }
 }

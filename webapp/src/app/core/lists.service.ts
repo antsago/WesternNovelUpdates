@@ -1,14 +1,7 @@
 import { Injectable } from '@angular/core'
 import { DatabaseService } from './database.service'
-import { AuthenticationService } from './authentication.service'
 import { ListNovel, List } from './Interfaces'
-
-const INITIAL_LIST =
-{
-    listId: null,
-    listName: 'Reading',
-    novels: []
-}
+import { UserService } from './user.service'
 
 @Injectable()
 export class ListsService
@@ -17,36 +10,13 @@ export class ListsService
     public lists = [] as List[]
     public defaultList = null as {listId: string, listName: string}
 
-    constructor(private db: DatabaseService, private auth: AuthenticationService)
+    constructor(private db: DatabaseService, private user: UserService)
     {
-        this.auth.callOnAuthStateChanged(async (isLoggedIn, user) =>
+        this.user.doOnLoginChange(async () =>
         {
-            if (isLoggedIn)
-            {
-                try
-                {
-                    this.userId = user.uid
-
-                    const listsPromise = this.db.getLists(this.userId)
-                    this.defaultList = (await this.db.getUser(this.userId)).defaultList
-                    this.lists = await listsPromise
-                }
-                catch (err) // user object doesn't exists
-                {
-                    await this.db.createUser(this.userId)
-                    const defaultList = await this.db.addList(this.userId, INITIAL_LIST)
-                    await this.db.setDefaultList(this.userId, defaultList)
-
-                    this.defaultList = defaultList
-                    this.lists = [defaultList]
-                }
-            }
-            else
-            {
-                this.userId = null
-                this.defaultList = null
-                this.lists = []
-            }
+            this.userId = this.user.isLoggedIn ? this.user.fbUser.uid : null
+            this.defaultList = this.user.isLoggedIn ? this.user.wnuUser.defaultList : null
+            this.lists = this.user.isLoggedIn ? await this.db.getLists(this.userId) : []
         })
     }
 

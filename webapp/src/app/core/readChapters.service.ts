@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core'
 import { DatabaseService } from './database.service'
-import { AuthenticationService } from './authentication.service'
+import { UserService } from './user.service'
 
 @Injectable()
 export class ReadChaptersService
@@ -8,27 +8,12 @@ export class ReadChaptersService
     private userId: string
     public readChapters = [] as string[]
 
-    constructor(private db: DatabaseService, private auth: AuthenticationService)
+    constructor(private db: DatabaseService, private user: UserService)
     {
-        this.auth.callOnAuthStateChanged(async (isLoggedIn, user) =>
+        this.user.doOnLoginChange(async () =>
         {
-            if (isLoggedIn)
-            {
-                try
-                {
-                    this.userId = user.uid
-                    this.readChapters = await this.db.getReadChapters(this.userId)
-                }
-                catch (err) // user object doesn't exists
-                {
-                    this.readChapters = []
-                }
-            }
-            else
-            {
-                this.userId = null
-                this.readChapters = []
-            }
+            this.userId = this.user.isLoggedIn ? this.user.fbUser.uid : null
+            this.readChapters = this.user.isLoggedIn ? await this.db.getReadChapters(this.userId) : []
         })
     }
 
