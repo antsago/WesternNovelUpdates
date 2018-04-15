@@ -9,11 +9,21 @@ import { DatabaseService, NovelRequest } from '@app/core'
 export class ViewNovelRequestsComponent implements OnInit
 {
     novelRequests = [] as NovelRequest[]
+    selectedRequest: NovelRequest
 
     constructor(public activeModal: NgbActiveModal, private db: DatabaseService) {}
 
     async ngOnInit()
     {
         this.novelRequests = await this.db.getNovelRequests()
+        if (this.novelRequests.length > 0)
+        {
+            this.selectedRequest = this.novelRequests[0]
+        }
+    }
+
+    selectRequest(request)
+    {
+        this.selectedRequest = request
     }
 }

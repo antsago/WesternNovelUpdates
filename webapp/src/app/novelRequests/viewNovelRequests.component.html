@@ -9,8 +9,18 @@
     <div *ngIf="novelRequests.length <= 0" class="w-100 text-center">
         There are no novel requests pending approval.
     </div>
+
     <div *ngIf="novelRequests.length > 0" class="w-100 text-center">
-        Showing here the novel requests.
+        <div class="list-group">
+            <button *ngFor="let request of novelRequests"
+                class="list-group-item list-group-item-action light-wnutext"
+                [ngClass]="{'list-group-item-info': selectedRequest == request}"
+                (click)="selectRequest(request)">
+                <strong>{{request.title}}</strong>
+            </button>
+        </div>
+        <hr>
+        <div>{{selectedRequest.title}}</div>
     </div>
 </div>
 
