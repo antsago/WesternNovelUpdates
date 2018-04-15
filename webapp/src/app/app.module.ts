@@ -16,6 +16,7 @@ import { ReadingListModule } from '@app/readingList'
 import { NovelDetailModule } from '@app/novelDetail'
 import { NovelsModule } from '@app/novels'
 import { AddNovelComponent } from './addNovel.component'
+import { ViewNovelRequestsComponent } from './viewNovelRequests.component'
 
 @NgModule(
 {
@@ -38,8 +39,8 @@ import { AddNovelComponent } from './addNovel.component'
     [
         {provide: firebase.firestore.Firestore, useFactory: () => firebase.firestore()}
     ],
-    declarations: [ AppRootComponent, AddNovelComponent ],
-    entryComponents: [ AddNovelComponent ],
+    declarations: [ AppRootComponent, AddNovelComponent, ViewNovelRequestsComponent ],
+    entryComponents: [ AddNovelComponent, ViewNovelRequestsComponent ],
     bootstrap: [ AppRootComponent ]
 })
 export class AppModule
