@@ -24,9 +24,10 @@ import { NovelRequestsModule } from '@app/novelRequests'
     [
         BrowserModule,
         CommonModule,
-        FormsModule,
         RouterModule,
+
         NgbModule.forRoot(),
+
         AppRoutingModule,
         CoreModule,
         SharedModule,

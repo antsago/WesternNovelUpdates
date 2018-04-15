@@ -1,7 +1,6 @@
 import { Component } from '@angular/core'
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap'
 import { UserService } from '@app/core'
-import { AddNovelComponent, ViewNovelRequestsComponent } from '@app/novelRequests'
+import { NovelRequestsService } from '@app/novelRequests'
 
 @Component(
 {
@@ -10,7 +9,7 @@ import { AddNovelComponent, ViewNovelRequestsComponent } from '@app/novelRequest
 })
 export class AppRootComponent
 {
-    constructor(public user: UserService, private modal: NgbModal) {}
+    constructor(public user: UserService, private requests: NovelRequestsService) {}
 
     loginOrRegister()
     {
@@ -24,12 +23,12 @@ export class AppRootComponent
 
     addNovel()
     {
-        this.modal.open(AddNovelComponent, {centered: true})
+        this.requests.addNovel()
     }
 
     viewNovelRequests()
     {
-        this.modal.open(ViewNovelRequestsComponent, {centered: true})
+        this.requests.viewNovelRequests()
     }
 }
 

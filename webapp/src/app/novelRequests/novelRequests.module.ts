@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms'
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
 import { AddNovelComponent } from './addNovel.component'
 import { ViewNovelRequestsComponent } from './viewNovelRequests.component'
+import { NovelRequestsService } from './novelRequests.service'
 
 @NgModule(
 {
@@ -13,6 +14,7 @@ import { ViewNovelRequestsComponent } from './viewNovelRequests.component'
         NgbModule,
         FormsModule
     ],
+    providers: [ NovelRequestsService ],
     declarations:
     [
         AddNovelComponent,
