@@ -4,7 +4,7 @@ service cloud.firestore
     {
         function isAdmin()
         {
-            return request.auth.uid != null && get(/databases/$(database)/documents/users/$(request.auth.uid)).idAdmin == true;
+            return get(/databases/$(database)/documents/users/$(request.auth.uid)).data.isAdmin == true;
         }
 
         match /novels/{novel}
