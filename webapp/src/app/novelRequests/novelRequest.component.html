@@ -1,0 +1,14 @@
+<div class="container d-flex flex-column">
+    <ngb-alert *ngIf="!alertClosed" (close)="alertClosed=true">
+        {{ errorMessage }}
+    </ngb-alert>
+    <form>
+        <fieldset>            
+            <input [(ngModel)]="request.title" name="title" placeholder="Novel title" type="text" class="form-control" required autofocus>    
+            <input [(ngModel)]="request.author" name="author" placeholder="Author" type="text" class="form-control" required>    
+            <textarea [(ngModel)]="request.synopsis" name="synopsis" placeholder="Description" class="form-control" required></textarea>  
+            <input [(ngModel)]="request.homepage" name="hompeage" placeholder="Link to novel homepage" type="url" class="form-control" required>    
+            <input [(ngModel)]="request.rssFeed" name="rssFeed" placeholder="Link to chapters' rss feed" type="url" class="form-control" required>    
+        </fieldset>
+    </form>
+</div>

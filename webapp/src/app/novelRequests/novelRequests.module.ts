@@ -5,6 +5,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
 import { AddNovelComponent } from './addNovel.component'
 import { ViewNovelRequestsComponent } from './viewNovelRequests.component'
 import { NovelRequestsService } from './novelRequests.service'
+import { NovelRequestComponent } from './novelRequest.component'
 
 @NgModule(
 {
@@ -18,7 +19,8 @@ import { NovelRequestsService } from './novelRequests.service'
     declarations:
     [
         AddNovelComponent,
-        ViewNovelRequestsComponent
+        ViewNovelRequestsComponent,
+        NovelRequestComponent
     ],
     entryComponents:
     [
