@@ -14,10 +14,11 @@
     </button>
     <div *ngIf="login.isLoggedIn" ngbDropdown placement="bottom-right">
         <button  class="nav-item btn btn-outline-light" ngbDropdownToggle>
-            {{login.user.displayName}}
+            {{login.fbUser.displayName}}
         </button>
         <div ngbDropdownMenu>
             <button (click)="addNovel()" class="dropdown-item">Add novel</button>
+            <button *ngIf="login.wnuUser.isAdmin" class="dropdown-item">Novel requests</button>
             <button (click)="logout()" class="dropdown-item">Logout</button>
         </div>
     </div>

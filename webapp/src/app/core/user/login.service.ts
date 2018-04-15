@@ -1,21 +1,25 @@
 import { Injectable } from '@angular/core'
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap'
+import * as fb from 'firebase'
 import { LoginOrRegisterComponent } from './loginOrRegister.component'
 import { AuthenticationService } from './authentication.service'
-import { User } from 'firebase'
+import { User } from '../Interfaces'
+import { DatabaseService } from '../database.service'
 
 @Injectable()
 export class LoginService
 {
     public isLoggedIn = false
-    public user: User
+    public fbUser: fb.User
+    public wnuUser: User
 
-    constructor(private auth: AuthenticationService, private modal: NgbModal)
+    constructor(private auth: AuthenticationService, private modal: NgbModal, private db: DatabaseService)
     {
         auth.callOnAuthStateChanged(async (isLoggedIn, user) =>
         {
+            this.fbUser = isLoggedIn ? user : null
+            this.wnuUser = isLoggedIn ? await this.db.getUser(this.fbUser.uid) : null
             this.isLoggedIn = isLoggedIn
-            this.user = user
         })
     }
 

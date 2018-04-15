@@ -32,6 +32,7 @@ export interface User
 {
     readChapters: string[]
     defaultList: List
+    isAdmin?: boolean
 }
 
 export interface ListNovel
