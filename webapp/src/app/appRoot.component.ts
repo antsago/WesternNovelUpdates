@@ -1,8 +1,7 @@
 import { Component } from '@angular/core'
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap'
 import { UserService } from '@app/core'
-import { AddNovelComponent } from './addNovel.component'
-import { ViewNovelRequestsComponent } from './viewNovelRequests.component'
+import { AddNovelComponent, ViewNovelRequestsComponent } from '@app/novelRequests'
 
 @Component(
 {
