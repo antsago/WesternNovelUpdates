@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core'
 import { DatabaseService } from './database.service'
-import { AuthenticationService } from './user/authentication.service'
+import { AuthenticationService } from './authentication.service'
 
 @Injectable()
 export class ReadChaptersService
