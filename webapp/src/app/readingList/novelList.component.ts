@@ -19,7 +19,7 @@ export class NovelListComponent implements OnInit
 
     async ngOnInit()
     {
-        this.chapters = await this.db.getNovelChapters(this.novel.novelId)
+        this.chapters = await this.db.chapters.getNovelChapters(this.novel.novelId)
     }
 
     async markAllChaptersRead()

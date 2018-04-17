@@ -13,7 +13,7 @@ export class NovelDetailResolver implements Resolve<Novel>
         {
             const novelId = route.paramMap.get('id')
             const novelPromise = this.db.getNovel(novelId)
-            const chapters = await this.db.getNovelChapters(novelId)
+            const chapters = await this.db.chapters.getNovelChapters(novelId)
 
             const novel = await novelPromise
             novel.chapters = chapters

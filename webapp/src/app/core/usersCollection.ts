@@ -4,7 +4,7 @@ import { firestore } from 'firebase'
 const LISTS = 'lists'
 const READ_CHAPTERS = 'readChapters'
 
-export class UserCollection
+export class UsersCollection
 {
     constructor(private uc: firestore.CollectionReference){}
 

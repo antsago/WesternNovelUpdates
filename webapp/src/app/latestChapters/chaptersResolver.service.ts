@@ -13,7 +13,7 @@ export class ChaptersResolver implements Resolve<Chapter[]>
     {
         try
         {
-           return await this.db.getUpdates(NumberOfUpdates)
+           return await this.db.chapters.getUpdates(NumberOfUpdates)
         }
         catch
         {

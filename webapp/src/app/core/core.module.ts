@@ -12,7 +12,7 @@ import { UserService } from './user.service'
 import { LoginOrRegisterComponent } from './loginOrRegister.component'
 import { AlertService } from './alert.service'
 import { AlertComponent } from './alert.component'
-import { UserCollection } from '@app/core/useRCollection';
+import { UsersCollection } from './usersCollection'
 
 @NgModule(
 {

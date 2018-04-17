@@ -2,45 +2,27 @@ import { Injectable } from '@angular/core'
 import { firestore } from 'firebase'
 import 'firebase/firestore' // necessary because of its side-effects
 import { Novel, Chapter, User, List, ListNovel, NovelRequest } from './Interfaces'
-import { UserCollection } from './userCollection'
+import { UsersCollection } from './usersCollection'
+import { ChaptersCollection } from './chaptersCollection'
 
 const CHAPTERS = 'chapters'
 const NOVELS = 'novels'
 const USERS = 'users'
 const NOVEL_REQUESTS = 'novelRequests'
-const PUBLICATION_DATE = 'publicationDate'
 const TITLE = 'title'
-const NOVEL_ID = 'novel'
 
 @Injectable()
 export class DatabaseService
 {
-    private constructor(private readonly fs: firestore.Firestore, public users: UserCollection)
+    private constructor(private readonly fs: firestore.Firestore, public users: UsersCollection,
+        public chapters: ChaptersCollection)
     {}
 
     static createDatabaseService(fs: firestore.Firestore)
     {
-        const users = new UserCollection(fs.collection(USERS))
-        return new DatabaseService(fs, users)
-    }
-    async getUpdates(noOfUpdates: number): Promise<Chapter[]>
-    {
-        const response = await this.fs.collection(CHAPTERS)
-            .orderBy(PUBLICATION_DATE, 'desc')
-            .limit(noOfUpdates)
-            .get()
-        return response.docs.map(doc => doc.data() as Chapter)
-    }
-
-    async getUpdatesAfter(date: Date, noOfUpdates: number): Promise<Chapter[]>
-    {
-        const response = await this.fs.collection(CHAPTERS)
-            .orderBy(PUBLICATION_DATE, 'desc')
-            .startAfter(date)
-            .limit(noOfUpdates)
-            .get()
-
-        return response.docs.map(doc => doc.data() as Chapter)
+        const users = new UsersCollection(fs.collection(USERS))
+        const chapters = new ChaptersCollection(fs.collection(CHAPTERS))
+        return new DatabaseService(fs, users, chapters)
     }
 
     async getAllNovels(): Promise<Novel[]>
@@ -54,18 +36,6 @@ export class DatabaseService
     async getNovel(novelId: string): Promise<Novel>
     {
         return (await this.fs.collection(NOVELS).doc(novelId).get()).data() as Novel
-    }
-
-    async getNovelChapters(novelId: string): Promise<Chapter[]>
-    {
-        return (await this.fs.collection(CHAPTERS)
-            .orderBy(PUBLICATION_DATE, 'desc')
-            .where(NOVEL_ID, '==', novelId)
-            .get())
-            .docs.map(snap =>
-            {
-                return snap.data() as Chapter
-            })
     }
 
     async addNovelRequest(request: NovelRequest): Promise<void>

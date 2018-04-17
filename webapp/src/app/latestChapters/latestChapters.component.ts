@@ -30,7 +30,7 @@ export class LatestChaptersComponent implements OnInit
     async getMoreUpdates()
     {
         const lastDate = this.chapters[this.chapters.length - 1]['publicationDate']
-        const newUpdates = await this.db.getUpdatesAfter(lastDate, this.NumberOfUpdates)
+        const newUpdates = await this.db.chapters.getUpdatesAfter(lastDate, this.NumberOfUpdates)
         this.chapters = [...this.chapters, ...newUpdates]
     }
 
