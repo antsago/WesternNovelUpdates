@@ -18,7 +18,7 @@ export class DatabaseService
         public chapters: ChaptersCollection, public novels: NovelsCollection,
         public requests: NovelRequestsCollection) {}
 
-    static createDatabaseService(fs: firestore.Firestore)
+    static createDatabaseService(fs: firestore.Firestore): DatabaseService
     {
         const users = new UsersCollection(fs.collection(USERS))
         const chapters = new ChaptersCollection(fs.collection(CHAPTERS))
