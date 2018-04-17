@@ -32,7 +32,7 @@ export class ViewNovelRequestsComponent implements OnInit
 
     async approveRequest(selectedRequest: NovelRequest)
     {
-        await this.db.addNovel(selectedRequest as Novel)
         await this.deleteRequest(selectedRequest)
+        await this.db.addNovel(selectedRequest as Novel)
     }
 }
