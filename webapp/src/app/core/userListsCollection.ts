@@ -5,13 +5,13 @@ export class UserListsCollection
 {
     constructor(private lc: firestore.CollectionReference){}
 
-    async getLists(userId: string): Promise<List[]>
+    async getAll(): Promise<List[]>
     {
         const response = await this.lc.get()
         return response.docs.map(list => list.data() as List)
     }
 
-    async addList(userId: string, list: List): Promise<List>
+    async add(list: List): Promise<List>
     {
         const listReference = this.lc.doc()
         list.listId = listReference.id
@@ -20,17 +20,17 @@ export class UserListsCollection
         return list
     }
 
-    async renameList(userId: string, listId: string, newName: string): Promise<void>
+    async rename(listId: string, newName: string): Promise<void>
     {
         await this.lc.doc(listId).update({listName: newName})
     }
 
-    async deleteList(userId: string, listId: string): Promise<void>
+    async delete(listId: string): Promise<void>
     {
         await this.lc.doc(listId).delete()
     }
 
-    async setNovelsOfList(userId: string, novels: ListNovel[], listId: string)
+    async setNovels(novels: ListNovel[], listId: string)
     {
         await this.lc.doc(listId).update({novels: novels})
     }
