@@ -26,7 +26,7 @@ export class AddNovelComponent
         try
         {
             this.validateNovelRequest()
-            await this.db.addNovelRequest(this.request)
+            await this.db.requests.addNovelRequest(this.request)
             this.activeModal.close('Loged in')
         }
         catch (err)
