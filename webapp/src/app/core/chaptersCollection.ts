@@ -8,7 +8,7 @@ export class ChaptersCollection
 {
     constructor(private cc: firestore.CollectionReference){}
 
-    async getUpdates(noOfUpdates: number): Promise<Chapter[]>
+    async getLatests(noOfUpdates: number): Promise<Chapter[]>
     {
         const response = await this.cc
             .orderBy(PUBLICATION_DATE, 'desc')
@@ -17,7 +17,7 @@ export class ChaptersCollection
         return response.docs.map(doc => doc.data() as Chapter)
     }
 
-    async getUpdatesAfter(date: Date, noOfUpdates: number): Promise<Chapter[]>
+    async getLatestsAfter(date: Date, noOfUpdates: number): Promise<Chapter[]>
     {
         const response = await this.cc
             .orderBy(PUBLICATION_DATE, 'desc')
