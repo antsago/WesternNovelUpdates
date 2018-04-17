@@ -1,7 +1,4 @@
 <div class="container d-flex flex-column">
-    <ngb-alert *ngIf="!alertClosed" (close)="alertClosed=true">
-        {{ errorMessage }}
-    </ngb-alert>
     <form>
         <fieldset>            
             <input [(ngModel)]="request.title" name="title" placeholder="Novel title" type="text" class="form-control" required autofocus>
@@ -9,7 +6,7 @@
             <textarea [(ngModel)]="request.synopsis" name="synopsis" placeholder="Description" class="form-control" required></textarea>
             <input [(ngModel)]="request.homepage" name="hompeage" placeholder="Link to novel homepage" type="url" class="form-control" required>
             <input [(ngModel)]="request.rssFeed" name="rssFeed" placeholder="Link to chapters' rss feed" type="url" class="form-control" required>
-            <select [(ngModel)]="request.site" name="site" class="form-control">
+            <select [(ngModel)]="request.hostingSite" name="site" class="form-control">
                 <option [ngValue]="'RoyalRoad'">RoyalRoad</option>
                 <option [ngValue]="'GravityTales'">GravityTales</option>
                 <option [ngValue]="'Personal'">Personal</option>
@@ -17,8 +14,8 @@
                 <option [ngValue]="'Personal-WithCategories'">Personal-WithCategories</option>
                 <option [ngValue]="'SufficientVelocity'">SufficientVelocity</option>
             </select>
-            <input *ngIf="request.site === 'SufficientVelocity'" [(ngModel)]="request.threadId" name="threadId" placeholder="SufficientVelocity thread Id" type="number" class="form-control" required>
-            <input *ngIf="request.site === 'Personal-WithCategories'" [(ngModel)]="request.categories" name="categories" placeholder="Post categories" type="text" class="form-control" required>
+            <input *ngIf="request.hostingSite === 'SufficientVelocity'" [(ngModel)]="request.threadId" name="threadId" placeholder="SufficientVelocity thread Id" type="number" class="form-control" required>
+            <input *ngIf="request.hostingSite === 'Personal-WithCategories'" [(ngModel)]="request.categories" name="categories" placeholder="Post categories" type="text" class="form-control" required>
         </fieldset>
     </form>
 </div>

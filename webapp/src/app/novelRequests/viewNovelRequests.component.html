@@ -31,7 +31,8 @@
         Delete
     </button>
     <button type="button" class="btn btn-lightwnu"
-    [disabled]="novelRequests.length <= 0">
+    [disabled]="novelRequests.length <= 0"
+    (click)="approveRequest(selectedRequest)">
         Approve
     </button>
 </div>

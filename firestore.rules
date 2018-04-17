@@ -9,8 +9,9 @@ service cloud.firestore
 
         match /novels/{novel}
         {
-            allow read;
-            allow write: if false;
+            allow read: if true;
+            allow update, delete: if false;
+            allow create: if isAdmin();
         }
         match /chapters/{chapter}
         {

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core'
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap'
-import { DatabaseService, NovelRequest } from '@app/core'
+import { DatabaseService, NovelRequest, Novel } from '@app/core'
 
 @Component(
 {
@@ -16,7 +16,7 @@ export class ViewNovelRequestsComponent implements OnInit
     async ngOnInit()
     {
         this.novelRequests = await this.db.getNovelRequests()
-        this.novelRequests.forEach(req => req.site = 'RoyalRoad')
+        this.novelRequests.forEach(req => req.hostingSite = 'RoyalRoad')
         if (this.novelRequests.length > 0)
         {
             this.selectedRequest = this.novelRequests[0]
@@ -28,5 +28,11 @@ export class ViewNovelRequestsComponent implements OnInit
         this.novelRequests = this.novelRequests.filter(req => req.id !== selectedRequest.id)
         this.selectedRequest = this.novelRequests[0]
         await this.db.deleteNovelRequest(selectedRequest)
+    }
+
+    async approveRequest(selectedRequest: NovelRequest)
+    {
+        await this.db.addNovel(selectedRequest as Novel)
+        await this.deleteRequest(selectedRequest)
     }
 }

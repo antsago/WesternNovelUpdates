@@ -21,7 +21,7 @@ export interface NovelRequest
     rssFeed: string
     synopsis: string
     title: string
-    site?: Site
+    hostingSite?: Site
     categories?: string[]
     threadId?: number
 }

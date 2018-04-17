@@ -148,4 +148,11 @@ export class DatabaseService
     {
         await this.fs.collection(NOVEL_REQUESTS).doc(request.id).delete()
     }
+
+    async addNovel(novel: Novel): Promise<void>
+    {
+        const novelReference = this.fs.collection(NOVELS).doc()
+        novel.id = novelReference.id
+        await novelReference.set(novel)
+    }
 }
