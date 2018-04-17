@@ -61,11 +61,11 @@ export class UserService
     {
         try
         {
-            return await this.db.users.getUser(userId)
+            return await this.db.users.get(userId)
         }
         catch (err) // user object doesn't exists
         {
-            await this.db.users.createUser(userId)
+            await this.db.users.create(userId)
             const defaultList = await this.db.users.lists(userId).add(INITIAL_LIST)
             await this.db.users.setDefaultList(userId, defaultList)
 

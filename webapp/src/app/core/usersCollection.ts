@@ -20,12 +20,12 @@ export class UsersCollection
         return new ReadChaptersCollection(this.uc.doc(userId).collection(READ_CHAPTERS))
     }
 
-    async getUser(userId: string): Promise<User>
+    async get(userId: string): Promise<User>
     {
         return (await this.uc.doc(userId).get()).data() as User
     }
 
-    async createUser(userId: string): Promise<void>
+    async create(userId: string): Promise<void>
     {
         this.uc.doc(userId).set({})
     }
