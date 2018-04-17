@@ -15,7 +15,7 @@ export class ViewNovelRequestsComponent implements OnInit
 
     async ngOnInit()
     {
-        this.novelRequests = await this.db.requests.getNovelRequests()
+        this.novelRequests = await this.db.requests.getAll()
         this.novelRequests.forEach(req => req.hostingSite = 'RoyalRoad')
         if (this.novelRequests.length > 0)
         {
@@ -27,7 +27,7 @@ export class ViewNovelRequestsComponent implements OnInit
     {
         this.novelRequests = this.novelRequests.filter(req => req.id !== selectedRequest.id)
         this.selectedRequest = this.novelRequests[0]
-        await this.db.requests.deleteNovelRequest(selectedRequest)
+        await this.db.requests.delete(selectedRequest)
     }
 
     async approveRequest(selectedRequest: NovelRequest)
