@@ -1,10 +1,8 @@
 import { Injectable, EventEmitter } from '@angular/core'
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap'
 import * as fb from 'firebase'
+import { User, AuthenticationService, DatabaseService } from '@app/firebaseLayer'
 import { LoginOrRegisterComponent } from './loginOrRegister.component'
-import { AuthenticationService } from './authentication.service'
-import { User } from './Interfaces'
-import { DatabaseService } from './database.service'
 
 const INITIAL_LIST =
 {

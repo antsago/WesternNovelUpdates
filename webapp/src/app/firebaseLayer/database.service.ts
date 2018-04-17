@@ -14,7 +14,7 @@ const REQUESTS = 'novelRequests'
 @Injectable()
 export class DatabaseService
 {
-    private constructor(private readonly fs: firestore.Firestore, public users: UsersCollection,
+    private constructor(public users: UsersCollection,
         public chapters: ChaptersCollection, public novels: NovelsCollection,
         public requests: NovelRequestsCollection) {}
 
@@ -24,6 +24,6 @@ export class DatabaseService
         const chapters = new ChaptersCollection(fs.collection(CHAPTERS))
         const novels = new NovelsCollection(fs.collection(NOVELS))
         const requests = new NovelRequestsCollection(fs.collection(REQUESTS))
-        return new DatabaseService(fs, users, chapters, novels, requests)
+        return new DatabaseService(users, chapters, novels, requests)
     }
 }

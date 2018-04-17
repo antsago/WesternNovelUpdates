@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core'
-import { NovelRequest } from '@app/core'
+import { NovelRequest } from '@app/firebaseLayer'
 
 @Component(
 {

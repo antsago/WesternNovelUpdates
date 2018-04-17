@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core'
-import { DatabaseService } from './database.service'
 import { UserService } from './user.service'
+import { DatabaseService } from '@app/firebaseLayer'
 
 @Injectable()
 export class ReadChaptersService

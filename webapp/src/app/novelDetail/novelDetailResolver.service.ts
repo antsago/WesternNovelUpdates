@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core'
 import { Router, Resolve, RouterStateSnapshot, ActivatedRouteSnapshot } from '@angular/router'
-import { Novel, DatabaseService } from '@app/core'
+import { Novel, DatabaseService } from '@app/firebaseLayer'
 
 @Injectable()
 export class NovelDetailResolver implements Resolve<Novel>

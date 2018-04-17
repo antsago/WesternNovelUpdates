@@ -1,6 +1,7 @@
 import { Component, Input, EventEmitter, Output } from '@angular/core'
 import { NgbModalRef, NgbModal } from '@ng-bootstrap/ng-bootstrap'
-import { List, ListsService } from '@app/core'
+import { List } from '@app/firebaseLayer'
+import { ListsService } from '@app/core'
 
 @Component(
 {

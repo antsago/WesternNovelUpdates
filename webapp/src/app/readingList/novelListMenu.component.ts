@@ -1,5 +1,5 @@
 import { Component, Input, EventEmitter, Output } from '@angular/core'
-import { List } from '@app/core'
+import { List } from '@app/firebaseLayer'
 
 @Component(
 {

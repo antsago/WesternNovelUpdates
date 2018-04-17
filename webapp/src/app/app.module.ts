@@ -17,6 +17,7 @@ import { ReadingListModule } from '@app/readingList'
 import { NovelDetailModule } from '@app/novelDetail'
 import { NovelsModule } from '@app/novels'
 import { NovelRequestsModule } from '@app/novelRequests'
+import { FirebaseLayerModule } from '@app/firebaseLayer'
 
 @NgModule(
 {
@@ -35,7 +36,8 @@ import { NovelRequestsModule } from '@app/novelRequests'
         ReadingListModule,
         NovelDetailModule,
         NovelsModule,
-        NovelRequestsModule
+        NovelRequestsModule,
+        FirebaseLayerModule
     ],
     providers:
     [

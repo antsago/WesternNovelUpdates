@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core'
-import { DatabaseService } from './database.service'
-import { ListNovel, List } from './Interfaces'
 import { UserService } from './user.service'
+import { List, DatabaseService, ListNovel } from '@app/firebaseLayer'
 
 @Injectable()
 export class ListsService

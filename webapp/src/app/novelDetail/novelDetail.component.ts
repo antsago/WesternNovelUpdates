@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core'
 import { ActivatedRoute, Params } from '@angular/router'
-import { Novel, ListsService, UserService, List,
-    ListNovel, AlertService, Chapter, ReadChaptersService } from '@app/core'
+import { ListsService, UserService, AlertService, ReadChaptersService } from '@app/core'
+import { Novel, Chapter, List, ListNovel } from '@app/firebaseLayer'
 
 @Component(
 {

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core'
 import { Router, Resolve, RouterStateSnapshot, ActivatedRouteSnapshot } from '@angular/router'
-import { Chapter, DatabaseService } from '@app/core'
+import { Chapter, DatabaseService } from '@app/firebaseLayer'
 
 const NumberOfUpdates = 10
 
