@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core'
 import { firestore } from 'firebase'
 import 'firebase/firestore' // necessary because of its side-effects
 import { Novel, Chapter, User, List, ListNovel, NovelRequest } from './Interfaces'
+import { UserCollection } from './userCollection'
 
 const CHAPTERS = 'chapters'
 const NOVELS = 'novels'
@@ -16,8 +17,14 @@ const LISTS = 'lists'
 @Injectable()
 export class DatabaseService
 {
-    constructor(private readonly fs: firestore.Firestore) {}
+    private constructor(private readonly fs: firestore.Firestore, public users: UserCollection)
+    {}
 
+    static createDatabaseService(fs: firestore.Firestore)
+    {
+        const users = new UserCollection(fs.collection(USERS))
+        return new DatabaseService(fs, users)
+    }
     async getUpdates(noOfUpdates: number): Promise<Chapter[]>
     {
         const response = await this.fs.collection(CHAPTERS)
