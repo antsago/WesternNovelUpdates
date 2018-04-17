@@ -11,7 +11,7 @@ export class NovelsResolver implements Resolve<Novel[]>
     {
         try
         {
-            return await this.db.getAllNovels()
+            return await this.db.novels.getAllNovels()
         }
         catch
         {
