@@ -10,13 +10,20 @@ export interface Novel
     id: string
 }
 
+export type Site = 'Personal-NoPermalink' | 'GravityTales' | 'RoyalRoad'
+    | 'Personal-WithCategories' | 'SufficientVelocity' | 'Personal'
+
 export interface NovelRequest
 {
+    id?: string
     author: string
     homepage: string
     rssFeed: string
     synopsis: string
     title: string
+    site?: Site
+    categories?: string[]
+    threadId?: number
 }
 
 export interface Chapter

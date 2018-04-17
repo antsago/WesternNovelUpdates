@@ -133,12 +133,19 @@ export class DatabaseService
 
     async addNovelRequest(request: NovelRequest): Promise<void>
     {
-        await this.fs.collection(NOVEL_REQUESTS).add(request)
+        const requestReference = this.fs.collection(NOVEL_REQUESTS).doc()
+        request.id = requestReference.id
+        await requestReference.set(request)
     }
 
     async getNovelRequests(): Promise<NovelRequest[]>
     {
         const response = await this.fs.collection(NOVEL_REQUESTS).get()
         return response.docs.map(nr => nr.data() as NovelRequest)
+    }
+
+    async deleteNovelRequest(request: NovelRequest): Promise<void>
+    {
+        await this.fs.collection(NOVEL_REQUESTS).doc(request.id).delete()
     }
 }

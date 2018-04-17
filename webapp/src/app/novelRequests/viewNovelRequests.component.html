@@ -15,7 +15,7 @@
             <button *ngFor="let request of novelRequests"
                 class="list-group-item list-group-item-action light-wnutext"
                 [ngClass]="{'list-group-item-info': selectedRequest == request}"
-                (click)="selectRequest(request)">
+                (click)="selectedRequest = request">
                 <strong>{{request.title}}</strong>
             </button>
         </div>
@@ -26,7 +26,8 @@
 
 <div class="modal-footer justify-content-between">
     <button type="button" class="btn btn-danger" 
-    [disabled]="novelRequests.length <= 0">
+    [disabled]="novelRequests.length <= 0"
+    (click)="deleteRequest(selectedRequest)">
         Delete
     </button>
     <button type="button" class="btn btn-lightwnu"
