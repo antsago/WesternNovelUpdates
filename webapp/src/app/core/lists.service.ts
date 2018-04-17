@@ -16,7 +16,7 @@ export class ListsService
         {
             this.userId = this.user.isLoggedIn ? this.user.fbUser.uid : null
             this.defaultList = this.user.isLoggedIn ? this.user.wnuUser.defaultList : null
-            this.lists = this.user.isLoggedIn ? await this.db.getLists(this.userId) : []
+            this.lists = this.user.isLoggedIn ? await this.db.users.getLists(this.userId) : []
         })
     }
 
@@ -24,20 +24,20 @@ export class ListsService
     {
         this.checkListNameIsValid(listName)
 
-        const newList = await this.db.addList(this.userId, {listId: null, listName: listName, novels: []})
+        const newList = await this.db.users.addList(this.userId, {listId: null, listName: listName, novels: []})
         this.lists.push(newList)
     }
 
     public async setDefaultList(list: List): Promise<void>
     {
-        await this.db.setDefaultList(this.userId, list)
+        await this.db.users.setDefaultList(this.userId, list)
         this.defaultList = list
     }
 
     public async renameList(list: List, newName: string): Promise<void>
     {
         this.checkListNameIsValid(newName)
-        await this.db.renameList(this.userId, list.listId, newName)
+        await this.db.users.renameList(this.userId, list.listId, newName)
         list.listName = newName
 
         if (this.defaultList.listId === list.listId)
@@ -52,7 +52,7 @@ export class ListsService
         {
             throw new Error('Default list cannot be deleted')
         }
-        await this.db.deleteList(this.userId, list.listId)
+        await this.db.users.deleteList(this.userId, list.listId)
         this.lists = this.lists.filter(l => l.listId !== list.listId)
 
         await this.addNovelsToList(list.novels, this.getDefaultList())
@@ -61,13 +61,13 @@ export class ListsService
     public async addNovelsToList(novels: ListNovel[], list: List): Promise<void>
     {
         list.novels = list.novels.concat(novels)
-        await this.db.setNovelsOfList(this.userId, list.novels, list.listId)
+        await this.db.users.setNovelsOfList(this.userId, list.novels, list.listId)
     }
 
     public async deleteNovelFromList(novel: ListNovel, list: List): Promise<void>
     {
         list.novels = list.novels.filter(n => n.novelId !== novel.novelId)
-        await this.db.setNovelsOfList(this.userId, list.novels, list.listId)
+        await this.db.users.setNovelsOfList(this.userId, list.novels, list.listId)
     }
 
     public async moveNovel(novel: ListNovel, from: List, to: List): Promise<void>
