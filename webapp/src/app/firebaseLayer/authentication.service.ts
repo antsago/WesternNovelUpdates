@@ -1,18 +1,19 @@
 import { Injectable } from '@angular/core'
-import * as fb from 'firebase'
+import { auth, User } from 'firebase'
 
 @Injectable()
 export class AuthenticationService
 {
-    public async callOnAuthStateChanged(functionToCall: (isLoggedIn: boolean, user: fb.User) => any): Promise<void>
+    constructor(private readonly fba: auth.Auth){}
+    public async callOnAuthStateChanged(functionToCall: (isLoggedIn: boolean, user: User) => any): Promise<void>
     {
-        fb.auth().onAuthStateChanged(user => functionToCall(user != null, user))
+        this.fba.onAuthStateChanged(user => functionToCall(user != null, user))
     }
 
     public async register(username: string, email: string, password: string)
     {
-        await fb.auth().createUserWithEmailAndPassword(email, password)
-        await fb.auth().currentUser.updateProfile(
+        await this.fba.createUserWithEmailAndPassword(email, password)
+        await this.fba.currentUser.updateProfile(
         {
             displayName: username,
             photoURL: null
@@ -21,16 +22,16 @@ export class AuthenticationService
 
     public async login(email: string, password: string)
     {
-        await fb.auth().signInWithEmailAndPassword(email, password)
+        await this.fba.signInWithEmailAndPassword(email, password)
     }
 
     public async logout()
     {
-        await fb.auth().signOut()
+        await this.fba.signOut()
     }
 
     public async sendPasswordResetEmail(email: string)
     {
-        await fb.auth().sendPasswordResetEmail(email)
+        await this.fba.sendPasswordResetEmail(email)
     }
 }

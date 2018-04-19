@@ -39,10 +39,6 @@ import { FirebaseLayerModule } from '@app/firebaseLayer'
         NovelRequestsModule,
         FirebaseLayerModule
     ],
-    providers:
-    [
-        {provide: firebase.firestore.Firestore, useFactory: () => firebase.firestore()}
-    ],
     declarations: [ AppRootComponent ],
     bootstrap: [ AppRootComponent ]
 })
