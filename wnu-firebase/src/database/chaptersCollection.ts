@@ -39,4 +39,17 @@ export class ChaptersCollection
                 return snap.data() as Chapter
             })
     }
+
+    async saveAll(chapters: Chapter[]): Promise<void>
+    {
+        await Promise.all(chapters.map(chapter =>
+        { 
+            return this.save(chapter)
+        }))
+    }
+
+    async save(chapter: Chapter): Promise<void>
+    {  
+        await this.cc.doc(chapter.guid).set(chapter)
+    }
 }
