@@ -1,0 +1,13 @@
+{
+    "name": "wnu-firebase",
+    "version": "1.0.0",
+    "description": "Library to interact with WNU's firebase",
+    "main": "out/index.js",
+    "types": "out/index.d.ts",
+    "scripts": {
+        "build": "tsc"
+    },
+    "devDependencies": {
+        "typescript": "^2.8.1"
+    }
+}

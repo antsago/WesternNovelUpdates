@@ -17,6 +17,8 @@ webapp/e2e/*.js
 webapp/e2e/*.map
 webapp/src/environments
 
+wnu-firebase/out
+
 node_modules
 npm-debug.log
 testem.log

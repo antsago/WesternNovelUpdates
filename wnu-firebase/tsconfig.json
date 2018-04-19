@@ -1,0 +1,17 @@
+{
+    "include": ["src"],
+    "compileOnSave": true,
+    "compilerOptions":
+    {
+        "target": "es6",
+        "module": "commonjs",
+        "declaration": true,
+        "sourceMap": true,
+        "outDir": "./out",
+        "strict": true,
+        "esModuleInterop": true,
+        "baseUrl": "src",
+        "lib": ["es6"],
+        "noImplicitReturns": true,
+    }
+}
