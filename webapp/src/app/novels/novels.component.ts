@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core'
 import { ActivatedRoute } from '@angular/router'
-import { Novel } from '@app/firebaseLayer'
+import { Novel } from 'wnu-firebase'
 
 @Component(
 {

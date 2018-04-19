@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core'
 import { ActivatedRoute } from '@angular/router'
 import { AlertService, ListsService, ReadChaptersService, UserService } from '@app/core'
-import { Chapter, DatabaseService, Novel } from '@app/firebaseLayer'
+import { Chapter, DatabaseService, Novel } from 'wnu-firebase'
 
 @Component(
 {

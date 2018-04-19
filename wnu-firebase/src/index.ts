@@ -1,4 +1,3 @@
-export function hello(name: 'World'): string
-{
-    return `Hello ${name}`
-}
+export * from './database/Interfaces'
+export * from './authentication.service'
+export * from './database/database.service'

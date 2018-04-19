@@ -1,6 +1,6 @@
 import { Component } from '@angular/core'
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap'
-import { DatabaseService } from '@app/firebaseLayer'
+import { DatabaseService } from 'wnu-firebase'
 
 @Component(
 {

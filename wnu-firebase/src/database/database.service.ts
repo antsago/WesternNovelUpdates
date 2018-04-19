@@ -1,4 +1,3 @@
-import { Injectable } from '@angular/core'
 import { firestore } from 'firebase'
 import 'firebase/firestore' // necessary because of its side-effects
 import { UsersCollection } from './usersCollection'
@@ -11,7 +10,6 @@ const NOVELS = 'novels'
 const USERS = 'users'
 const REQUESTS = 'novelRequests'
 
-@Injectable()
 export class DatabaseService
 {
     private constructor(public users: UsersCollection,

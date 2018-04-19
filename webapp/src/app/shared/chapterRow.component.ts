@@ -1,5 +1,5 @@
 import { Component, Input, EventEmitter, Output } from '@angular/core'
-import { Chapter } from '@app/firebaseLayer'
+import { Chapter } from 'wnu-firebase'
 
 @Component(
 {

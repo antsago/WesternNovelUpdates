@@ -5,8 +5,10 @@ import { RouterModule } from '@angular/router'
 import { CommonModule } from '@angular/common'
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
 import * as firebase from 'firebase'
+import 'firebase/firestore' // necessary because of its side-effects
 
-import { CoreModule } from './core/core.module'
+import { AuthenticationService, DatabaseService } from 'wnu-firebase'
+
 import { SharedModule } from './shared/shared.module'
 import { AppRootComponent } from './appRoot.component'
 
@@ -17,7 +19,7 @@ import { ReadingListModule } from '@app/readingList'
 import { NovelDetailModule } from '@app/novelDetail'
 import { NovelsModule } from '@app/novels'
 import { NovelRequestsModule } from '@app/novelRequests'
-import { FirebaseLayerModule } from '@app/firebaseLayer'
+import { CoreModule } from '@app/core'
 
 @NgModule(
 {
@@ -37,7 +39,21 @@ import { FirebaseLayerModule } from '@app/firebaseLayer'
         NovelDetailModule,
         NovelsModule,
         NovelRequestsModule,
-        FirebaseLayerModule
+    ],
+    providers:
+    [
+        { provide: firebase.auth.Auth, useFactory: () => firebase.auth() },
+        {
+            provide: AuthenticationService,
+            useFactory: (fa: firebase.auth.Auth) => new AuthenticationService(fa),
+            deps: [firebase.auth.Auth]
+        },
+        { provide: firebase.firestore.Firestore, useFactory: () => firebase.firestore() },
+        {
+            provide: DatabaseService,
+            useFactory: (fs: firebase.firestore.Firestore) => DatabaseService.createDatabaseService(fs),
+            deps: [firebase.firestore.Firestore]
+        }
     ],
     declarations: [ AppRootComponent ],
     bootstrap: [ AppRootComponent ]

@@ -5,9 +5,12 @@
     "main": "out/index.js",
     "types": "out/index.d.ts",
     "scripts": {
-        "build": "tsc"
+        "build": "rm -rf out && tsc"
     },
     "devDependencies": {
         "typescript": "^2.8.1"
+    },
+    "dependencies": {
+        "firebase": "^4.12.1"
     }
 }
