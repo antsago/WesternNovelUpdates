@@ -16,7 +16,8 @@ const certificate = InHeroku ?
     privateKey: JSON.parse(process.env.FirebasePrivateKey)
 } : serviceAccount
 const port = InHeroku ? process.env.PORT : 3000
-
+const batchSize = 50
+const beetwenBatchWait = 200000
 const UpdateChaptersURL = "https://us-central1-westernnovelupdates.cloudfunctions.net/updateChapters"
 
 admin.initializeApp(
@@ -39,8 +40,15 @@ app.get('/collectFeeds', async (req, res) =>
 
         res.status(200).send("Novel list retrieved\n")
 
+        let batchCount = 0
         for (let novel of snapshot.docs)
         {
+            if(batchCount >= batchSize)
+            {
+                timeout(beetwenBatchWait)
+                batchCount = 0
+            }
+
             try
             {
                 let data = novel.data()
@@ -49,6 +57,10 @@ app.get('/collectFeeds', async (req, res) =>
             catch(err)
             {
                 console.error(err)
+            }
+            finally
+            {
+                batchCount++
             }
         }
         
@@ -77,4 +89,9 @@ async function sendChapterFeed(rssFeed, novelId, site, categories, threadId)
         "Categories": categories? JSON.stringify(categories) : "",
         "ThreadId": threadId? threadId : ""
     }})
+}
+
+async function timeout(ms)
+{
+    return new Promise(resolve => setTimeout(resolve, ms))
 }
