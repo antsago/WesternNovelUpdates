@@ -23,7 +23,7 @@ export interface NovelRequest
     title: string
     hostingSite?: Site
     categories?: string[]
-    threadId?: number
+    threadId?: string
 }
 
 export interface Chapter
