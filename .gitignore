@@ -22,7 +22,6 @@ functions/wnu-shared/out
 node_modules
 npm-debug.log
 testem.log
-
 .DS_Store
-
 firebase-debug.log
+.vscode
