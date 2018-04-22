@@ -8,9 +8,12 @@
         "build": "rm -rf out && tsc"
     },
     "devDependencies": {
+        "@types/xml2js": "^0.4.2",
         "typescript": "^2.8.1"
     },
     "dependencies": {
-        "firebase": "^4.12.1"
+        "firebase": "^4.12.1",
+        "util.promisify": "^1.0.0",
+        "xml2js": "^0.4.19"
     }
 }

@@ -1,0 +1,6 @@
+export * from './FeedFactory'
+export * from './Feed'
+export * from './NoPermalinkFeed'
+export * from './RoyalRoadFeed'
+export * from './SufficientVelocityFeed'
+export * from './WithCategoriesFeed'

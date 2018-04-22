@@ -2,8 +2,7 @@ import { https } from 'firebase-functions'
 import * as admin from 'firebase-admin'
 
 import { Token, AdminCredentials, DatabaseURL } from './keys'
-import { FeedFactory } from './FeedFactory'
-import { DatabaseService } from 'wnu-shared'
+import { DatabaseService, FeedFactory } from 'wnu-shared'
 
 export const updateChapters = https.onRequest( async (request, response) =>
 {
