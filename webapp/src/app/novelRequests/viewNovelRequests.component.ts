@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core'
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap'
-import { DatabaseService, NovelRequest, Novel } from 'wnu-firebase'
+import { DatabaseService, NovelRequest, Novel } from 'wnu-shared'
 
 @Component(
 {

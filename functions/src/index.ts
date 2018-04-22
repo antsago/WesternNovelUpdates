@@ -1,9 +1,9 @@
 import { https } from 'firebase-functions'
 import * as admin from 'firebase-admin'
 
-import { Database } from './Database'
 import { Token, AdminCredentials, DatabaseURL } from './keys'
 import { FeedFactory } from './FeedFactory'
+import { DatabaseService } from 'wnu-shared'
 
 export const updateChapters = https.onRequest( async (request, response) =>
 {
@@ -36,8 +36,8 @@ export const updateChapters = https.onRequest( async (request, response) =>
                                     .cleanChapterFields()
                                     .chapters
 
-        const database = new Database(admin.firestore())
-        await database.saveChapters(chapters)
+        const database = DatabaseService.createDatabaseService(admin.firestore() as any)
+        await database.chapters.saveAll(chapters)
         
         console.info("Successfully added new chapters")
         response.status(200).end()

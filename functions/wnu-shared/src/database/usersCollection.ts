@@ -1,4 +1,4 @@
-import { User, ListNovel, List } from './Interfaces'
+import { User, List } from './Interfaces'
 import { UserListsCollection } from './userListsCollection'
 import { ReadChaptersCollection } from './readChaptersCollection'
 import { firestore } from 'firebase'
@@ -27,7 +27,7 @@ export class UsersCollection
 
     async create(userId: string): Promise<void>
     {
-        this.uc.doc(userId).set({})
+        await this.uc.doc(userId).set({})
     }
 
     async setDefaultList(userId: string, list: List): Promise<void>

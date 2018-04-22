@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core'
 import { ActivatedRoute, Params } from '@angular/router'
 import { ListsService, UserService, AlertService, ReadChaptersService } from '@app/core'
-import { Novel, Chapter, List, ListNovel } from 'wnu-firebase'
+import { Novel, Chapter, List, ListNovel } from 'wnu-shared'
 
 @Component(
 {

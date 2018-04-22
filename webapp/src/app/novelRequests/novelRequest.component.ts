@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core'
-import { NovelRequest } from 'wnu-firebase'
+import { NovelRequest } from 'wnu-shared'
 
 @Component(
 {

@@ -1,4 +1,5 @@
 import { firestore } from 'firebase'
+// tslint:disable-next-line:no-import-side-effect
 import 'firebase/firestore' // necessary because of its side-effects
 import { UsersCollection } from './usersCollection'
 import { ChaptersCollection } from './chaptersCollection'

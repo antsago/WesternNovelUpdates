@@ -1,5 +1,5 @@
 import { Component, Input, EventEmitter, Output } from '@angular/core'
-import { List } from 'wnu-firebase'
+import { List } from 'wnu-shared'
 
 @Component(
 {

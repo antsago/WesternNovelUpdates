@@ -1,5 +1,5 @@
 import { Component, Input, EventEmitter, Output } from '@angular/core'
-import { Novel, Chapter } from 'wnu-firebase'
+import { Novel, Chapter } from 'wnu-shared'
 
 @Component(
 {

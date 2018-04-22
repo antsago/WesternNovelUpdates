@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core'
 import { Router, Resolve, RouterStateSnapshot, ActivatedRouteSnapshot } from '@angular/router'
-import { Novel, DatabaseService } from 'wnu-firebase'
+import { Novel, DatabaseService } from 'wnu-shared'
 
 @Injectable()
 export class NovelsResolver implements Resolve<Novel[]>

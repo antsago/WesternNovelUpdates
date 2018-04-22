@@ -1,5 +1,5 @@
 {
-    "name": "wnu-firebase",
+    "name": "wnu-shared",
     "version": "1.0.0",
     "description": "Library to interact with WNU's firebase",
     "main": "out/index.js",

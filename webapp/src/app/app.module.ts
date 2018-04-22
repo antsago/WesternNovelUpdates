@@ -7,7 +7,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
 import * as firebase from 'firebase'
 import 'firebase/firestore' // necessary because of its side-effects
 
-import { AuthenticationService, DatabaseService } from 'wnu-firebase'
+import { AuthenticationService, DatabaseService } from 'wnu-shared'
 
 import { SharedModule } from './shared/shared.module'
 import { AppRootComponent } from './appRoot.component'

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core'
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap'
-import { AuthenticationService } from 'wnu-firebase'
+import { AuthenticationService } from 'wnu-shared'
 
 @Component(
 {

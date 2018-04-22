@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core'
 import { UserService } from './user.service'
-import { DatabaseService } from 'wnu-firebase'
+import { DatabaseService } from 'wnu-shared'
 
 @Injectable()
 export class ReadChaptersService

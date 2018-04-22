@@ -1,6 +1,6 @@
 import { Component, Input, EventEmitter, Output } from '@angular/core'
 import { NgbModalRef, NgbModal } from '@ng-bootstrap/ng-bootstrap'
-import { List } from 'wnu-firebase'
+import { List } from 'wnu-shared'
 import { ListsService } from '@app/core'
 
 @Component(

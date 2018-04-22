@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core'
 import { UserService, ListsService, ReadChaptersService } from '@app/core'
-import { List, ListNovel, Chapter, DatabaseService } from 'wnu-firebase'
+import { List, ListNovel, Chapter, DatabaseService } from 'wnu-shared'
 
 @Component(
 {
