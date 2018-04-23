@@ -2,6 +2,7 @@ import { Injectable, InjectionToken, Inject } from '@angular/core'
 import { Router, NavigationEnd } from '@angular/router'
 
 export const GoogleAnalytics_ID = new InjectionToken<string>('GA_TRACKING_ID')
+type Categories = 'Authentication' | 'Reading' | 'Novel requests' | 'Lists'
 
 @Injectable()
 export class GoogleAnalyticsService
@@ -17,5 +18,10 @@ export class GoogleAnalyticsService
                 (<any>window).gtag('config', this.gaId, {'page_location': event.urlAfterRedirects})
             }
         })
+    }
+
+    emitEvent(eventName: string, eventCategory: Categories)
+    {
+        (<any>window).gtag('event', eventName, {'event_category': eventCategory})
     }
 }

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core'
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap'
 import { AuthenticationService } from 'wnu-shared'
+import { GoogleAnalyticsService } from '@app/core';
 
 @Component(
 {
@@ -24,13 +25,18 @@ export class LoginOrRegisterComponent
         alertClosed: true
     }
 
-    constructor(public activeModal: NgbActiveModal, private auth: AuthenticationService) {}
+    constructor(public activeModal: NgbActiveModal, private auth: AuthenticationService,
+        private ga: GoogleAnalyticsService)
+    {
+        this.ga.emitEvent('open login form', 'Authentication')
+    }
 
     async login()
     {
         try
         {
             await this.auth.login(this.loginForm.email, this.loginForm.password)
+            this.ga.emitEvent('login', 'Authentication')
             this.activeModal.close('Loged in')
         }
         catch (err)
@@ -44,6 +50,7 @@ export class LoginOrRegisterComponent
         try
         {
             await this.auth.sendPasswordResetEmail(this.loginForm.email)
+            this.ga.emitEvent('reset password', 'Authentication')
             this.showErrorMessage('We sent you the email. Reset your password and try to login again.', this.loginForm)
         }
         catch (err)
@@ -57,6 +64,7 @@ export class LoginOrRegisterComponent
         try
         {
             await this.auth.register(this.registerForm.username, this.registerForm.email, this.registerForm.password)
+            this.ga.emitEvent('register', 'Authentication')
             this.activeModal.close('Registered')
         }
         catch (err)

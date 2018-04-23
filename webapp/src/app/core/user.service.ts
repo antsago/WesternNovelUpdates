@@ -3,6 +3,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap'
 import * as fb from 'firebase'
 import { User, AuthenticationService, DatabaseService } from 'wnu-shared'
 import { LoginOrRegisterComponent } from './loginOrRegister.component'
+import { GoogleAnalyticsService } from '@app/core';
 
 const INITIAL_LIST =
 {
@@ -19,7 +20,8 @@ export class UserService
     fbUser: fb.User
     wnuUser: User
 
-    constructor(private auth: AuthenticationService, private modal: NgbModal, private db: DatabaseService)
+    constructor(private auth: AuthenticationService, private modal: NgbModal,
+        private db: DatabaseService, private ga: GoogleAnalyticsService)
     {
         auth.callOnAuthStateChanged(async (isLoggedIn, user) =>
         {
@@ -52,6 +54,7 @@ export class UserService
 
     async logout()
     {
+        this.ga.emitEvent('logout', 'Authentication')
         await this.auth.logout()
     }
 
