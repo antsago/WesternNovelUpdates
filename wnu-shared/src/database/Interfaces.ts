@@ -10,7 +10,7 @@ export interface Novel
     id: string
 }
 
-export type Site = 'Personal-NoPermalink' | 'GravityTales' | 'RoyalRoad'
+export type Site = 'GravityTales' | 'RoyalRoad'
     | 'Personal-WithCategories' | 'SufficientVelocity' | 'Personal'
 
 export interface NovelRequest

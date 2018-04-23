@@ -21,7 +21,6 @@ export class FeedFactory
             {
                 return new SufficientVelocityFeed(feed, novelId, threadId)
             }
-            case "Personal-NoPermalink":
             case "GravityTales":
             case "Personal":
             default:
