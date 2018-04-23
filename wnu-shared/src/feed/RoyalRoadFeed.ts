@@ -18,7 +18,7 @@ export class RoyalRoadFeed extends Feed
                 link: chapter.link[0],
                 publicationDate: chapter.pubDate[0],
                 title: chapter.title[0].replace(novelTitle, ""),
-                guid: chapter.guid[0]["_"]
+                guid: chapter.guid[0]
             }
         })
 

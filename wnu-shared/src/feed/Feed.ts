@@ -11,8 +11,8 @@ export class Feed
 
     public cleanFeed(): Feed
     {
-        const descriptionCleaner = /<description>[^]*?<\/description>/gi
-        this.feed = this.feed.replace(descriptionCleaner, "<description></description>")
+        this.cleanDescription()
+        this.cleanPermalink()
         return this
     }
 
@@ -37,7 +37,7 @@ export class Feed
                 link: chapter.link[0],
                 publicationDate: chapter.pubDate[0],
                 title: chapter.title[0],
-                guid: chapter.guid[0]["_"]
+                guid: chapter.guid[0]
             }
         })
         return this
@@ -54,6 +54,18 @@ export class Feed
             return chapter
         })
         return this
+    }
+
+    private cleanDescription()
+    {
+        const descriptionCleaner = /<description>[^]*?<\/description>/gi
+        this.feed = this.feed.replace(descriptionCleaner, '<description></description>')
+    }
+
+    private cleanPermalink()
+    {
+        const permalinkDescription = /<guid isPermaLink=".*?">/gi
+        this.feed = this.feed.replace(permalinkDescription, '<guid>')
     }
 }
 
