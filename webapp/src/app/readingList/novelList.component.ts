@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core'
-import { UserService, ListsService, ReadChaptersService } from '@app/core'
+import { UserService, ListsService, ReadChaptersService, GoogleAnalyticsService } from '@app/core'
 import { List, ListNovel, Chapter, DatabaseService } from 'wnu-shared'
 
 @Component(
@@ -15,7 +15,8 @@ export class NovelListComponent implements OnInit
     public buildChapters = false
     public novelCollapsed = true
 
-    constructor(public lists: ListsService, public read: ReadChaptersService, private db: DatabaseService) {}
+    constructor(public lists: ListsService, public read: ReadChaptersService,
+        private db: DatabaseService, public ga: GoogleAnalyticsService) {}
 
     async ngOnInit()
     {

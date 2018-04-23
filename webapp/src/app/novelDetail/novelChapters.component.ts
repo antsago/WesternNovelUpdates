@@ -13,25 +13,31 @@ export class NovelChaptersComponent
 
     @Output() markedAsRead = new EventEmitter<Chapter[]>()
     @Output() markedAsUnread = new EventEmitter<Chapter[]>()
+    @Output() openLink = new EventEmitter<void>()
 
-    async markAsRead(chapters: Chapter[])
+    markAsRead(chapters: Chapter[])
     {
         this.markedAsRead.emit(chapters)
     }
 
-    async markAsUnread(chapters: Chapter[])
+    markAsUnread(chapters: Chapter[])
     {
         this.markedAsUnread.emit(chapters)
     }
 
-    async markAllChaptersRead()
+    markAllChaptersRead()
     {
         this.markAsRead(this.novel.chapters)
     }
 
-    async markAllChaptersUnRead()
+    markAllChaptersUnRead()
     {
         this.markAsUnread(this.novel.chapters)
+    }
+
+    linkClicked()
+    {
+        this.openLink.emit()
     }
 
     areAllChaptersRead()

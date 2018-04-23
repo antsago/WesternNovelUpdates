@@ -45,7 +45,7 @@
             [chapterRead]="read.readChapters.includes(chapter.guid)"
             (markedAsRead)="markChapterAsRead(chapter, novel.novelTitle)"
             (markedAsUnread)="markChapterAsUnread(chapter)"
-            (openLink)="markChapterAsRead(chapter, novel.novelTitle)">
+            (openLink)="markChapterAsRead(chapter, novel.novelTitle);ga.emitEvent('open link', 'Reading')">
         </wnu-chapter>
     </div>
 </div>

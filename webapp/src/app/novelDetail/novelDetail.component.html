@@ -24,7 +24,10 @@
         <p class="text-justify">{{novel.synopsis}}</p>
     </div>
 
-    <wnu-NovelChapters class="mt-5" [novel]="novel" [readChapters]="read.readChapters"
-    (markedAsRead)="markAsRead($event)" (markedAsUnread)="markAsUnread($event)">
+    <wnu-NovelChapters class="mt-5" [novel]="novel"
+        [readChapters]="read.readChapters"
+        (markedAsRead)="markAsRead($event)"
+        (markedAsUnread)="markAsUnread($event)"
+        (openLink)="ga.emitEvent('open link', 'Reading')">
     </wnu-NovelChapters>
 </div>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core'
 import { ActivatedRoute } from '@angular/router'
-import { AlertService, ListsService, ReadChaptersService, UserService } from '@app/core'
+import { AlertService, ListsService, ReadChaptersService,
+    UserService, GoogleAnalyticsService } from '@app/core'
 import { Chapter, DatabaseService, Novel } from 'wnu-shared'
 
 @Component(
@@ -15,7 +16,8 @@ export class LatestChaptersComponent implements OnInit
 
     constructor(private db: DatabaseService, private route: ActivatedRoute,
         private login: UserService, public read: ReadChaptersService,
-        public lists: ListsService, private as: AlertService) {}
+        public lists: ListsService, private as: AlertService,
+        public ga: GoogleAnalyticsService) {}
 
     async ngOnInit()
     {
@@ -32,6 +34,8 @@ export class LatestChaptersComponent implements OnInit
         const lastDate = this.chapters[this.chapters.length - 1]['publicationDate']
         const newUpdates = await this.db.chapters.getLatestsAfter(lastDate, this.NumberOfUpdates)
         this.chapters = [...this.chapters, ...newUpdates]
+
+        this.ga.emitEvent('get more updates', 'Reading')
     }
 
     async markAsRead(chapter: Chapter, novelTitle: string)

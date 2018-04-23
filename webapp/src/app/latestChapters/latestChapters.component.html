@@ -6,7 +6,8 @@
             [showNovelTitle]="true"
             [chapterRead]="read.readChapters.includes(chapter.guid)"
             (markedAsRead)="markAsRead(chapter, novels[chapter.novel].title)"
-            (markedAsUnread)="markAsUnread(chapter)">
+            (markedAsUnread)="markAsUnread(chapter)"
+            (openLink)="ga.emitEvent('open link', 'Reading')">
         </wnu-chapter>
     </div>
 

@@ -18,7 +18,8 @@
             [showNovelTitle]="false"
             [chapterRead]="readChapters.includes(chapter.guid)"
             (markedAsRead)="markAsRead([chapter])"
-            (markedAsUnread)="markAsUnread([chapter])">
+            (markedAsUnread)="markAsUnread([chapter])"
+            (openLink)="linkClicked()">
         </wnu-chapter>
     </div>
 </div>
