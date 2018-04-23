@@ -16,8 +16,8 @@ const certificate = InHeroku ?
     privateKey: JSON.parse(process.env.FirebasePrivateKey)
 } : serviceAccount
 const port = InHeroku ? process.env.PORT : 3000
-const batchSize = 25
-const beetwenBatchWait = 200000
+const batchSize = 50
+const beetwenBatchWait = 100000
 const UpdateChaptersURL = "https://us-central1-westernnovelupdates.cloudfunctions.net/updateChapters"
 
 admin.initializeApp(
