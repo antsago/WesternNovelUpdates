@@ -1,6 +1,7 @@
 import { Component } from '@angular/core'
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap'
 import { DatabaseService } from 'wnu-shared'
+import { GoogleAnalyticsService } from '@app/core'
 
 @Component(
 {
@@ -19,7 +20,11 @@ export class AddNovelComponent
     errorMessage = ''
     alertClosed = true
 
-    constructor(public activeModal: NgbActiveModal, private db: DatabaseService) {}
+    constructor(public activeModal: NgbActiveModal, private db: DatabaseService,
+        private ga: GoogleAnalyticsService)
+    {
+        this.ga.emitEvent('open requests form', 'Novel requests')
+    }
 
     async sendRequest()
     {
@@ -27,6 +32,7 @@ export class AddNovelComponent
         {
             this.validateNovelRequest()
             await this.db.requests.add(this.request)
+            this.ga.emitEvent('send request', 'Novel requests')
             this.activeModal.close('Loged in')
         }
         catch (err)
