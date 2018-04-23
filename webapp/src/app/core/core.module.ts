@@ -9,6 +9,7 @@ import { UserService } from './user.service'
 import { LoginOrRegisterComponent } from './loginOrRegister.component'
 import { AlertService } from './alert.service'
 import { AlertComponent } from './alert.component'
+import { GoogleAnalyticsService } from './googleAnalytics.service'
 
 @NgModule(
 {
@@ -29,7 +30,8 @@ import { AlertComponent } from './alert.component'
         ListsService,
         ReadChaptersService,
         AlertService,
-        UserService
+        UserService,
+        GoogleAnalyticsService
     ],
     exports:
     [

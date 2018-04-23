@@ -19,7 +19,7 @@ import { ReadingListModule } from '@app/readingList'
 import { NovelDetailModule } from '@app/novelDetail'
 import { NovelsModule } from '@app/novels'
 import { NovelRequestsModule } from '@app/novelRequests'
-import { CoreModule } from '@app/core'
+import { CoreModule, GoogleAnalytics_ID } from '@app/core'
 
 @NgModule(
 {
@@ -53,7 +53,8 @@ import { CoreModule } from '@app/core'
             provide: DatabaseService,
             useFactory: (fs: firebase.firestore.Firestore) => DatabaseService.createDatabaseService(fs),
             deps: [firebase.firestore.Firestore]
-        }
+        },
+        { provide: GoogleAnalytics_ID, useValue: environment.googleAnalyticsTrackingId }
     ],
     declarations: [ AppRootComponent ],
     bootstrap: [ AppRootComponent ]

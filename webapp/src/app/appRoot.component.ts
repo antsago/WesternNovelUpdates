@@ -1,6 +1,6 @@
 import { Component } from '@angular/core'
 import { Router, NavigationEnd } from '@angular/router'
-import { UserService } from '@app/core'
+import { UserService, GoogleAnalyticsService } from '@app/core'
 import { NovelRequestsService } from '@app/novelRequests'
 
 @Component(
@@ -10,15 +10,9 @@ import { NovelRequestsService } from '@app/novelRequests'
 })
 export class AppRootComponent
 {
-    constructor(public user: UserService, private requests: NovelRequestsService, private router: Router)
+    constructor(public user: UserService, private requests: NovelRequestsService, private gas: GoogleAnalyticsService)
     {
-        this.router.events.subscribe(event =>
-        {
-            if (event instanceof NavigationEnd)
-            {
-                (<any>window).gtag('config', 'UA-118005376-1', {'page_location': event.urlAfterRedirects})
-            }
-        })
+        this.gas.trackPageViews()
     }
 
     loginOrRegister()
