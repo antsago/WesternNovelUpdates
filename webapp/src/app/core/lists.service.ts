@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core'
 import { UserService } from './user.service'
 import { List, DatabaseService, ListNovel } from 'wnu-shared'
+import { GoogleAnalyticsService } from './googleAnalytics.service'
 
 @Injectable()
 export class ListsService
@@ -9,7 +10,8 @@ export class ListsService
     public lists = [] as List[]
     public defaultList = null as {listId: string, listName: string}
 
-    constructor(private db: DatabaseService, private user: UserService)
+    constructor(private db: DatabaseService, private user: UserService,
+        private ga: GoogleAnalyticsService)
     {
         this.user.doOnLoginChange(async () =>
         {
@@ -25,12 +27,16 @@ export class ListsService
 
         const newList = await this.db.users.lists(this.userId).add({listId: null, listName: listName, novels: []})
         this.lists.push(newList)
+
+        this.ga.emitEvent('add list', 'Lists')
     }
 
     public async setDefaultList(list: List): Promise<void>
     {
         await this.db.users.setDefaultList(this.userId, list)
         this.defaultList = list
+
+        this.ga.emitEvent('set default', 'Lists')
     }
 
     public async renameList(list: List, newName: string): Promise<void>
@@ -43,6 +49,8 @@ export class ListsService
         {
             await this.setDefaultList({ listId: list.listId, listName: newName })
         }
+
+        this.ga.emitEvent('rename list', 'Lists')
     }
 
     public async deleteList(list: List): Promise<void>
@@ -55,24 +63,32 @@ export class ListsService
         this.lists = this.lists.filter(l => l.listId !== list.listId)
 
         await this.addNovelsToList(list.novels, this.getDefaultList())
+
+        this.ga.emitEvent('delete list', 'Lists')
     }
 
     public async addNovelsToList(novels: ListNovel[], list: List): Promise<void>
     {
         list.novels = list.novels.concat(novels)
         await this.db.users.lists(this.userId).setNovels(list.novels, list.listId)
+
+        this.ga.emitEvent('add novel', 'Lists')
     }
 
     public async deleteNovelFromList(novel: ListNovel, list: List): Promise<void>
     {
         list.novels = list.novels.filter(n => n.novelId !== novel.novelId)
         await this.db.users.lists(this.userId).setNovels(list.novels, list.listId)
+
+        this.ga.emitEvent('delete novel', 'Lists')
     }
 
     public async moveNovel(novel: ListNovel, from: List, to: List): Promise<void>
     {
         await this.addNovelsToList([novel], to)
         await this.deleteNovelFromList(novel, from)
+
+        this.ga.emitEvent('move novel', 'Lists')
     }
 
     private checkListNameIsValid(listName: string)

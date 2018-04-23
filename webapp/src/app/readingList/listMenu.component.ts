@@ -1,7 +1,7 @@
 import { Component, Input, EventEmitter, Output } from '@angular/core'
 import { NgbModalRef, NgbModal } from '@ng-bootstrap/ng-bootstrap'
 import { List } from 'wnu-shared'
-import { ListsService } from '@app/core'
+import { ListsService, GoogleAnalyticsService } from '@app/core'
 
 @Component(
 {
@@ -17,13 +17,14 @@ export class ListMenuComponent
     private newListName: string
     private errorMessage: string
 
-    constructor(public lists: ListsService, private modal: NgbModal) {}
+    constructor(public lists: ListsService, private modal: NgbModal, private ga: GoogleAnalyticsService) {}
 
     openDialog(dialogContent)
     {
         this.newListName = ''
         this.errorMessage = null
         this.dialog = this.modal.open(dialogContent, {centered: true})
+        this.ga.emitEvent('open rename/delete form', 'Lists')
     }
 
     async setListAsDefault()
