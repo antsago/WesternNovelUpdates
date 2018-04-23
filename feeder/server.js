@@ -52,7 +52,7 @@ app.get('/collectFeeds', async (req, res) =>
             try
             {
                 let data = novel.data()
-                // await sendChapterFeed(data.rssFeed, novel.id, data.hostingSite, data.categories, data.threadId)
+                await sendChapterFeed(data.rssFeed, novel.id, data.hostingSite, data.categories, data.threadId)
             }
             catch(err)
             {
