@@ -16,7 +16,7 @@ export class AppRootComponent
         {
             if (event instanceof NavigationEnd)
             {
-                (<any>window).gtag('config', 'UA-118005376-1')
+                (<any>window).gtag('config', 'UA-118005376-1', {'page_location': event.urlAfterRedirects})
             }
         })
     }
