@@ -3,7 +3,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap'
 import * as fb from 'firebase'
 import { User, AuthenticationService, DatabaseService } from 'wnu-shared'
 import { LoginOrRegisterComponent } from './loginOrRegister.component'
-import { GoogleAnalyticsService } from '@app/core';
+import { GoogleAnalyticsService } from './googleAnalytics.service'
 
 const INITIAL_LIST =
 {

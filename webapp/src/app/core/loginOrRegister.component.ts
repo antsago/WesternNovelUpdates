@@ -1,7 +1,7 @@
 import { Component } from '@angular/core'
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap'
 import { AuthenticationService } from 'wnu-shared'
-import { GoogleAnalyticsService } from '@app/core';
+import { GoogleAnalyticsService } from './googleAnalytics.service'
 
 @Component(
 {
