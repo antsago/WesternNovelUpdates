@@ -1,4 +1,5 @@
 import { Component } from '@angular/core'
+import { Router, NavigationEnd } from '@angular/router'
 import { UserService } from '@app/core'
 import { NovelRequestsService } from '@app/novelRequests'
 
@@ -9,7 +10,16 @@ import { NovelRequestsService } from '@app/novelRequests'
 })
 export class AppRootComponent
 {
-    constructor(public user: UserService, private requests: NovelRequestsService) {}
+    constructor(public user: UserService, private requests: NovelRequestsService, private router: Router)
+    {
+        this.router.events.subscribe(event =>
+        {
+            if (event instanceof NavigationEnd)
+            {
+                (<any>window).gtag('config', 'UA-118005376-1')
+            }
+        })
+    }
 
     loginOrRegister()
     {
