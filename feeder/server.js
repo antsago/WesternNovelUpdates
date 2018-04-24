@@ -78,9 +78,10 @@ const server = app.listen(port, () =>
 
 async function sendChapterFeed(novel)
 {
-    const body = 
+    const feed = await axios.get(novel.rssFeed)
+    const body =
     {
-        "feed": await axios.get(novel.rssFeed),
+        "feed": feed.data,
         "novel": novel
     }
     const headers = 
@@ -92,6 +93,8 @@ async function sendChapterFeed(novel)
         }
     }
     
+    const foo = JSON.stringify(body)
+
     return axios.post(UpdateChaptersURL, JSON.stringify(body), headers)
 }
 

@@ -15,7 +15,7 @@ export const updateChapters = https.onRequest( async (request, response) =>
             return
         }
 
-        if (!admin.apps.length) 
+        if (!admin.apps.length)
         {
             admin.initializeApp(
             {
@@ -24,9 +24,8 @@ export const updateChapters = https.onRequest( async (request, response) =>
             })
         }
 
-        const feed = FeedFactory.createFeed(request.body, request.get("Site"), 
-                                        request.get("Novel-ID"), request.get("Categories"),
-                                        request.get("ThreadId"))
+        const body = JSON.parse(request.body)
+        const feed = FeedFactory.createFeed(body.feed, body.novel)
         
         const chapters = (await feed.cleanFeed()
                                     .parseFeed())
