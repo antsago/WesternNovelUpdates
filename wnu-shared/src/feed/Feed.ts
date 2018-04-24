@@ -58,14 +58,14 @@ export class Feed
 
     private cleanDescription()
     {
-        const descriptionCleaner = /<description>[^]*?<\/description>/gi
-        this.feed = this.feed.replace(descriptionCleaner, '<description></description>')
+        const description = /<description>[^]*?<\/description>/gi
+        this.feed = this.feed.replace(description, '<description></description>')
     }
 
     private cleanPermalink()
     {
-        const permalinkDescription = /<guid isPermaLink=".*?">/gi
-        this.feed = this.feed.replace(permalinkDescription, '<guid>')
+        const permalink = /<guid isPermaLink=".*?">/gi
+        this.feed = this.feed.replace(permalink, '<guid>')
     }
 }
 
