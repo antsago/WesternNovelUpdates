@@ -1,4 +1,4 @@
-import { User, List } from './Interfaces'
+import { User, List } from '../Interfaces'
 import { UserListsCollection } from './userListsCollection'
 import { ReadChaptersCollection } from './readChaptersCollection'
 import { firestore } from 'firebase'

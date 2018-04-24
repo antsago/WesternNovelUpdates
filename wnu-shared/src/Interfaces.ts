@@ -8,10 +8,12 @@ export interface Novel
     synopsis: string
     title: string
     id: string
+    categories?: string[]
+    threadId?: string
 }
 
 export type Site = 'GravityTales' | 'RoyalRoad'
-    | 'Personal-WithCategories' | 'SufficientVelocity' | 'Personal'
+    | 'Personal-WithCategories' | 'SufficientVelocity' | 'Personal' | 'Reddit'
 
 export interface NovelRequest
 {

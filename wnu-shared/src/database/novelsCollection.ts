@@ -1,5 +1,5 @@
 import { firestore } from 'firebase'
-import { Novel } from './Interfaces'
+import { Novel } from '../Interfaces'
 
 const TITLE = 'title'
 

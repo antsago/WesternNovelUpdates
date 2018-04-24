@@ -1,5 +1,5 @@
 import { firestore } from 'firebase'
-import { Chapter } from './Interfaces'
+import { Chapter } from '../Interfaces'
 
 const PUBLICATION_DATE = 'publicationDate'
 const NOVEL_ID = 'novel'

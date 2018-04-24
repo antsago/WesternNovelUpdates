@@ -1,5 +1,5 @@
 import { firestore } from 'firebase'
-import { NovelRequest } from './Interfaces'
+import { NovelRequest } from '../Interfaces'
 
 export class NovelRequestsCollection
 {

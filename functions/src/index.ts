@@ -26,7 +26,7 @@ export const updateChapters = https.onRequest( async (request, response) =>
 
         const body = JSON.parse(request.body)
         const feed = FeedFactory.createFeed(body.feed, body.novel)
-        
+
         const chapters = (await feed.cleanFeed()
                                     .parseFeed())
                                     .extractChapters()
@@ -37,19 +37,19 @@ export const updateChapters = https.onRequest( async (request, response) =>
         const database = DatabaseService.createDatabaseService(admin.firestore() as any)
         await database.chapters.saveAll(chapters)
         
-        console.info("Successfully added new chapters")
+        console.info(`Successfully updated "${body.novel.title}"`)
         response.status(200).end()
     }
     catch(error)
     {
         if(error instanceof Error) 
         {
-            console.error(`Error for novel ${request.get("Novel-ID")} from site ${request.get("Site")}`);
+            console.error(`Error for: ${request.body}`)
             console.error(error);
         } 
         else 
         {
-            console.error(new Error(`Error for novel ${request.get("Novel-ID")} from site ${request.get("Site")}: ${error}`));
+            console.error(new Error(`Error for: ${request.body}`))
         }
     
         response.status(500).end()

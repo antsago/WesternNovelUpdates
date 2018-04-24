@@ -1,4 +1,4 @@
-import { List, ListNovel } from './Interfaces'
+import { List, ListNovel } from '../Interfaces'
 import { firestore } from 'firebase'
 
 export class UserListsCollection
