@@ -78,13 +78,21 @@ const server = app.listen(port, () =>
 
 async function sendChapterFeed(novel)
 {
-    let feed = await axios.get(novel.rssFeed)
-    return axios.post(UpdateChaptersURL, feed.data, { headers: 
+    const body = 
+    {
+        "feed": await axios.get(novel.rssFeed),
+        "novel": novel
+    }
+    const headers = 
     { 
-        "Content-Type": "text/plain", 
-        "Token": token,
-        "Novel": JSON.stringify(novel)
-    }})
+        headers: 
+        { 
+            "Content-Type": "text/plain", 
+            "Token": token
+        }
+    }
+    
+    return axios.post(UpdateChaptersURL, JSON.stringify(body), headers)
 }
 
 async function timeout(ms)
