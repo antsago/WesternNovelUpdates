@@ -51,8 +51,7 @@ app.get('/collectFeeds', async (req, res) =>
 
             try
             {
-                let data = novel.data()
-                await sendChapterFeed(data.rssFeed, novel.id, data.hostingSite, data.categories, data.threadId)
+                await sendChapterFeed(data.rssFeed, novel.data())
             }
             catch(err)
             {
@@ -77,17 +76,14 @@ const server = app.listen(port, () =>
     console.log(`Feeder running at ${port}`)
 })
 
-async function sendChapterFeed(rssFeed, novelId, site, categories, threadId)
+async function sendChapterFeed(rssFeed, novel)
 {
     let feed = await axios.get(rssFeed)
     return axios.post(UpdateChaptersURL, feed.data, { headers: 
     { 
         "Content-Type": "text/plain", 
-        "Novel-ID": novelId, 
-        "Site": site, 
         "Token": token,
-        "Categories": categories? JSON.stringify(categories) : "",
-        "ThreadId": threadId? threadId : ""
+        "Novel": JSON.stringify(novel)
     }})
 }
 
