@@ -23,7 +23,7 @@ export class QuidianFeed extends Feed
 
         this.chapters = this.chapters.map(chapter =>
         {
-            const chapterId = chapter.link[0].match(chapterIdRegex)[0]
+            const chapterId = chapter.link[0].match(chapterIdRegex)[1]
             return {
                 novel: this.novel,
                 link: `https://www.webnovel.com/book/${this.bookId}/${chapterId}/`,
