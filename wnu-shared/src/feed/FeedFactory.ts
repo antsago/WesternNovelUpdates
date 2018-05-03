@@ -1,9 +1,10 @@
+import { Novel } from "../Interfaces"
 import { Feed } from "./Feed"
 import { RoyalRoadFeed } from "./RoyalRoadFeed"
 import { WithCategoriesFeed } from "./WithCategoriesFeed"
 import { SufficientVelocityFeed } from "./SufficientVelocityFeed"
 import { RedditFeed } from './RedditFeed'
-import { Novel } from "../Interfaces"
+import { QuidianFeed } from "./QuidianFeed"
 
 export class FeedFactory
 {
@@ -26,6 +27,10 @@ export class FeedFactory
             case "Reddit":
             {
                 return new RedditFeed(feed, novel.id, novel.author)
+            }
+            case "Quidian":
+            {
+                return new QuidianFeed(feed, novel.id, novel.bookId)
             }
             case "GravityTales":
             case "Personal":

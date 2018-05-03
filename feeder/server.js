@@ -45,13 +45,16 @@ app.get('/collectFeeds', async (req, res) =>
         {
             if(batchCount >= batchSize)
             {
-                await timeout(beetwenBatchWait)
+                // await timeout(beetwenBatchWait)
                 batchCount = 0
             }
 
             try
             {
-                await sendChapterFeed(novel.data())
+                if(novel.data().id === 'aLnvh6mUyJv78u4FcGeZ')
+                {
+                    await sendChapterFeed(novel.data())
+                }
             }
             catch(err)
             {

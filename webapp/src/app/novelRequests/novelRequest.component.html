@@ -13,9 +13,11 @@
                 <option [ngValue]="'Personal-WithCategories'">Personal-WithCategories</option>
                 <option [ngValue]="'SufficientVelocity'">SufficientVelocity</option>
                 <option [ngValue]="'Reddit'">Reddit</option>
+                <option [ngValue]="'Quidian'">Quidian</option>
             </select>
             <input *ngIf="request.hostingSite === 'SufficientVelocity'" [(ngModel)]="request.threadId" name="threadId" placeholder="SufficientVelocity thread Id" type="text" class="form-control" required>
             <input *ngIf="request.hostingSite === 'Personal-WithCategories'" [(ngModel)]="request.categories" name="categories" placeholder="Post categories" type="text" class="form-control" required>
+            <input *ngIf="request.hostingSite === 'Quidian'" [(ngModel)]="request.bookId" name="bookId" placeholder="Quidian book ID" type="text" class="form-control" required>
         </fieldset>
     </form>
 </div>

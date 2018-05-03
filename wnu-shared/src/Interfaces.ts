@@ -3,17 +3,18 @@ export interface Novel
     chapters?: Chapter[]
     author: string
     homepage: string
-    hostingSite: string
+    hostingSite: Site
     rssFeed: string
     synopsis: string
     title: string
     id: string
     categories?: string[]
     threadId?: string
+    bookId?: string
 }
 
-export type Site = 'GravityTales' | 'RoyalRoad'
-    | 'Personal-WithCategories' | 'SufficientVelocity' | 'Personal' | 'Reddit'
+export type Site = 'GravityTales' | 'RoyalRoad' | 'Reddit'
+    | 'Personal-WithCategories' | 'SufficientVelocity' | 'Personal' | 'Quidian'
 
 export interface NovelRequest
 {
