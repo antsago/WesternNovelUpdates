@@ -16,7 +16,6 @@ export class RedditFeed extends Feed
     extractChapters(): RedditFeed
     {
         this.chapters = this.feed.feed.entry
-        this.filterChaptersByAuthor()
         return this
     }
 
@@ -39,14 +38,6 @@ export class RedditFeed extends Feed
     {
         const content = /<content type="html">[^]*?<\/content>/gi
         this.feed = this.feed.replace(content, '<content></content>')
-    }
-
-    private filterChaptersByAuthor()
-    {
-        this.chapters = this.chapters.filter(ch =>
-        {
-            return ch.author[0].name[0] === `/u/${this.author}`
-        })
     }
 }
 
