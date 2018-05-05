@@ -4,9 +4,9 @@
     </a>
 
     <div class="navbar-nav dark-wnubg border-0 d-none d-md-flex flex-row align-items-center text-center">
-        <span class="nav-link" routerLink="/latestChapters" routerLinkActive="active">Latest chapters</span>
-        <span class="nav-link" routerLink="/novels" routerLinkActive="active">Novels</span>
-        <span class="nav-link" routerLink="/readingLists" routerLinkActive="active">Reading lists</span>
+        <a class="nav-link" routerLink="/latestChapters" routerLinkActive="active">Latest chapters</a>
+        <a class="nav-link" routerLink="/novels" routerLinkActive="active">Novels</a>
+        <a class="nav-link" routerLink="/readingLists" routerLinkActive="active">Reading lists</a>
     </div>
 
     <button  *ngIf="!user.isLoggedIn" class="nav-item btn btn-outline-light" (click)="loginOrRegister()">
@@ -25,9 +25,9 @@
 </nav>
 <nav class="navbar navbar-expand justify-content-center navbar-dark dark-wnubg d-md-none">
     <div class="navbar-nav border-0 d-flex flex-row align-items-center text-center">
-        <span class="nav-link" routerLink="/latestChapters" routerLinkActive="active">Latest chapters</span>
-        <span class="nav-link" routerLink="/novels" routerLinkActive="active">Novels</span>
-        <span class="nav-link" routerLink="/readingLists" routerLinkActive="active">Reading lists</span>
+        <a class="nav-link" routerLink="/latestChapters" routerLinkActive="active">Latest chapters</a>
+        <a class="nav-link" routerLink="/novels" routerLinkActive="active">Novels</a>
+        <a class="nav-link" routerLink="/readingLists" routerLinkActive="active">Reading lists</a>
     </div>
 </nav>
 
