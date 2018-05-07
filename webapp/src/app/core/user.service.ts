@@ -58,6 +58,19 @@ export class UserService
         await this.auth.logout()
     }
 
+    async viewProfile(): Promise<boolean>
+    {
+        try
+        {
+            await this.modal.open(LoginOrRegisterComponent, {centered: true}).result
+            return true
+        }
+        catch
+        {
+            return false
+        }
+    }
+
     private async getOrCreateWnuUser(userId: string): Promise<User>
     {
         try

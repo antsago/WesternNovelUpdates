@@ -9,7 +9,7 @@
         <a class="nav-link" routerLink="/readingLists" routerLinkActive="active">Reading lists</a>
     </div>
 
-    <button  *ngIf="!user.isLoggedIn" class="nav-item btn btn-outline-light" (click)="loginOrRegister()">
+    <button *ngIf="!user.isLoggedIn" class="nav-item btn btn-outline-light" (click)="loginOrRegister()">
         Login / Register
     </button>
     <div *ngIf="user.isLoggedIn" ngbDropdown placement="bottom-right">
@@ -17,6 +17,7 @@
             {{user.fbUser.displayName}}
         </button>
         <div ngbDropdownMenu>
+            <button (click)="viewProfile()" class="dropdown-item">Profile</button>
             <button (click)="addNovel()" class="dropdown-item">Add novel</button>
             <button (click)="viewNovelRequests()" class="dropdown-item" *ngIf="user.wnuUser.isAdmin">Novel requests</button>
             <button (click)="logout()" class="dropdown-item">Logout</button>

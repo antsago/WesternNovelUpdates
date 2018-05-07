@@ -34,5 +34,10 @@ export class AppRootComponent
     {
         this.requests.viewNovelRequests()
     }
+
+    viewProfile()
+    {
+        this.user.viewProfile()
+    }
 }
 
