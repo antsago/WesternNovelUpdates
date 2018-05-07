@@ -4,6 +4,7 @@ import * as fb from 'firebase'
 import { User, AuthenticationService, DatabaseService } from 'wnu-shared'
 import { LoginOrRegisterComponent } from './loginOrRegister.component'
 import { GoogleAnalyticsService } from './googleAnalytics.service'
+import { ProfileComponent } from './profile.component'
 
 const INITIAL_LIST =
 {
@@ -62,7 +63,7 @@ export class UserService
     {
         try
         {
-            await this.modal.open(LoginOrRegisterComponent, {centered: true}).result
+            await this.modal.open(ProfileComponent, {centered: true}).result
             return true
         }
         catch

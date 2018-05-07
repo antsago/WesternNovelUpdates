@@ -10,6 +10,7 @@ import { LoginOrRegisterComponent } from './loginOrRegister.component'
 import { AlertService } from './alert.service'
 import { AlertComponent } from './alert.component'
 import { GoogleAnalyticsService } from './googleAnalytics.service'
+import { ProfileComponent } from './profile.component'
 
 @NgModule(
 {
@@ -22,9 +23,14 @@ import { GoogleAnalyticsService } from './googleAnalytics.service'
     declarations:
     [
         LoginOrRegisterComponent,
+        ProfileComponent,
         AlertComponent
     ],
-    entryComponents: [ LoginOrRegisterComponent ],
+    entryComponents:
+    [
+        ProfileComponent,
+        LoginOrRegisterComponent
+    ],
     providers:
     [
         ListsService,
