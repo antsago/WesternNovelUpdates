@@ -8,6 +8,9 @@
     background-color: #057c95;
     border-color:  #057c95;
 }
+a:not(.active)>span.tabTitle{
+    color:#057c95;
+}
 .light-wnutext{
     color: #057c95;
 }

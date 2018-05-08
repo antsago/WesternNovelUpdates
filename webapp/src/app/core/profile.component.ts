@@ -9,9 +9,15 @@ import { GoogleAnalyticsService } from './googleAnalytics.service'
 })
 export class ProfileComponent
 {
+    deleteAcknowledged = false
+
     constructor(public activeModal: NgbActiveModal, private auth: AuthenticationService,
         private ga: GoogleAnalyticsService)
     {
         this.ga.emitEvent('open profile', 'Authentication')
+    }
+
+    async deleteAccount()
+    {
     }
 }
