@@ -5,7 +5,34 @@
                 <span class="tabTitle">Account details</span>
             </ng-template>
             <ng-template ngbTabContent>
-                <form class="m-4">                     
+                <form class="m-4">
+                    <div class="input-group mt-3">
+                        <input type="text" class="form-control" placeholder="Username">
+                        <div class="input-group-append">
+                            <button type="button" class="btn btn-lightwnu"
+                            (click)="changeEmail()">
+                                Save
+                            </button>
+                        </div>
+                    </div>
+                    <div class="input-group mt-3">
+                        <input type="text" class="form-control" placeholder="Email">
+                        <div class="input-group-append">
+                            <button type="button" class="btn btn-lightwnu"
+                            (click)="changeUsername()">
+                                Save
+                            </button>
+                        </div>
+                    </div>
+                    <div class="input-group mt-3">
+                        <input type="text" class="form-control" placeholder="Password">
+                        <div class="input-group-append">
+                            <button type="button" class="btn btn-lightwnu"
+                            (click)="changePassword()">
+                                Save
+                            </button>
+                        </div>
+                    </div>
                 </form>
             </ng-template>
         </ngb-tab>
@@ -31,7 +58,7 @@
                                 Delete Account
                             </button>
                         </div>
-                    </div>                            
+                    </div>
                 </form>
             </ng-template>
         </ngb-tab>
