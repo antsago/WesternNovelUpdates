@@ -7,9 +7,7 @@
 
 <div class="modal-body">
     <div class="container d-flex flex-column">
-        <ngb-alert *ngIf="!alertClosed" (close)="alertClosed=true">
-            {{ errorMessage }}
-        </ngb-alert>
+        <wnu-alert #alert></wnu-alert>
         <form>
             <fieldset>            
                 <input [(ngModel)]="request.title" name="title" placeholder="Novel title" type="text" class="form-control" required autofocus>    

@@ -1,7 +1,8 @@
-import { Component } from '@angular/core'
+import { Component, ViewChild } from '@angular/core'
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap'
 import { DatabaseService } from 'wnu-shared'
 import { GoogleAnalyticsService } from '@app/core'
+import { AlertComponent } from '@app/shared'
 
 @Component(
 {
@@ -9,6 +10,9 @@ import { GoogleAnalyticsService } from '@app/core'
 })
 export class AddNovelComponent
 {
+    @ViewChild('alert')
+    private alert: AlertComponent
+
     request =
     {
         title: '',
@@ -17,8 +21,6 @@ export class AddNovelComponent
         homepage: '',
         rssFeed: ''
     }
-    errorMessage = ''
-    alertClosed = true
 
     constructor(public activeModal: NgbActiveModal, private db: DatabaseService,
         private ga: GoogleAnalyticsService)
@@ -37,14 +39,8 @@ export class AddNovelComponent
         }
         catch (err)
         {
-            this.showErrorMessage(err.message)
+            this.alert.showMessage(err.message)
         }
-    }
-
-    private showErrorMessage(message)
-    {
-        this.alertClosed = false
-        this.errorMessage = message
     }
 
     private validateNovelRequest()

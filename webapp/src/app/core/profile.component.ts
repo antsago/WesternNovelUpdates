@@ -1,7 +1,8 @@
-import { Component } from '@angular/core'
+import { Component, ViewChild, ElementRef } from '@angular/core'
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap'
 import { AuthenticationService, DatabaseService } from 'wnu-shared'
 import { GoogleAnalyticsService } from './googleAnalytics.service'
+import { AlertComponent } from '@app/shared'
 
 @Component(
 {
@@ -9,10 +10,11 @@ import { GoogleAnalyticsService } from './googleAnalytics.service'
 })
 export class ProfileComponent
 {
+    @ViewChild('deleteAlert')
+    private deleteAlert: AlertComponent
+
     deleteAcknowledged = false
     confirmPasswordDelete = ''
-    errorMessage = ''
-    alertClosed = true
 
     constructor(public activeModal: NgbActiveModal, private auth: AuthenticationService,
         private db: DatabaseService, private ga: GoogleAnalyticsService)
@@ -33,8 +35,7 @@ export class ProfileComponent
         }
         catch (err)
         {
-            this.errorMessage = err.message
-            this.alertClosed = false
+            this.deleteAlert.showMessage(err.message)
         }
     }
 }

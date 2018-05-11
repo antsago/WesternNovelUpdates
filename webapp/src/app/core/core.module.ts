@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core'
 import { CommonModule } from '@angular/common'
 import { FormsModule } from '@angular/forms'
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
+import { SharedModule } from '@app/shared'
 
 import { ListsService } from './lists.service'
 import { ReadChaptersService } from './readChapters.service'
@@ -19,6 +20,7 @@ import { ProfileComponent } from './profile.component'
         CommonModule,
         FormsModule,
         NgbModule,
+        SharedModule
     ],
     declarations:
     [

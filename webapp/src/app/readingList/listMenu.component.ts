@@ -1,7 +1,9 @@
-import { Component, Input, EventEmitter, Output } from '@angular/core'
+import { Component, Input, EventEmitter, Output, ViewChild } from '@angular/core'
 import { NgbModalRef, NgbModal } from '@ng-bootstrap/ng-bootstrap'
 import { List } from 'wnu-shared'
-import { ListsService, GoogleAnalyticsService } from '@app/core'
+import { ListsService, GoogleAnalyticsService, MessageService } from '@app/core'
+import { AlertComponent } from '@app/shared'
+import { EROFS } from 'constants';
 
 @Component(
 {
@@ -15,14 +17,13 @@ export class ListMenuComponent
 
     private dialog: NgbModalRef
     private newListName: string
-    private errorMessage: string
 
-    constructor(public lists: ListsService, private modal: NgbModal, private ga: GoogleAnalyticsService) {}
+    constructor(public lists: ListsService, private modal: NgbModal,
+        private ga: GoogleAnalyticsService, private ms: MessageService) {}
 
     openDialog(dialogContent)
     {
         this.newListName = ''
-        this.errorMessage = null
         this.dialog = this.modal.open(dialogContent, {centered: true})
         this.ga.emitEvent('open rename/delete form', 'Lists')
     }
@@ -37,18 +38,31 @@ export class ListMenuComponent
         try
         {
             await this.lists.renameList(this.list, this.newListName)
-            this.dialog.close()
         }
         catch (error)
         {
-            this.errorMessage = error.message
+            this.ms.displayAlert(error.message, this.ms.ERROR)
+        }
+        finally
+        {
+            this.dialog.close()
         }
     }
 
     async deleteList()
     {
-        await this.lists.deleteList(this.list)
-        this.dialog.close()
+        try
+        {
+            await this.lists.deleteList(this.list)
+        }
+        catch (error)
+        {
+            this.ms.displayAlert(error.message, this.ms.ERROR)
+        }
+        finally
+        {
+            this.dialog.close()
+        }
     }
 
     isDefaultList(): boolean

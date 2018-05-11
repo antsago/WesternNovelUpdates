@@ -1,6 +1,7 @@
-import { Component } from '@angular/core'
+import { Component, ViewChild } from '@angular/core'
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap'
 import { AuthenticationService } from 'wnu-shared'
+import { AlertComponent } from '@app/shared'
 import { GoogleAnalyticsService } from './googleAnalytics.service'
 
 @Component(
@@ -9,20 +10,21 @@ import { GoogleAnalyticsService } from './googleAnalytics.service'
 })
 export class LoginOrRegisterComponent
 {
+    @ViewChild('loginAlert')
+    private loginAlert: AlertComponent
+    @ViewChild('registerAlert')
+    private registerAlert: AlertComponent
+
     public loginForm =
     {
         email: '',
         password: '',
-        errorMessage: '',
-        alertClosed: true
     }
     public registerForm =
     {
         username: '',
         email: '',
         password: '',
-        errorMessage: '',
-        alertClosed: true
     }
 
     constructor(public activeModal: NgbActiveModal, private auth: AuthenticationService,
@@ -41,7 +43,7 @@ export class LoginOrRegisterComponent
         }
         catch (err)
         {
-            this.showErrorMessage(err.message, this.loginForm)
+            this.loginAlert.showMessage(err.message)
         }
     }
 
@@ -51,11 +53,11 @@ export class LoginOrRegisterComponent
         {
             await this.auth.sendPasswordResetEmail(this.loginForm.email)
             this.ga.emitEvent('reset password', 'Authentication')
-            this.showErrorMessage('We sent you the email. Reset your password and try to login again.', this.loginForm)
+            this.loginAlert.showMessage('We sent you the email. Reset your password and try to login again.')
         }
         catch (err)
         {
-            this.showErrorMessage(err.message, this.loginForm)
+            this.loginAlert.showMessage(err.message)
         }
     }
 
@@ -69,13 +71,7 @@ export class LoginOrRegisterComponent
         }
         catch (err)
         {
-            this.showErrorMessage(err.message, this.registerForm)
+            this.registerAlert.showMessage(err.message)
         }
-    }
-
-    private showErrorMessage(message, form)
-    {
-        form.alertClosed = false
-        form.errorMessage = message
     }
 }

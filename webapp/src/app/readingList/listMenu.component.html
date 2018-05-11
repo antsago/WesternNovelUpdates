@@ -16,9 +16,7 @@
 
 <ng-template #renameDialog let-d="dismiss">
     <div class="modal-body">
-        <ngb-alert *ngIf="errorMessage" (close)="errorMessage = null">
-            {{errorMessage}}
-        </ngb-alert>
+        <wnu-alert #renameAlert></wnu-alert>
 
         <form class="form-inline w-100 input-group pt-4">
             <input [(ngModel)]="newListName" name="newListName" type="text" 
@@ -39,6 +37,8 @@
         </button>
     </div>
     <div class="modal-body text-center">
+        <wnu-alert #deleteAlert></wnu-alert>
+
         Are you sure you want to delete <strong>{{list.listName}}</strong>?
         <br>
         <small class="text-muted">

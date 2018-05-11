@@ -50,9 +50,7 @@
                 <span class="tabTitle">Delete account</span>
             </ng-template>
             <ng-template ngbTabContent>
-                <ngb-alert *ngIf="!alertClosed" (close)="alertClosed=true">
-                    {{ errorMessage }}
-                </ngb-alert>
+                <wnu-alert #deleteAlert></wnu-alert>
                 <form class="m-4">
                     <div class="form-check">
                         <input
