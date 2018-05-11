@@ -38,6 +38,9 @@
                 <span class="tabTitle">Delete account</span>
             </ng-template>
             <ng-template ngbTabContent>
+                <ngb-alert *ngIf="!alertClosed" (close)="alertClosed=true">
+                    {{ errorMessage }}
+                </ngb-alert>
                 <form class="m-4">
                     <div class="form-check">
                         <input
@@ -53,10 +56,12 @@
                     </div>
                     <div class="input-group mt-3">
                         <input
-                            type="text"
+                            type="password"
                             class="form-control"
                             [disabled]="!deleteAcknowledged"
                             placeholder="Confirm password"
+                            [(ngModel)]="confirmPasswordDelete"
+                            name="confirmPasswordDelete"
                         >
                         <div class="input-group-append">
                             <button

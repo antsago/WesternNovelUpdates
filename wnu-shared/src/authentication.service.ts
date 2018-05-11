@@ -2,7 +2,13 @@ import { auth, User } from 'firebase'
 
 export class AuthenticationService
 {
-    constructor(private readonly fba: auth.Auth){}
+    currentUser: User|null 
+
+    constructor(private readonly fba: auth.Auth)
+    {
+        this.fba.onAuthStateChanged(user => this.currentUser = user)
+    }
+
     public async callOnAuthStateChanged(functionToCall: (isLoggedIn: boolean, user: User|null) => any): Promise<void>
     {
         this.fba.onAuthStateChanged(user => functionToCall(user !== null, user))
@@ -31,5 +37,16 @@ export class AuthenticationService
     public async sendPasswordResetEmail(email: string)
     {
         await this.fba.sendPasswordResetEmail(email)
+    }
+
+    public async reauthenticate(password: string)
+    {
+        const credential = auth.EmailAuthProvider.credential(this.currentUser.email, password)
+        await this.currentUser.reauthenticateWithCredential(credential)
+    }
+
+    public async deleteUser()
+    {
+        await this.currentUser.delete()
     }
 }

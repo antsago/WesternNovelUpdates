@@ -35,4 +35,9 @@ export class UsersCollection
         await this.uc.doc(userId).update({defaultList:
             {listId: list.listId, listName: list.listName}})
     }
+
+    async delete(userId: string): Promise<void>
+    {
+        await this.uc.doc(userId).delete()
+    }
 }
