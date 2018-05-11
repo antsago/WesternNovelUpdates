@@ -34,6 +34,15 @@ a:not(.active)>span.tabTitle{
     border-color: #005e71;
     background-color: #005e71;
 }
+.btn-darkwnu{
+    color: #fff;
+    border-color:  #042449;
+    background-color: #042449;    
+}
+.btn-darkwnu:hover:not([disabled]), .btn-darkwnu:focus:not([disabled]){
+    border-color: #021225;
+    background-color: #021225;
+}
 div{
     cursor: default;
 }
