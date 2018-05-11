@@ -7,9 +7,9 @@ export class MessageService
     public readonly INFO = 'alert-info'
     public readonly ERROR = 'alert-warning'
 
-    public type = ''
-    public showAlert = false
-    public message = ''
+    type = ''
+    showAlert = false
+    message = ''
 
     constructor(private router: Router)
     {
@@ -22,7 +22,7 @@ export class MessageService
         })
     }
 
-    public displayAlert(message: string, type: string)
+    public displayAlert(message: string, type: 'alert-info'|'alert-warning')
     {
         this.type = type
         this.message = message
