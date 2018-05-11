@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core'
 import { Router, NavigationEnd } from '@angular/router'
 
 @Injectable()
-export class AlertService
+export class MessageService
 {
     public readonly INFO = 'alert-info'
     public readonly ERROR = 'alert-warning'

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core'
 import { ActivatedRoute, Params } from '@angular/router'
-import { ListsService, UserService, AlertService,
+import { ListsService, UserService, MessageService,
     ReadChaptersService, GoogleAnalyticsService } from '@app/core'
 import { Novel, Chapter, List, ListNovel } from 'wnu-shared'
 
@@ -14,7 +14,7 @@ export class NovelDetailComponent implements OnInit
 
     constructor(public read: ReadChaptersService, public lists: ListsService,
         private route: ActivatedRoute, public login: UserService,
-        private as: AlertService, public ga: GoogleAnalyticsService) {}
+        private as: MessageService, public ga: GoogleAnalyticsService) {}
 
     async ngOnInit()
     {

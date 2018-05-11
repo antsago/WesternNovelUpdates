@@ -1,9 +1,9 @@
 import { Component } from '@angular/core'
-import { AlertService } from './alert.service'
+import { MessageService } from './message.service'
 
 @Component(
 {
-    selector: 'wnu-alert',
+    selector: 'wnu-message',
     template: `
     <div *ngIf="alertService.showAlert" [ngClass]="alertService.type"
     class="sticky-top text-center alert alert-dismissible" role="alert">
@@ -13,7 +13,7 @@ import { AlertService } from './alert.service'
         </button>
     </div>`
 })
-export class AlertComponent
+export class MessageComponent
 {
-    constructor(public alertService: AlertService) {}
+    constructor(public alertService: MessageService) {}
 }

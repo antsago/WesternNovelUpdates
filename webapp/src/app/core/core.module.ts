@@ -7,8 +7,8 @@ import { ListsService } from './lists.service'
 import { ReadChaptersService } from './readChapters.service'
 import { UserService } from './user.service'
 import { LoginOrRegisterComponent } from './loginOrRegister.component'
-import { AlertService } from './alert.service'
-import { AlertComponent } from './alert.component'
+import { MessageService } from './message.service'
+import { MessageComponent } from './message.component'
 import { GoogleAnalyticsService } from './googleAnalytics.service'
 import { ProfileComponent } from './profile.component'
 
@@ -24,7 +24,7 @@ import { ProfileComponent } from './profile.component'
     [
         LoginOrRegisterComponent,
         ProfileComponent,
-        AlertComponent
+        MessageComponent
     ],
     entryComponents:
     [
@@ -35,13 +35,13 @@ import { ProfileComponent } from './profile.component'
     [
         ListsService,
         ReadChaptersService,
-        AlertService,
+        MessageService,
         UserService,
         GoogleAnalyticsService
     ],
     exports:
     [
-        AlertComponent
+        MessageComponent
     ]
 })
 export class CoreModule {}

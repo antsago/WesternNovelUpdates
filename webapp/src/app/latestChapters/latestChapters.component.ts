@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core'
 import { ActivatedRoute } from '@angular/router'
-import { AlertService, ListsService, ReadChaptersService,
+import { MessageService, ListsService, ReadChaptersService,
     UserService, GoogleAnalyticsService } from '@app/core'
 import { Chapter, DatabaseService, Novel } from 'wnu-shared'
 
@@ -16,7 +16,7 @@ export class LatestChaptersComponent implements OnInit
 
     constructor(private db: DatabaseService, private route: ActivatedRoute,
         private login: UserService, public read: ReadChaptersService,
-        public lists: ListsService, private as: AlertService,
+        public lists: ListsService, private as: MessageService,
         public ga: GoogleAnalyticsService) {}
 
     async ngOnInit()

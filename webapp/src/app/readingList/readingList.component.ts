@@ -1,5 +1,5 @@
 import { Component } from '@angular/core'
-import { UserService, ListsService, AlertService } from '@app/core'
+import { UserService, ListsService, MessageService } from '@app/core'
 
 @Component(
 {
@@ -9,7 +9,7 @@ export class ReadingListComponent
 {
     public newListName = ''
 
-    constructor(public login: UserService, private lists: ListsService, private as: AlertService){}
+    constructor(public login: UserService, private lists: ListsService, private as: MessageService){}
 
     async loginOrRegister(event)
     {
