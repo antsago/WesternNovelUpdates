@@ -15,7 +15,6 @@ export class ProfileComponent
 
     userDetails
     deleteAcknowledged = false
-    confirmPasswordDelete = ''
 
     constructor(public activeModal: NgbActiveModal, private auth: AuthenticationService,
         private db: DatabaseService, private ga: GoogleAnalyticsService)
@@ -24,11 +23,11 @@ export class ProfileComponent
         this.userDetails = {username: this.auth.currentUser.displayName, email: this.auth.currentUser.email}
     }
 
-    async deleteAccount()
+    async deleteAccount(password: string)
     {
         try
         {
-            await this.auth.reauthenticate(this.confirmPasswordDelete)
+            await this.auth.reauthenticate(password)
             await this.db.users.delete(this.auth.currentUser.uid)
             await this.auth.deleteUser()
 
