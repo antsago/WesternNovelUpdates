@@ -12,6 +12,7 @@ import { MessageService } from './message.service'
 import { MessageComponent } from './message.component'
 import { GoogleAnalyticsService } from './googleAnalytics.service'
 import { ProfileComponent } from './profile.component/profile.component'
+import { UserDetailsComponent } from './profile.component/userDetails.component'
 
 @NgModule(
 {
@@ -26,7 +27,8 @@ import { ProfileComponent } from './profile.component/profile.component'
     [
         LoginOrRegisterComponent,
         ProfileComponent,
-        MessageComponent
+        MessageComponent,
+        UserDetailsComponent
     ],
     entryComponents:
     [
