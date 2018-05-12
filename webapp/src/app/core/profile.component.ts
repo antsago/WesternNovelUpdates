@@ -13,6 +13,7 @@ export class ProfileComponent
     @ViewChild('deleteAlert')
     private deleteAlert: AlertComponent
 
+    userDetails
     deleteAcknowledged = false
     confirmPasswordDelete = ''
 
@@ -20,6 +21,7 @@ export class ProfileComponent
         private db: DatabaseService, private ga: GoogleAnalyticsService)
     {
         this.ga.emitEvent('open profile', 'Authentication')
+        this.userDetails = {username: this.auth.currentUser.displayName, email: this.auth.currentUser.email}
     }
 
     async deleteAccount()
