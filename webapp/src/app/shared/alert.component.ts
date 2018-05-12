@@ -10,8 +10,8 @@ import { Component } from '@angular/core'
 })
 export class AlertComponent
 {
-    private message = ''
-    private alertClosed = true
+    message = ''
+    alertClosed = true
 
     public showMessage(error: string)
     {
