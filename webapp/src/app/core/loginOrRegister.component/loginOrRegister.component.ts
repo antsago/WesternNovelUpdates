@@ -2,7 +2,7 @@ import { Component, ViewChild } from '@angular/core'
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap'
 import { AuthenticationService } from 'wnu-shared'
 import { AlertComponent } from '@app/shared'
-import { GoogleAnalyticsService } from './googleAnalytics.service'
+import { GoogleAnalyticsService } from '../googleAnalytics.service'
 
 @Component(
 {

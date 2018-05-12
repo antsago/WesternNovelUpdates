@@ -1,8 +1,8 @@
 import { Component, ViewChild, ElementRef } from '@angular/core'
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap'
 import { AuthenticationService, DatabaseService } from 'wnu-shared'
-import { GoogleAnalyticsService } from './googleAnalytics.service'
 import { AlertComponent } from '@app/shared'
+import { GoogleAnalyticsService } from '../googleAnalytics.service'
 
 @Component(
 {

@@ -3,7 +3,6 @@ import { NgbModalRef, NgbModal } from '@ng-bootstrap/ng-bootstrap'
 import { List } from 'wnu-shared'
 import { ListsService, GoogleAnalyticsService, MessageService } from '@app/core'
 import { AlertComponent } from '@app/shared'
-import { EROFS } from 'constants';
 
 @Component(
 {

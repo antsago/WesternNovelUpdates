@@ -2,9 +2,9 @@ import { Injectable, EventEmitter } from '@angular/core'
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap'
 import * as fb from 'firebase'
 import { User, AuthenticationService, DatabaseService } from 'wnu-shared'
-import { LoginOrRegisterComponent } from './loginOrRegister.component'
+import { LoginOrRegisterComponent } from './loginOrRegister.component/loginOrRegister.component'
 import { GoogleAnalyticsService } from './googleAnalytics.service'
-import { ProfileComponent } from './profile.component'
+import { ProfileComponent } from './profile.component/profile.component'
 
 const INITIAL_LIST =
 {
