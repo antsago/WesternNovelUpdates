@@ -12,6 +12,8 @@ export class ProfileComponent
 {
     @ViewChild('deleteAlert')
     private deleteAlert: AlertComponent
+    @ViewChild('detailsAlert')
+    private detailsAlert: AlertComponent
 
     userDetails
     deleteAcknowledged = false
@@ -20,7 +22,7 @@ export class ProfileComponent
         private db: DatabaseService, private ga: GoogleAnalyticsService)
     {
         this.ga.emitEvent('open profile', 'Authentication')
-        this.userDetails = {username: this.auth.currentUser.displayName, email: this.auth.currentUser.email}
+        this.userDetails = {username: this.auth.currentUser().displayName, email: this.auth.currentUser().email}
     }
 
     async deleteAccount(password: string)
@@ -28,15 +30,37 @@ export class ProfileComponent
         try
         {
             await this.auth.reauthenticate(password)
-            await this.db.users.delete(this.auth.currentUser.uid)
+            await this.db.users.delete(this.auth.currentUser().uid)
             await this.auth.deleteUser()
 
-            this.ga.emitEvent('delete Account', 'Authentication')
-            this.activeModal.close('Loged in')
+            this.ga.emitEvent('deleted account', 'Authentication')
+            this.activeModal.close('Account deleted')
         }
         catch (err)
         {
             this.deleteAlert.showMessage(err.message)
+        }
+    }
+
+    async changeDetails(password: string)
+    {
+        try
+        {
+            await this.auth.reauthenticate(password)
+            await this.auth.setUsername(this.userDetails.username)
+            await this.auth.setEmail(this.userDetails.email)
+
+            if (this.userDetails.password)
+            {
+                await this.auth.setPassword(this.userDetails.password)
+            }
+
+            this.ga.emitEvent('changed details', 'Authentication')
+            this.activeModal.close('Changed details')
+        }
+        catch (err)
+        {
+            this.detailsAlert.showMessage(err.message)
         }
     }
 }

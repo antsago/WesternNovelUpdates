@@ -18,5 +18,6 @@ export class ConfirmPasswordComponent
     submitPassword()
     {
         this.submit.emit(this.password)
+        this.password = ''
     }
 }
