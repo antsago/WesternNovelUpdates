@@ -56,7 +56,7 @@ export class ProfileComponent
             }
 
             this.ga.emitEvent('changed details', 'Authentication')
-            this.activeModal.close('Changed details')
+            this.userDetails.password = ''
         }
         catch (err)
         {
