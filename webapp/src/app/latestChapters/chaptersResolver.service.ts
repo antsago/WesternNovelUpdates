@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core'
 import { Router, Resolve, RouterStateSnapshot, ActivatedRouteSnapshot } from '@angular/router'
 import { Chapter, DatabaseService } from 'wnu-shared'
 
-const NumberOfUpdates = 10
+const NumberOfUpdates = 20
 
 @Injectable()
 export class ChaptersResolver implements Resolve<Chapter[]>
