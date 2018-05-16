@@ -14,6 +14,7 @@ export class NovelChaptersComponent
     @Output() markedAsRead = new EventEmitter<Chapter[]>()
     @Output() markedAsUnread = new EventEmitter<Chapter[]>()
     @Output() openLink = new EventEmitter<void>()
+    @Output() moreChapters = new EventEmitter<void>()
 
     markAsRead(chapters: Chapter[])
     {
@@ -38,6 +39,11 @@ export class NovelChaptersComponent
     linkClicked()
     {
         this.openLink.emit()
+    }
+
+    getMoreChapters()
+    {
+        this.moreChapters.emit()
     }
 
     areAllChaptersRead()

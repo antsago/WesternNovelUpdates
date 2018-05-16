@@ -8,12 +8,46 @@ export class ChaptersCollection
 {
     constructor(private cc: firestore.CollectionReference){}
 
-    async getLatests(noOfUpdates: number): Promise<Chapter[]>
+    async getLatests(noOfChapters: number): Promise<Chapter[]>
     {
         const response = await this.cc
             .orderBy(PUBLICATION_DATE, 'desc')
-            .limit(noOfUpdates)
+            .limit(noOfChapters)
             .get()
+        return response.docs.map(doc => doc.data() as Chapter)
+    }
+
+    async getLatestsAfter(date: Date, noOfChapters: number): Promise<Chapter[]>
+    {
+        const response = await this.cc
+            .orderBy(PUBLICATION_DATE, 'desc')
+            .startAfter(date)
+            .limit(noOfChapters)
+            .get()
+
+        return response.docs.map(doc => doc.data() as Chapter)
+    }
+
+    async getNovelChapters(novelId: string, noOfChapters: number): Promise<Chapter[]>
+    {
+        const response = await this.cc
+            .where(NOVEL_ID, '==', novelId)
+            .orderBy(PUBLICATION_DATE, 'desc')
+            .limit(noOfChapters)
+            .get()
+
+        return response.docs.map(doc => doc.data() as Chapter)
+    }
+
+    async getNovelChaptersAfter(novelId: string, date: Date, noOfChapters: number): Promise<Chapter[]>
+    {
+        const response = await this.cc
+            .where(NOVEL_ID, '==', novelId)
+            .orderBy(PUBLICATION_DATE, 'desc')
+            .startAfter(date)
+            .limit(noOfChapters)
+            .get()
+
         return response.docs.map(doc => doc.data() as Chapter)
     }
 
@@ -25,29 +59,6 @@ export class ChaptersCollection
             .limit(1)
             .get()
         return response.docs.map(doc => doc.data() as Chapter)[0]
-    }
-
-    async getLatestsAfter(date: Date, noOfUpdates: number): Promise<Chapter[]>
-    {
-        const response = await this.cc
-            .orderBy(PUBLICATION_DATE, 'desc')
-            .startAfter(date)
-            .limit(noOfUpdates)
-            .get()
-
-        return response.docs.map(doc => doc.data() as Chapter)
-    }
-
-    async getNovelChapters(novelId: string): Promise<Chapter[]>
-    {
-        return (await this.cc
-            .orderBy(PUBLICATION_DATE, 'desc')
-            .where(NOVEL_ID, '==', novelId)
-            .get())
-            .docs.map(snap =>
-            {
-                return snap.data() as Chapter
-            })
     }
 
     async saveAll(chapters: Chapter[]): Promise<void>

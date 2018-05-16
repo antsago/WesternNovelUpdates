@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core'
 import { ActivatedRoute, Params } from '@angular/router'
 import { ListsService, UserService, MessageService,
     ReadChaptersService, GoogleAnalyticsService } from '@app/core'
-import { Novel, Chapter, List, ListNovel } from 'wnu-shared'
+import { Novel, Chapter, List, ListNovel, DatabaseService } from 'wnu-shared'
+
+const ChapterAddRate = 10
 
 @Component(
 {
@@ -14,11 +16,21 @@ export class NovelDetailComponent implements OnInit
 
     constructor(public read: ReadChaptersService, public lists: ListsService,
         private route: ActivatedRoute, public login: UserService,
-        private as: MessageService, public ga: GoogleAnalyticsService) {}
+        private as: MessageService, public ga: GoogleAnalyticsService,
+        private db: DatabaseService) {}
 
     async ngOnInit()
     {
         this.novel = this.route.snapshot.data['novel']
+    }
+
+    async getMoreChapters()
+    {
+        const lastDate = this.novel.chapters[this.novel.chapters.length - 1]['publicationDate']
+        const newUpdates = await this.db.chapters.getNovelChaptersAfter(this.novel.id, lastDate, ChapterAddRate)
+        this.novel.chapters = [...this.novel.chapters, ...newUpdates]
+
+        this.ga.emitEvent('get more novel chaters', 'Reading')
     }
 
     async markAsRead(chapters: Chapter[])
