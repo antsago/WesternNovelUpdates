@@ -27,14 +27,17 @@ export const updateChapters = https.onRequest( async (request, response) =>
         const body = JSON.parse(request.body)
         const feed = FeedFactory.createFeed(body.feed, body.novel)
 
+        const database = DatabaseService.createDatabaseService(admin.firestore() as any)
+        const latestChapter = await database.chapters.getLastChapterOfNovel(body.novel.id)
+        
         const chapters = (await feed.cleanFeed()
                                     .parseFeed())
                                     .extractChapters()
                                     .extractChaptersFields()
                                     .cleanChapterFields()
                                     .chapters
+                                    .filter(ch => !latestChapter || ch.publicationDate > latestChapter.publicationDate)
 
-        const database = DatabaseService.createDatabaseService(admin.firestore() as any)
         await database.chapters.saveAll(chapters)
         
         console.info(`Successfully updated "${body.novel.title}"`)

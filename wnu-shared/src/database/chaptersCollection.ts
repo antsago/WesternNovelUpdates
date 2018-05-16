@@ -17,6 +17,16 @@ export class ChaptersCollection
         return response.docs.map(doc => doc.data() as Chapter)
     }
 
+    async getLastChapterOfNovel(novelId: string): Promise<Chapter>
+    {
+        const response = await this.cc
+            .orderBy(PUBLICATION_DATE, 'desc')
+            .where(NOVEL_ID, '==', novelId)
+            .limit(1)
+            .get()
+        return response.docs.map(doc => doc.data() as Chapter)[0]
+    }
+
     async getLatestsAfter(date: Date, noOfUpdates: number): Promise<Chapter[]>
     {
         const response = await this.cc
