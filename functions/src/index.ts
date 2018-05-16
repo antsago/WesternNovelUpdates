@@ -28,7 +28,7 @@ export const updateChapters = https.onRequest( async (request, response) =>
         const feed = FeedFactory.createFeed(body.feed, body.novel)
 
         const database = DatabaseService.createDatabaseService(admin.firestore() as any)
-        const latestChapter = await database.chapters.getLastChapterOfNovel(body.novel.id)
+        const latestChapter = await database.chapters.getNovelChapters(body.novel.id, 1)[0]
         
         const chapters = (await feed.cleanFeed()
                                     .parseFeed())
