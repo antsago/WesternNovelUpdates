@@ -47,12 +47,12 @@ export const updateChapters = https.onRequest( async (request, response) =>
     {
         if(error instanceof Error) 
         {
-            console.error(`Error for: ${request.body}`)
+            console.error(`Error for: ${request.body.novel}`)
             console.error(error);
         } 
         else 
         {
-            console.error(new Error(`Error for: ${request.body}`))
+            console.error(new Error(`Error for: ${request.body.novel}`))
         }
     
         response.status(500).end()
