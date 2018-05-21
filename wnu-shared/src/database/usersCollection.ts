@@ -1,7 +1,8 @@
-import { User, List } from '../Interfaces'
+import { User, List, Chapter, Bookmark } from '../Interfaces'
 import { UserListsCollection } from './userListsCollection'
 import { ReadChaptersCollection } from './readChaptersCollection'
 import { firestore } from 'firebase'
+import fb from 'firebase'
 
 const LISTS = 'lists'
 const READ_CHAPTERS = 'readChapters'
@@ -34,6 +35,16 @@ export class UsersCollection
     {
         await this.uc.doc(userId).update({defaultList:
             {listId: list.listId, listName: list.listName}})
+    }
+
+    async setBookmark(userId: string, novelId: string, bookmark: Bookmark)
+    {
+        await this.uc.doc(userId).update({[`bookmarks.${novelId}`]: bookmark})
+    }
+
+    async removeBookmark(userId: string, novelId: string)
+    {
+        await this.uc.doc(userId).update({[`bookmarks.${novelId}`]: null})
     }
 
     async delete(userId: string): Promise<void>

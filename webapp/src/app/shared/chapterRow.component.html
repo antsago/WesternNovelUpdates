@@ -10,14 +10,12 @@
         <span class="d-block text-muted">{{chapter.publicationDate | date: 'd MMM, h:mm a'}}</span>
     </div>
 
-    <wnu-OnOffButton [isOn]="chapterRead"
-        [onIcon]="'fas fa-bookmark'"
-        [offIcon]="'far fa-bookmark'"
-        [onTooltip]="'Chapter read'"
-        [offTooltip]="'Mark chapter as read'"
-        (clikedOn)="markAsUnread()"
-        (clikedOff)="markAsRead()">
-    </wnu-OnOffButton>
+    <wnu-bookmark
+        [state]="chapterState"
+        (setBookmark)="bookmark()"
+        (removeBookmark)="unbookmark()"
+    >
+    </wnu-bookmark>
 
     <a target="_blank" href="{{chapter.link}}" class="align-self-center light-wnucolor wnu-tooltip"
     (click)="openedChapterLink()">

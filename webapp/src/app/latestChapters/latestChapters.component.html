@@ -9,10 +9,11 @@
             [chapter]="chapter"
             [novelTitle]="novels[chapter.novel].title"
             [showNovelTitle]="true"
-            [chapterRead]="read.readChapters.includes(chapter.guid)"
-            (markedAsRead)="markAsRead(chapter, novels[chapter.novel].title)"
-            (markedAsUnread)="markAsUnread(chapter)"
-            (openLink)="ga.emitEvent('open link', 'Reading')">
+            [chapterState]="read.chapterState(chapter)"
+            (setBookmark)="read.setBookmark(chapter)"
+            (removeBookmark)="read.removeBookmark(chapter)"
+            (openLink)="ga.emitEvent('open link', 'Reading')"
+        >
         </wnu-chapter>
     </div>
 </div>

@@ -20,9 +20,9 @@
             [chapter]="chapter"
             [novelTitle]="novel.title"
             [showNovelTitle]="false"
-            [chapterRead]="readChapters.includes(chapter.guid)"
-            (markedAsRead)="markAsRead([chapter])"
-            (markedAsUnread)="markAsUnread([chapter])"
+            [chapterState]="read.chapterState(chapter)"
+            (setBookmark)="read.setBookmark(chapter)"
+            (removeBookmark)="read.removeBookmark(chapter)"
             (openLink)="linkClicked()">
         </wnu-chapter>
     </div>

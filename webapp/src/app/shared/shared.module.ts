@@ -9,6 +9,7 @@ import { MissingPageComponent } from './missingPage.component'
 import { OnOffButtonComponent } from './onOffButton.component'
 import { ConfirmPasswordComponent } from './confirmPassword.component'
 import { AlertComponent } from './alert.component'
+import { BookmarkComponent } from './bookmark.component'
 
 
 @NgModule(
@@ -22,17 +23,19 @@ import { AlertComponent } from './alert.component'
     ],
     declarations:
     [
-        ChapterRowComponent,
+        ConfirmPasswordComponent,
         OnOffButtonComponent,
         MissingPageComponent,
-        ConfirmPasswordComponent,
+        ChapterRowComponent,
+        BookmarkComponent,
         AlertComponent
     ],
     exports:
     [
-        ChapterRowComponent,
-        OnOffButtonComponent,
         ConfirmPasswordComponent,
+        OnOffButtonComponent,
+        ChapterRowComponent,
+        BookmarkComponent,
         AlertComponent
     ]
 })

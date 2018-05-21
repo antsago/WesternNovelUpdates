@@ -42,6 +42,20 @@ export interface User
 {
     defaultList: List
     isAdmin?: boolean
+    bookmarks?: Bookmarks
+}
+
+export type ChapterState = 'Read' | 'Unread' | 'Bookmarked' 
+
+export interface Bookmarks
+{
+    [key: string]: Bookmark
+}
+
+export interface Bookmark
+{
+    chapterId: string
+    publicationDate: Date
 }
 
 export interface ListNovel

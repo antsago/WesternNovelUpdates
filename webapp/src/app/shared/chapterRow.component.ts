@@ -1,5 +1,5 @@
 import { Component, Input, EventEmitter, Output } from '@angular/core'
-import { Chapter } from 'wnu-shared'
+import { Chapter, ChapterState } from 'wnu-shared'
 
 @Component(
 {
@@ -10,25 +10,26 @@ export class ChapterRowComponent
 {
     @Input() chapter: Chapter
     @Input() novelTitle: string
-    @Input() chapterRead: boolean
+    @Input() chapterState: ChapterState
     @Input() showNovelTitle: boolean
 
-    @Output() markedAsRead = new EventEmitter<void>()
-    @Output() markedAsUnread = new EventEmitter<void>()
+    @Output() setBookmark = new EventEmitter<void>()
+    @Output() removeBookmark = new EventEmitter<void>()
     @Output() openLink = new EventEmitter<void>()
 
-    markAsRead()
+    bookmark()
     {
-        this.markedAsRead.emit()
+        this.setBookmark.emit()
     }
 
-    markAsUnread()
+    unbookmark()
     {
-        this.markedAsUnread.emit()
+        this.removeBookmark.emit()
     }
 
     openedChapterLink()
     {
+        console.log(this.chapterState)
         this.openLink.emit()
     }
 }

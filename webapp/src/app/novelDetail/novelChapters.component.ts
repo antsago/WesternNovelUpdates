@@ -1,4 +1,5 @@
 import { Component, Input, EventEmitter, Output } from '@angular/core'
+import { ReadChaptersService } from '@app/core'
 import { Novel, Chapter } from 'wnu-shared'
 
 @Component(
@@ -15,6 +16,8 @@ export class NovelChaptersComponent
     @Output() markedAsUnread = new EventEmitter<Chapter[]>()
     @Output() openLink = new EventEmitter<void>()
     @Output() moreChapters = new EventEmitter<void>()
+
+    constructor(public read: ReadChaptersService){}
 
     markAsRead(chapters: Chapter[])
     {

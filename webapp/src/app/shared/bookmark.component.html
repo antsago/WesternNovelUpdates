@@ -1,0 +1,17 @@
+<button (click)="onClick()"
+    [hidden]="state !== 'Unread'"
+    [ngClass]="{'light-wnutext': state !== 'Bookmarked', 'dark-wnutext': state === 'Bookmarked'}"
+    class="align-self-center wnu-tooltip btn btn-link"
+>
+        <i class="far fa-bookmark"></i>
+        <span class="wnu-tooltiptext">Bookmark chapter</span>
+</button>
+
+<button (click)="onClick()"
+    [hidden]="state === 'Unread'"
+    [ngClass]="{'light-wnutext': state !== 'Bookmarked', 'dark-wnutext': state === 'Bookmarked'}"
+    class="align-self-center wnu-tooltip btn btn-link"
+>
+        <i class="fas fa-bookmark"></i>
+        <span class="wnu-tooltiptext">Mark chapter as read</span>
+</button>

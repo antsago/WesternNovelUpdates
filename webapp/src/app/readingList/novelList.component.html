@@ -42,10 +42,11 @@
             [chapter]="chapter"
             [novelTitle]="novel.novelTitle"
             [showNovelTitle]="true"
-            [chapterRead]="read.readChapters.includes(chapter.guid)"
-            (markedAsRead)="markChapterAsRead(chapter, novel.novelTitle)"
-            (markedAsUnread)="markChapterAsUnread(chapter)"
-            (openLink)="markChapterAsRead(chapter, novel.novelTitle);ga.emitEvent('open link', 'Reading')">
+            [chapterState]="read.chapterState(chapter)"
+            (setBookmark)="read.setBookmark(chapter)"
+            (removeBookmark)="read.removeBookmark(chapter)"
+            (openLink)="markChapterAsRead(chapter, novel.novelTitle);ga.emitEvent('open link', 'Reading')"           
+        >
         </wnu-chapter>
     </div>
 </div>
