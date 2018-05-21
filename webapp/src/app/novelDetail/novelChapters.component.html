@@ -1,13 +1,13 @@
 <div class="d-flex flex-row justify-content-between align-items-center ">
     <p><strong>Chapters</strong></p>
-    <wnu-OnOffButton [isOn]="areAllChaptersRead()"
+    <wnu-OnOffButton [isOn]="read.chapterState(novel.chapters[0]) === 'Bookmarked'"
         [color]="'text-white'"
         [onIcon]="'fas fa-bookmark'"
         [offIcon]="'far fa-bookmark'"
         [onTooltip]="'All chapters read'"
         [offTooltip]="'Mark all chapters read'"
-        (clikedOn)="markAllChaptersUnRead()"
-        (clikedOff)="markAllChaptersRead()">
+        (clikedOn)="read.removeBookmark(novel.chapters[0])"
+        (clikedOff)="read.setBookmark(novel.chapters[0])">
     </wnu-OnOffButton>
 </div>
 <div class="my-3 bg-white rounded box-shadow p-2">

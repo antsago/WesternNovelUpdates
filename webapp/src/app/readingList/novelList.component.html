@@ -17,14 +17,14 @@
         </span>
 
         <span class="ml-auto">
-            <wnu-OnOffButton [isOn]="areAllChaptersRead()"
+            <wnu-OnOffButton [isOn]="read.chapterState(chapters[0]) === 'Bookmarked'"
                 [color]="'text-white'"
                 [onIcon]="'fas fa-bookmark'"
                 [offIcon]="'far fa-bookmark'"
                 [onTooltip]="'All chapters read'"
                 [offTooltip]="'Mark all chapters read'"
-                (clikedOn)="markAllChaptersUnread()"
-                (clikedOff)="markAllChaptersRead()"
+                (clikedOn)="read.removeBookmark(chapters[0])"
+                (clikedOff)="read.setBookmark(chapters[0])"
                 (click)="$event.stopPropagation()">
             </wnu-OnOffButton>
             

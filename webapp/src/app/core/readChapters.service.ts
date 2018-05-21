@@ -8,7 +8,7 @@ export class ReadChaptersService
 {
     private userId: string
     public readChapters = [] as string[]
-    public bookmarks: Bookmarks
+    public bookmarks = {} as Bookmarks
 
     constructor(private db: DatabaseService, private user: UserService, private ga: GoogleAnalyticsService)
     {
