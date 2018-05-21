@@ -7,7 +7,7 @@
         [onTooltip]="'All chapters read'"
         [offTooltip]="'Mark all chapters read'"
         (clikedOn)="read.removeBookmark(novel.chapters[0])"
-        (clikedOff)="read.setBookmark(novel.chapters[0])">
+        (clikedOff)="read.setBookmark(novel.chapters[0], novels[chapter.novel].title)">
     </wnu-OnOffButton>
 </div>
 <div class="my-3 bg-white rounded box-shadow p-2">
@@ -21,7 +21,7 @@
             [novelTitle]="novel.title"
             [showNovelTitle]="false"
             [chapterState]="read.chapterState(chapter)"
-            (setBookmark)="read.setBookmark(chapter)"
+            (setBookmark)="read.setBookmark(chapter, novels[chapter.novel].title)"
             (removeBookmark)="read.removeBookmark(chapter)"
             (openLink)="linkClicked()">
         </wnu-chapter>

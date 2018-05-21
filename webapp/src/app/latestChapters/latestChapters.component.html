@@ -10,7 +10,7 @@
             [novelTitle]="novels[chapter.novel].title"
             [showNovelTitle]="true"
             [chapterState]="read.chapterState(chapter)"
-            (setBookmark)="read.setBookmark(chapter)"
+            (setBookmark)="read.setBookmark(chapter, novels[chapter.novel].title)"
             (removeBookmark)="read.removeBookmark(chapter)"
             (openLink)="ga.emitEvent('open link', 'Reading')"
         >

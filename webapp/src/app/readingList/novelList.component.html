@@ -24,7 +24,7 @@
                 [onTooltip]="'All chapters read'"
                 [offTooltip]="'Mark all chapters read'"
                 (clikedOn)="read.removeBookmark(chapters[0])"
-                (clikedOff)="read.setBookmark(chapters[0])"
+                (clikedOff)="read.setBookmark(chapters[0], novels[chapter.novel].title)"
                 (click)="$event.stopPropagation()">
             </wnu-OnOffButton>
             
@@ -43,7 +43,7 @@
             [novelTitle]="novel.novelTitle"
             [showNovelTitle]="true"
             [chapterState]="read.chapterState(chapter)"
-            (setBookmark)="read.setBookmark(chapter)"
+            (setBookmark)="read.setBookmark(chapter, novels[chapter.novel].title)"
             (removeBookmark)="read.removeBookmark(chapter)"
             (openLink)="markChapterAsRead(chapter, novel.novelTitle);ga.emitEvent('open link', 'Reading')"           
         >
