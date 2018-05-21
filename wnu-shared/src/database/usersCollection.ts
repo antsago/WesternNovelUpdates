@@ -28,7 +28,7 @@ export class UsersCollection
 
     async create(userId: string): Promise<void>
     {
-        await this.uc.doc(userId).set({})
+        await this.uc.doc(userId).set({'bookmarks': {}})
     }
 
     async setDefaultList(userId: string, list: List): Promise<void>

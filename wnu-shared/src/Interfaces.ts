@@ -42,7 +42,7 @@ export interface User
 {
     defaultList: List
     isAdmin?: boolean
-    bookmarks?: Bookmarks
+    bookmarks: Bookmarks
 }
 
 export type ChapterState = 'Read' | 'Unread' | 'Bookmarked' 

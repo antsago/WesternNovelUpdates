@@ -84,7 +84,7 @@ export class UserService
             const defaultList = await this.db.users.lists(userId).add(INITIAL_LIST)
             await this.db.users.setDefaultList(userId, defaultList)
 
-            return { defaultList: defaultList }
+            return { bookmarks: {}, defaultList: defaultList }
         }
     }
 }
