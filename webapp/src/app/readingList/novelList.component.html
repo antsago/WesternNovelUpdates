@@ -17,7 +17,8 @@
         </span>
 
         <span class="ml-auto">
-            <wnu-OnOffButton [isOn]="read.chapterState(chapters[0]) === 'Bookmarked'"
+            <wnu-OnOffButton *ngIf="chapters.length > 0"
+                [isOn]="read.chapterState(chapters[0]) === 'Bookmarked'"
                 [color]="'text-white'"
                 [onIcon]="'fas fa-bookmark'"
                 [offIcon]="'far fa-bookmark'"
