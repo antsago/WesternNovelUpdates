@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core'
 import { ActivatedRoute } from '@angular/router'
-import { MessageService, ListsService, ReadChaptersService,
+import { MessageService, ListsService, BookmarkService,
     UserService, GoogleAnalyticsService } from '@app/core'
 import { Chapter, DatabaseService, Novel } from 'wnu-shared'
 
@@ -15,7 +15,7 @@ export class LatestChaptersComponent implements OnInit
     private novels: {[id: string]: Novel}
 
     constructor(private db: DatabaseService, private route: ActivatedRoute,
-        private login: UserService, public read: ReadChaptersService,
+        private login: UserService, public read: BookmarkService,
         public lists: ListsService, private as: MessageService,
         public ga: GoogleAnalyticsService) {}
 
@@ -36,29 +36,5 @@ export class LatestChaptersComponent implements OnInit
         this.chapters = [...this.chapters, ...newUpdates]
 
         this.ga.emitEvent('get more updates', 'Reading')
-    }
-
-    async markAsRead(chapter: Chapter, novelTitle: string)
-    {
-        if (this.login.isLoggedIn)
-        {
-            if (!this.lists.novelIsInList(chapter.novel))
-            {
-                const novel = { novelId: chapter.novel, novelTitle: novelTitle }
-                await this.lists.addNovelsToList([novel], this.lists.getDefaultList())
-                const message = `Novel ${novelTitle} added to "${this.lists.defaultList.listName}" list`
-                this.as.displayAlert(message, this.as.INFO)
-            }
-            await this.read.markChaptersAsRead([chapter.guid])
-        }
-        else
-        {
-            await this.login.login()
-        }
-    }
-
-    async markAsUnread(chapter: Chapter)
-    {
-        await this.read.markChaptersAsUnread([chapter.guid])
     }
 }

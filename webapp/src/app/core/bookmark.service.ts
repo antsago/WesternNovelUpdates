@@ -6,10 +6,9 @@ import { ListsService } from './lists.service'
 import { MessageService } from './message.service'
 
 @Injectable()
-export class ReadChaptersService
+export class BookmarkService
 {
     private userId: string
-    public readChapters = [] as string[]
     public bookmarks = {} as Bookmarks
 
     constructor(private db: DatabaseService, private user: UserService,
@@ -20,24 +19,7 @@ export class ReadChaptersService
         {
             this.userId = this.user.isLoggedIn ? this.user.fbUser.uid : null
             this.bookmarks = this.user.isLoggedIn ? this.user.wnuUser.bookmarks : {}
-            this.readChapters = this.user.isLoggedIn ? await this.db.users.readChapters(this.userId).getAll() : []
         })
-    }
-
-    public async markChaptersAsRead(chaptersGUID: string[]): Promise<void>
-    {
-        this.readChapters = this.readChapters.concat(chaptersGUID)
-        await Promise.all(chaptersGUID.map(chapterId => this.db.users.readChapters(this.userId).add(chapterId)))
-
-        this.ga.emitEvent('mark read', 'Reading')
-    }
-
-    public async markChaptersAsUnread(chaptersGUID: string[]): Promise<void>
-    {
-        this.readChapters = this.readChapters.filter(chapter => !chaptersGUID.includes(chapter))
-        await Promise.all(chaptersGUID.map(chapterId => this.db.users.readChapters(this.userId).remove(chapterId)))
-
-        this.ga.emitEvent('mark unread', 'Reading')
     }
 
     async setBookmark(chapter: Chapter, novelTitle: string)

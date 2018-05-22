@@ -1,5 +1,5 @@
 import { Component, Input, EventEmitter, Output } from '@angular/core'
-import { ReadChaptersService } from '@app/core'
+import { BookmarkService } from '@app/core'
 import { Novel, Chapter } from 'wnu-shared'
 
 @Component(
@@ -10,34 +10,10 @@ import { Novel, Chapter } from 'wnu-shared'
 export class NovelChaptersComponent
 {
     @Input() novel: Novel
-    @Input() readChapters: string[]
-
-    @Output() markedAsRead = new EventEmitter<Chapter[]>()
-    @Output() markedAsUnread = new EventEmitter<Chapter[]>()
     @Output() openLink = new EventEmitter<void>()
     @Output() moreChapters = new EventEmitter<void>()
 
-    constructor(public read: ReadChaptersService){}
-
-    markAsRead(chapters: Chapter[])
-    {
-        this.markedAsRead.emit(chapters)
-    }
-
-    markAsUnread(chapters: Chapter[])
-    {
-        this.markedAsUnread.emit(chapters)
-    }
-
-    markAllChaptersRead()
-    {
-        this.markAsRead(this.novel.chapters)
-    }
-
-    markAllChaptersUnRead()
-    {
-        this.markAsUnread(this.novel.chapters)
-    }
+    constructor(public read: BookmarkService){}
 
     linkClicked()
     {
@@ -47,10 +23,5 @@ export class NovelChaptersComponent
     getMoreChapters()
     {
         this.moreChapters.emit()
-    }
-
-    areAllChaptersRead()
-    {
-        return this.novel.chapters.every(ch => this.readChapters.includes(ch.guid))
     }
 }

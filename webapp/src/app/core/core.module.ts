@@ -5,7 +5,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
 import { SharedModule } from '@app/shared'
 
 import { ListsService } from './lists.service'
-import { ReadChaptersService } from './readChapters.service'
+import { BookmarkService } from './bookmark.service'
 import { UserService } from './user.service'
 import { LoginOrRegisterComponent } from './loginOrRegister.component/loginOrRegister.component'
 import { MessageService } from './message.service'
@@ -38,7 +38,7 @@ import { UserDetailsComponent } from './profile.component/userDetails.component'
     providers:
     [
         ListsService,
-        ReadChaptersService,
+        BookmarkService,
         MessageService,
         UserService,
         GoogleAnalyticsService

@@ -46,7 +46,7 @@
             [chapterState]="read.chapterState(chapter)"
             (setBookmark)="read.setBookmark(chapter, novel.novelTitle)"
             (removeBookmark)="read.removeBookmark(chapter)"
-            (openLink)="markChapterAsRead(chapter, novel.novelTitle);ga.emitEvent('open link', 'Reading')"           
+            (openLink)="read.setBookmark(chapter, novel.novelTitle);ga.emitEvent('open link', 'Reading')"           
         >
         </wnu-chapter>
     </div>

@@ -1,6 +1,5 @@
 import { User, List, Chapter, Bookmark } from '../Interfaces'
 import { UserListsCollection } from './userListsCollection'
-import { ReadChaptersCollection } from './readChaptersCollection'
 import { firestore } from 'firebase'
 import fb from 'firebase'
 
@@ -14,11 +13,6 @@ export class UsersCollection
     lists(userId: string): UserListsCollection
     {
         return new UserListsCollection(this.uc.doc(userId).collection(LISTS))
-    }
-
-    readChapters(userId: string): ReadChaptersCollection
-    {
-        return new ReadChaptersCollection(this.uc.doc(userId).collection(READ_CHAPTERS))
     }
 
     async get(userId: string): Promise<User>

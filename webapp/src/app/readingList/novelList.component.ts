@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core'
-import { UserService, ListsService, ReadChaptersService, GoogleAnalyticsService } from '@app/core'
+import { UserService, ListsService, BookmarkService, GoogleAnalyticsService } from '@app/core'
 import { List, ListNovel, Chapter, DatabaseService } from 'wnu-shared'
 
 @Component(
@@ -15,7 +15,7 @@ export class NovelListComponent implements OnInit
     public buildChapters = false
     public novelCollapsed = true
 
-    constructor(public lists: ListsService, public read: ReadChaptersService,
+    constructor(public lists: ListsService, public read: BookmarkService,
         private db: DatabaseService, public ga: GoogleAnalyticsService) {}
 
     async ngOnInit()
@@ -23,24 +23,9 @@ export class NovelListComponent implements OnInit
         this.chapters = await this.db.chapters.getNovelChapters(this.novel.novelId, 50)
     }
 
-    async markAllChaptersRead()
-    {
-        await this.read.markChaptersAsRead(this.chapters.map(ch => ch.guid))
-    }
-
-    async markAllChaptersUnread()
-    {
-        await this.read.markChaptersAsUnread(this.chapters.map(ch => ch.guid))
-    }
-
-    areAllChaptersRead()
-    {
-        return this.chapters.every(ch => this.read.readChapters.includes(ch.guid))
-    }
-
     noUnreadChapters()
     {
-        return this.chapters.filter(ch => !this.read.readChapters.includes(ch.guid)).length
+        return this.chapters.filter(ch => this.read.chapterState(ch) === 'Unread').length
     }
 
     async deleteNovel()
@@ -51,16 +36,6 @@ export class NovelListComponent implements OnInit
     async moveToList(list: List)
     {
         await this.lists.moveNovel(this.novel, this.list, list)
-    }
-
-    async markChapterAsRead(chapter: Chapter, novelTitle: string)
-    {
-        await this.read.markChaptersAsRead([chapter.guid])
-    }
-
-    async markChapterAsUnread(chapter: Chapter)
-    {
-        await this.read.markChaptersAsUnread([chapter.guid])
     }
 }
 

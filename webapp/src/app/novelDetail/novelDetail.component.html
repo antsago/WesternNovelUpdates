@@ -26,9 +26,6 @@
 
     <wnu-NovelChapters class="mt-5"
         [novel]="novel"
-        [readChapters]="read.readChapters"
-        (markedAsRead)="markAsRead($event)"
-        (markedAsUnread)="markAsUnread($event)"
         (openLink)="ga.emitEvent('open link', 'Reading')"
         (moreChapters)="getMoreChapters()"
     >
