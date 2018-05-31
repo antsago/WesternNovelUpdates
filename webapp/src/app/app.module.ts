@@ -14,7 +14,7 @@ import { AppRootComponent } from './appRoot.component'
 
 import { environment } from '@env/environment'
 import { LatestChaptersModule } from '@app/latestChapters'
-import { AppRoutingModule } from '@app/appRouting.module'
+import { AppRoutingModule } from '@app/routing'
 import { ReadingListModule } from '@app/readingList'
 import { NovelDetailModule } from '@app/novelDetail'
 import { NovelsModule } from '@app/novels'

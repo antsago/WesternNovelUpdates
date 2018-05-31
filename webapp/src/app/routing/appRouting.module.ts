@@ -1,11 +1,17 @@
 import { NgModule } from '@angular/core'
 import { RouterModule, Routes } from '@angular/router'
 
-import { LatestChaptersComponent, ChaptersResolver } from '@app/latestChapters'
+import { LatestChaptersComponent } from '@app/latestChapters'
 import { ReadingListComponent } from '@app/readingList'
-import { NovelDetailComponent, NovelChaptersResolver, NovelResolver } from '@app/novelDetail'
-import { NovelsResolver, NovelsComponent } from '@app/novels'
+import { NovelDetailComponent } from '@app/novelDetail'
+import { NovelsComponent } from '@app/novels'
 import { MissingPageComponent } from '@app/shared'
+
+import { ChaptersResolver } from './chaptersResolver.service'
+import { NovelsResolver } from './novelsResolver.service'
+import { NovelResolver } from './novelResolver.service'
+import { NovelChaptersResolver } from './novelChaptersResolver.service'
+
 
 
 const appRoutes: Routes =
