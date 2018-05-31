@@ -8,6 +8,7 @@ import { AddNovelComponent } from './addNovel.component'
 import { ViewNovelRequestsComponent } from './viewNovelRequests.component'
 import { NovelRequestsService } from './novelRequests.service'
 import { NovelRequestComponent } from './novelRequest.component'
+import { NovelRequestsViewerComponent } from './novelRequestsViewer.component'
 
 @NgModule(
 {
@@ -23,7 +24,8 @@ import { NovelRequestComponent } from './novelRequest.component'
     [
         AddNovelComponent,
         ViewNovelRequestsComponent,
-        NovelRequestComponent
+        NovelRequestComponent,
+        NovelRequestsViewerComponent
     ],
     entryComponents:
     [

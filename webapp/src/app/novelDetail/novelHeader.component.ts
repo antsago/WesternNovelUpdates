@@ -1,5 +1,4 @@
-import { Component, Input, EventEmitter, Output } from '@angular/core'
-import { BookmarkService, GoogleAnalyticsService } from '@app/core'
+import { Component, Input } from '@angular/core'
 import { Novel } from 'wnu-shared'
 
 @Component(

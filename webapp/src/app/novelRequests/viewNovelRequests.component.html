@@ -6,33 +6,27 @@
 </div>
 
 <div class="modal-body">
-    <div *ngIf="novelRequests.length <= 0" class="w-100 text-center">
-        There are no novel requests pending approval.
-    </div>
-
-    <div *ngIf="novelRequests.length > 0" class="w-100 text-center">
-        <div class="list-group">
-            <button *ngFor="let request of novelRequests"
-                class="list-group-item list-group-item-action light-wnutext"
-                [ngClass]="{'list-group-item-info': selectedRequest == request}"
-                (click)="selectedRequest = request">
-                <strong>{{request.title}}</strong>
-            </button>
-        </div>
-        <hr>
-        <wnu-novelrequest [request]="selectedRequest"></wnu-novelrequest>
-    </div>
+    <wnu-RequestViewer
+        [novelRequests]="novelRequests"
+        [(selectedRequest)]="selectedRequest"
+    >
+    </wnu-RequestViewer>
 </div>
 
 <div class="modal-footer justify-content-between">
-    <button type="button" class="btn btn-danger" 
-    [disabled]="novelRequests.length <= 0"
-    (click)="deleteRequest(selectedRequest)">
+    <button type="button" 
+        class="btn btn-danger" 
+        [disabled]="novelRequests.length <= 0"
+        (click)="deleteRequest(selectedRequest)"
+    >
         Delete
     </button>
-    <button type="button" class="btn btn-lightwnu"
-    [disabled]="novelRequests.length <= 0"
-    (click)="approveRequest(selectedRequest)">
+
+    <button type="button"
+        class="btn btn-lightwnu"
+        [disabled]="novelRequests.length <= 0"
+        (click)="approveRequest(selectedRequest)"
+    >
         Approve
     </button>
 </div>

@@ -1,4 +1,4 @@
-import { Component, Input, EventEmitter, Output } from '@angular/core'
+import { Component, Input } from '@angular/core'
 import { List, Novel, ListNovel } from 'wnu-shared'
 import { ListsService, UserService } from '@app/core'
 

@@ -1,20 +1,16 @@
 import { Component, OnInit } from '@angular/core'
 import { ActivatedRoute } from '@angular/router'
-import { ListsService, UserService, MessageService } from '@app/core'
-import { Novel, Chapter, List, ListNovel } from 'wnu-shared'
+import { Novel, Chapter } from 'wnu-shared'
 
 @Component(
 {
     template: `
         <div class="jumbotron my-3 p-3 p-md-5 text-white rounded light-wnubg">
-            <wnu-NovelHeader [novel]="novel">
-            </wnu-NovelHeader>
+            <wnu-NovelHeader [novel]="novel"></wnu-NovelHeader>
 
-            <wnu-NovelSynopsis class="mt-5" [novel]="novel">
-            </wnu-NovelSynopsis>
+            <wnu-NovelSynopsis class="mt-5" [novel]="novel"></wnu-NovelSynopsis>
 
-            <wnu-NovelChapters class="mt-5" [novel]="novel" [chapters]="chapters">
-            </wnu-NovelChapters>
+            <wnu-NovelChapters class="mt-5" [novel]="novel" [chapters]="chapters"></wnu-NovelChapters>
         </div>`
 })
 export class NovelDetailComponent implements OnInit
@@ -22,8 +18,7 @@ export class NovelDetailComponent implements OnInit
     public novel: Novel
     public chapters: Chapter[]
 
-    constructor(public lists: ListsService,
-        private route: ActivatedRoute) {}
+    constructor(private route: ActivatedRoute) {}
 
     async ngOnInit()
     {
