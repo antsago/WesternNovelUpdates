@@ -34,4 +34,15 @@ export class UserListsCollection
     {
         await this.lc.doc(listId).update({novels: novels})
     }
+
+    async deleteCollection()
+    {
+        const response = await this.lc.get()
+        const deleteJobs = response.docs.map(async list =>
+        {
+            await list.ref.delete()
+        })
+
+        await Promise.all(deleteJobs)
+    }
 }

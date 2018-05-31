@@ -43,6 +43,7 @@ export class UsersCollection
 
     async delete(userId: string): Promise<void>
     {
+        await this.lists(userId).deleteCollection()
         await this.uc.doc(userId).delete()
     }
 }
