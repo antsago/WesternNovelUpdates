@@ -1,13 +1,13 @@
 <div class="d-flex flex-row justify-content-between align-items-center ">
     <p><strong>Chapters</strong></p>
-    <wnu-OnOffButton [isOn]="read.chapterState(novel.chapters[0]) === 'Bookmarked'"
+    <wnu-OnOffButton [isOn]="read.chapterState(chapters[0]) === 'Bookmarked'"
         [color]="'text-white'"
         [onIcon]="'fas fa-bookmark'"
         [offIcon]="'far fa-bookmark'"
         [onTooltip]="'All chapters read'"
         [offTooltip]="'Mark all chapters read'"
-        (clikedOn)="read.removeBookmark(novel.chapters[0])"
-        (clikedOff)="read.setBookmark(novel.chapters[0], novel.title)">
+        (clikedOn)="read.removeBookmark(chapters[0])"
+        (clikedOff)="read.setBookmark(chapters[0], novel.title)">
     </wnu-OnOffButton>
 </div>
 <div class="my-3 bg-white rounded box-shadow p-2">
@@ -16,7 +16,7 @@
         [infiniteScrollDistance]="2"
         (scrolled)="getMoreChapters()"
     >
-        <wnu-chapter *ngFor="let chapter of novel.chapters" 
+        <wnu-chapter *ngFor="let chapter of chapters" 
             [chapter]="chapter"
             [novelTitle]="novel.title"
             [showNovelTitle]="false"

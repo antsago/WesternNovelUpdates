@@ -1,19 +1,19 @@
 import { Injectable } from '@angular/core'
 import { Router, Resolve, RouterStateSnapshot, ActivatedRouteSnapshot } from '@angular/router'
-import { Novel, DatabaseService } from 'wnu-shared'
+import { Chapter, DatabaseService } from 'wnu-shared'
 
 @Injectable()
-export class NovelDetailResolver implements Resolve<Novel>
+export class NovelChaptersResolver implements Resolve<Chapter[]>
 {
     constructor(private db: DatabaseService, private router: Router) {}
 
-    async resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<Novel>
+    async resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<Chapter[]>
     {
         try
         {
             const novelId = route.paramMap.get('id')
 
-            return await this.db.novels.get(novelId)
+            return await this.db.chapters.getNovelChapters(novelId, 30)
         }
         catch
         {

@@ -10,6 +10,7 @@ import { Novel, Chapter } from 'wnu-shared'
 export class NovelChaptersComponent
 {
     @Input() novel: Novel
+    @Input() chapters: Chapter[]
     @Output() openLink = new EventEmitter<void>()
     @Output() moreChapters = new EventEmitter<void>()
 
