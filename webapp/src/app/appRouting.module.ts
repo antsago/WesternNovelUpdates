@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router'
 
 import { LatestChaptersComponent, ChaptersResolver } from '@app/latestChapters'
 import { ReadingListComponent } from '@app/readingList'
-import { NovelDetailComponent, NovelDetailResolver, NovelChaptersResolver } from '@app/novelDetail'
+import { NovelDetailComponent, NovelChaptersResolver, NovelResolver } from '@app/novelDetail'
 import { NovelsResolver, NovelsComponent } from '@app/novels'
 import { MissingPageComponent } from '@app/shared'
 
@@ -29,7 +29,7 @@ const appRoutes: Routes =
         component: NovelDetailComponent,
         resolve:
         {
-            novel: NovelDetailResolver,
+            novel: NovelResolver,
             chapters: NovelChaptersResolver
         }
     },
@@ -46,6 +46,6 @@ const appRoutes: Routes =
 {
     imports: [ RouterModule.forRoot(appRoutes) ],
     exports: [ RouterModule ],
-    providers: [ NovelDetailResolver, NovelChaptersResolver, NovelsResolver, ChaptersResolver ]
+    providers: [ NovelChaptersResolver, NovelsResolver, ChaptersResolver, NovelResolver ]
 })
 export class AppRoutingModule {}

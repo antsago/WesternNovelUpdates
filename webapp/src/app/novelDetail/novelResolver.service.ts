@@ -3,7 +3,7 @@ import { Router, Resolve, RouterStateSnapshot, ActivatedRouteSnapshot } from '@a
 import { Novel, DatabaseService } from 'wnu-shared'
 
 @Injectable()
-export class NovelDetailResolver implements Resolve<Novel>
+export class NovelResolver implements Resolve<Novel>
 {
     constructor(private db: DatabaseService, private router: Router) {}
 
