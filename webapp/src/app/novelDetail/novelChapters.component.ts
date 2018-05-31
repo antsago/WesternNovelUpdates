@@ -1,6 +1,8 @@
 import { Component, Input, EventEmitter, Output } from '@angular/core'
-import { BookmarkService } from '@app/core'
-import { Novel, Chapter } from 'wnu-shared'
+import { BookmarkService, GoogleAnalyticsService } from '@app/core'
+import { Novel, Chapter, DatabaseService } from 'wnu-shared'
+
+const ChapterAddRate = 10
 
 @Component(
 {
@@ -11,18 +13,21 @@ export class NovelChaptersComponent
 {
     @Input() novel: Novel
     @Input() chapters: Chapter[]
-    @Output() openLink = new EventEmitter<void>()
-    @Output() moreChapters = new EventEmitter<void>()
 
-    constructor(public read: BookmarkService){}
+    constructor(public read: BookmarkService, private db: DatabaseService,
+        public ga: GoogleAnalyticsService){}
 
     linkClicked()
     {
-        this.openLink.emit()
+        this.ga.emitEvent('open link', 'Reading')
     }
 
-    getMoreChapters()
+    async getMoreChapters()
     {
-        this.moreChapters.emit()
+        const lastDate = this.chapters[this.chapters.length - 1]['publicationDate']
+        const newUpdates = await this.db.chapters.getNovelChaptersAfter(this.novel.id, lastDate, ChapterAddRate)
+        this.chapters = [...this.chapters, ...newUpdates]
+
+        this.ga.emitEvent('get more novel chaters', 'Reading')
     }
 }
