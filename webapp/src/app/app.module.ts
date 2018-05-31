@@ -14,7 +14,7 @@ import { AppRootComponent } from './appRoot.component'
 
 import { environment } from '@env/environment'
 import { LatestChaptersModule } from '@app/latestChapters'
-import { AppRoutingModule } from '@app/routing'
+import { RoutingModule } from '@app/routing'
 import { ReadingListModule } from '@app/readingList'
 import { NovelDetailModule } from '@app/novelDetail'
 import { NovelsModule } from '@app/novels'
@@ -31,7 +31,7 @@ import { CoreModule, GoogleAnalytics_ID } from '@app/core'
 
         NgbModule.forRoot(),
 
-        AppRoutingModule,
+        RoutingModule,
         CoreModule,
         SharedModule,
         LatestChaptersModule,

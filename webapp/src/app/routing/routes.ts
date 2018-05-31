@@ -1,5 +1,4 @@
-import { NgModule } from '@angular/core'
-import { RouterModule, Routes } from '@angular/router'
+import { Routes } from '@angular/router'
 
 import { LatestChaptersComponent } from '@app/latestChapters'
 import { ReadingListComponent } from '@app/readingList'
@@ -12,9 +11,7 @@ import { NovelsResolver } from './novelsResolver.service'
 import { NovelResolver } from './novelResolver.service'
 import { NovelChaptersResolver } from './novelChaptersResolver.service'
 
-
-
-const appRoutes: Routes =
+export const WnuRoutes: Routes =
 [
     {
         path: 'latestChapters',
@@ -47,11 +44,3 @@ const appRoutes: Routes =
     { path: '', redirectTo: '/latestChapters', pathMatch: 'full'},
     { path: '**', component: MissingPageComponent }
 ]
-
-@NgModule(
-{
-    imports: [ RouterModule.forRoot(appRoutes) ],
-    exports: [ RouterModule ],
-    providers: [ NovelChaptersResolver, NovelsResolver, ChaptersResolver, NovelResolver ]
-})
-export class AppRoutingModule {}
