@@ -10,14 +10,6 @@
             [isDefaultList]="lists.defaultList.listId === list.listId">
         </wnu-list>
 
-        <form class="form-inline w-100 input-group pt-4">
-            <input [(ngModel)]="newListName" name="newListName" type="text" 
-            class="form-control" placeholder="Write the title for a new list" required>
-            <div class="input-group-append">
-                <button (click)="addNewList()" type="submit" class="btn btn-darkwnu px-3 py-2">
-                    Create list
-                </button>
-            </div>
-        </form>
+        <wnu-CreateListForm (createList)="addNewList($event)"></wnu-CreateListForm>
     </div>
 </div>

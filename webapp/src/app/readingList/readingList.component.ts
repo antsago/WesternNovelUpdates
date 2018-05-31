@@ -7,8 +7,6 @@ import { UserService, ListsService, MessageService } from '@app/core'
 })
 export class ReadingListComponent
 {
-    public newListName = ''
-
     constructor(public login: UserService, private lists: ListsService, private as: MessageService){}
 
     async loginOrRegister(event)
@@ -16,12 +14,11 @@ export class ReadingListComponent
         await this.login.login()
     }
 
-    async addNewList()
+    async addNewList(listName: string)
     {
         try
         {
-            await this.lists.addNewList(this.newListName.trim())
-            this.newListName = ''
+            await this.lists.addNewList(listName.trim())
         }
         catch (error)
         {
