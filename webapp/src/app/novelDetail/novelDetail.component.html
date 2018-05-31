@@ -10,13 +10,7 @@
 
     <div class="mt-5 d-flex flex-row justify-content-between align-items-center ">
         <strong>Synopsis</strong>
-        <wnu-NovelDetailListMenu [isLoggedIn]="login.isLoggedIn"
-                    [lists]="lists.lists"
-                    [listWithNovel]="lists.novelWithList(novel.id)"
-                    [defaultList]="lists.getDefaultList()"
-                    (savedInList)="saveToList($event)"
-                    (movedToList)="moveToList($event)"
-                    (deletedFromList)="deleteFromList()">
+        <wnu-NovelDetailListMenu [novel] = "novel">
         </wnu-NovelDetailListMenu>
 
     </div>

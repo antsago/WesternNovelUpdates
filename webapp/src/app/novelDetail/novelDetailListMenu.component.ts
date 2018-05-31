@@ -1,5 +1,6 @@
 import { Component, Input, EventEmitter, Output } from '@angular/core'
-import { List } from 'wnu-shared'
+import { List, Novel, ListNovel } from 'wnu-shared'
+import { ListsService, UserService } from '@app/core'
 
 @Component(
 {
@@ -8,27 +9,34 @@ import { List } from 'wnu-shared'
 })
 export class NovelDetailListMenuComponent
 {
-    @Input() isLoggedIn: boolean
-    @Input() lists: List[]
-    @Input() listWithNovel: List
-    @Input() defaultList: List
+    @Input() novel: Novel
 
-    @Output() movedToList = new EventEmitter<List>()
-    @Output() savedInList = new EventEmitter<List>()
-    @Output() deletedFromList = new EventEmitter<void>()
+    constructor(public lists: ListsService, public login: UserService) {}
 
-    saveInList(list)
+    async saveToList(list: List)
     {
-        this.savedInList.emit(list)
+        if (this.login.isLoggedIn)
+        {
+            await this.lists.addNovelsToList([this.getListNovel()], list)
+        }
+        else
+        {
+            await this.login.login()
+        }
     }
 
-    moveToList(list)
+    async moveToList(list: List)
     {
-        this.movedToList.emit(list)
+        await this.lists.moveNovel(this.getListNovel(), this.lists.novelWithList(this.novel.id), list)
     }
 
-    deleteFromList()
+    async deleteFromList()
     {
-        this.deletedFromList.emit()
+        await this.lists.deleteNovelFromList(this.getListNovel(), this.lists.novelWithList(this.novel.id))
+    }
+
+    private getListNovel(): ListNovel
+    {
+        return { novelId: this.novel.id, novelTitle: this.novel.title }
     }
 }
