@@ -5,7 +5,17 @@ import { Novel, Chapter, List, ListNovel } from 'wnu-shared'
 
 @Component(
 {
-    templateUrl: './novelDetail.component.html'
+    template: `
+        <div class="jumbotron my-3 p-3 p-md-5 text-white rounded light-wnubg">
+            <wnu-NovelHeader [novel]="novel">
+            </wnu-NovelHeader>
+
+            <wnu-NovelSynopsis class="mt-5" [novel]="novel">
+            </wnu-NovelSynopsis>
+
+            <wnu-NovelChapters class="mt-5" [novel]="novel" [chapters]="chapters">
+            </wnu-NovelChapters>
+        </div>`
 })
 export class NovelDetailComponent implements OnInit
 {
