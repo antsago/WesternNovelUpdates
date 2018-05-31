@@ -8,6 +8,7 @@ import { SharedModule } from '@app/shared'
 import { NovelDetailComponent } from './novelDetail.component'
 import { NovelChaptersComponent } from './novelChapters.component'
 import { NovelDetailListMenuComponent } from './novelDetailListMenu.component'
+import { NovelSynopsisComponent } from './novelSynopsis.component'
 
 @NgModule(
 {
@@ -22,6 +23,7 @@ import { NovelDetailListMenuComponent } from './novelDetailListMenu.component'
     [
         NovelDetailComponent,
         NovelChaptersComponent,
+        NovelSynopsisComponent,
         NovelDetailListMenuComponent
     ]
 })

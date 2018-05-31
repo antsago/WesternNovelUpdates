@@ -8,19 +8,9 @@
     </a>
     <p class="lead">by <strong>{{novel.author}}</strong></p>
 
-    <div class="mt-5 d-flex flex-row justify-content-between align-items-center ">
-        <strong>Synopsis</strong>
-        <wnu-NovelDetailListMenu [novel] = "novel">
-        </wnu-NovelDetailListMenu>
+    <wnu-NovelSynopsis class="mt-5" [novel]="novel">
+    </wnu-NovelSynopsis>
 
-    </div>
-    <div class="my-3 p-3 bg-white text-dark rounded box-shadow">
-        <p class="text-justify">{{novel.synopsis}}</p>
-    </div>
-
-    <wnu-NovelChapters class="mt-5"
-        [novel]="novel"
-        [chapters]="chapters"
-    >
+    <wnu-NovelChapters class="mt-5" [novel]="novel" [chapters]="chapters">
     </wnu-NovelChapters>
 </div>
