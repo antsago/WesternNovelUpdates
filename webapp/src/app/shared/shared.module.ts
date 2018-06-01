@@ -10,6 +10,7 @@ import { OnOffButtonComponent } from './onOffButton.component'
 import { ConfirmPasswordComponent } from './confirmPassword.component'
 import { AlertComponent } from './alert.component'
 import { BookmarkComponent } from './bookmark.component'
+import { ModalHeaderComponent } from './modalHeader.component'
 
 
 @NgModule(
@@ -28,7 +29,8 @@ import { BookmarkComponent } from './bookmark.component'
         MissingPageComponent,
         ChapterRowComponent,
         BookmarkComponent,
-        AlertComponent
+        AlertComponent,
+        ModalHeaderComponent
     ],
     exports:
     [
@@ -36,7 +38,8 @@ import { BookmarkComponent } from './bookmark.component'
         OnOffButtonComponent,
         ChapterRowComponent,
         BookmarkComponent,
-        AlertComponent
+        AlertComponent,
+        ModalHeaderComponent
     ]
 })
 export class SharedModule {}

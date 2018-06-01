@@ -1,9 +1,5 @@
-<div class="modal-header">
-    <h4 class="modal-title light-wnucolor">Request a novel</h4>
-    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
-        <span aria-hidden="true">&times;</span>
-    </button>
-</div>
+<wnu-ModalHeader [title]="'Request a novel'" (close)="activeModal.dismiss('Cross click')">
+</wnu-ModalHeader>
 
 <div class="modal-body">
     <div class="container d-flex flex-column">
