@@ -6,13 +6,6 @@ import { LoginOrRegisterComponent } from './loginOrRegister.component/loginOrReg
 import { GoogleAnalyticsService } from './googleAnalytics.service'
 import { ProfileComponent } from './profile.component/profile.component'
 
-const INITIAL_LIST =
-{
-    listId: null,
-    listName: 'Reading',
-    novels: []
-}
-
 @Injectable()
 export class UserService
 {
@@ -27,7 +20,7 @@ export class UserService
         auth.callOnAuthStateChanged(async (isLoggedIn, user) =>
         {
             this.fbUser = isLoggedIn ? user : null
-            this.wnuUser = isLoggedIn ? await this.getOrCreateWnuUser(this.fbUser.uid) : null
+            this.wnuUser = isLoggedIn ? await this.db.users.get(this.fbUser.uid) : null
             this.isLoggedIn = isLoggedIn
 
             this.loginSubscribers.forEach(subscriber => subscriber())
@@ -69,22 +62,6 @@ export class UserService
         catch
         {
             return false
-        }
-    }
-
-    private async getOrCreateWnuUser(userId: string): Promise<User>
-    {
-        try
-        {
-            return await this.db.users.get(userId)
-        }
-        catch (err) // user object doesn't exists
-        {
-            await this.db.users.create(userId)
-            const defaultList = await this.db.users.lists(userId).add(INITIAL_LIST)
-            await this.db.users.setDefaultList(userId, defaultList)
-
-            return { bookmarks: {}, defaultList: defaultList }
         }
     }
 }

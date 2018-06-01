@@ -1,8 +1,15 @@
 import { Component, ViewChild } from '@angular/core'
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap'
-import { AuthenticationService } from 'wnu-shared'
+import { AuthenticationService, DatabaseService } from 'wnu-shared'
 import { AlertComponent } from '@app/shared'
 import { GoogleAnalyticsService } from '../googleAnalytics.service'
+
+const INITIAL_LIST =
+{
+    listId: null,
+    listName: 'Reading',
+    novels: []
+}
 
 @Component(
 {
@@ -28,7 +35,7 @@ export class LoginOrRegisterComponent
     }
 
     constructor(public activeModal: NgbActiveModal, private auth: AuthenticationService,
-        private ga: GoogleAnalyticsService)
+        private db: DatabaseService, private ga: GoogleAnalyticsService)
     {
         this.ga.emitEvent('open login form', 'Authentication')
     }
@@ -65,7 +72,7 @@ export class LoginOrRegisterComponent
     {
         try
         {
-            await this.auth.register(this.registerForm.username, this.registerForm.email, this.registerForm.password)
+            await this.createUser(this.registerForm.username, this.registerForm.email, this.registerForm.password)
             this.ga.emitEvent('register', 'Authentication')
             this.activeModal.close('Registered')
         }
@@ -73,5 +80,15 @@ export class LoginOrRegisterComponent
         {
             this.registerAlert.showMessage(err.message)
         }
+    }
+
+    private async createUser(username, email, password)
+    {
+        await this.auth.register(username, email, password)
+
+        const userId = this.auth.currentUser().uid
+        await this.db.users.create(userId)
+        const defaultList = await this.db.users.lists(userId).add(INITIAL_LIST)
+        await this.db.users.setDefaultList(userId, defaultList)
     }
 }
