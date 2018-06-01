@@ -2,6 +2,7 @@ import { Component } from '@angular/core'
 import { Router, NavigationEnd } from '@angular/router'
 import { UserService, GoogleAnalyticsService } from '@app/core'
 import { NovelRequestsService } from '@app/novelRequests'
+import { TitleService } from '@app/routing'
 
 @Component(
 {
@@ -10,9 +11,11 @@ import { NovelRequestsService } from '@app/novelRequests'
 })
 export class AppRootComponent
 {
-    constructor(public user: UserService, private requests: NovelRequestsService, private gas: GoogleAnalyticsService)
+    constructor(public user: UserService, private requests: NovelRequestsService,
+        private gas: GoogleAnalyticsService, private title: TitleService)
     {
         this.gas.trackPageViews()
+        this.title.setPageTitlesAutomatically()
     }
 
     loginOrRegister()

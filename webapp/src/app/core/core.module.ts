@@ -4,15 +4,15 @@ import { FormsModule } from '@angular/forms'
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
 import { SharedModule } from '@app/shared'
 
+import { ProfileComponent } from './profile.component/profile.component'
+import { UserDetailsComponent } from './profile.component/userDetails.component'
+import { LoginOrRegisterComponent } from './loginOrRegister.component/loginOrRegister.component'
 import { ListsService } from './lists.service'
 import { BookmarkService } from './bookmark.service'
 import { UserService } from './user.service'
-import { LoginOrRegisterComponent } from './loginOrRegister.component/loginOrRegister.component'
 import { MessageService } from './message.service'
 import { MessageComponent } from './message.component'
 import { GoogleAnalyticsService } from './googleAnalytics.service'
-import { ProfileComponent } from './profile.component/profile.component'
-import { UserDetailsComponent } from './profile.component/userDetails.component'
 
 @NgModule(
 {
