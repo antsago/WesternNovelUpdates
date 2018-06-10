@@ -13,7 +13,13 @@ export class NovelResolver implements Resolve<Novel>
         try
         {
             const novelId = route.paramMap.get('id')
-            return await this.db.novels.get(novelId)
+            const novel = await this.db.novels.get(novelId)
+            if (!novel)
+            {
+                this.router.navigate([`/novel-${novelId}-not-found`])
+                return null
+            }
+            return novel
         }
         catch
         {
