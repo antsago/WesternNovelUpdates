@@ -15,7 +15,7 @@ export class TitleService
         {
             if (event instanceof NavigationEnd)
             {
-                const title = this.isNovelDetailsPage(event) ? this.getNovelTitle() : DefaultTitle
+                const title = this.isNovelDetailsPage(event.urlAfterRedirects) ? this.getNovelTitle() : DefaultTitle
                 this.setTitle(title)
             }
         })
@@ -26,12 +26,12 @@ export class TitleService
         this.pageTitle.setTitle(title)
     }
 
-    private isNovelDetailsPage(event)
+    private isNovelDetailsPage(url): boolean
     {
-        return event.urlAfterRedirects.startsWith('/novels/')
+        return /^\/novels\/[^/]+$/i.test(url)
     }
 
-    private getNovelTitle()
+    private getNovelTitle(): string
     {
         return `${this.route.snapshot.firstChild.data['novel'].title} - Novels of the West`
     }
