@@ -10,7 +10,7 @@
         "outDir": "out",
         "esModuleInterop": true,
         "baseUrl": "src",
-        "lib": ["es6"],
+        "lib": ["es6", "dom"],
         "noImplicitReturns": true,
         "moduleResolution": "node"
     }

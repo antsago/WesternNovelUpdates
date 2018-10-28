@@ -1,10 +1,8 @@
-import { User, List, Chapter, Bookmark } from '../Interfaces'
+import { User, List, Bookmark } from '../Interfaces'
 import { UserListsCollection } from './userListsCollection'
 import { firestore } from 'firebase'
-import fb from 'firebase'
 
 const LISTS = 'lists'
-const READ_CHAPTERS = 'readChapters'
 
 export class UsersCollection
 {
