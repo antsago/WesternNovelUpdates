@@ -9,11 +9,13 @@ const InHeroku = process.env.InHeroku
 const token = InHeroku ? process.env.token : serviceAccount.security_token
 const databaseURL = InHeroku ? process.env.FirebaseDatabaseURL : serviceAccount.database_url
 const certificate = InHeroku ? 
-{
-    projectId: process.env.ProjectId,
-    clientEmail: process.env.ClientEmail,
-    privateKey: JSON.parse(process.env.FirebasePrivateKey)
-} : serviceAccount
+    {
+        projectId: process.env.ProjectId,
+        clientEmail: process.env.ClientEmail,
+        privateKey: JSON.parse(process.env.FirebasePrivateKey)
+    }
+:
+    serviceAccount
 const port = InHeroku ? process.env.PORT : 3000
 const batchSize = 50
 const beetwenBatchWait = 100000
