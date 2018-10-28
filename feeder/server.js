@@ -2,9 +2,8 @@ const express = require('express')
 const axios = require('axios')
 const app = express()
 const admin = require('firebase-admin')
-const serviceAccount = InHeroku ? undefined : require('./serviceAccount.json')
-
 const InHeroku = process.env.InHeroku
+const serviceAccount = InHeroku ? undefined : require('./serviceAccount.json')
 
 const token = InHeroku ? process.env.token : serviceAccount.security_token
 const databaseURL = InHeroku ? process.env.FirebaseDatabaseURL : serviceAccount.database_url
